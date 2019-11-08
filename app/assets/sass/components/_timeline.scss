@@ -2,7 +2,7 @@
    #TIMELINE
    ========================================================================== */
 
-.moj-timeline {
+.app-timeline {
   margin-bottom: govuk-spacing(4);
   overflow: hidden;
   position: relative;
@@ -19,14 +19,14 @@
 
 }
 
-.moj-timeline--full {
+.app-timeline--full {
   margin-bottom: 0;
   &:before {
     height: calc(100% - 75px);
   }
 }
 
-.moj-timeline__item {
+.app-timeline__item {
   padding-bottom: govuk-spacing(6);
   padding-left: govuk-spacing(4);
   position: relative;
@@ -43,25 +43,25 @@
 
 }
 
-.moj-timeline__title {
+.app-timeline__title {
   @include govuk-font($size: 19, $weight: bold);
   display: inline;
 }
 
-.moj-timeline__byline {
+.app-timeline__byline {
   @include govuk-font($size: 19);
   color: $govuk-secondary-text-colour;
   display: inline;
   margin: 0;
 }
 
-.moj-timeline__date {
+.app-timeline__date {
   @include govuk-font($size: 16);
   margin-top: govuk-spacing(1);
   margin-bottom: 0;
 }
 
-.moj-timeline__description {
+.app-timeline__description {
   @include govuk-font($size: 19);
   margin-top: govuk-spacing(4);
 }
@@ -70,13 +70,13 @@
    #TIMELINE DOCUMENT STYLES – FOR BACKWARDS COMPATIBILITY
    ========================================================================== */
 
-.moj-timeline__documents {
+.app-timeline__documents {
   list-style: none;
   margin-bottom: 0;
   padding-left: 0;
 }
 
-.moj-timeline__document-item {
+.app-timeline__document-item {
   margin-bottom: govuk-spacing(1);
 
   &:last-child {
@@ -85,8 +85,8 @@
 
 }
 
-.moj-timeline__document-link {
-  // background-image: url(#{$moj-images-path}icon-document.svg);
+.app-timeline__document-link {
+  // background-image: url(#{$app-images-path}icon-document.svg);
   background-repeat: no-repeat;
   background-size: 20px 16px;
   background-position: 0 50%;
@@ -98,7 +98,7 @@
 
   // IE8 does not support box shadow, so use a standard border.
   @include govuk-if-ie8 {
-    // background-image: url(#{$moj-images-path}icon-document.png);
+    // background-image: url(#{$app-images-path}icon-document.png);
   }
 
 }

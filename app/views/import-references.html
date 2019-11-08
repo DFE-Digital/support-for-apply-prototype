@@ -1,0 +1,40 @@
+
+{% extends "layout.html" %}
+
+{% set pageId = 'applications' %}
+
+{% block pageTitle %}
+  Import references - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+  {{govukBackLink({
+    text: 'Back',
+    href: '/'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+  <form action="">
+    {{ govukFileUpload({
+      id: "file-upload-1",
+      name: "file-upload-1",
+      isPageHeading: true,
+      label: {
+        text: "Import references",
+        classes: 'govuk-label--xl'
+      },
+      hint: {
+        text: 'Download the Google Sheet as a CSV file and select it below'
+      }
+    }) }}
+
+    {{ govukButton({ text: 'Import references' }) }}
+
+  </form>
+
+
+
+
+{% endblock %}
