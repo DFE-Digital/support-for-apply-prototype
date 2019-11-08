@@ -14,7 +14,7 @@
 }
 
 .app-tag--references-not-requested {
-  @include tag("blue", $filled: false);
+  @include tag("turquoise", $filled: false);
 }
 
 .app-tag--references-overdue {
@@ -22,7 +22,7 @@
 }
 
 .app-tag--references-received {
-  @include tag("turquoise", $filled: false);
+  @include tag("turquoise", $filled: true);
 }
 
 .app-tag--waiting-on-references,

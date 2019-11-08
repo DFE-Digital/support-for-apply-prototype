@@ -26,21 +26,27 @@
     ]
   }) }} #}
 
+  {% set hintHtml %}
+    <ul class="govuk-list govuk-list--bulet">
+      <li>You'll need to save the <a href="">latest spreadsheet</a> to a folder on your computer as a CSV file.</li>
+    </ul>
+  {% endset %}
+
   <form action="/">
     {{ govukFileUpload({
       id: "file-upload",
       name: "file-upload",
       isPageHeading: true,
       label: {
-        text: "Upload and import references",
+        text: "Import references",
         classes: 'govuk-label--xl'
       },
       hint: {
-        text: 'Download the latest Google Sheet as a CSV file and select it below'
+        html: hintHtml
       }
     }) }}
 
-    {{ govukButton({ text: 'Upload and import references' }) }}
+    {{ govukButton({ text: 'Import references' }) }}
 
   </form>
 
