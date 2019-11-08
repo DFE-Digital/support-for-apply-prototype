@@ -1,0 +1,55 @@
+
+{% extends "layout.html" %}
+
+{% set pageId = 'api-tokens' %}
+
+{% block pageTitle %}
+  API tokens - Support console
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">API tokens</h1>
+
+  {{govukButton({
+    text: 'Create token',
+    href: '/create-token'
+  })}}
+
+  {{ govukTable({
+    head: [
+      {
+        text: "Name of provider"
+      },
+      {
+        text: "Created at",
+        format: "numeric"
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="/api-token">Tribal</a>'
+        },
+        {
+          text: "7 Nov 2019",
+          format: "numeric"
+        }
+      ],
+      [
+        {
+          html: '<a href="/api-token">Someone else</a>'
+        },
+        {
+          text: "31 Oct 2019",
+          format: "numeric"
+        }
+      ]
+    ]
+  }) }}
+
+{% endblock %}

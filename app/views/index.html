@@ -1,0 +1,118 @@
+
+{% extends "layout.html" %}
+
+{% set pageId = 'applications' %}
+
+{% block pageTitle %}
+  Applications - Support console
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">Applications</h1>
+
+  {{govukButton({
+    text: 'Import references',
+    href: '/import-references'
+  })}}
+
+  {{ govukTable({
+    head: [
+      {
+        text: "Reference"
+      },
+      {
+        text: "Name"
+      },
+      {
+        text: "Status"
+      },
+      {
+        text: "Submitted on",
+        format: "numeric"
+      }
+    ],
+    rows: [
+      [
+        {
+          html: '<a href="/application">RQ1001</a>'
+        },
+        {
+          html: 'Elizabeth Rose'
+        },
+        {
+          html: 'Reference(s) not requested'
+        },
+        {
+          text: "5 Nov 2019",
+          format: "numeric"
+        }
+      ],
+      [
+        {
+          html: '<a href="/application">YX3225</a>'
+        },
+        {
+          html: 'Kelly Jane Spears'
+        },
+        {
+          html: 'Reference(s) not requested'
+        },
+        {
+          text: "1 Nov 2019",
+          format: "numeric"
+        }
+      ],
+      [
+        {
+          html: '<a href="/application">TU8112</a>'
+        },
+        {
+          html: "Poppy Noor"
+        },
+        {
+          html: 'Reference(s) overdue'
+        },
+        {
+          text: "29 Oct 2019",
+          format: "numeric"
+        }
+      ],
+      [
+        {
+          html: '<a href="/application">RE31021</a>'
+        },
+        {
+          html: "May Cole"
+        },
+        {
+          html: 'Reference(s) received'
+        },
+        {
+          text: "21 Oct 2019",
+          format: "numeric"
+        }
+      ],
+      [
+        {
+          html: '<a href="/application">DF1112</a>'
+        },
+        {
+          html: "Elise Briggs"
+        },
+        {
+          html: 'Waiting on reference(s)'
+        },
+        {
+          text: "28 Oct 2019",
+          format: "numeric"
+        }
+      ]
+    ]
+  }) }}
+
+{% endblock %}

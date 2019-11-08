@@ -1,0 +1,36 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Kelly Jane Spears - Applications - Support console
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Applications",
+        href: "/"
+      },
+      {
+        text: "Kelly Jane Spears"
+      }
+    ]
+  }) }} -->
+{% endblock %}
+
+{% block content %}
+
+  <span class="govuk-caption-xl">XX3333</span>
+  <h1 class="govuk-heading-xl">Kelly Jane Spears</h1>
+
+  {{govukButton({
+    text: 'Send to provider',
+    href: '/send-to-provider'
+  })}}
+
+  <h2 class="govuk-heading-l">References</h2>
+
+  <a href="/">Application history</a>
+
+{% endblock %}

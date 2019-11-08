@@ -1,0 +1,67 @@
+
+{% extends "layout.html" %}
+
+{% set pageId = 'api-tokens' %}
+
+{% block pageTitle %}
+  API tokens - Support console
+{% endblock %}
+
+{% block beforeContent %}
+  <!-- {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "API tokens",
+        href: "/"
+      },
+      {
+        text: "Create token"
+      }
+    ]
+  }) }} -->
+
+  {{govukBackLink({
+    text: 'Back',
+    href: '/api-tokens'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+  <form action="">
+    {{ govukRadios({
+      idPrefix: "provider",
+      name: "provider",
+      fieldset: {
+        legend: {
+          html: "Choose provider",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--xl"
+        }
+      },
+      items: [
+        {
+          value: "Tribal",
+          text: "Tribal"
+        },
+        {
+          value: "Another",
+          text: "Another"
+        },
+        {
+          value: "ProvideTeach",
+          text: "ProvideTeach"
+        }
+      ]
+    }) }}
+
+    {{govukButton({
+      text: "Create token"
+    })}}
+
+  </form>
+
+
+
+
+{% endblock %}
