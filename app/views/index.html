@@ -13,6 +13,16 @@
 
 {% block content %}
 
+  {% if data['file-upload'] %}
+
+    {{ appBanner({
+      type: 'success',
+      text: 'References uploaded and imported successfully',
+      iconFallbackText: 'Success'
+    }) }}
+
+  {% endif %}
+
   <h1 class="govuk-heading-xl">Applications</h1>
 
   {{govukButton({

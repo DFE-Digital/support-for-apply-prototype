@@ -16,21 +16,31 @@
 
 {% block content %}
 
-  <form action="">
+  {# {{ govukErrorSummary({
+    titleText: "There is a problem",
+    errorList: [
+      {
+        text: "Select CSV file",
+        href: "#file-upload"
+      }
+    ]
+  }) }} #}
+
+  <form action="/">
     {{ govukFileUpload({
-      id: "file-upload-1",
-      name: "file-upload-1",
+      id: "file-upload",
+      name: "file-upload",
       isPageHeading: true,
       label: {
-        text: "Import references",
+        text: "Upload and import references",
         classes: 'govuk-label--xl'
       },
       hint: {
-        text: 'Download the Google Sheet as a CSV file and select it below'
+        text: 'Download the latest Google Sheet as a CSV file and select it below'
       }
     }) }}
 
-    {{ govukButton({ text: 'Import references' }) }}
+    {{ govukButton({ text: 'Upload and import references' }) }}
 
   </form>
 
