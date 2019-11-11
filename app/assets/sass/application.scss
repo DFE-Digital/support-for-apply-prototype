@@ -16,10 +16,12 @@ $govuk-assets-path: '/govuk/assets/';
 @import "components/cookie-banner";
 
 
-@import "components/tag";
+@import "components/card";
+@import "components/definition-list";
 @import "components/badge";
 @import "components/banner";
 @import "components/page-header-actions";
 @import "components/timeline";
+@import "components/tag";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you

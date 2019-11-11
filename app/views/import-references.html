@@ -32,7 +32,7 @@
     </ul>
   {% endset %}
 
-  <form action="/">
+  <form action="/import-references-success">
     {{ govukFileUpload({
       id: "file-upload",
       name: "file-upload",
@@ -47,7 +47,6 @@
     }) }}
 
     {{ govukButton({ text: 'Import references' }) }}
-
   </form>
 
 

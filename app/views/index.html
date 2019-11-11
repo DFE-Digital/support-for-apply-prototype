@@ -13,16 +13,6 @@
 
 {% block content %}
 
-  {% if data['file-upload'] %}
-
-    {{ appBanner({
-      type: 'success',
-      text: 'References imported successfully',
-      iconFallbackText: 'Success'
-    }) }}
-
-  {% endif %}
-
   <h1 class="govuk-heading-xl">Applications</h1>
 
   {{govukButton({
@@ -39,7 +29,7 @@
         text: "Name"
       },
       {
-        text: "Status"
+        text: "Status of references"
       },
       {
         text: "Submitted on",
@@ -47,22 +37,7 @@
       }
     ],
     rows: [
-      [
-        {
-          html: '<a href="/application">RQ1001</a>'
-        },
-        {
-          html: 'Elizabeth Rose'
-        },
-        {
-          html: govukTag({ text: 'Reference not requested', classes: 'app-tag--references-not-requested' })
-        },
-        {
-          text: "5 Nov 2019",
-          format: "numeric"
-        }
-      ],
-      [
+       [
         {
           html: '<a href="/application">YX3225</a>'
         },
@@ -70,7 +45,7 @@
           html: 'Kelly Jane Spears'
         },
         {
-          html: govukTag({ text: 'References not requested', classes: 'app-tag--references-not-requested' })
+          html: govukTag({ text: 'Not requested', classes: 'app-tag--references-not-requested' })
         },
         {
           text: "1 Nov 2019",
@@ -85,22 +60,7 @@
           html: "Poppy Noor"
         },
         {
-          html: govukTag({ text: 'References overdue', classes: 'app-tag--references-overdue' })
-        },
-        {
-          text: "29 Oct 2019",
-          format: "numeric"
-        }
-      ],
-      [
-        {
-          html: '<a href="/application">TX8140</a>'
-        },
-        {
-          html: "John Pickering"
-        },
-        {
-          html: govukTag({ text: 'Reference overdue', classes: 'app-tag--references-overdue' })
+          html: govukTag({ text: 'Overdue', classes: 'app-tag--references-overdue' })
         },
         {
           text: "29 Oct 2019",
@@ -115,7 +75,7 @@
           html: "May Cole"
         },
         {
-          html: govukTag({ text: 'References received', classes: 'app-tag--references-received' })
+          html: govukTag({ text: 'Received', classes: 'app-tag--references-received' })
         },
         {
           text: "21 Oct 2019",
@@ -130,7 +90,7 @@
           html: "Elise Briggs"
         },
         {
-          html: govukTag({ text: 'Waiting on reference', classes: 'app-tag--waiting-on-references'})
+          html: govukTag({ text: 'Awaiting response', classes: 'app-tag--waiting-on-references'})
         },
         {
           text: "28 Oct 2019",
@@ -139,28 +99,13 @@
       ],
       [
         {
-          html: '<a href="/application">EF1012</a>'
+          html: '<a href="/application">RF4412</a>'
         },
         {
-          html: "Adam Tweg"
+          html: "Noah Smith"
         },
         {
-          html: govukTag({ text: 'Waiting on references', classes: 'app-tag--waiting-on-references'})
-        },
-        {
-          text: "25 Oct 2019",
-          format: "numeric"
-        }
-      ],
-      [
-        {
-          html: '<a href="/application">TE5012</a>'
-        },
-        {
-          html: "Libby Friend"
-        },
-        {
-          html: govukTag({ text: 'Waiting on provider decision', classes: 'app-tag--waiting-on-provider-decision'})
+          html: ""
         },
         {
           text: "28 Oct 2019",
