@@ -222,4 +222,43 @@
 
   <h2 class="govuk-heading-l">Application history</h2>
 
+  {{ appTimeline({
+    items: [{
+      label: {
+        text:  "Application submitted"
+      },
+      datetime: {
+        timestamp: "2019-05-28T10:45:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Kelly Jane Spears"
+      }
+    },
+    {
+      label: {
+        text:  "Course chosen"
+      },
+      datetime: {
+        timestamp: "2019-05-28T10:15:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Kelly Jane Spears"
+      }
+    },
+    {
+      label: {
+        text:  "Application created"
+      },
+      datetime: {
+        timestamp: "2019-05-21T13:15:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Kelly Jane Spears"
+      }
+    }
+  ]}) }}
+
 {% endblock %}
