@@ -8,3 +8,8 @@
     padding: govuk-spacing(4);
   }
 }
+
+.app-card p {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
