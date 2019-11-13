@@ -77,7 +77,7 @@
     <div class="govuk-grid-column-one-third">
       <div class="app-card">
         <h2 class="govuk-heading-m">Status</h2>
-        {{govukTag({ text: 'Awaiting reference', classes: 'app-tag--dark-grey-outline govuk-!-margin-bottom-4' })}}
+        {{govukTag({ text: 'Awaiting references', classes: 'app-tag--dark-grey-outline govuk-!-margin-bottom-4' })}}
         <dl class="app-definition-list">
           <dt>Application submitted<dt>
           <dd>10 Oct 2019</dd>
@@ -87,18 +87,6 @@
   </div>
 
   <h2 class="govuk-heading-l">First reference</h2>
-
-  {% set statusOneHtml %}
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--turquoise-outline ' })}}</div>
-
-    <p class="govuk-body">Link: <strong>https://docs.google.com/forms/d/e/1FAIpQLSeLHV9XVqckn8XUjyAS3n7dzKU5OF-BLm5dYn51JcT6qa9pGg/viewform?usp=pp_url&entry.1515340886=1234&entry.409316871=email@email.com&entry.994572146=Adam+Silver&entry.1696393181=John+Doe</strong></p>
-
-    {{govukButton({
-      text: 'Mark as requested',
-      href: '/application',
-      classes: 'govuk-button--secondary'
-    })}}
-  {% endset %}
 
   {{ govukSummaryList({
     classes: 'govuk-!-margin-bottom-4',
@@ -128,67 +116,19 @@
 
   <div class="app-card govuk-!-margin-bottom-7">
     <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--turquoise-outline ' })}}</div>
-
-
-    {{ govukInput({
-      label: {
-        text: "Google Form URL"
-      },
-      id: "event-name",
-      name: "event-name",
-      value: 'https://docs.google.com/forms/d/e/1FAIpQLSeLHV9XVqckn8XUjyAS3n7dzKU5OF-BLm5dYn51JcT6qa9pGg/viewform?usp=pp_url&entry.1515340886=1234&entry.409316871=email@email.com&entry.994572146=Adam+Silver&entry.1696393181=John+Doe',
-      attributes: {
-        readOnly: true
-      }
-    }) }}
+    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--blue-outline ' })}}</div>
 
     {{govukButton({
-      text: 'Mark as requested',
-      href: '/application'
-    })}}
-  </div>
-
-  <h2 class="govuk-heading-l">First reference</h2>
-
-  {{ govukSummaryList({
-    rows: [{
-      key: {
-        text: "Referee name"
-      },
-      value: {
-        text: "Yana Juan"
-      }
-    }, {
-      key: {
-        text: "Referee email address"
-      },
-      value: {
-        html: '<a href="mailto:yana@exampke.com">yana@exampke.com</a>'
-      }
-    }, {
-      key: {
-        text: "Referee phone number"
-      },
-      value: {
-        html: '<a href="tel:07700 907811">07700 907811</a>'
-      }
-    }]
-  }) }}
-
-  <div class="app-card govuk-!-margin-bottom-7">
-    <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline' })}}</div>
-
-    {{govukButton({
-      text: 'Mark as not requested',
-      href: '/application'
+      text: 'Request reference',
+      href: '/application',
+      classes: 'govuk-!-margin-bottom-0'
     })}}
   </div>
 
   <h2 class="govuk-heading-l">Second reference</h2>
 
   {{ govukSummaryList({
+    classes: 'govuk-!-margin-bottom-4',
     rows: [{
       key: {
         text: "Referee name"
@@ -219,6 +159,17 @@
       }
     }]
   }) }}
+
+  <div class="app-card govuk-!-margin-bottom-7">
+    <h2 class="govuk-heading-m">Status</h2>
+    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--blue-outline ' })}}</div>
+
+    {{govukButton({
+      text: 'Request reference',
+      href: '/application',
+      classes: 'govuk-!-margin-bottom-0'
+    })}}
+  </div>
 
   <h2 class="govuk-heading-l">Application history</h2>
 
