@@ -13,11 +13,6 @@
   }
 }
 
-.app-tag--waiting-on-references,
-.app-tag--waiting-on-provider-decision {
-  @include tag("dark-grey", $filled: false);
-}
-
 .app-tag--turquoise-outline {
   @include tag("turquoise", $filled: false);
 }
