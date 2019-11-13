@@ -29,11 +29,10 @@
         text: "Name"
       },
       {
-        text: "Status of references"
+        text: "Status"
       },
       {
-        text: "Submitted on",
-        format: "numeric"
+        text: "Status of reference"
       }
     ],
     rows: [
@@ -45,11 +44,10 @@
           html: 'Kelly Jane Spears'
         },
         {
-          html: govukTag({ text: 'Not requested', classes: 'app-tag--references-not-requested' })
+          text: "Awaiting reference"
         },
         {
-          text: "1 Nov 2019",
-          format: "numeric"
+          html: govukTag({ text: 'Not requested', classes: 'app-tag--references-not-requested' })
         }
       ],
       [
@@ -60,11 +58,10 @@
           html: "Poppy Noor"
         },
         {
-          html: govukTag({ text: 'Not requested', classes: 'app-tag--references-not-requested' })
+          text: "Awaiting reference"
         },
         {
-          text: "29 Oct 2019",
-          format: "numeric"
+          html: govukTag({ text: 'Not requested', classes: 'app-tag--references-not-requested' })
         }
       ],
       [
@@ -75,11 +72,10 @@
           html: "May Cole"
         },
         {
-          html: govukTag({ text: 'Received', classes: 'app-tag--references-received' })
+          text: "Awaiting reference"
         },
         {
-          text: "21 Oct 2019",
-          format: "numeric"
+          html: govukTag({ text: 'Received', classes: 'app-tag--references-received' })
         }
       ],
       [
@@ -90,11 +86,10 @@
           html: "Elise Briggs"
         },
         {
-          html: govukTag({ text: 'Awaiting response', classes: 'app-tag--waiting-on-references'})
+          text: "Awaiting reference"
         },
         {
-          text: "28 Oct 2019",
-          format: "numeric"
+          html: govukTag({ text: 'Awaiting response', classes: 'app-tag--waiting-on-references'})
         }
       ],
       [
@@ -105,11 +100,10 @@
           html: "Noah Smith"
         },
         {
-          html: ""
+          text: "Not submitted"
         },
         {
-          text: "28 Oct 2019",
-          format: "numeric"
+         html: ''
         }
       ]
     ]
