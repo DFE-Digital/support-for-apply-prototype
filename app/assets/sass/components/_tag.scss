@@ -37,3 +37,11 @@
 .app-tag--blue-filled {
   @include tag("blue", $filled: true);
 }
+
+.app-tag--red-outline {
+  @include tag("red", $filled: false);
+}
+
+.app-tag--red-filled {
+  @include tag("red", $filled: true);
+}
