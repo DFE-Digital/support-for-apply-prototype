@@ -12,7 +12,7 @@
     items: [
       {
         text: "Applications",
-        href: "/"
+        href: "/list-2"
       },
       {
         text: "Kelly Jane Spears"
@@ -22,6 +22,12 @@
 {% endblock %}
 
 {% block content %}
+
+  {{ appBanner({
+    type: 'success',
+    text: 'Reference requested',
+    iconFallbackText: 'Success'
+  }) }}
 
   <span class="govuk-caption-xl">RQ1001</span>
   <h1 class="govuk-heading-xl">Kelly Jane Spears</h1>
@@ -72,8 +78,6 @@
         }]
       }) }}
 
-
-
   <h2 class="govuk-heading-l">First reference</h2>
 
   {{ govukSummaryList({
@@ -104,13 +108,7 @@
 
   <div class="app-card govuk-!-margin-bottom-7">
     <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--blue-outline ' })}}</div>
-
-    {{govukButton({
-      text: 'Request reference',
-      href: '/application-ref-1-requested',
-      classes: 'govuk-!-margin-bottom-0'
-    })}}
+    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline ' })}}</div>
   </div>
 
   <h2 class="govuk-heading-l">Second reference</h2>
@@ -143,13 +141,7 @@
 
   <div class="app-card govuk-!-margin-bottom-7">
     <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--blue-outline ' })}}</div>
-
-    {{govukButton({
-      text: 'Request reference',
-      href: '/application-ref-1-requested',
-      classes: 'govuk-!-margin-bottom-0'
-    })}}
+    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline ' })}}</div>
   </div>
 
   <h2 class="govuk-heading-l">Application history</h2>

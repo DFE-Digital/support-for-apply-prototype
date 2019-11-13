@@ -12,7 +12,7 @@
     items: [
       {
         text: "Applications",
-        href: "/"
+        href: "/list-2"
       },
       {
         text: "Kelly Jane Spears"
@@ -25,6 +25,10 @@
 
   <span class="govuk-caption-xl">RQ1001</span>
   <h1 class="govuk-heading-xl">Kelly Jane Spears</h1>
+
+  {{govukButton({
+    text: 'Send to providers'
+  })}}
 
       {{ govukSummaryList({
         rows: [{
@@ -72,8 +76,6 @@
         }]
       }) }}
 
-
-
   <h2 class="govuk-heading-l">First reference</h2>
 
   {{ govukSummaryList({
@@ -99,19 +101,15 @@
       value: {
         html: '<a href="tel:07700 907811">07700 907811</a>'
       }
+    }, {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        html: "Fantastic personality. Great with people. Strong communicator . Excellent character. Passionate about teaching . Great potential. Go for her. A charismatic talented able young woman who is far better than her official degree result. An exceptional person."
+      }
     }]
   }) }}
-
-  <div class="app-card govuk-!-margin-bottom-7">
-    <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--blue-outline ' })}}</div>
-
-    {{govukButton({
-      text: 'Request reference',
-      href: '/application-ref-1-requested',
-      classes: 'govuk-!-margin-bottom-0'
-    })}}
-  </div>
 
   <h2 class="govuk-heading-l">Second reference</h2>
 
@@ -138,19 +136,15 @@
       value: {
         html: '<a href="tel:07700 900001">07700 900001</a>'
       }
+    }, {
+      key: {
+        text: "Reference"
+      },
+      value: {
+        html: "A charismatic talented and able woman. Great with people, fantastic personality and a strong communicator passionate about teaching. Great potential. Go for her."
+      }
     }]
   }) }}
-
-  <div class="app-card govuk-!-margin-bottom-7">
-    <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--blue-outline ' })}}</div>
-
-    {{govukButton({
-      text: 'Request reference',
-      href: '/application-ref-1-requested',
-      classes: 'govuk-!-margin-bottom-0'
-    })}}
-  </div>
 
   <h2 class="govuk-heading-l">Application history</h2>
 
