@@ -77,7 +77,7 @@
     <div class="govuk-grid-column-one-third">
       <div class="app-card">
         <h2 class="govuk-heading-m">Status</h2>
-        {{govukTag({ text: 'Awaiting reference', classes: 'app-tag--references-not-requested govuk-!-margin-bottom-4' })}}
+        {{govukTag({ text: 'Awaiting reference', classes: 'app-tag--dark-grey-outline govuk-!-margin-bottom-4' })}}
         <dl class="app-definition-list">
           <dt>Application submitted<dt>
           <dd>10 Oct 2019</dd>
@@ -89,7 +89,7 @@
   <h2 class="govuk-heading-l">First reference</h2>
 
   {% set statusOneHtml %}
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--references-not-requested' })}}</div>
+    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--turquoise-outline ' })}}</div>
 
     <p class="govuk-body">Link: <strong>https://docs.google.com/forms/d/e/1FAIpQLSeLHV9XVqckn8XUjyAS3n7dzKU5OF-BLm5dYn51JcT6qa9pGg/viewform?usp=pp_url&entry.1515340886=1234&entry.409316871=email@email.com&entry.994572146=Adam+Silver&entry.1696393181=John+Doe</strong></p>
 
@@ -128,7 +128,7 @@
 
   <div class="app-card govuk-!-margin-bottom-7">
     <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--references-not-requested' })}}</div>
+    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Not requested', classes: 'app-tag--turquoise-outline ' })}}</div>
 
 
     {{ govukInput({
@@ -178,7 +178,7 @@
 
   <div class="app-card govuk-!-margin-bottom-7">
     <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Awaiting response', classes: 'app-tag--waiting-on-references' })}}</div>
+    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline' })}}</div>
 
     {{govukButton({
       text: 'Mark as not requested',

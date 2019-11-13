@@ -13,19 +13,27 @@
   }
 }
 
-.app-tag--references-not-requested {
-  @include tag("turquoise", $filled: false);
-}
-
-.app-tag--references-overdue {
-  @include tag("red", $filled: false);
-}
-
-.app-tag--references-received {
-  @include tag("turquoise", $filled: true);
-}
-
 .app-tag--waiting-on-references,
 .app-tag--waiting-on-provider-decision {
   @include tag("dark-grey", $filled: false);
+}
+
+.app-tag--turquoise-outline {
+  @include tag("turquoise", $filled: false);
+}
+
+.app-tag--turquoise-filled {
+  @include tag("turquoise", $filled: true);
+}
+
+.app-tag--dark-grey-outline {
+  @include tag("dark-grey", $filled: false);
+}
+
+.app-tag--blue-outline {
+  @include tag("blue", $filled: false);
+}
+
+.app-tag--blue-filled {
+  @include tag("blue", $filled: true);
 }

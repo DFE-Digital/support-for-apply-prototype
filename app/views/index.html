@@ -23,7 +23,7 @@
   {{ govukTable({
     head: [
       {
-        text: "Reference"
+        text: "Application number"
       },
       {
         text: "Name"
@@ -32,7 +32,10 @@
         text: "Status"
       },
       {
-        text: "Status of reference"
+        text: "Reference 1"
+      },
+      {
+        text: "Reference 2"
       }
     ],
     rows: [
@@ -44,10 +47,13 @@
           html: 'Kelly Jane Spears'
         },
         {
-          text: "Awaiting reference"
+          text: "Awaiting references"
         },
         {
-          html: govukTag({ text: 'Not requested', classes: 'app-tag--references-not-requested' })
+          text: govukTag({ text: "Not requested", classes: 'app-tag--blue-outline' })
+        },
+        {
+          text: govukTag({ text: "Not requested", classes: 'app-tag--blue-outline' })
         }
       ],
       [
@@ -58,10 +64,30 @@
           html: "Poppy Noor"
         },
         {
-          text: "Awaiting reference"
+          text: "Awaiting references"
         },
         {
-          html: govukTag({ text: 'Not requested', classes: 'app-tag--references-not-requested' })
+          text: govukTag({ text: "Not requested", classes: 'app-tag--blue-outline' })
+        },
+        {
+          text: "Awaiting response"
+        }
+      ],
+      [
+        {
+          html: '<a href="/application">RG35266</a>'
+        },
+        {
+          html: "Emma Cole"
+        },
+        {
+          text: "Awaiting references"
+        },
+        {
+          text: "Awaiting response"
+        },
+        {
+          text: "Received"
         }
       ],
       [
@@ -72,10 +98,13 @@
           html: "May Cole"
         },
         {
-          text: "Awaiting reference"
+          text: govukTag({ text: "Completed", classes: 'app-tag--blue-filled' })
         },
         {
-          html: govukTag({ text: 'Received', classes: 'app-tag--references-received' })
+          text: "Received"
+        },
+        {
+          text: "Received"
         }
       ],
       [
@@ -86,10 +115,30 @@
           html: "Elise Briggs"
         },
         {
-          text: "Awaiting reference"
+          text: "Awaiting references"
         },
         {
-          html: govukTag({ text: 'Awaiting response', classes: 'app-tag--waiting-on-references'})
+          text: "Awaiting response"
+        },
+        {
+          text: "Awaiting response"
+        }
+      ],
+      [
+        {
+          html: '<a href="/application">AD4412</a>'
+        },
+        {
+          html: "Bill Briggs"
+        },
+        {
+          text: "Awaiting decision"
+        },
+        {
+          text: "Received"
+        },
+        {
+          text: "Received"
         }
       ],
       [
@@ -103,7 +152,10 @@
           text: "Not submitted"
         },
         {
-         html: ''
+          text: "Not applicable"
+        },
+        {
+          text: "Not applicable"
         }
       ]
     ]
