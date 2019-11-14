@@ -12,10 +12,10 @@
     items: [
       {
         text: "Applications",
-        href: "/list-2"
+        href: "/applications"
       },
       {
-        text: "Kelly Jane Spears"
+        text: "Poppy Noor"
       }
     ]
   }) }}
@@ -23,14 +23,8 @@
 
 {% block content %}
 
-  {{ appBanner({
-    type: 'success',
-    text: 'Reference requested',
-    iconFallbackText: 'Success'
-  }) }}
-
-  <span class="govuk-caption-xl">RQ1001</span>
-  <h1 class="govuk-heading-xl">Kelly Jane Spears</h1>
+  <span class="govuk-caption-xl">TU8112</span>
+  <h1 class="govuk-heading-xl">Poppy Noor</h1>
 
       {{ govukSummaryList({
         rows: [{
@@ -38,7 +32,7 @@
             text: "Full name"
           },
           value: {
-            text: "Kelly Jane Spears"
+            text: "Poppy Noor"
           }
         }, {
           key: {
@@ -66,7 +60,7 @@
             text: "Email address"
           },
           value: {
-            html: "<a href=\"mailto:kelly.spears@example.com\">kelly.spears@example.com</a>"
+            html: "<a href=\"mailto:poppy.noor@example.com\">poppy.noor@example.com</a>"
           }
         }, {
           key: {
@@ -77,6 +71,8 @@
           }
         }]
       }) }}
+
+
 
   <h2 class="govuk-heading-l">First reference</h2>
 
@@ -108,7 +104,13 @@
 
   <div class="app-card govuk-!-margin-bottom-7">
     <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline ' })}}</div>
+    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Request failed', classes: 'app-tag--red-outline ' })}}</div>
+
+    {{govukButton({
+      text: 'Request reference',
+      href: '/application-ref-1-requested',
+      classes: 'govuk-!-margin-bottom-0'
+    })}}
   </div>
 
   <h2 class="govuk-heading-l">Second reference</h2>

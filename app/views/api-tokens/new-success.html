@@ -1,0 +1,24 @@
+
+{% extends "layout.html" %}
+
+{% set pageId = 'api-tokens' %}
+
+{% block pageTitle %}
+  API token successfully created - API tokens - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+  {{ govukPanel({
+    titleText: "API token successfully created",
+    html: "Your API token is<br><strong>HDJ2123F</strong>"
+  }) }}
+
+  <p class="govuk-body">Make a note of your API token. Once you leave this page you won't be able to see get it again.</p>
+
+  {{govukButton({
+    text: "Continue",
+    href: '/api-tokens'
+  })}}
+
+{% endblock %}

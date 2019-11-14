@@ -4,7 +4,7 @@
 {% set pageId = 'api-tokens' %}
 
 {% block pageTitle %}
-  API tokens - {{serviceName}}
+  Create API token - API tokens - {{serviceName}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,7 +28,7 @@
 
 {% block content %}
 
-  <form action="">
+  <form action="/api-tokens/new-success">
     {{ govukRadios({
       idPrefix: "provider",
       name: "provider",
