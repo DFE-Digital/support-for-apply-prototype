@@ -72,11 +72,19 @@
         }]
       }) }}
 
-  <h2 class="govuk-heading-l">First reference</h2>
+  <h2 class="govuk-heading-l">References</h2>
+
+  <h3 class="govuk-heading-m">First reference</h2>
 
   {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-4',
     rows: [{
+      key: {
+        text: "Status"
+      },
+      value: {
+        html: govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline ' })
+      }
+    }, {
       key: {
         text: "Referee name"
       },
@@ -100,16 +108,17 @@
     }]
   }) }}
 
-  <div class="app-card govuk-!-margin-bottom-7">
-    <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline ' })}}</div>
-  </div>
-
-  <h2 class="govuk-heading-l">Second reference</h2>
+  <h3 class="govuk-heading-m">Second reference</h2>
 
   {{ govukSummaryList({
-    classes: 'govuk-!-margin-bottom-4',
     rows: [{
+      key: {
+        text: "Status"
+      },
+      value: {
+        html: govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline ' })
+      }
+    }, {
       key: {
         text: "Referee name"
       },
@@ -132,11 +141,6 @@
       }
     }]
   }) }}
-
-  <div class="app-card govuk-!-margin-bottom-7">
-    <h2 class="govuk-heading-m">Status</h2>
-    <div class="govuk-!-margin-bottom-4">{{govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline ' })}}</div>
-  </div>
 
   <h2 class="govuk-heading-l">Application history</h2>
 
