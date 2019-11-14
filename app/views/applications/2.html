@@ -130,85 +130,91 @@ May Cole - Applications - {{serviceName}}
 
   <h2 class="govuk-heading-l">References</h2>
 
-  <h2 class="govuk-heading-m">First Reference</h2>
+  {% set referenceOneHtml %}
+    {{ govukSummaryList({
+      rows: [{
+        key: {
+          text: "Status"
+        },
+        value: {
+          html: govukTag({ text: 'Received', classes: 'app-tag--blue-outline ' })
+        }
+      }, {
+        key: {
+          text: "Referee name"
+        },
+        value: {
+          text: "Yana Juan"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }, {
+        key: {
+          text: "Referee email address"
+        },
+        value: {
+          html: '<a href="mailto:yana@totally.com">yana@totally.com</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }, {
+        key: {
+          text: "Referee phone number"
+        },
+        value: {
+          html: '<a href="tel:07700 907811">07700 907811</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }, {
+        key: {
+          text: "Reference"
+        },
+        value: {
+          html: "Fantastic personality. Great with people. Strong communicator . Excellent character. Passionate about teaching . Great potential. Go for her. A charismatic talented able young woman who is far better than her official degree result. An exceptional person."
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }]
+    }) }}
+  {% endset %}
 
-  {{ govukSummaryList({
-    rows: [{
-      key: {
-        text: "Status"
-      },
-      value: {
-        html: govukTag({ text: 'Received', classes: 'app-tag--blue-outline ' })
-      }
-    }, {
-      key: {
-        text: "Referee name"
-      },
-      value: {
-        text: "Yana Juan"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    }, {
-      key: {
-        text: "Referee email address"
-      },
-      value: {
-        html: '<a href="mailto:yana@totally.com">yana@totally.com</a>'
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    }, {
-      key: {
-        text: "Referee phone number"
-      },
-      value: {
-        html: '<a href="tel:07700 907811">07700 907811</a>'
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    }, {
-      key: {
-        text: "Reference"
-      },
-      value: {
-        html: "Fantastic personality. Great with people. Strong communicator . Excellent character. Passionate about teaching . Great potential. Go for her. A charismatic talented able young woman who is far better than her official degree result. An exceptional person."
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    }]
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    headingLevel: 3,
+    titleText: "First referee",
+    html: referenceOneHtml
   }) }}
 
-  <h2 class="govuk-heading-m">Second reference</h2>
-
+  {% set referenceTwoHtml %}
   {{ govukSummaryList({
     rows: [{
       key: {
@@ -282,6 +288,14 @@ May Cole - Applications - {{serviceName}}
         ]
       }
     }]
+  }) }}
+  {% endset %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    headingLevel: 3,
+    titleText: "Second referee",
+    html: referenceTwoHtml
   }) }}
 
   <h2 class="govuk-heading-l">Application history</h2>

@@ -130,77 +130,81 @@
 
   <h2 class="govuk-heading-l">References</h2>
 
-  {{ appPageHeaderActions({
-    classes: 'govuk-!-margin-bottom-0',
-    heading: {
-      html: '<h3 class="govuk-heading-m">First reference</h3>'
+  {% set referenceOneHtml %}
+    {{ govukSummaryList({
+      rows: [{
+        key: {
+          text: "Status"
+        },
+        value: {
+          html: govukTag({ text: 'Request failed', classes: 'app-tag--red-outline ' })
+        }
+      }, {
+        key: {
+          text: "Referee name"
+        },
+        value: {
+          text: "Yana Juan"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }, {
+        key: {
+          text: "Referee email address"
+        },
+        value: {
+          html: '<a href="mailto:yana@totally.com">yana@totally.com</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }, {
+        key: {
+          text: "Referee phone number"
+        },
+        value: {
+          html: '<a href="tel:07700 907811">07700 907811</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }]
+    }) }}
+  {% endset %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    headingLevel: 3,
+    titleText: "First referee",
+    actions: {
+      items: [{
+        href: "",
+        text: "Request reference"
+      }]
     },
-    items: [{
-      text: 'Request reference'
-    }]
+    html: referenceOneHtml
   }) }}
 
-  {{ govukSummaryList({
-    rows: [{
-      key: {
-        text: "Status"
-      },
-      value: {
-        html: govukTag({ text: 'Request failed', classes: 'app-tag--red-outline ' })
-      }
-    }, {
-      key: {
-        text: "Referee name"
-      },
-      value: {
-        text: "Yana Juan"
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    }, {
-      key: {
-        text: "Referee email address"
-      },
-      value: {
-        html: '<a href="mailto:yana@totally.com">yana@totally.com</a>'
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    }, {
-      key: {
-        text: "Referee phone number"
-      },
-      value: {
-        html: '<a href="tel:07700 907811">07700 907811</a>'
-      },
-      actions: {
-        items: [
-          {
-            href: "#",
-            text: "Change",
-            visuallyHiddenText: "name"
-          }
-        ]
-      }
-    }]
-  }) }}
-
-  <h3 class="govuk-heading-m">Second reference</h3>
-
+  {% set referenceTwoHtml %}
   {{ govukSummaryList({
     rows: [{
       key: {
@@ -258,6 +262,14 @@
         ]
       }
     }]
+  }) }}
+  {% endset %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    headingLevel: 3,
+    titleText: "Second referee",
+    html: referenceTwoHtml
   }) }}
 
   <h2 class="govuk-heading-l">Application history</h2>
