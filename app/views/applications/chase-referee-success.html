@@ -1,0 +1,16 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Success — Chase referee - {{serviceName}}
+{% endblock %}
+
+{% block content %}
+
+  {{ govukPanel({
+    titleText: "Email sent to referee"
+  }) }}
+
+  {{ govukButton({ text: 'Continue', href: '/applications' }) }}
+
+{% endblock %}

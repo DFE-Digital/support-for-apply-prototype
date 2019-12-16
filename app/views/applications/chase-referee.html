@@ -1,0 +1,30 @@
+
+{% extends "layout.html" %}
+
+{% set pageId = 'applications' %}
+
+{% block pageTitle %}
+  Chase reference - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+  {{govukBackLink({
+    text: 'Back',
+    href: '/applications/1'
+  })}}
+{% endblock %}
+
+{% block content %}
+
+  <form action="/applications/chase-referee-success">
+
+    <h1 class="govuk-heading-xl">Are you sure you want to send an email to chase the referee?</h1>
+
+    {{ govukButton({
+      text: "Yes I’m sure - send the email"
+    }) }}
+    <p class="govuk-body"><a href="/applications/1">Cancel</a></p>
+  </form>
+
+
+{% endblock %}
