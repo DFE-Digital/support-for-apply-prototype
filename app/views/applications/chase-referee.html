@@ -4,7 +4,7 @@
 {% set pageId = 'applications' %}
 
 {% block pageTitle %}
-  Chase reference - {{serviceName}}
+  Chase referees - {{serviceName}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,15 +16,16 @@
 
 {% block content %}
 
-  <form action="/applications/chase-referee-success">
+  <form action="/applications/1-chase-referee-success">
 
-    <h1 class="govuk-heading-xl">Are you sure you want to send an email to chase the referee?</h1>
+    <h1 class="govuk-heading-xl">Are you sure you want to send emails to chase the referee?</h1>
+
+    <p class="govuk-body">The referee and candidate will both be sent emails.</p>
 
     {{ govukButton({
-      text: "Yes I’m sure - send the email"
+      text: "Yes - send the email"
     }) }}
     <p class="govuk-body"><a href="/applications/1">Cancel</a></p>
   </form>
-
 
 {% endblock %}

@@ -1,0 +1,328 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Kelly Jane Spears - Applications - {{serviceName}}
+{% endblock %}
+
+{% set pageId = 'applications' %}
+
+{% block beforeContent %}
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Applications",
+        href: "/applications"
+      },
+      {
+        text: "Poppy Noor"
+      }
+    ]
+  }) }}
+{% endblock %}
+
+{% block content %}
+
+  {{ appBanner({
+    type: 'success',
+    text: 'Email sent to referee and candidate',
+    iconFallbackText: 'Success'
+  }) }}
+
+  <span class="govuk-caption-xl">TU8112</span>
+  <h1 class="govuk-heading-xl">Poppy Noor</h1>
+
+      {{ govukSummaryList({
+        rows: [{
+          key: {
+            text: "Full name"
+          },
+          value: {
+            text: "Poppy Noor"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }, {
+          key: {
+            text: "Date of birth"
+          },
+          value: {
+            text: "9 April 1997"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }, {
+          key: {
+            text: "Nationality"
+          },
+          value: {
+            text: "British"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }, {
+          key: {
+            text: "Phone number"
+          },
+          value: {
+            html: "<a href=\"tel:	07700 900202\">07700 900202</a>"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }, {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            html: "<a href=\"mailto:poppy.noor@example.com\">poppy.noor@example.com</a>"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }, {
+          key: {
+            text: "Address"
+          },
+          value: {
+            html: "Not provided"
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        }]
+      }) }}
+
+
+
+  <h2 class="govuk-heading-l">References</h2>
+
+  {% set referenceOneHtml %}
+    {{ govukSummaryList({
+      rows: [{
+        key: {
+          text: "Status"
+        },
+        value: {
+          html: govukTag({ text: 'Request failed', classes: 'app-tag--red-outline ' })
+        }
+      }, {
+        key: {
+          text: "Referee name"
+        },
+        value: {
+          text: "Yana Juan"
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }, {
+        key: {
+          text: "Referee email address"
+        },
+        value: {
+          html: '<a href="mailto:yana@totally.com">yana@totally.com</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }, {
+        key: {
+          text: "Referee phone number"
+        },
+        value: {
+          html: '<a href="tel:07700 907811">07700 907811</a>'
+        },
+        actions: {
+          items: [
+            {
+              href: "#",
+              text: "Change",
+              visuallyHiddenText: "name"
+            }
+          ]
+        }
+      }]
+    }) }}
+  {% endset %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    headingLevel: 3,
+    titleText: "First referee",
+    actions: {
+      items: [{
+        href: "",
+        text: "Request reference"
+      }]
+    },
+    html: referenceOneHtml
+  }) }}
+
+  {% set referenceTwoHtml %}
+  {{ govukSummaryList({
+    rows: [{
+      key: {
+        text: "Status"
+      },
+      value: {
+        html: govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline ' })
+      }
+    }, {
+      key: {
+        text: "Referee name"
+      },
+      value: {
+        text: "Mee Tsou"
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    }, {
+      key: {
+        text: "Referee email address"
+      },
+      value: {
+        html: '<a href="mailto:mee.tsou@example.ac.cn">mee.tsou@example.ac.cn</a>'
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    }, {
+      key: {
+        text: "Referee phone number"
+      },
+      value: {
+        html: '<a href="tel:07700 900001">07700 900001</a>'
+      },
+      actions: {
+        items: [
+          {
+            href: "#",
+            text: "Change",
+            visuallyHiddenText: "name"
+          }
+        ]
+      }
+    }]
+  }) }}
+  {% endset %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    headingLevel: 3,
+    titleText: "Second referee",
+    actions: {
+      items: [{
+        href: "/applications/chase-referee",
+        text: "Chase referee"
+      }]
+    },
+    html: referenceTwoHtml
+  }) }}
+
+  <h2 class="govuk-heading-l">Application history</h2>
+
+  {{ appTimeline({
+    items: [{
+      label: {
+        text:  "Application submitted"
+      },
+      datetime: {
+        timestamp: "2019-05-28T10:45:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Kelly Jane Spears"
+      }
+    },
+    {
+      label: {
+        text:  "Course chosen"
+      },
+      datetime: {
+        timestamp: "2019-05-28T10:15:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Kelly Jane Spears"
+      }
+    },
+    {
+      label: {
+        text:  "Application created"
+      },
+      datetime: {
+        timestamp: "2019-05-21T13:15:00.000Z",
+        type: "datetime"
+      },
+      byline: {
+        text: "Kelly Jane Spears"
+      }
+    }
+  ]}) }}
+
+{% endblock %}
