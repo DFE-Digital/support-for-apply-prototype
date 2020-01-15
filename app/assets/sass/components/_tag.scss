@@ -1,42 +1,36 @@
-@mixin tag($color: "blue", $filled: true) {
-  white-space: nowrap;
-
-  @if $filled {
-    background-color: govuk-colour($color);
-    color: govuk-colour("white");
-  } @else {
-    background-color: govuk-colour("white");
-    border: 3px solid govuk-colour($color);
-    color: govuk-colour($color);
-    margin-top: -3px;
-    margin-bottom: -3px;
-  }
+.app-tag--grey {
+  color: govuk-shade(govuk-colour("dark-grey"), 30);
+  background: govuk-tint(govuk-colour("dark-grey"), 90);
 }
 
-.app-tag--turquoise-outline {
-  @include tag("turquoise", $filled: false);
+.app-tag--purple {
+  color: govuk-shade(govuk-colour("purple"), 20);
+  background: govuk-tint(govuk-colour("purple"), 80);
 }
 
-.app-tag--turquoise-filled {
-  @include tag("turquoise", $filled: true);
+.app-tag--turquoise {
+  color: govuk-shade(govuk-colour("turquoise"), 40);
+  background: govuk-tint(govuk-colour("turquoise"), 70);
 }
 
-.app-tag--dark-grey-outline {
-  @include tag("dark-grey", $filled: false);
+.app-tag--blue {
+  color: govuk-shade(govuk-colour("blue"), 30);
+  background: govuk-tint(govuk-colour("blue"), 80);
 }
 
-.app-tag--blue-outline {
-  @include tag("blue", $filled: false);
+.app-tag--orange {
+  color: govuk-shade(govuk-colour("orange"), 55);
+  background: govuk-tint(govuk-colour("orange"), 70);
 }
 
-.app-tag--blue-filled {
-  @include tag("blue", $filled: true);
+.app-tag--red {
+  color: govuk-shade(govuk-colour("red"), 20);
+  background: govuk-tint(govuk-colour("red"), 80);
 }
 
-.app-tag--red-outline {
-  @include tag("red", $filled: false);
+.app-tag--green {
+  color: govuk-shade(govuk-colour("green"), 20);
+  background: govuk-tint(govuk-colour("green"), 80);
 }
 
-.app-tag--red-filled {
-  @include tag("red", $filled: true);
-}
+
