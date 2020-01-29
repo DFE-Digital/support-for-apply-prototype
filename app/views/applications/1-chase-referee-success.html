@@ -23,6 +23,12 @@
 
 {% block content %}
 
+  {{ appBanner({
+    type: 'success',
+    text: 'Email sent to referee and candidate',
+    iconFallbackText: 'Success'
+  }) }}
+
   <span class="govuk-caption-xl">TU8112</span>
   <h1 class="govuk-heading-xl">Poppy Noor</h1>
 
@@ -137,7 +143,7 @@
           text: "Status"
         },
         value: {
-          html: govukTag({ text: 'Request failed', classes: 'app-tag--red' })
+          html: govukTag({ text: 'Request failed', classes: 'app-tag--red-outline ' })
         }
       }, {
         key: {
@@ -211,7 +217,7 @@
         text: "Status"
       },
       value: {
-        html: govukTag({ text: 'Awaiting response', classes: 'app-tag--turquoise' })
+        html: govukTag({ text: 'Awaiting response', classes: 'app-tag--dark-grey-outline ' })
       }
     }, {
       key: {
