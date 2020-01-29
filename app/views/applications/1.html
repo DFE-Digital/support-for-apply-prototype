@@ -130,6 +130,12 @@
 
   <h2 class="govuk-heading-l">References</h2>
 
+  {{govukButton({
+    href: '/',
+    text: 'Add referee',
+    classes: 'govuk-button--secondary'
+  })}}
+
   {% set referenceOneHtml %}
     {{ govukSummaryList({
       rows: [{
@@ -194,11 +200,11 @@
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
     headingLevel: 3,
-    titleText: "First referee",
+    titleHtml: '<a href="#">Yana Juan</a>',
     actions: {
       items: [{
         href: "",
-        text: "Request reference"
+        text: "Send email"
       }]
     },
     html: referenceOneHtml
@@ -268,9 +274,84 @@
   {{ appSummaryCard({
     classes: "govuk-!-margin-bottom-6",
     headingLevel: 3,
-    titleText: "Second referee",
+    titleHtml: '<a href="#">Mee Tsou</a>',
     html: referenceTwoHtml
   }) }}
+
+  <h2 class="govuk-heading-l">Feedback</h2>
+
+  {{govukButton({
+    href: '/',
+    text: 'Request feedback',
+    classes: 'govuk-button--secondary'
+  })}}
+
+  {% set feedbackOneHtml %}
+    {{ govukSummaryList({
+      rows: [{
+        key: {
+          text: "Status"
+        },
+        value: {
+          html: govukTag({ text: 'Awaiting feedback', classes: 'app-tag--turquoise' })
+        }
+      }, {
+        key: {
+          text: "Name"
+        },
+        value: {
+          html: 'Poppy Noor'
+        }
+      }]
+    }) }}
+  {% endset %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    headingLevel: 3,
+    titleHtml: 'Candidate',
+    actions: {
+      items: [{
+        href: "",
+        text: "Send email"
+      }]
+    },
+    html: feedbackOneHtml
+  }) }}
+
+  {% set feedbackTwoHtml %}
+    {{ govukSummaryList({
+      rows: [{
+        key: {
+          text: "Status"
+        },
+        value: {
+          html: govukTag({ text: 'Awaiting feedback', classes: 'app-tag--turquoise' })
+        }
+      }, {
+        key: {
+          text: "Name"
+        },
+        value: {
+          html: 'Mee Tsous'
+        }
+      }]
+    }) }}
+  {% endset %}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    headingLevel: 3,
+    titleHtml: 'Referee',
+    actions: {
+      items: [{
+        href: "",
+        text: "Send email"
+      }]
+    },
+    html: feedbackTwoHtml
+  }) }}
+
 
   <h2 class="govuk-heading-l">Application history</h2>
 
