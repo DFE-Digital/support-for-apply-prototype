@@ -78,6 +78,21 @@
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
+{% block beforeContent %}
+  {% if showPhaseBanner != false %}
+    {{ govukPhaseBanner({
+      tag: {
+        text: "Prototype"
+      },
+      html: "This is a prototype of a new service. Some parts may not work yet."
+    }) }}
+  {% endif %}
+  {% block pageNavigation %}
+  {% endblock %}
+  {% block pageBanner %}
+  {% endblock %}
+{% endblock %}
+
 {% if useAutoStoreData %}
   {% block footer %}
     {{ govukFooter({

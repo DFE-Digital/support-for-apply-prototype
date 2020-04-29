@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+{% set pageId = "validation-errors" %}
+{% set title = "CandidateInterface::WorkExperienceForm" %}
+
+{% block pageTitle %}
+  Validation errors - {{ serviceName }}
+{% endblock %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      text: "Validation errors",
+      href: "/validation-errors"
+    }, {
+      text: title
+    }]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  {% set errorsHtml %}
+    {{ govukDetails({
+      classes: "govuk-!-margin-bottom-2",
+      summaryText: "Enter your job title",
+      html: "<code>role: \"\"</code>"
+    }) }}
+    {{ govukDetails({
+      classes: "govuk-!-margin-bottom-2",
+      summaryText: "Enter the relevant experience you gained in this role",
+      html: "<code>details: \"\"</code>"
+    }) }}
+    {{ govukDetails({
+      classes: "govuk-!-margin-bottom-2",
+      summaryText: "Select if this job is full-time or part-time",
+      html: "<code>commitment: nil</code>"
+    }) }}
+    {{ govukDetails({
+      classes: "govuk-!-margin-bottom-2",
+      summaryText: "Select if this job is full-time or part-time",
+      html: "<code>start_date: {\"day\"=&gt;1, \"year\"=&gt;\"\", \"month\"=&gt;\"\"}</code>"
+    }) }}
+    {{ govukDetails({
+      classes: "govuk-!-margin-bottom-2",
+      summaryText: "Enter the name of your employer",
+      html: "<code>organisation: \"\"</code>"
+    }) }}
+    {{ govukDetails({
+      classes: "govuk-!-margin-bottom-2",
+      summaryText: "Select if this job involves working in a school or with children is not included in the list",
+      html: "<code>working_with_children: nil</code>"
+    }) }}
+  {% endset %}
+
+  {% set summaryCardHtml %}
+    {{ govukSummaryList({
+      rows: [{
+        key: {
+          text: "Time"
+        },
+        value: {
+          text: "29 April 2020 at 9:05am"
+        }
+      }, {
+        key: {
+          text: "Path"
+        },
+        value: {
+          text: "/candidate/application/work-history/create"
+        }
+      }, {
+        key: {
+          text: "Error(s)"
+        },
+        value: {
+          html: errorsHtml
+        }
+      }]
+    }) }}
+  {% endset %}
+
+  <h1 class="govuk-heading-xl">{{ title }}</h1>
+  {{ appSummaryCard({
+    headingLevel: 2,
+    titleText: "7705c67fd6@example.com",
+    html: summaryCardHtml
+  }) }}
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends "layout.html" %}
+{% set pageId = "validation-errors" %}
+
+{% block pageTitle %}
+  Validation errors - {{ serviceName }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-xl">Validation errors</h1>
+
+  {{ govukTable({
+    head: [{
+      text: "Form or model"
+    }, {
+      text: "Error count"
+    }],
+    rows: [
+      [{
+        html: "<a href=\"/validation-errors/error\"><code>CandidateInterface::GcseQualificationDetailsForm</code></a>"
+      }, {
+        text: "1"
+      }], [{
+        html: "<a href=\"/validation-errors/error\"><code>CandidateInterface::WorkExperienceForm</code></a>"
+      }, {
+        html: "1"
+      }]
+    ]
+  }) }}
+
+{% endblock %}
