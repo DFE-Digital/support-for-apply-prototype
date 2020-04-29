@@ -65,7 +65,7 @@
           text: "Path"
         },
         value: {
-          text: "/candidate/application/work-history/create"
+          html: "<code>/candidate/application/work-history/create</code>"
         }
       }, {
         key: {
@@ -80,8 +80,28 @@
 
   <h1 class="govuk-heading-xl">{{ title }}</h1>
   {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
     headingLevel: 2,
-    titleText: "7705c67fd6@example.com",
-    html: summaryCardHtml
+    titleText: "jane.doe@example.com",
+    html: summaryCardHtml,
+    actions: {
+      items: [{
+        href: "#",
+        text: "View candidate application"
+      }]
+    }
+  }) }}
+
+  {{ appSummaryCard({
+    classes: "govuk-!-margin-bottom-6",
+    headingLevel: 2,
+    titleText: "joe.bloggs@example.com",
+    html: summaryCardHtml,
+    actions: {
+      items: [{
+        href: "#",
+        text: "View candidate application"
+      }]
+    }
   }) }}
 {% endblock %}
