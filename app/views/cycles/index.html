@@ -1,0 +1,73 @@
+
+{% extends "layout.html" %}
+
+{% set pageId = 'applications' %}
+
+{% block pageTitle %}
+  Applications - {{serviceName}}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+  <h1 class="govuk-heading-xl">Recruitment cycles</h1>
+  {{ govukRadios({
+    fieldset: {
+      legend: {
+        text: "Current point in the recruitment cycle",
+        classes: "govuk-fieldset__legend--m"
+      }
+    },
+    items: [{
+      checked: true,
+      text: "Same as production environment",
+      hint: {
+        text: "Apply 2 deadline has passed"
+      }
+    }, {
+      divider: "or"
+    }, {
+      text: "Mid cycle",
+      hint: {
+        text: "Candidates can see upcoming deadlines"
+      }
+    }, {
+      text: "Apply 1 deadline has passed",
+      hint: {
+        text: "Candidates can no longer submit their initial application"
+      }
+    }, {
+      text: "Full course deadline has passed",
+      hint: {
+        text: "Candidates can no longer apply to unavailable courses"
+      }
+    }, {
+      text: "Apply 2 deadline has passed",
+      hint: {
+        text: "Candidates can no longer submit any subsequent application"
+      }
+    }, {
+      text: "Find has reopened",
+      hint: {
+        text: "Candidates can browse course options on Find"
+      }
+    }, {
+      text: "Apply has reopened",
+      hint: {
+        text: "Candidates can apply for courses"
+      }
+    }]
+  }) }}
+
+  {{ govukButton({
+    text: "Update point in recruitment cycle"
+  }) }}
+
+  <hr class="govuk-section-break govuk-section-break--visible govuk-section-break--m">
+
+  <h2 class="govuk-heading-m">Cycle years</h2>
+  <p class="govuk-body">…</p>
+{% endblock %}
