@@ -1,4 +1,4 @@
-const moment = require('moment');
+const moment = require('moment')
 
 module.exports = function (env) {
   /**
@@ -40,48 +40,46 @@ module.exports = function (env) {
 
   ------------------------------------------------------------------ */
 
-
-  filters.date = function(timestamp, format) {
-    return moment(timestamp).format(format);
+  filters.date = function (timestamp, format) {
+    return moment(timestamp).format(format)
   }
 
   /* ------------------------------------------------------------------
     utility functions for use in mojDate function/filter
   ------------------------------------------------------------------ */
-  function govDate(timestamp) {
+  function govDate (timestamp) {
     return moment(timestamp).format('D MMMM YYYY');
   }
 
-  function govShortDate(timestamp) {
+  function govShortDate (timestamp) {
     return moment(timestamp).format('D MMM YYYY');
   }
 
-  function govTime(timestamp) {
-    let t = moment(timestamp);
-    if(t.minutes() > 0) {
-      return t.format('h:mma');
+  function govTime (timestamp) {
+    let t = moment(timestamp)
+    if (t.minutes() > 0) {
+      return t.format('h:mma')
     } else {
-      return t.format('ha');
+      return t.format('ha')
     }
   }
 
-  filters.appDate = function(timestamp, type) {
+  filters.appDate = function (timestamp, type) {
 
-    switch(type) {
-      case "datetime":
-        return govDate(timestamp) + " at " + govTime(timestamp);
-      case "shortdatetime":
-        return govShortDate(timestamp) + " at " + govTime(timestamp);
-      case "date":
-        return govDate(timestamp);
-      case "shortdate":
-        return govShortDate(timestamp);
-      case "time":
-        return govTime(timestamp);
+    switch (type) {
+      case 'datetime':
+        return govDate(timestamp) + ' at ' + govTime(timestamp)
+      case 'shortdatetime':
+        return govShortDate(timestamp) + ' at ' + govTime(timestamp)
+      case 'date':
+        return govDate(timestamp)
+      case 'shortdate':
+        return govShortDate(timestamp)
+      case 'time':
+        return govTime(timestamp)
       default:
-        return timestamp;
+        return timestamp
     }
-
   }
 
   /* ------------------------------------------------------------------
