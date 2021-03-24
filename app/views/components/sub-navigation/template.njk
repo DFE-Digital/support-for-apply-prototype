@@ -1,15 +1,15 @@
-<nav class="moj-sub-navigation {{- ' ' + params.classes if params.classes}}" {%- if (params.label) %} aria-label="{{ params.label }}"{% endif %} {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+{% set navigationLabel = params.navigationLabel | default('sub menu') %}
 
-  <ul class="moj-sub-navigation__list">
-
+<nav class="app-sub-navigation {{- ' ' + params.classes if params.classes}}" aria-label="{{ navigationLabel }}" {%- for attribute, value in params.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+  <ul class="app-sub-navigation__list">
     {%- for item in params.items %}
-      <li class="moj-sub-navigation__item">
-        <a class="moj-sub-navigation__link" {{ 'aria-current="page"' | safe if item.active }} href="{{ item.href }}" {%- for attribute, value in item.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
-          {{- item.html | safe if item.html else item.text -}}
-        </a>
-      </li>
+      {% if item %}
+        <li class="app-sub-navigation__item">
+          <a class="app-sub-navigation__link" {{ 'aria-current="page"' | safe if item.active }} href="{{ item.href }}" {%- for attribute, value in item.attributes -%} {{ attribute }}="{{ value }}"{% endfor %}>
+            {{- item.html | safe if item.html else item.text -}}
+          </a>
+        </li>
+      {% endif %}
     {% endfor -%}
-
   </ul>
-
 </nav>

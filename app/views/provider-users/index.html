@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+{% set primaryNavId = "providers" %}
+{% set title = "Jane Doe" %}
+
+{% block pageNavigation %}
+  {{ govukBreadcrumbs({
+    items: [{
+      href: "#",
+      text: "Providers"
+    }, {
+      href: "#",
+      text: "Provider users"
+    }, {
+      text: "Jane Doe"
+    }]
+  }) }}
+{% endblock %}
+
+{% block content %}
+  <h1 class="govuk-heading-l">{{ title }}</h1>
+
+  {{ govukButton({
+    text: "Sign in as this provider user",
+    href: "#"
+  }) }}
+
+  {{ appSubNavigation({
+    label: "Sub navigation",
+    items: [{
+      text: "Details",
+      href: "#",
+      active: true
+    }, {
+      text: "History",
+      href: "#"
+    }]
+  }) }}
+
+  <h2 class="govuk-visually-hidden">Details</h2>
+
+  {{ govukSummaryList({
+    classes: "govuk-!-width-three-quarters",
+    rows: [{
+      key: {
+        text: "Name"
+      },
+      value: {
+        text: "Jane Doe"
+      },
+      actions: {
+        items: [{
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "name"
+        }]
+      }
+    }, {
+      key: {
+        text: "Email address"
+      },
+      value: {
+        text: "jane.doe@example.com"
+      },
+      actions: {
+        items: [{
+          href: "#",
+          text: "Change",
+          visuallyHiddenText: "date of birth"
+        }]
+      }
+    }, {
+      key: {
+        text: "DfE Sign-in UID"
+      },
+      value: {
+        html: ""
+      }
+    }, {
+      key: {
+        text: "Account created at"
+      },
+      value: {
+        html: "22 September 2020 at 1:45pm"
+      }
+    }, {
+      key: {
+        text: "Last signed in at"
+      },
+      value: {
+        html: "Not signed in yet"
+      }
+    }]
+  }) }}
+
+  <h3 class="govuk-heading-m">Permissions</h3>
+  {{ govukTable({
+    classes: "govuk-!-width-three-quarters",
+    firstCellIsHeader: false,
+    head: [{
+      text: "Provider",
+      classes: "govuk-!-width-one-half"
+    }, {
+      text: "Permissions"
+    }],
+    rows: [
+      [{
+        text: "Abbey MAT Primary Alliance (2DQ)"
+      }, {
+        html: permitHtml
+      }],
+      [{
+        text: "Oriel ITT Partnership (2LR)"
+      }, {
+        html: permitHtml
+      }],
+      [{
+        text: "Gorse SCITT (1N1)"
+      }, {
+        html: permitHtml
+      }]
+    ]
+  }) }}
+
+
+  <h3 class="govuk-heading-m">Notifications</h3>
+{% endblock %}
