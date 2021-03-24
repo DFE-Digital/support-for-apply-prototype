@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+{% set pageId = "validation-errors" %}
+{% set caption = "Add provider user" %}
+{% set title = "Permissions for Jane Doe" %}
+
+{% block pageNavigation %}
+  {{ govukBackLink() }}
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-l">
+        <span class="govuk-caption-l">{{ caption }}</span>
+        {{ title }}
+      </h1>
+    </div>
+  </div>
+
+  {% set permitHtml %}
+    {{ govukCheckboxes({
+      formGroup: {
+        classes: "govuk-!-margin-bottom-0"
+      },
+      items: [{
+        text: "Permit"
+      }]
+    }) }}
+  {% endset %}
+
+  {{ govukTable({
+    firstCellIsHeader: false,
+    head: [{
+      text: "",
+      classes: "govuk-!-width-one-half"
+    }, {
+      text: "2Schools Consortium (T92)",
+      classes: "govuk-!-width-one-quarter"
+    }, {
+      text: "Acorns Teaching School Alliance (2CV)",
+      classes: "govuk-!-width-one-quarter"
+    }],
+    rows: [
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can manage users"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }],
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can manage organisational permissions"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }],
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can make decisions"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }],
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can access safeguarding information"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }],
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can access diversity information"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }]
+    ]
+  }) }}
+
+  {{ govukTable({
+    firstCellIsHeader: false,
+    head: [{
+      text: "",
+      classes: "govuk-!-width-one-half"
+    }, {
+      text: "2Schools Consortium (T92)",
+      classes: "govuk-!-width-one-quarter"
+    }, {
+      text: "Acorns Teaching School Alliance (2CV)",
+      classes: "govuk-!-width-one-quarter"
+    }],
+    rows: [
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can manage users"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }],
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can manage organisational permissions"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }],
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can make decisions"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }],
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can access safeguarding information"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }],
+      [{
+        classes: "app-!-vertical-align-middle",
+        text: "Can access diversity information"
+      }, {
+        html: permitHtml
+      }, {
+        html: permitHtml
+      }]
+    ]
+  }) }}
+
+  {{ govukButton({
+    text: "Save permissions",
+    href: "#"
+  }) }}
+{% endblock %}

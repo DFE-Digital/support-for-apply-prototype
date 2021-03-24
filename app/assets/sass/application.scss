@@ -12,17 +12,21 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/task-list";
 @import "patterns/related-items";
 
-// Components that aren't in Frontend
-@import "components/cookie-banner";
-
-
+// Application components
 @import "components/card";
 @import "components/summary-card";
 @import "components/definition-list";
 @import "components/badge";
 @import "components/banner";
+@import "components/header";
 @import "components/page-header-actions";
+@import "components/primary-navigation";
+@import "components/sub-navigation";
+@import "components/template";
 @import "components/timeline";
 @import "components/tag";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.app-\!-vertical-align-middle {
+  vertical-align: middle;
+}
