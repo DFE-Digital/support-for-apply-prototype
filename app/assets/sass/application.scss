@@ -12,17 +12,15 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/task-list";
 @import "patterns/related-items";
 
-// Components that aren't in Frontend
-@import "components/cookie-banner";
+// Import local component styles
+@import "app/views/_components/all.scss";
 
+// Styles that aren't in the GOV.UK Frontend or local components
+@import "core/card";
+@import "core/definition-list";
+@import "core/tag";
 
-@import "components/card";
-@import "components/summary-card";
-@import "components/definition-list";
-@import "components/badge";
-@import "components/banner";
-@import "components/page-header-actions";
-@import "components/timeline";
-@import "components/tag";
+// Utilities
+@import "utilities/overrides";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you

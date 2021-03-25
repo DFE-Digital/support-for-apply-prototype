@@ -9,22 +9,22 @@ module.exports = function (env) {
    */
   const filters = {}
 
-  filters.date = function(timestamp, format) {
+  filters.date = function (timestamp, format) {
     return moment(timestamp).format(format)
   }
 
   /* ------------------------------------------------------------------
     utility functions for use in mojDate function/filter
   ------------------------------------------------------------------ */
-  function govDate(timestamp) {
+  function govDate (timestamp) {
     return moment(timestamp).format('D MMMM YYYY')
   }
 
-  function govShortDate(timestamp) {
+  function govShortDate (timestamp) {
     return moment(timestamp).format('D MMM YYYY')
   }
 
-  function govTime(timestamp) {
+  function govTime (timestamp) {
     let t = moment(timestamp)
     if(t.minutes() > 0) {
       return t.format('h:mma')
@@ -33,18 +33,18 @@ module.exports = function (env) {
     }
   }
 
-  filters.appDate = function(timestamp, type) {
+  filters.appDate = function (timestamp, type) {
 
     switch(type) {
-      case "datetime":
-        return govDate(timestamp) + " at " + govTime(timestamp)
-      case "shortdatetime":
-        return govShortDate(timestamp) + " at " + govTime(timestamp)
-      case "date":
+      case 'datetime':
+        return govDate(timestamp) + ' at ' + govTime(timestamp)
+      case 'shortdatetime':
+        return govShortDate(timestamp) + ' at ' + govTime(timestamp)
+      case 'date':
         return govDate(timestamp)
-      case "shortdate":
+      case 'shortdate':
         return govShortDate(timestamp)
-      case "time":
+      case 'time':
         return govTime(timestamp)
       default:
         return timestamp

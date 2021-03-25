@@ -1,0 +1,6 @@
+---
+applications:
+- name: dfe-support-for-apply-prototype
+  memory: 128M
+  buildpacks:
+  - nodejs_buildpack
