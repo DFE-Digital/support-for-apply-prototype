@@ -39,7 +39,7 @@
 {% from "components/timeline/macro.njk"               import appTimeline %}
 
 {% block head %}
-  {% include "includes/head.html" %}
+  {% include "includes/head.njk" %}
 {% endblock %}
 
 {% block pageTitle %}
@@ -122,7 +122,7 @@
 
 {% block bodyEnd %}
   {% block scripts %}
-    {% include "includes/scripts.html" %}
+    {% include "includes/scripts.njk" %}
     {% block pageScripts %}{% endblock %}
   {% endblock %}
   <!-- GOV.UK Prototype Kit {{releaseVersion}} -->
