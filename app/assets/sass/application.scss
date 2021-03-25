@@ -1,6 +1,8 @@
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
 
+$govuk-page-width: 1100px;
+
 // We can't mount GOV.UK Frontend's assets at root as it's done automatically by the extensions framework.
 $govuk-assets-path: '/govuk/assets/';
 
@@ -8,21 +10,29 @@ $govuk-assets-path: '/govuk/assets/';
 @import "lib/extensions/extensions";
 
 // Patterns that aren't in Frontend
-@import "patterns/step-by-step-navigation";
-@import "patterns/task-list";
 @import "patterns/related-items";
+@import "patterns/step-by-step-header";
+@import "patterns/step-by-step-nav";
+@import "patterns/step-by-step-related";
+@import "patterns/task-list";
 
-// Components that aren't in Frontend
-@import "components/cookie-banner";
+// Import local component styles
+@import "app/views/components/all.scss";
 
+// Styles that aren't in the GOV.UK Frontend or local components
+@import "core/card";
+@import "core/definition-list";
+@import "core/tag";
 
-@import "components/card";
-@import "components/summary-card";
-@import "components/definition-list";
-@import "components/badge";
-@import "components/banner";
-@import "components/page-header-actions";
-@import "components/timeline";
-@import "components/tag";
+// Utilities
+@import "utilities/overrides";
+@import "utilities/template";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.app-header--full-border {
+  border-bottom-color: govuk-colour("blue");
+}
+
+.app-tag--prototype {
+  background-color: govuk-colour('red');
+}

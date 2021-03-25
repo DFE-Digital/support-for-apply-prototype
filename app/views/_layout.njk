@@ -33,60 +33,74 @@
 {% from "components/badge/macro.njk"                  import appBadge %}
 {% from "components/banner/macro.njk"                 import appBanner %}
 {% from "components/page-header-actions/macro.njk"    import appPageHeaderActions %}
-{% from "components/timeline/macro.njk"               import appTimeline %}
+{% from "components/primary-navigation/macro.njk"     import appPrimaryNavigation %}
+{% from "components/sub-navigation/macro.njk"         import appSubNavigation %}
 {% from "components/summary-card/macro.njk"           import appSummaryCard %}
+{% from "components/timeline/macro.njk"               import appTimeline %}
 
 {% block head %}
-  {% include "includes/head.html" %}
+  {% include "includes/head.njk" %}
 {% endblock %}
 
 {% block pageTitle %}
-  GOV.UK Prototype Kit
+  {% if title %}{{ title }} - {% endif %}{{ serviceName }} - GOV.UK
 {% endblock %}
 
 {% block header %}
-  {% include "includes/cookie-banner.html" %}
-  {# Set serviceName in config.js. #}
   {{ govukHeader({
+    classes: "app-header--full-border",
     homepageUrl: "/",
-    serviceName: serviceName,
-    serviceUrl: "/",
+    productName: serviceName,
     containerClasses: "govuk-width-container",
-    navigation: [
-    {
-      href: "/applications",
-      text: "Applications",
-      active: pageId == 'applications'
-    },
-    {
-      href: "/providers",
-      text: "Providers",
-      active: pageId == 'providers'
-    },
-    {
-      href: "/api-tokens",
-      text: "API tokens",
-      active: pageId == 'api-tokens'
-    },
-    {
+    navigationClasses: "govuk-header__navigation--end",
+    navigation: [{
+      href: "#",
+      text: "jane.doe@example.com"
+    }, {
       href: "/sign-out",
       text: "Sign out"
-    }
-  ]
+    }]
+  }) }}
+
+  {{ govukPhaseBanner({
+    tag: {
+      text: "Prototype",
+      classes: "app-tag--prototype"
+    },
+    html: "This is a prototype of a new service. Some parts may not work yet.",
+    classes: "govuk-width-container"
+  }) }}
+
+  {{ appPrimaryNavigation({
+    items: [{
+      href: "/applications",
+      text: "Candidates",
+      active: primaryNavId == "candidates"
+    }, {
+      href: "/providers",
+      text: "Providers",
+      active: primaryNavId == "providers"
+    }, {
+      href: "#",
+      text: "Performance",
+      active: primaryNavId == "performance"
+    }, {
+      href: "#",
+      html: "Settings",
+      active: primaryNavId == "settings"
+    }, {
+      href: "#",
+      text: "Documentation",
+      active: primaryNavId == "documentation"
+    }]
   }) }}
 {% endblock %}
 
 {% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
+{% set bodyClasses = bodyClasses | default("app-template--support") %}
+
 {% block beforeContent %}
-  {% if showPhaseBanner != false %}
-    {{ govukPhaseBanner({
-      tag: {
-        text: "Prototype"
-      },
-      html: "This is a prototype of a new service. Some parts may not work yet."
-    }) }}
-  {% endif %}
   {% block pageNavigation %}
   {% endblock %}
   {% block pageBanner %}
@@ -99,10 +113,6 @@
       meta: {
         items: [
           {
-            href: "https://govuk-prototype-kit.herokuapp.com/",
-            text: "GOV.UK Prototype Kit " + releaseVersion
-          },
-          {
             href: "/prototype-admin/clear-data",
             text: "Clear data"
           }
@@ -114,7 +124,7 @@
 
 {% block bodyEnd %}
   {% block scripts %}
-    {% include "includes/scripts.html" %}
+    {% include "includes/scripts.njk" %}
     {% block pageScripts %}{% endblock %}
   {% endblock %}
   <!-- GOV.UK Prototype Kit {{releaseVersion}} -->

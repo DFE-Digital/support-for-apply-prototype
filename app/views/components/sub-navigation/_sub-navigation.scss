@@ -1,13 +1,9 @@
-/* ==========================================================================
-   #SECONDARY NAV
-   ========================================================================== */
-
-.moj-sub-navigation {
+.app-sub-navigation {
   margin-bottom: govuk-spacing(7);
 }
 
 
-.moj-sub-navigation__list {
+.app-sub-navigation__list {
   font-size: 0; // Removes white space when using inline-block on child element.
   list-style: none;
   margin: 0;
@@ -26,7 +22,7 @@
 }
 
 
-.moj-sub-navigation__item {
+.app-sub-navigation__item {
   @include govuk-font(19);
   box-shadow: inset 0 -1px 0 $govuk-border-colour;
   display: block;
@@ -46,7 +42,7 @@
 }
 
 
-.moj-sub-navigation__link {
+.app-sub-navigation__link {
   display: block;
   padding-top: 12px;
   padding-bottom: 12px;
@@ -76,7 +72,7 @@
 }
 
 
-.moj-sub-navigation__link[aria-current="page"] {
+.app-sub-navigation__link[aria-current="page"] {
   color: govuk-colour("black");
   position: relative;
   text-decoration: none;
