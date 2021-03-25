@@ -13,7 +13,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/related-items";
 
 // Import local component styles
-@import "app/views/_components/all.scss";
+@import "app/views/components/all.scss";
 
 // Styles that aren't in the GOV.UK Frontend or local components
 @import "core/card";
@@ -22,5 +22,13 @@ $govuk-assets-path: '/govuk/assets/';
 
 // Utilities
 @import "utilities/overrides";
+@import "utilities/template";
 
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+.app-header--full-border {
+  border-bottom-color: govuk-colour("blue");
+}
+
+.app-tag--prototype {
+  background-color: govuk-colour('red');
+}
