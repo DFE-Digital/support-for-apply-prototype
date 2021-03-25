@@ -96,7 +96,9 @@
   }) }}
 {% endblock %}
 
-{% set mainClasses = mainClasses | default("app-template--support") %}
+{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
+
+{% set bodyClasses = bodyClasses | default("app-template--support") %}
 
 {% block beforeContent %}
   {% block pageNavigation %}
