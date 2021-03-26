@@ -44,6 +44,8 @@ router.get('/candidates', checkIsAuthenticated, candidateController.list)
 /// PROVIDER ROUTES
 /// --------------------------------------------------///
 
+router.get('/providers/:providerId', checkIsAuthenticated, providerController.show)
+
 router.get('/providers', checkIsAuthenticated, providerController.list)
 
 

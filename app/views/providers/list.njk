@@ -1,6 +1,7 @@
 {% extends "_layout.njk" %}
 
 {% set primaryNavId = 'providers' %}
+{% set subNavId = 'providers' %}
 
 {% block pageTitle %}
   Prototype for {{ serviceName }}
@@ -13,10 +14,81 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">Providers</h1>
 
+    {{ appSubNavigation({
+      label: 'Sub navigation',
+      items: [{
+        text: 'Providers',
+        href: '/providers',
+        active: true if subNavId == 'providers'
+      }, {
+        text: 'API tokens',
+        href: '/tokens',
+        active: true if subNavId == 'tokens'
+      }, {
+        text: 'Provider users',
+        href: '/users',
+        active: true if subNavId == 'users'
+      }]
+    }) }}
+
+  </div>
+</div>
+
+<div class="app-filter-layout">
+  <div class="app-filter-layout__filter">
+    {% include "_includes/providers/filter-panel.njk" %}
+  </div>
+
+  <div class="app-filter-layout__content">
+
+    <div class="app-action-bar">
+      <div class="app-action-bar__filter"></div>
+    </div>
+
+    {#% include "_includes/providers/search-panel.njk" %#}
+
+    <div>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Provider name</th>
+            <th scope="col" class="govuk-table__header">Courses open</th>
+            <th scope="col" class="govuk-table__header">DSA signed date</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for provider in providers %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="/providers/{{ provider.code }}">{{ provider.name }} ({{ provider.code }})</a>
+            </td>
+            <td class="govuk-table__cell">
+              {% if provider.sync_courses %}
+                [x] out of [y]
+              {% else %}
+                No courses synced
+              {% endif %}
+            </td>
+            <td class="govuk-table__cell">No accepted yet</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+
+    {% if providers.length and pagination %}
+      {% include "_includes/pagination.njk" %}
+    {% endif %}
+
+    {%- if not providers.length %}
+      <p class="govuk-body">There are no results</p>
+    {%- endif -%}
 
   </div>
 </div>

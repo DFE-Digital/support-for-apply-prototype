@@ -1,0 +1,73 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'providers' %}
+{% set subNavId = 'details' %}
+
+{% block pageTitle %}
+  Prototype for {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/providers",
+    text: "Providers"
+  }, {
+    text: provider.name
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">{{ provider.name }} ({{ provider.code }})</h1>
+
+    {{ appSubNavigation({
+      label: 'Sub navigation',
+      items: [{
+        text: 'Details',
+        href: '#',
+        active: true if subNavId == 'details'
+      }, {
+        text: 'Applications',
+        href: '#',
+        active: true if subNavId == 'applications'
+      }, {
+        text: 'Users',
+        href: '#',
+        active: true if subNavId == 'users'
+      }, {
+        text: 'Courses',
+        href: '#',
+        active: true if subNavId == 'courses'
+      }, {
+        text: 'Relationships',
+        href: '#',
+        active: true if subNavId == 'relationships'
+      }, {
+        text: 'Ratified courses',
+        href: '#',
+        active: true if subNavId == 'ratified'
+      }, {
+        text: 'Vacancies',
+        href: '#',
+        active: true if subNavId == 'vacancies'
+      }, {
+        text: 'Sites',
+        href: '#',
+        active: true if subNavId == 'sites'
+      }, {
+        text: 'History',
+        href: '#',
+        active: true if subNavId == 'history'
+      }]
+    }) }}
+
+
+  </div>
+</div>
+
+{% endblock %}

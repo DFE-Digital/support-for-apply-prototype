@@ -1,0 +1,124 @@
+{#% set filterOptionsHtml %}
+
+  {{ govukCheckboxes({
+    idPrefix: "onboardingStage",
+    name: "onboardingStage",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Onboarding stage",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        value: "synced_courses",
+        text: "With synced courses",
+        checked: checked(data.onboardingStage, "synced_courses")
+      },
+      {
+        value: "signed_dsa",
+        text: "With signed DSA",
+        checked: checked(data.onboardingStage, "signed_dsa")
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "providerType",
+    name: "providerType",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Provider type",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        value: "lead_school",
+        text: "School Direct",
+        checked: checked(data.providerType, "lead_school")
+      },
+      {
+        value: "scitt",
+        text: "SCITT",
+        checked: checked(data.providerType, "scitt")
+      },
+      {
+        value: "university",
+        text: "HEI",
+        checked: checked(data.providerType, "university")
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "ratifiedBy",
+    name: "ratifiedBy",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Ratified by (only applies to providers with synced courses)",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        value: "scitt",
+        text: "SCITT",
+        checked: checked(data.ratifiedBy, "scitt")
+      },
+      {
+        value: "university",
+        text: "HEI",
+        checked: checked(data.ratifiedBy, "university")
+      }
+    ]
+  }) }}
+
+
+{% endset %#}
+
+<div class="app-filter">
+  <div class="app-filter__header">
+    <div class="app-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+    <div class="app-filter__header-action">
+
+    </div>
+  </div>
+  <div class="app-filter__content">
+    {% if selectedFilters %}
+      <div class="app-filter__selected">
+        <div class="app-filter__selected-heading">
+          <div class="app-filter__heading-title">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Selected filters</h2>
+            <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/remove-all-filters">Clear filters</a></p>
+          </div>
+        </div>
+
+        {% for category in selectedFilters.categories %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{ category.heading.text }}</h3>
+          <ul class="app-filter-tags">
+            {% for item in category.items %}
+              <li><a class="app-filter__tag" href="{{item.href}}"><span class="govuk-visually-hidden">Remove this filter</span> {{item.text}}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="app-filter__options">
+      <form method="get" action="/" novalidate>
+        <button class="govuk-button" data-module="govuk-button">
+          Apply filters
+        </button>
+        {{ filterOptionsHtml | safe }}
+      </form>
+    </div>
+  </div>
+</div>
