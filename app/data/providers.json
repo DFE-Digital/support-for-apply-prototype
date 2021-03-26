@@ -44,7 +44,7 @@
   },
   {
     "code": "153",
-    "name": "Abbey Infants' School",
+    "name": "Abbey Infants’ School",
     "created_at": "2020-01-15 15:47:48 +0000",
     "updated_at": "2021-02-09 13:21:11 +0000",
     "sync_courses": true,
@@ -745,7 +745,7 @@
   },
   {
     "code": "1XK",
-    "name": "Arch Alliance - All Souls' CE Primary",
+    "name": "Arch Alliance - All Souls’ CE Primary",
     "created_at": "2020-01-15 15:47:59 +0000",
     "updated_at": "2021-02-09 14:14:41 +0000",
     "sync_courses": false,
@@ -775,7 +775,7 @@
   },
   {
     "code": "1G9",
-    "name": "Archbishop Tenison's CofE High School",
+    "name": "Archbishop Tenison’s CofE High School",
     "created_at": "2020-01-15 15:47:59 +0000",
     "updated_at": "2021-02-09 14:14:41 +0000",
     "sync_courses": false,
@@ -790,7 +790,7 @@
   },
   {
     "code": "1K6",
-    "name": "Archbishop Tenison's School",
+    "name": "Archbishop Tenison’s School",
     "created_at": "2020-01-15 15:47:59 +0000",
     "updated_at": "2021-02-09 14:14:41 +0000",
     "sync_courses": false,
@@ -1683,7 +1683,7 @@
   },
   {
     "code": "2G4",
-    "name": "Belle Vue Girls' Academy",
+    "name": "Belle Vue Girls’ Academy",
     "created_at": "2020-01-15 15:48:12 +0000",
     "updated_at": "2021-02-09 14:14:43 +0000",
     "sync_courses": true,
@@ -2118,7 +2118,7 @@
   },
   {
     "code": "1RN",
-    "name": "Bishop's Hatfield Girls' School",
+    "name": "Bishop’s Hatfield Girls’ School",
     "created_at": "2020-01-15 15:48:14 +0000",
     "updated_at": "2021-02-09 14:14:44 +0000",
     "sync_courses": false,
@@ -2133,7 +2133,7 @@
   },
   {
     "code": "13E",
-    "name": "Bishop's Stortford Education Trust (BSET) SCITT",
+    "name": "Bishop’s Stortford Education Trust (BSET) SCITT",
     "created_at": "2020-01-15 15:48:14 +0000",
     "updated_at": "2021-02-09 14:14:44 +0000",
     "sync_courses": true,
@@ -2148,7 +2148,7 @@
   },
   {
     "code": "26T",
-    "name": "Bishop's Stortford SCITT",
+    "name": "Bishop’s Stortford SCITT",
     "created_at": "2020-01-15 15:48:14 +0000",
     "updated_at": "2021-02-09 14:14:44 +0000",
     "sync_courses": true,
@@ -2566,7 +2566,7 @@
   },
   {
     "code": "2JS",
-    "name": "Bordesley Green Girls' School TSA",
+    "name": "Bordesley Green Girls’ School TSA",
     "created_at": "2020-01-15 15:48:15 +0000",
     "updated_at": "2021-02-09 14:14:46 +0000",
     "sync_courses": false,
@@ -3135,7 +3135,7 @@
   },
   {
     "code": "14D",
-    "name": "Britannia Teaching School Alliance at Belgrave St Bartholomew's Academy",
+    "name": "Britannia Teaching School Alliance at Belgrave St Bartholomew’s Academy",
     "created_at": "2020-01-15 15:48:16 +0000",
     "updated_at": "2021-02-09 14:14:47 +0000",
     "sync_courses": false,
@@ -3195,7 +3195,7 @@
   },
   {
     "code": "25S",
-    "name": "Bromley Schools' Collegiate (Beaverwood School for Girls)",
+    "name": "Bromley Schools’ Collegiate (Beaverwood School for Girls)",
     "created_at": "2020-01-15 15:48:17 +0000",
     "updated_at": "2021-02-09 14:14:48 +0000",
     "sync_courses": false,
@@ -3210,7 +3210,7 @@
   },
   {
     "code": "1UO",
-    "name": "Bromley Schools' Collegiate Eliot Bank Gordonbrock",
+    "name": "Bromley Schools’ Collegiate Eliot Bank Gordonbrock",
     "created_at": "2020-01-15 15:48:17 +0000",
     "updated_at": "2021-02-09 14:14:48 +0000",
     "sync_courses": false,
@@ -3225,7 +3225,7 @@
   },
   {
     "code": "1C9",
-    "name": "Bromley Schools' Collegiate School Direct",
+    "name": "Bromley Schools’ Collegiate School Direct",
     "created_at": "2020-01-15 15:48:17 +0000",
     "updated_at": "2021-02-09 14:14:48 +0000",
     "sync_courses": false,
@@ -5138,7 +5138,7 @@
   },
   {
     "code": "1ON",
-    "name": "Coloma Convent Girls' School",
+    "name": "Coloma Convent Girls’ School",
     "created_at": "2020-01-15 15:48:34 +0000",
     "updated_at": "2021-02-09 14:14:53 +0000",
     "sync_courses": false,
@@ -5153,7 +5153,7 @@
   },
   {
     "code": "22O",
-    "name": "Colston's Girls' School BS6 5RD",
+    "name": "Colston’s Girls’ School BS6 5RD",
     "created_at": "2020-01-15 15:48:34 +0000",
     "updated_at": "2021-02-09 14:14:53 +0000",
     "sync_courses": false,
@@ -5914,7 +5914,7 @@
   },
   {
     "code": "1S8",
-    "name": "Dame Alice Owen's School",
+    "name": "Dame Alice Owen’s School",
     "created_at": "2020-01-15 15:48:36 +0000",
     "updated_at": "2021-02-09 14:14:55 +0000",
     "sync_courses": false,
@@ -6690,7 +6690,7 @@
   },
   {
     "code": "2FF",
-    "name": "Durham St Margaret's",
+    "name": "Durham St Margaret’s",
     "created_at": "2020-01-15 15:48:45 +0000",
     "updated_at": "2021-02-09 14:14:57 +0000",
     "sync_courses": false,
@@ -6898,7 +6898,7 @@
   },
   {
     "code": "2AE",
-    "name": "East Midland's Primary Catholic Academies",
+    "name": "East Midland’s Primary Catholic Academies",
     "created_at": "2020-01-15 15:48:46 +0000",
     "updated_at": "2021-02-09 14:14:58 +0000",
     "sync_courses": false,
@@ -7346,7 +7346,7 @@
   },
   {
     "code": "2JA",
-    "name": "Elston Hall & St Bartholomew's Teaching School Alliance",
+    "name": "Elston Hall & St Bartholomew’s Teaching School Alliance",
     "created_at": "2020-01-15 15:48:47 +0000",
     "updated_at": "2021-02-09 14:14:59 +0000",
     "sync_courses": false,
@@ -8429,7 +8429,7 @@
   },
   {
     "code": "2B4",
-    "name": "GLF Schools' Teacher Training",
+    "name": "GLF Schools’ Teacher Training",
     "created_at": "2020-01-15 15:49:06 +0000",
     "updated_at": "2021-02-09 13:16:12 +0000",
     "sync_courses": true,
@@ -8909,7 +8909,7 @@
   },
   {
     "code": "1KP",
-    "name": "Haberdashers' Aske's Federation",
+    "name": "Haberdashers’ Aske’s Federation",
     "created_at": "2020-01-15 15:49:15 +0000",
     "updated_at": "2021-02-09 13:16:27 +0000",
     "sync_courses": true,
@@ -8922,7 +8922,7 @@
   },
   {
     "code": "1V9",
-    "name": "Hackney Teaching Schools' Alliance",
+    "name": "Hackney Teaching Schools’ Alliance",
     "created_at": "2020-01-15 15:49:15 +0000",
     "updated_at": "2021-02-09 14:15:05 +0000",
     "sync_courses": false,
@@ -9740,7 +9740,7 @@
   },
   {
     "code": "1QY",
-    "name": "Hitchin Boys' School",
+    "name": "Hitchin Boys’ School",
     "created_at": "2020-01-15 15:49:26 +0000",
     "updated_at": "2021-02-09 14:15:07 +0000",
     "sync_courses": false,
@@ -10130,7 +10130,7 @@
   },
   {
     "code": "2DX",
-    "name": "Ilkley All Saints' Teacher Training Partnership",
+    "name": "Ilkley All Saints’ Teacher Training Partnership",
     "created_at": "2020-01-15 15:49:28 +0000",
     "updated_at": "2021-02-09 14:15:08 +0000",
     "sync_courses": false,
@@ -10639,7 +10639,7 @@
   },
   {
     "code": "172",
-    "name": "Jurassic Coast Teaching Schools' Alliance",
+    "name": "Jurassic Coast Teaching Schools’ Alliance",
     "created_at": "2020-01-15 15:49:29 +0000",
     "updated_at": "2021-02-09 13:16:59 +0000",
     "sync_courses": true,
@@ -10847,7 +10847,7 @@
   },
   {
     "code": "K60",
-    "name": "King's College London (University of London)",
+    "name": "King’s College London (University of London)",
     "created_at": "2020-01-15 15:49:29 +0000",
     "updated_at": "2021-02-09 13:17:08 +0000",
     "sync_courses": true,
@@ -10860,7 +10860,7 @@
   },
   {
     "code": "247",
-    "name": "King Alfred's (A Specialist Sports College)",
+    "name": "King Alfred’s (A Specialist Sports College)",
     "created_at": "2020-01-15 15:49:29 +0000",
     "updated_at": "2021-02-09 14:15:11 +0000",
     "sync_courses": false,
@@ -10873,7 +10873,7 @@
   },
   {
     "code": "K50",
-    "name": "King Edward's Consortium",
+    "name": "King Edward’s Consortium",
     "created_at": "2020-01-15 15:49:29 +0000",
     "updated_at": "2021-02-09 13:17:08 +0000",
     "sync_courses": true,
@@ -10886,7 +10886,7 @@
   },
   {
     "code": "15G",
-    "name": "King Edward's Consortium (School Direct)",
+    "name": "King Edward’s Consortium (School Direct)",
     "created_at": "2020-01-15 15:49:29 +0000",
     "updated_at": "2021-02-09 14:15:11 +0000",
     "sync_courses": false,
@@ -11133,7 +11133,7 @@
   },
   {
     "code": "2FJ",
-    "name": "Lady Boswell's Church of England Voluntary Aided Primary School, Sevenoaks",
+    "name": "Lady Boswell’s Church of England Voluntary Aided Primary School, Sevenoaks",
     "created_at": "2020-01-15 15:49:30 +0000",
     "updated_at": "2021-02-09 14:15:11 +0000",
     "sync_courses": false,
@@ -11211,7 +11211,7 @@
   },
   {
     "code": "1NN",
-    "name": "Lancaster and Fylde Schools' Alliance",
+    "name": "Lancaster and Fylde Schools’ Alliance",
     "created_at": "2020-01-15 15:49:30 +0000",
     "updated_at": "2021-02-09 14:15:12 +0000",
     "sync_courses": false,
@@ -11627,7 +11627,7 @@
   },
   {
     "code": "1TM",
-    "name": "Lincoln Christ's Hospital School",
+    "name": "Lincoln Christ’s Hospital School",
     "created_at": "2020-01-15 15:49:31 +0000",
     "updated_at": "2021-02-09 14:15:13 +0000",
     "sync_courses": false,
@@ -11939,7 +11939,7 @@
   },
   {
     "code": "1VK",
-    "name": "Lordswood Girls' School and Sixth Form Centre",
+    "name": "Lordswood Girls’ School and Sixth Form Centre",
     "created_at": "2020-01-15 15:49:32 +0000",
     "updated_at": "2021-02-09 14:15:14 +0000",
     "sync_courses": false,
@@ -12606,7 +12606,7 @@
   },
   {
     "code": "1SP",
-    "name": "Middlesbrough Schools' Teaching Alliance",
+    "name": "Middlesbrough Schools’ Teaching Alliance",
     "created_at": "2020-01-15 15:49:46 +0000",
     "updated_at": "2021-02-09 14:15:16 +0000",
     "sync_courses": false,
@@ -12697,7 +12697,7 @@
   },
   {
     "code": "1A6",
-    "name": "Monk's Walk School",
+    "name": "Monk’s Walk School",
     "created_at": "2020-01-15 15:49:46 +0000",
     "updated_at": "2021-02-09 14:15:16 +0000",
     "sync_courses": false,
@@ -14072,7 +14072,7 @@
   },
   {
     "code": "1FF",
-    "name": "Onslow St Audrey's School",
+    "name": "Onslow St Audrey’s School",
     "created_at": "2020-01-15 15:50:04 +0000",
     "updated_at": "2021-02-09 14:15:20 +0000",
     "sync_courses": false,
@@ -14215,7 +14215,7 @@
   },
   {
     "code": "262",
-    "name": "Our Lady and St Hubert's Catholic Primary School",
+    "name": "Our Lady and St Hubert’s Catholic Primary School",
     "created_at": "2020-01-15 15:50:10 +0000",
     "updated_at": "2021-03-19 11:25:40 +0000",
     "sync_courses": false,
@@ -14618,7 +14618,7 @@
   },
   {
     "code": "1D5",
-    "name": "Parmiter's School",
+    "name": "Parmiter’s School",
     "created_at": "2020-01-15 15:50:11 +0000",
     "updated_at": "2021-02-09 13:18:26 +0000",
     "sync_courses": true,
@@ -15268,7 +15268,7 @@
   },
   {
     "code": "1CQ",
-    "name": "Powell's Church Of England Primary School",
+    "name": "Powell’s Church Of England Primary School",
     "created_at": "2020-01-15 15:50:13 +0000",
     "updated_at": "2021-02-09 14:15:24 +0000",
     "sync_courses": false,
@@ -15489,7 +15489,7 @@
   },
   {
     "code": "2ET",
-    "name": "Prince Henry's High School & South Worcestershire SCITT",
+    "name": "Prince Henry’s High School & South Worcestershire SCITT",
     "created_at": "2020-01-09 17:19:44 +0000",
     "updated_at": "2021-02-09 13:18:37 +0000",
     "sync_courses": true,
@@ -15647,7 +15647,7 @@
   },
   {
     "code": "16M",
-    "name": "Queen's Park Academy",
+    "name": "Queen’s Park Academy",
     "created_at": "2020-01-15 15:50:16 +0000",
     "updated_at": "2021-02-09 14:15:25 +0000",
     "sync_courses": false,
@@ -15660,7 +15660,7 @@
   },
   {
     "code": "1PA",
-    "name": "Queen's Park High School",
+    "name": "Queen’s Park High School",
     "created_at": "2020-01-15 15:50:16 +0000",
     "updated_at": "2021-02-09 14:15:26 +0000",
     "sync_courses": false,
@@ -15673,7 +15673,7 @@
   },
   {
     "code": "2KK",
-    "name": "Queen Elizabeth's Grammar School, Horncastle",
+    "name": "Queen Elizabeth’s Grammar School, Horncastle",
     "created_at": "2020-01-15 15:50:16 +0000",
     "updated_at": "2021-02-09 14:15:26 +0000",
     "sync_courses": false,
@@ -16283,7 +16283,7 @@
   },
   {
     "code": "26A",
-    "name": "RSA Academies' Teaching School Alliance",
+    "name": "RSA Academies’ Teaching School Alliance",
     "created_at": "2020-01-15 15:50:20 +0000",
     "updated_at": "2021-02-09 13:18:44 +0000",
     "sync_courses": true,
@@ -16543,7 +16543,7 @@
   },
   {
     "code": "1FQ",
-    "name": "Saint Bede's Catholic Va Primary School",
+    "name": "Saint Bede’s Catholic Va Primary School",
     "created_at": "2020-01-15 15:50:20 +0000",
     "updated_at": "2021-02-09 14:15:28 +0000",
     "sync_courses": false,
@@ -16569,7 +16569,7 @@
   },
   {
     "code": "295",
-    "name": "Saint George's Church of England School",
+    "name": "Saint George’s Church of England School",
     "created_at": "2020-01-15 15:50:20 +0000",
     "updated_at": "2021-02-09 13:18:46 +0000",
     "sync_courses": true,
@@ -17275,7 +17275,7 @@
   },
   {
     "code": "2DF",
-    "name": "Sir Robert Geffery's School",
+    "name": "Sir Robert Geffery’s School",
     "created_at": "2020-01-15 15:50:50 +0000",
     "updated_at": "2021-02-09 14:15:30 +0000",
     "sync_courses": false,
@@ -17301,7 +17301,7 @@
   },
   {
     "code": "1QP",
-    "name": "Skipton Girls' High School",
+    "name": "Skipton Girls’ High School",
     "created_at": "2020-01-15 15:50:50 +0000",
     "updated_at": "2021-02-09 14:15:31 +0000",
     "sync_courses": false,
@@ -17962,7 +17962,7 @@
   },
   {
     "code": "1US",
-    "name": "St Ann's Primary School",
+    "name": "St Ann’s Primary School",
     "created_at": "2020-01-15 15:50:56 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -17975,7 +17975,7 @@
   },
   {
     "code": "244",
-    "name": "St Anne's Catholic Primary School",
+    "name": "St Anne’s Catholic Primary School",
     "created_at": "2020-01-15 15:50:56 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -17988,7 +17988,7 @@
   },
   {
     "code": "1Y9",
-    "name": "St Anthony's Catholic Primary School, Beeston",
+    "name": "St Anthony’s Catholic Primary School, Beeston",
     "created_at": "2020-01-15 15:50:56 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18001,7 +18001,7 @@
   },
   {
     "code": "1BM",
-    "name": "St Anthony's Girls' Catholic Academy",
+    "name": "St Anthony’s Girls’ Catholic Academy",
     "created_at": "2020-01-15 15:50:56 +0000",
     "updated_at": "2021-02-09 13:18:59 +0000",
     "sync_courses": true,
@@ -18014,7 +18014,7 @@
   },
   {
     "code": "1G8",
-    "name": "St Augustine's CofE High School",
+    "name": "St Augustine’s CofE High School",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18027,7 +18027,7 @@
   },
   {
     "code": "1KK",
-    "name": "St Augustine's RC Primary School",
+    "name": "St Augustine’s RC Primary School",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18053,7 +18053,7 @@
   },
   {
     "code": "1U8",
-    "name": "St Barnabas and St Philip's CofE Primary School",
+    "name": "St Barnabas and St Philip’s CofE Primary School",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18066,7 +18066,7 @@
   },
   {
     "code": "1MC",
-    "name": "St Bede's Catholic College",
+    "name": "St Bede’s Catholic College",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18079,7 +18079,7 @@
   },
   {
     "code": "1QB",
-    "name": "St Bede's Catholic Comprehensive School and Sixth Form College, Lanchester",
+    "name": "St Bede’s Catholic Comprehensive School and Sixth Form College, Lanchester",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 13:19:00 +0000",
     "sync_courses": true,
@@ -18092,7 +18092,7 @@
   },
   {
     "code": "12J",
-    "name": "St Bede's Deanery Alliance",
+    "name": "St Bede’s Deanery Alliance",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18105,7 +18105,7 @@
   },
   {
     "code": "2FC",
-    "name": "St Bede's Deanery Teaching Alliance",
+    "name": "St Bede’s Deanery Teaching Alliance",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18118,7 +18118,7 @@
   },
   {
     "code": "1OP",
-    "name": "St Bede's Roman Catholic Voluntary Aided Primary School, Sacriston",
+    "name": "St Bede’s Roman Catholic Voluntary Aided Primary School, Sacriston",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18157,7 +18157,7 @@
   },
   {
     "code": "29P",
-    "name": "St Bernard's School Direct Training",
+    "name": "St Bernard’s School Direct Training",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 13:19:01 +0000",
     "sync_courses": true,
@@ -18170,7 +18170,7 @@
   },
   {
     "code": "19Z",
-    "name": "St Brendan's Catholic Primary School",
+    "name": "St Brendan’s Catholic Primary School",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18183,7 +18183,7 @@
   },
   {
     "code": "1NL",
-    "name": "St Catherine's Catholic School For Girls",
+    "name": "St Catherine’s Catholic School For Girls",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18196,7 +18196,7 @@
   },
   {
     "code": "1S7",
-    "name": "St Christopher's Catholic Primary School",
+    "name": "St Christopher’s Catholic Primary School",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:33 +0000",
     "sync_courses": false,
@@ -18209,7 +18209,7 @@
   },
   {
     "code": "1KL",
-    "name": "St Cuthbert's High School",
+    "name": "St Cuthbert’s High School",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 13:19:01 +0000",
     "sync_courses": true,
@@ -18222,7 +18222,7 @@
   },
   {
     "code": "1EN",
-    "name": "St Edmund's Nursery School & Children's Centre",
+    "name": "St Edmund’s Nursery School & Children’s Centre",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18248,7 +18248,7 @@
   },
   {
     "code": "1SY",
-    "name": "St Edward's Church of England Primary School",
+    "name": "St Edward’s Church of England Primary School",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18313,7 +18313,7 @@
   },
   {
     "code": "24D",
-    "name": "St George's Academy",
+    "name": "St George’s Academy",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 13:19:02 +0000",
     "sync_courses": true,
@@ -18326,7 +18326,7 @@
   },
   {
     "code": "1WV",
-    "name": "St George's Academy",
+    "name": "St George’s Academy",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18339,7 +18339,7 @@
   },
   {
     "code": "1SO",
-    "name": "St George's CofE VA Primary",
+    "name": "St George’s CofE VA Primary",
     "created_at": "2020-01-15 15:50:57 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18352,7 +18352,7 @@
   },
   {
     "code": "1F8",
-    "name": "St George's Primary School",
+    "name": "St George’s Primary School",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18417,7 +18417,7 @@
   },
   {
     "code": "1RZ",
-    "name": "St Hugh's School",
+    "name": "St Hugh’s School",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18443,7 +18443,7 @@
   },
   {
     "code": "1VN",
-    "name": "St James' Partnership",
+    "name": "St James’ Partnership",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18456,7 +18456,7 @@
   },
   {
     "code": "27T",
-    "name": "St James's Hatcham Church of England Primary School",
+    "name": "St James’s Hatcham Church of England Primary School",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18469,7 +18469,7 @@
   },
   {
     "code": "23C",
-    "name": "St John's Catholic Comprehensive",
+    "name": "St John’s Catholic Comprehensive",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18482,7 +18482,7 @@
   },
   {
     "code": "225",
-    "name": "St John's Church of England First School, Wimborne",
+    "name": "St John’s Church of England First School, Wimborne",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 13:19:03 +0000",
     "sync_courses": true,
@@ -18495,7 +18495,7 @@
   },
   {
     "code": "1LQ",
-    "name": "St John's CofE Middle School Academy",
+    "name": "St John’s CofE Middle School Academy",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18508,7 +18508,7 @@
   },
   {
     "code": "2HY",
-    "name": "St John's CofE Primary School BD4 6JF",
+    "name": "St John’s CofE Primary School BD4 6JF",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18521,7 +18521,7 @@
   },
   {
     "code": "1T3",
-    "name": "St John's Primary School",
+    "name": "St John’s Primary School",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18534,7 +18534,7 @@
   },
   {
     "code": "1W4",
-    "name": "St John's School and Sixth Form College",
+    "name": "St John’s School and Sixth Form College",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:34 +0000",
     "sync_courses": false,
@@ -18547,7 +18547,7 @@
   },
   {
     "code": "1OR",
-    "name": "St John's Teaching School Alliance",
+    "name": "St John’s Teaching School Alliance",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 13:19:03 +0000",
     "sync_courses": true,
@@ -18664,7 +18664,7 @@
   },
   {
     "code": "1BY",
-    "name": "St Joseph's Alliance",
+    "name": "St Joseph’s Alliance",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:35 +0000",
     "sync_courses": false,
@@ -18677,7 +18677,7 @@
   },
   {
     "code": "28P",
-    "name": "St Joseph's Catholic Primary School",
+    "name": "St Joseph’s Catholic Primary School",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 14:15:35 +0000",
     "sync_courses": false,
@@ -18690,7 +18690,7 @@
   },
   {
     "code": "1WJ",
-    "name": "St Joseph's College SCITT",
+    "name": "St Joseph’s College SCITT",
     "created_at": "2020-01-15 15:50:58 +0000",
     "updated_at": "2021-02-09 13:19:03 +0000",
     "sync_courses": true,
@@ -18703,7 +18703,7 @@
   },
   {
     "code": "1O2",
-    "name": "St Joseph's College SCITT (School Direct)",
+    "name": "St Joseph’s College SCITT (School Direct)",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 13:19:04 +0000",
     "sync_courses": true,
@@ -18716,7 +18716,7 @@
   },
   {
     "code": "288",
-    "name": "St Joseph's RC Lower School",
+    "name": "St Joseph’s RC Lower School",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:35 +0000",
     "sync_courses": false,
@@ -18755,7 +18755,7 @@
   },
   {
     "code": "23S",
-    "name": "St Luke's CofE Primary School",
+    "name": "St Luke’s CofE Primary School",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:35 +0000",
     "sync_courses": false,
@@ -18768,7 +18768,7 @@
   },
   {
     "code": "12S",
-    "name": "St Luke's Science and Sports College",
+    "name": "St Luke’s Science and Sports College",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:35 +0000",
     "sync_courses": false,
@@ -18794,7 +18794,7 @@
   },
   {
     "code": "1B8",
-    "name": "St Mark's Catholic School",
+    "name": "St Mark’s Catholic School",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:35 +0000",
     "sync_courses": false,
@@ -18807,7 +18807,7 @@
   },
   {
     "code": "13T",
-    "name": "St Marks's teaching School Partnership",
+    "name": "St Marks’s teaching School Partnership",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 13:19:05 +0000",
     "sync_courses": true,
@@ -18833,7 +18833,7 @@
   },
   {
     "code": "12Z",
-    "name": "St Mary's Catholic Academy - KNSTE",
+    "name": "St Mary’s Catholic Academy - KNSTE",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 13:19:05 +0000",
     "sync_courses": true,
@@ -18846,7 +18846,7 @@
   },
   {
     "code": "18X",
-    "name": "St Mary's Catholic High School",
+    "name": "St Mary’s Catholic High School",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:35 +0000",
     "sync_courses": false,
@@ -18859,7 +18859,7 @@
   },
   {
     "code": "1WA",
-    "name": "St Mary's Catholic High School, A Catholic Voluntary Academy",
+    "name": "St Mary’s Catholic High School, A Catholic Voluntary Academy",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 13:19:05 +0000",
     "sync_courses": true,
@@ -18872,7 +18872,7 @@
   },
   {
     "code": "2HV",
-    "name": "St Mary's Catholic Primary School, Buckfast",
+    "name": "St Mary’s Catholic Primary School, Buckfast",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:35 +0000",
     "sync_courses": false,
@@ -18885,7 +18885,7 @@
   },
   {
     "code": "2KN",
-    "name": "St Mary's Catholic School",
+    "name": "St Mary’s Catholic School",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -18898,7 +18898,7 @@
   },
   {
     "code": "29Y",
-    "name": "St Mary's CofE Primary School",
+    "name": "St Mary’s CofE Primary School",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -18911,7 +18911,7 @@
   },
   {
     "code": "2FN",
-    "name": "St Mary's CofE VA Primary School - KNSTE",
+    "name": "St Mary’s CofE VA Primary School - KNSTE",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 13:19:06 +0000",
     "sync_courses": true,
@@ -18924,7 +18924,7 @@
   },
   {
     "code": "1RU",
-    "name": "St Mary's College",
+    "name": "St Mary’s College",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 13:19:07 +0000",
     "sync_courses": true,
@@ -18937,7 +18937,7 @@
   },
   {
     "code": "2C5",
-    "name": "St Mary's School Direct Partnership Programme",
+    "name": "St Mary’s School Direct Partnership Programme",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -18950,7 +18950,7 @@
   },
   {
     "code": "29M",
-    "name": "St Mary's Teaching School",
+    "name": "St Mary’s Teaching School",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -18963,7 +18963,7 @@
   },
   {
     "code": "S64",
-    "name": "St Mary's University, Twickenham",
+    "name": "St Mary’s University, Twickenham",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 13:19:08 +0000",
     "sync_courses": true,
@@ -19041,7 +19041,7 @@
   },
   {
     "code": "1DF",
-    "name": "St Matthew's CofE Primary School",
+    "name": "St Matthew’s CofE Primary School",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19054,7 +19054,7 @@
   },
   {
     "code": "299",
-    "name": "St Matthew's School, Westminster",
+    "name": "St Matthew’s School, Westminster",
     "created_at": "2020-01-15 15:50:59 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19067,7 +19067,7 @@
   },
   {
     "code": "5G9",
-    "name": "St Matthew's Teaching School",
+    "name": "St Matthew’s Teaching School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 13:19:08 +0000",
     "sync_courses": true,
@@ -19080,7 +19080,7 @@
   },
   {
     "code": "23B",
-    "name": "St Michael's Catholic Grammar School",
+    "name": "St Michael’s Catholic Grammar School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19093,7 +19093,7 @@
   },
   {
     "code": "1V8",
-    "name": "St Michael's CE Primary",
+    "name": "St Michael’s CE Primary",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19106,7 +19106,7 @@
   },
   {
     "code": "2AR",
-    "name": "St Michael's VA Junior School",
+    "name": "St Michael’s VA Junior School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19119,7 +19119,7 @@
   },
   {
     "code": "216",
-    "name": "St Monica's Catholic Teaching School Alliance",
+    "name": "St Monica’s Catholic Teaching School Alliance",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19145,7 +19145,7 @@
   },
   {
     "code": "14X",
-    "name": "St Olave's and St Saviour's Grammar School",
+    "name": "St Olave’s and St Saviour’s Grammar School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19158,7 +19158,7 @@
   },
   {
     "code": "18A",
-    "name": "St Patrick's Greater Manchester Alliance",
+    "name": "St Patrick’s Greater Manchester Alliance",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19171,7 +19171,7 @@
   },
   {
     "code": "1DV",
-    "name": "St Paul's And All Hallows CofE Junior School",
+    "name": "St Paul’s And All Hallows CofE Junior School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19184,7 +19184,7 @@
   },
   {
     "code": "1XA",
-    "name": "St Paul's and St Timothy's Catholic Infant School",
+    "name": "St Paul’s and St Timothy’s Catholic Infant School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:36 +0000",
     "sync_courses": false,
@@ -19197,7 +19197,7 @@
   },
   {
     "code": "242",
-    "name": "St Paul's Caritas Christi",
+    "name": "St Paul’s Caritas Christi",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19210,7 +19210,7 @@
   },
   {
     "code": "14Z",
-    "name": "St Paul's CofE Primary School",
+    "name": "St Paul’s CofE Primary School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19223,7 +19223,7 @@
   },
   {
     "code": "1FR",
-    "name": "St Paul's CofE Primary School Nw7",
+    "name": "St Paul’s CofE Primary School Nw7",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19236,7 +19236,7 @@
   },
   {
     "code": "1UP",
-    "name": "St Paul's Whitechapel CE Primary School",
+    "name": "St Paul’s Whitechapel CE Primary School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19249,7 +19249,7 @@
   },
   {
     "code": "2LK",
-    "name": "St Pauls Nursery School & Children's Centre",
+    "name": "St Pauls Nursery School & Children’s Centre",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19262,7 +19262,7 @@
   },
   {
     "code": "1RG",
-    "name": "St Peter's Catholic Primary School",
+    "name": "St Peter’s Catholic Primary School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19275,7 +19275,7 @@
   },
   {
     "code": "2F2",
-    "name": "St Peter's Eaton Square CofE Primary School",
+    "name": "St Peter’s Eaton Square CofE Primary School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19288,7 +19288,7 @@
   },
   {
     "code": "1V1",
-    "name": "St Peter's London Docks CofE Primary School",
+    "name": "St Peter’s London Docks CofE Primary School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19301,7 +19301,7 @@
   },
   {
     "code": "17Y",
-    "name": "St Peter's Solihull Teaching School Alliance",
+    "name": "St Peter’s Solihull Teaching School Alliance",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 13:19:08 +0000",
     "sync_courses": true,
@@ -19314,7 +19314,7 @@
   },
   {
     "code": "2EM",
-    "name": "St Peter's Teaching School",
+    "name": "St Peter’s Teaching School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19327,7 +19327,7 @@
   },
   {
     "code": "1H7",
-    "name": "St Philip's CofE Primary School, Atherton",
+    "name": "St Philip’s CofE Primary School, Atherton",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19340,7 +19340,7 @@
   },
   {
     "code": "2EG",
-    "name": "St Polycarp's CTSA",
+    "name": "St Polycarp’s CTSA",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 13:19:09 +0000",
     "sync_courses": true,
@@ -19353,7 +19353,7 @@
   },
   {
     "code": "2CW",
-    "name": "St Stephen's Church of England Primary School",
+    "name": "St Stephen’s Church of England Primary School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19366,7 +19366,7 @@
   },
   {
     "code": "2E4",
-    "name": "St Stephen's CofE Primary School",
+    "name": "St Stephen’s CofE Primary School",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19379,7 +19379,7 @@
   },
   {
     "code": "1K8",
-    "name": "St Thomas More's Catholic Primary School, Colchester",
+    "name": "St Thomas More’s Catholic Primary School, Colchester",
     "created_at": "2020-01-15 15:51:00 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19431,7 +19431,7 @@
   },
   {
     "code": "2DD",
-    "name": "St. Andrew's Teaching Alliance",
+    "name": "St. Andrew’s Teaching Alliance",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19444,7 +19444,7 @@
   },
   {
     "code": "264",
-    "name": "St. Anne's Primary, Brown Edge",
+    "name": "St. Anne’s Primary, Brown Edge",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19457,7 +19457,7 @@
   },
   {
     "code": "1EG",
-    "name": "St. Edward's Catholic Primary Teaching School",
+    "name": "St. Edward’s Catholic Primary Teaching School",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19470,7 +19470,7 @@
   },
   {
     "code": "G15",
-    "name": "St. George's Academy Partnership",
+    "name": "St. George’s Academy Partnership",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 13:19:10 +0000",
     "sync_courses": true,
@@ -19483,7 +19483,7 @@
   },
   {
     "code": "18J",
-    "name": "St. James's Teaching School Partnership",
+    "name": "St. James’s Teaching School Partnership",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19496,7 +19496,7 @@
   },
   {
     "code": "J80",
-    "name": "St. Joseph's College Stoke Secondary Partnership",
+    "name": "St. Joseph’s College Stoke Secondary Partnership",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19509,7 +19509,7 @@
   },
   {
     "code": "1QD",
-    "name": "St. Mary's TSA",
+    "name": "St. Mary’s TSA",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19522,7 +19522,7 @@
   },
   {
     "code": "2A8",
-    "name": "St. Michael's Federation",
+    "name": "St. Michael’s Federation",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 14:15:37 +0000",
     "sync_courses": false,
@@ -19548,7 +19548,7 @@
   },
   {
     "code": "27E",
-    "name": "Stafford Primary Schools' Teaching Partnership",
+    "name": "Stafford Primary Schools’ Teaching Partnership",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 14:15:38 +0000",
     "sync_courses": false,
@@ -19665,7 +19665,7 @@
   },
   {
     "code": "2C8",
-    "name": "Stevenage Schools' Partnership",
+    "name": "Stevenage Schools’ Partnership",
     "created_at": "2020-01-15 15:51:01 +0000",
     "updated_at": "2021-02-09 14:15:38 +0000",
     "sync_courses": false,
@@ -21813,7 +21813,7 @@
   },
   {
     "code": "25T",
-    "name": "The King's CofE (VA) School",
+    "name": "The King’s CofE (VA) School",
     "created_at": "2020-01-15 15:51:12 +0000",
     "updated_at": "2021-02-09 14:15:45 +0000",
     "sync_courses": false,
@@ -21826,7 +21826,7 @@
   },
   {
     "code": "1P6",
-    "name": "The King's School Specialising In Mathematics And Computing",
+    "name": "The King’s School Specialising In Mathematics And Computing",
     "created_at": "2020-01-15 15:51:12 +0000",
     "updated_at": "2021-02-09 14:15:45 +0000",
     "sync_courses": false,
@@ -22800,7 +22800,7 @@
   },
   {
     "code": "28G",
-    "name": "The St. Mary's Schools Consortium",
+    "name": "The St. Mary’s Schools Consortium",
     "created_at": "2020-01-15 15:51:15 +0000",
     "updated_at": "2021-02-09 14:15:48 +0000",
     "sync_courses": false,
@@ -23150,7 +23150,7 @@
   },
   {
     "code": "19Y",
-    "name": "The West Grantham Academy St Hugh's",
+    "name": "The West Grantham Academy St Hugh’s",
     "created_at": "2020-01-15 15:51:16 +0000",
     "updated_at": "2021-02-09 14:15:49 +0000",
     "sync_courses": false,
@@ -23202,7 +23202,7 @@
   },
   {
     "code": "1GO",
-    "name": "The Windsor Boys' School",
+    "name": "The Windsor Boys’ School",
     "created_at": "2020-01-15 15:51:16 +0000",
     "updated_at": "2021-02-09 14:15:49 +0000",
     "sync_courses": false,
@@ -23598,7 +23598,7 @@
   },
   {
     "code": "1CN",
-    "name": "TTSA (St. Clere's)",
+    "name": "TTSA (St. Clere’s)",
     "created_at": "2020-01-15 15:51:46 +0000",
     "updated_at": "2021-02-09 13:20:13 +0000",
     "sync_courses": true,
@@ -24749,7 +24749,7 @@
   },
   {
     "code": "1TY",
-    "name": "Walderslade Girls' School",
+    "name": "Walderslade Girls’ School",
     "created_at": "2020-01-15 15:51:49 +0000",
     "updated_at": "2021-02-09 14:15:53 +0000",
     "sync_courses": false,
@@ -25211,7 +25211,7 @@
   },
   {
     "code": "15D",
-    "name": "West Essex SCITT (St John's C of E Primary School)",
+    "name": "West Essex SCITT (St John’s C of E Primary School)",
     "created_at": "2020-01-15 15:51:51 +0000",
     "updated_at": "2021-02-09 13:20:32 +0000",
     "sync_courses": true,
@@ -25315,7 +25315,7 @@
   },
   {
     "code": "2H3",
-    "name": "West London Teaching School Alliance (Primary St Mary's)",
+    "name": "West London Teaching School Alliance (Primary St Mary’s)",
     "created_at": "2020-01-15 15:51:51 +0000",
     "updated_at": "2021-02-09 14:15:55 +0000",
     "sync_courses": false,
