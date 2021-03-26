@@ -1,85 +1,54 @@
 {% set filterOptionsHtml %}
 
   {{ govukCheckboxes({
-    idPrefix: "onboardingStage",
-    name: "filters[onboardingStage][]",
+    idPrefix: "cycle",
+    name: "filters[cycle][]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Onboarding stage",
+        text: "Year received",
         isPageHeading: false,
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [
       {
-        value: "With synced courses",
-        text: "With synced courses",
-        checked: true if data.filters.onboardingStage == "synced_courses"
+        value: "2020 to 2021",
+        text: "2020 to 2021 (starts 2021)",
+        checked: true if data.filters.cycle == "2020 to 2021"
       },
       {
-        value: "With signed DSA",
-        text: "With signed DSA",
-        checked: true if data.filters.onboardingStage == "signed_dsa"
+        value: "2019 to 2020",
+        text: "2019 to 2020 (starts 2020)",
+        checked: true if data.filters.cycle == "2019 to 2020"
       }
     ]
   }) }}
 
   {{ govukCheckboxes({
-    idPrefix: "providerType",
-    name: "filters[providerType][]",
+    idPrefix: "phase",
+    name: "filters[phase][]",
     classes: "govuk-checkboxes--small",
     fieldset: {
       legend: {
-        text: "Provider type",
+        text: "Phase",
         isPageHeading: false,
         classes: "govuk-fieldset__legend--s"
       }
     },
     items: [
       {
-        value: "School Direct",
-        text: "School Direct",
-        checked: true if data.filters.providerType == "lead_school"
+        value: "Apply 1",
+        text: "Apply 1",
+        checked: true if data.filters.phase == "Apply 1"
       },
       {
-        value: "SCITT",
-        text: "SCITT",
-        checked: true if data.filters.providerType == "scitt"
-      },
-      {
-        value: "HEI",
-        text: "HEI",
-        checked: true if data.filters.providerType == "university"
+        value: "Apply 2",
+        text: "Apply 2",
+        checked: true if data.filters.phase == "Apply 2"
       }
     ]
   }) }}
-
-  {{ govukCheckboxes({
-    idPrefix: "ratifiedBy",
-    name: "filters[ratifiedBy][]",
-    classes: "govuk-checkboxes--small",
-    fieldset: {
-      legend: {
-        text: "Ratified by (only applies to providers with synced courses)",
-        isPageHeading: false,
-        classes: "govuk-fieldset__legend--s"
-      }
-    },
-    items: [
-      {
-        value: "scitt",
-        text: "SCITT",
-        checked: true if data.filters.ratifiedBy == "scitt"
-      },
-      {
-        value: "HEI",
-        text: "HEI",
-        checked: true if data.filters.ratifiedBy == "university"
-      }
-    ]
-  }) }}
-
 
 {% endset %}
 
@@ -113,7 +82,7 @@
       </div>
     {% endif %}
     <div class="app-filter__options">
-      <form method="post" action="/providers" accept-charset="UTF-8" novalidate>
+      <form method="post" action="/providers/{{ provider.code }}/applications" accept-charset="UTF-8" novalidate>
         <button class="govuk-button" data-module="govuk-button">
           Apply filters
         </button>

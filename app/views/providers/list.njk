@@ -69,12 +69,18 @@
             </td>
             <td class="govuk-table__cell">
               {% if provider.sync_courses %}
-                [x] out of [y]
+                0 out of 10
               {% else %}
                 No courses synced
               {% endif %}
             </td>
-            <td class="govuk-table__cell">No accepted yet</td>
+            <td class="govuk-table__cell">
+              {% if provider.agreement.signed_dsa %}
+                {{ provider.agreement.accepted_at | govShortDate }}
+              {% else %}
+                Not accepted yet
+              {% endif %}
+            </td>
           </tr>
           {% endfor %}
         </tbody>

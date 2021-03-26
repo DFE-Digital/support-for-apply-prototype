@@ -44,9 +44,19 @@ router.get('/candidates', checkIsAuthenticated, candidateController.list)
 /// PROVIDER ROUTES
 /// --------------------------------------------------///
 
+router.get('/providers/:providerId/applications', checkIsAuthenticated, providerController.applicationsList)
+// router.post('/providers/:providerId/applications', checkIsAuthenticated, providerController.applicationsList)
+
+router.get('/providers/:providerId/users', checkIsAuthenticated, providerController.usersList)
+// router.post('/providers/:providerId/users', checkIsAuthenticated, providerController.userList)
+
+router.get('/providers/:providerId/courses', checkIsAuthenticated, providerController.coursesList)
+// router.post('/providers/:providerId/courses', checkIsAuthenticated, providerController.coursesList)
+
 router.get('/providers/:providerId', checkIsAuthenticated, providerController.show)
 
 router.get('/providers', checkIsAuthenticated, providerController.list)
+router.post('/providers', checkIsAuthenticated, providerController.list)
 
 
 

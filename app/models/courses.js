@@ -8,10 +8,10 @@ exports.save = (data) => {
 }
 
 exports.find = (id, data) => {
-  const filePath = directoryPath + '/applications.json';
+  const filePath = directoryPath + '/courses.json';
 
   const rawData = fs.readFileSync(filePath)
-  let applications = JSON.parse(rawData)
+  let courses = JSON.parse(rawData)
 
   if (data !== undefined) {
 
@@ -19,7 +19,7 @@ exports.find = (id, data) => {
 
   }
 
-  return applications
+  return courses
 }
 
 exports.findById = (id) => {

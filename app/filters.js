@@ -1,4 +1,5 @@
 const moment = require('moment')
+moment.suppressDeprecationWarnings = true
 
 module.exports = function (env) {
   /**
@@ -9,22 +10,36 @@ module.exports = function (env) {
    */
   const filters = {}
 
-  filters.date = function (timestamp, format) {
-    return moment(timestamp).format(format)
-  }
+  /* ------------------------------------------------------------------
+     date filter for use in Nunjucks
+     example: {{ params.date | date("DD/MM/YYYY") }}
+     outputs: 01/01/1970
+   ------------------------------------------------------------------ */
+   filters.date = (timestamp, format) => {
+     return moment(timestamp).format(format)
+   }
+
+   /* ------------------------------------------------------------------
+     dateAdd filter for use in Nunjucks
+     example: {{ '1970-01-01' | dateAdd(1, 'weeks') | date("DD/MM/YYYY") }}
+     outputs: 08/01/1970
+   ------------------------------------------------------------------ */
+   filters.dateAdd = (date, num, unit='days') => {
+     return moment(date).add(num, unit).toDate()
+   }
 
   /* ------------------------------------------------------------------
     utility functions for use in mojDate function/filter
   ------------------------------------------------------------------ */
-  function govDate (timestamp) {
+  filters.govDate = (timestamp) => {
     return moment(timestamp).format('D MMMM YYYY')
   }
 
-  function govShortDate (timestamp) {
+  filters.govShortDate = (timestamp) => {
     return moment(timestamp).format('D MMM YYYY')
   }
 
-  function govTime (timestamp) {
+  filters.govTime = (timestamp) => {
     let t = moment(timestamp)
     if(t.minutes() > 0) {
       return t.format('h:mma')
@@ -33,19 +48,19 @@ module.exports = function (env) {
     }
   }
 
-  filters.appDate = function (timestamp, type) {
+  filters.appDate = (timestamp, type) => {
 
     switch(type) {
       case 'datetime':
-        return govDate(timestamp) + ' at ' + govTime(timestamp)
+        return filters.govDate(timestamp) + ' at ' + filters.govTime(timestamp)
       case 'shortdatetime':
-        return govShortDate(timestamp) + ' at ' + govTime(timestamp)
+        return filters.govShortDate(timestamp) + ' at ' + filters.govTime(timestamp)
       case 'date':
-        return govDate(timestamp)
+        return filters.govDate(timestamp)
       case 'shortdate':
-        return govShortDate(timestamp)
+        return filters.govShortDate(timestamp)
       case 'time':
-        return govTime(timestamp)
+        return filters.govTime(timestamp)
       default:
         return timestamp
     }
