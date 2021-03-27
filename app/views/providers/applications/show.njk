@@ -1,0 +1,60 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'providers' %}
+{% set subNavId = 'details' %}
+
+{% block pageTitle %}
+  Prototype for {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/providers",
+    text: "Providers"
+  }, {
+    text: provider.name
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">{{ course.name }} ({{ course.code }})</h1>
+
+    {% include "./_includes/sub-navigation.njk" %}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: course.name + " (" + course.code + ")"
+          }
+        },
+        {
+          key: {
+            text: "Provider"
+          },
+          value: {
+            text: provider.name + " (" + provider.code + ")"
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

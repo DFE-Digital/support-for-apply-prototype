@@ -53,6 +53,14 @@ exports.applicationsList = (req, res) => {
   })
 }
 
+exports.applicationDetails = (req, res) => {
+  const provider = Providers.findById(req.params.providerId)
+
+  res.render('../views/providers/applications/show', {
+    provider
+  })
+}
+
 exports.usersList = (req, res) => {
   const provider = Providers.findById(req.params.providerId)
 
@@ -71,20 +79,49 @@ exports.usersList = (req, res) => {
   })
 }
 
+exports.userDetails = (req, res) => {
+  const provider = Providers.findById(req.params.providerId)
+
+  res.render('../views/providers/users/show', {
+    provider
+  })
+}
+
 exports.coursesList = (req, res) => {
   const provider = Providers.findById(req.params.providerId)
 
   let courses = Courses.find(req.params.providerId, req.session.data.filters)
 
-  // Get the pagination data
-  const pagination = PaginationHelper.getPagination(courses, req.query.page)
+  courses = courses.sort((a, b) => {
+    return a.name.localeCompare(b.name)
+  })
 
-  // Get a slice of the data to display
-  courses = PaginationHelper.getDataByPage(courses, pagination.pageNumber)
+  const years = [2019,2020,2021]
+  let cycles = []
+
+  years.forEach((item, i) => {
+    const cycle = {}
+    cycle.year = item
+    cycle.courses = courses.filter(c => c.recruitment_cycle_year === item)
+    cycles.push(cycle)
+  })
+
+  cycles.sort((a, b) => {
+    return b.year - a.year
+  })
 
   res.render('../views/providers/courses/list', {
     provider,
-    courses,
-    pagination
+    cycles
+  })
+}
+
+exports.courseDetails = (req, res) => {
+  const provider = Providers.findById(req.params.providerId)
+  const course = Courses.findById(req.params.providerId, req.params.courseId)
+
+  res.render('../views/providers/courses/show', {
+    provider,
+    course
   })
 }
