@@ -4,7 +4,7 @@ const fs = require('fs')
 const directoryPath = path.join(__dirname, '../data/')
 
 exports.save = (data) => {
-
+  console.log(data);
 }
 
 exports.find = (data) => {

@@ -35,31 +35,31 @@
 
         {{ govukInput({
           id: "first_name",
-          name: "first_name",
+          name: "user[first_name]",
           label: {
             text: "First name",
             classes: "govuk-label--s"
           },
           errorMessage: errors | getErrorMessage("first_name"),
-          value: data.first_name,
+          value: data.user.first_name,
           classes: "govuk-!-width-two-thirds"
         }) }}
 
         {{ govukInput({
           id: "last_name",
-          name: "last_name",
+          name: "user[last_name]",
           label: {
             text: "Last name",
             classes: "govuk-label--s"
           },
           errorMessage: errors | getErrorMessage("last_name"),
-          value: data.last_name,
+          value: data.user.last_name,
           classes: "govuk-!-width-two-thirds"
         }) }}
 
         {{ govukInput({
           id: "email_address",
-          name: "email_address",
+          name: "user[email_address]",
           type: "email",
           inputmode: "email",
           label: {
@@ -67,14 +67,14 @@
             classes: "govuk-label--s"
           },
           errorMessage: errors | getErrorMessage("email_address"),
-          value: data.email_address,
+          value: data.user.email_address,
           spellcheck: false,
           classes: "govuk-!-width-two-thirds"
         }) }}
 
         {{ govukCheckboxes({
           idPrefix: "permissions",
-          name: "permissions[]",
+          name: "user[permissions][]",
           fieldset: {
             legend: {
               text: "PERMISSIONS (optional)",
@@ -88,23 +88,28 @@
           items: [
             {
               value: "manage_organisations",
-              text: "Manage organisational permissions"
+              text: "Manage organisational permissions",
+              checked: true if data.user.permissions and "manage_organisations" in data.user.permissions
             },
             {
               value: "manage_users",
-              text: "Manage users"
+              text: "Manage users",
+              checked: true if data.user.permissions and "manage_users" in data.user.permissions
             },
             {
               value: "make_decisions",
-              text: "Make decisions"
+              text: "Make decisions",
+              checked: true if data.user.permissions and "make_decisions" in data.user.permissions
             },
             {
               value: "view_safeguarding_information",
-              text: "Access safeguarding information"
+              text: "Access safeguarding information",
+              checked: true if data.user.permissions and "view_safeguarding_information" in data.user.permissions
             },
             {
               value: "view_diversity_information",
-              text: "Access diversity information"
+              text: "Access diversity information",
+              checked: true if data.user.permissions and "view_diversity_information" in data.user.permissions
             }
           ]
         }) }}

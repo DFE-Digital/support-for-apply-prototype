@@ -28,6 +28,11 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
+    {{ govukNotificationBanner({
+      type: "success",
+      text: message.success[0]
+    }) if message.success }}
+
     <h1 class="govuk-heading-l">{{ provider.name }} ({{ provider.code }})</h1>
 
     {% include "../_sub-navigation.njk" %}

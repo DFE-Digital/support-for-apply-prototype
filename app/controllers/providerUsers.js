@@ -4,10 +4,11 @@ const Users = require('../models/users')
 exports.list_get = (req, res) => {
   const provider = Providers.findById(req.params.providerId)
   const users = Users.findByProviderId(req.params.providerId)
-
+  const message = req.flash()
   res.render('../views/providers/users/index', {
     provider,
-    users
+    users,
+    message
   })
 }
 
@@ -66,7 +67,7 @@ exports.new_post = (req, res) => {
 
   const errors = []
 
-  if (!req.session.data.first_name.length) {
+  if (!req.session.data.user.first_name.length) {
     const error = {}
     error.fieldName = 'first_name'
     error.href = '#first_name'
@@ -74,7 +75,7 @@ exports.new_post = (req, res) => {
     errors.push(error)
   }
 
-  if (!req.session.data.last_name.length) {
+  if (!req.session.data.user.last_name.length) {
     const error = {}
     error.fieldName = 'last_name'
     error.href = '#last_name'
@@ -82,7 +83,7 @@ exports.new_post = (req, res) => {
     errors.push(error)
   }
 
-  if (!req.session.data.email_address.length) {
+  if (!req.session.data.user.email_address.length) {
     const error = {}
     error.fieldName = 'email_address'
     error.href = '#email_address'
@@ -96,6 +97,9 @@ exports.new_post = (req, res) => {
       errors
     })
   } else {
+    Users.save(req.session.data.user)
+    delete req.session.data.user
+    req.flash('success', 'New user added')
     res.redirect(`/providers/${req.params.providerId}/users`)
   }
 }

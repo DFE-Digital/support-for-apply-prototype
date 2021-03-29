@@ -1,3 +1,4 @@
+const _ = require('lodash')
 const moment = require('moment')
 moment.suppressDeprecationWarnings = true
 
@@ -206,6 +207,23 @@ module.exports = function (env) {
     )[0]
 
     return error
+  }
+
+  /* ------------------------------------------------------------------
+  utility function to return true or false
+  example: {{ 'yes' | falsify }}
+  outputs: true
+  ------------------------------------------------------------------ */
+  filters.falsify = (input) => {
+    if (_.isNumber(input)) return input
+    else if (input == false) return false
+    if (_.isString(input)){
+      const truthyValues = ['yes','true']
+      const falsyValues = ['no', 'false']
+      if (truthyValues.includes(input.toLowerCase())) return true
+      else if (falsyValues.includes(input.toLowerCase())) return false
+    }
+    return input
   }
 
   /* ------------------------------------------------------------------
