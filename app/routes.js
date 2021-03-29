@@ -6,6 +6,7 @@ const authenticationController = require('./controllers/authentication.js')
 const applicationController = require('./controllers/applications.js')
 const candidateController = require('./controllers/candidates.js')
 const providerController = require('./controllers/providers.js')
+const providerUserController = require('./controllers/providerUsers.js')
 
 function checkIsAuthenticated(req, res, next) {
   // if (req.session.passport || req.session.data.user) {
@@ -47,10 +48,15 @@ router.get('/candidates', checkIsAuthenticated, candidateController.list)
 router.get('/providers/:providerId/applications', checkIsAuthenticated, providerController.applicationsList)
 // router.post('/providers/:providerId/applications', checkIsAuthenticated, providerController.applicationsList)
 
-router.get('/providers/:providerId/users/:userId', checkIsAuthenticated, providerController.userDetails)
+router.get('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_get)
+router.post('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_post)
 
-router.get('/providers/:providerId/users', checkIsAuthenticated, providerController.usersList)
-// router.post('/providers/:providerId/users', checkIsAuthenticated, providerController.userList)
+router.get('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_get)
+router.post('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_post)
+
+router.get('/providers/:providerId/users/:userId', checkIsAuthenticated, providerUserController.show_get)
+
+router.get('/providers/:providerId/users', checkIsAuthenticated, providerUserController.list_get)
 
 router.get('/providers/:providerId/courses/:courseId', checkIsAuthenticated, providerController.courseDetails)
 

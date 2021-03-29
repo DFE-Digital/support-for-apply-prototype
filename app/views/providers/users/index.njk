@@ -3,8 +3,10 @@
 {% set primaryNavId = "providers" %}
 {% set subNavId = "users" %}
 
+{% set title = "" %}
+
 {% block pageTitle %}
-  Prototype for {{ serviceName }}
+{{ title }} – {{ serviceName }} – GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -32,7 +34,7 @@
 
     {{ govukButton({
       href: "/providers/" + provider.code + "/users/new",
-      text: "Add provider user"
+      text: "Add new user"
     }) }}
 
     <h2 class="govuk-visually-hidden">Users</h2>

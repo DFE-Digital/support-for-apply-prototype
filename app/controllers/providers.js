@@ -61,30 +61,6 @@ exports.applicationDetails = (req, res) => {
   })
 }
 
-exports.usersList = (req, res) => {
-  const provider = Providers.findById(req.params.providerId)
-  const users = Users.findByProviderId(req.params.providerId)
-
-  res.render('../views/providers/users/index', {
-    provider,
-    users
-  })
-}
-
-exports.userDetails = (req, res) => {
-  const provider = Providers.findById(req.params.providerId)
-  const user = Users.findById(req.params.providerId, req.params.userId)
-
-  if (user) {
-    res.render('../views/providers/users/show', {
-      provider,
-      user
-    })
-  } else {
-    res.redirect(`/providers/${req.params.providerId}/users`)
-  }
-}
-
 exports.coursesList = (req, res) => {
   const provider = Providers.findById(req.params.providerId)
 

@@ -192,6 +192,23 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
+    utility function to get an error for a component
+    example: {{ errors | getErrorMessage('title') }}
+    outputs: "Enter a title"
+  ------------------------------------------------------------------ */
+  filters.getErrorMessage = function (array, fieldName) {
+    if (!array || !fieldName) {
+      return null
+    }
+
+    const error = array.filter((obj) =>
+      obj.fieldName === fieldName
+    )[0]
+
+    return error
+  }
+
+  /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
   return filters
