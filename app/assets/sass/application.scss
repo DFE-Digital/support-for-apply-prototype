@@ -26,6 +26,8 @@ $govuk-assets-path: '/govuk/assets/';
 @import "core/tag";
 
 // Utilities
+@import "utilities/grid";
+@import "utilities/hidden";
 @import "utilities/overrides";
 @import "utilities/template";
 
