@@ -68,7 +68,6 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     utility functions for parsing codes into their string names
   ------------------------------------------------------------------ */
-
   filters.getFundingTypeName = (code) => {
     switch (code) {
       case 'fee': return 'Fee paying'

@@ -40,9 +40,9 @@ exports.find = (data) => {
   return providers
 }
 
-exports.findById = (id) => {
+exports.findById = (providerId) => {
   const providers = this.find()
-  const provider = providers.filter(p => p.code == id)
+  const provider = providers.filter(p => p.code === providerId.toUpperCase())
   return provider[0]
 }
 

@@ -15,7 +15,7 @@ exports.find = (providerId = null, data) => {
   let courses = JSON.parse(rawData)
 
   if (providerId !== null) {
-    courses = courses.filter(c => c.provider.code === providerId)
+    courses = courses.filter(c => c.provider.code === providerId.toUpperCase())
   }
 
   if (data !== undefined) {
@@ -29,7 +29,7 @@ exports.find = (providerId = null, data) => {
 
 exports.findById = (providerId, courseId) => {
   const courses = this.find(providerId)
-  const course = courses.filter(c => c.code == courseId)
+  const course = courses.filter(c => c.code == courseId.toUpperCase())
   return course[0]
 }
 

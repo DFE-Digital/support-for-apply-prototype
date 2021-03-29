@@ -7,11 +7,11 @@ exports.save = (data) => {
 
 }
 
-exports.find = (id, data) => {
+exports.find = (data) => {
   const filePath = directoryPath + '/users.json';
 
   const rawData = fs.readFileSync(filePath)
-  let courses = JSON.parse(rawData)
+  let users = JSON.parse(rawData)
 
   if (data !== undefined) {
 
@@ -19,11 +19,30 @@ exports.find = (id, data) => {
 
   }
 
-  return courses
+  return users
 }
 
-exports.findById = (id) => {
+exports.findByProviderId = (providerId) => {
+  const filePath = directoryPath + '/users.json';
 
+  const rawData = fs.readFileSync(filePath)
+  let users = JSON.parse(rawData)
+
+  users = users.filter((user) => {
+    if (user.providers) {
+      return user.providers.find((provider) => {
+        return provider.code === providerId.toUpperCase()
+      })
+    }
+  })
+
+  return users
+}
+
+exports.findById = (providerId, userId) => {
+  const users = this.findByProviderId(providerId)
+  const user = users.filter(u => u.id == userId)
+  return user[0]
 }
 
 exports.findByIdAndUpdate = (id, data) => {

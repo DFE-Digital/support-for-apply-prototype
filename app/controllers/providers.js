@@ -21,7 +21,7 @@ exports.list = (req, res) => {
   // Get a slice of the data to display
   providers = PaginationHelper.getDataByPage(providers, pagination.pageNumber)
 
-  res.render('../views/providers/list', {
+  res.render('../views/providers/index', {
     providers,
     pagination
   })
@@ -46,7 +46,7 @@ exports.applicationsList = (req, res) => {
   // Get a slice of the data to display
   applications = PaginationHelper.getDataByPage(applications, pagination.pageNumber)
 
-  res.render('../views/providers/applications/list', {
+  res.render('../views/providers/applications/index', {
     provider,
     applications,
     pagination
@@ -63,28 +63,26 @@ exports.applicationDetails = (req, res) => {
 
 exports.usersList = (req, res) => {
   const provider = Providers.findById(req.params.providerId)
+  const users = Users.findByProviderId(req.params.providerId)
 
-  let users = Users.find(req.params.providerId, req.session.data.filters)
-
-  // Get the pagination data
-  const pagination = PaginationHelper.getPagination(users, req.query.page)
-
-  // Get a slice of the data to display
-  users = PaginationHelper.getDataByPage(users, pagination.pageNumber)
-
-  res.render('../views/providers/users/list', {
+  res.render('../views/providers/users/index', {
     provider,
-    users,
-    pagination
+    users
   })
 }
 
 exports.userDetails = (req, res) => {
   const provider = Providers.findById(req.params.providerId)
+  const user = Users.findById(req.params.providerId, req.params.userId)
 
-  res.render('../views/providers/users/show', {
-    provider
-  })
+  if (user) {
+    res.render('../views/providers/users/show', {
+      provider,
+      user
+    })
+  } else {
+    res.redirect(`/providers/${req.params.providerId}/users`)
+  }
 }
 
 exports.coursesList = (req, res) => {
@@ -110,7 +108,7 @@ exports.coursesList = (req, res) => {
     return b.year - a.year
   })
 
-  res.render('../views/providers/courses/list', {
+  res.render('../views/providers/courses/index', {
     provider,
     cycles
   })
@@ -120,8 +118,12 @@ exports.courseDetails = (req, res) => {
   const provider = Providers.findById(req.params.providerId)
   const course = Courses.findById(req.params.providerId, req.params.courseId)
 
-  res.render('../views/providers/courses/show', {
-    provider,
-    course
-  })
+  if (course) {
+    res.render('../views/providers/courses/show', {
+      provider,
+      course
+    })
+  } else {
+    res.redirect(`/providers/${req.params.providerId}/courses`)
+  }
 }

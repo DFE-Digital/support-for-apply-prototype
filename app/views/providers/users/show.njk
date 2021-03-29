@@ -1,0 +1,153 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'providers' %}
+{% set subNavId = 'details' %}
+
+{% block pageTitle %}
+  Prototype for {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/providers",
+    text: "Providers"
+  }, {
+    href: "/providers/" + provider.code,
+    text: provider.name
+  }, {
+    href: "/providers/" + provider.code + "/users",
+    text: "Users"
+  }, {
+    text: user.first_name + " " + user.last_name
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">{{ user.first_name }} {{ user.last_name }}</h1>
+
+    {% include "./_includes/sub-navigation.njk" %}
+
+    {% set iconTrue %}
+    <svg class="app-icon govuk-!-margin-right-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 200 200" focusable="false" fill="currentColor" aria-hidden="true">
+      <path d="M100 200a100 100 0 1 1 0-200 100 100 0 0 1 0 200zm-60-85l40 40 80-80-20-20-60 60-20-20-20 20z"></path>
+    </svg>
+    {% endset %}
+
+    {% set iconFalse %}
+    <svg class="app-icon govuk-!-margin-right-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 200 200" focusable="false" fill="currentColor" aria-hidden="true">
+      <path d="M100 0a100 100 0 110 200 100 100 0 010-200zm30 50l-30 30-30-30-20 20 30 30-30 30 20 20 30-30 30 30 20-20-30-30 30-30-20-20z"></path>
+    </svg>
+    {% endset %}
+
+    {% set permissionsHtml %}
+      {% for provider in user.providers %}
+        <h2 class="govuk-heading-s">{{ provider.name }} ({{ provider.code }})</h2>
+        <ul class="govuk-list">
+          <li>{% if provider.permissions.manage_organisations %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} Manage organisational permissions</li>
+          <li>{% if provider.permissions.manage_users %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Manage users</li>
+          <li>{% if provider.permissions.make_decisions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Make decisions</li>
+          <li>{% if provider.permissions.view_safeguarding_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access safeguarding information</li>
+          <li>{% if provider.permissions.view_diversity_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access diversity information</li>
+        </ul>
+      {% endfor %}
+    {% endset %}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "First name"
+          },
+          value: {
+            text: user.first_name
+          }
+        },
+        {
+          key: {
+            text: "Last name"
+          },
+          value: {
+            text: user.last_name
+          }
+        },
+        {
+          key: {
+            text: "Email address"
+          },
+          value: {
+            text: user.email_address
+          }
+        },
+        {
+          key: {
+            text: "DfE Sign-in UID"
+          },
+          value: {
+            text: user.dfe_uuid
+          }
+        },
+        {
+          key: {
+            text: "Account created on"
+          },
+          value: {
+            text: user.created_at | appDate('datetime')
+          }
+        },
+        {
+          key: {
+            text: "Last signed in on"
+          },
+          value: {
+            text: user.last_signed_in_at | appDate('datetime')
+          }
+        },
+        {
+          key: {
+            text: "Email notifications"
+          },
+          value: {
+            text: "Yes" if user.send_notifications else "No"
+          },
+          actions: {
+            items: [
+              {
+                href: "/providers/" + provider.code + "/users/" + user.id + "/edit",
+                text: "Change",
+                visuallyHiddenText: "email notification settings"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Permissions"
+          },
+          value: {
+            html: permissionsHtml
+          },
+          actions: {
+            items: [
+              {
+                href: "/providers/" + provider.code + "/users/" + user.id + "/edit",
+                text: "Change",
+                visuallyHiddenText: "permissions"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+
+
+{% endblock %}
