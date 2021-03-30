@@ -18,5 +18,6 @@ app/data/applications.json
 app/data/courses.json
 app/data/providers.json
 app/data/users.json
+app/data/users/*
 lib/extensions/_extensions.scss
 public
