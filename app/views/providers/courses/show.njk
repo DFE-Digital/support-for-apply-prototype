@@ -94,7 +94,7 @@
           value: {
             text: course.accredited_body.name + " (" + course.accredited_body.code + ")"
           }
-        },
+        } if course.accredited_body,
         {
           key: {
             text: "Level"
