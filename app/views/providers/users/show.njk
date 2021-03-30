@@ -109,7 +109,7 @@
           value: {
             text: user.last_signed_in_at | appDate('datetime')
           }
-        },
+        } if user.last_signed_in_at,
         {
           key: {
             text: "Email notifications"
@@ -145,6 +145,12 @@
           }
         }
       ]
+    }) }}
+
+    {{ govukButton({
+      href: "/providers/" + provider.code + "/users/" + user.id + "/delete",
+      text: "Delete user",
+      classes: "govuk-button--warning"
     }) }}
 
   </div>

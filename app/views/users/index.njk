@@ -1,10 +1,10 @@
 {% extends "_layout.njk" %}
 
-{% set primaryNavId = 'providers' %}
-{% set subNavId = 'providers' %}
+{% set primaryNavId = 'users' %}
+{% set subNavId = 'users' %}
 
 {% block pageTitle %}
-  Providers for {{ serviceName }}
+  Users for {{ serviceName }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,31 +16,23 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Providers</h1>
+    <h1 class="govuk-heading-l">Users</h1>
 
-    {{ appSubNavigation({
+    {#{ appSubNavigation({
       label: 'Sub navigation',
       items: [{
-        text: 'Providers',
-        href: '/providers',
-        active: true if subNavId == 'providers'
-      }, {
-        text: 'API tokens',
-        href: '/tokens',
-        active: true if subNavId == 'tokens'
-      }, {
-        text: 'Provider users',
+        text: 'Users',
         href: '/users',
         active: true if subNavId == 'users'
       }]
-    }) }}
+    }) }#}
 
   </div>
 </div>
 
 <div class="app-filter-layout">
   <div class="app-filter-layout__filter">
-    {% include "_includes/providers/filter-panel.njk" %}
+    {% include "_includes/users/filter-panel.njk" %}
   </div>
 
   <div class="app-filter-layout__content">
@@ -49,37 +41,25 @@
       <div class="app-action-bar__filter"></div>
     </div>
 
-    {#% include "_includes/providers/search-panel.njk" %#}
+    {#% include "_includes/users/search-panel.njk" %#}
 
     <div>
 
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Provider name</th>
-            <th scope="col" class="govuk-table__header">Courses open</th>
-            <th scope="col" class="govuk-table__header">DSA signed date</th>
+            <th scope="col" class="govuk-table__header">Name</th>
+            <th scope="col" class="govuk-table__header">Email address</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-          {% for provider in providers %}
+          {% for user in users %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a class="govuk-link" href="/providers/{{ provider.code }}">{{ provider.name }} ({{ provider.code }})</a>
+              <a class="govuk-link" href="/users/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a>
             </td>
             <td class="govuk-table__cell">
-              {% if provider.sync_courses %}
-                0 out of 10
-              {% else %}
-                No courses synced
-              {% endif %}
-            </td>
-            <td class="govuk-table__cell">
-              {% if provider.agreement.signed_dsa %}
-                {{ provider.agreement.accepted_at | govShortDate }}
-              {% else %}
-                Not accepted yet
-              {% endif %}
+              {{ user.email_address }}
             </td>
           </tr>
           {% endfor %}
@@ -88,11 +68,11 @@
 
     </div>
 
-    {% if providers.length and pagination %}
+    {% if users.length and pagination %}
       {% include "_includes/pagination.njk" %}
     {% endif %}
 
-    {%- if not providers.length %}
+    {%- if not users.length %}
       <p class="govuk-body">There are no results</p>
     {%- endif -%}
 

@@ -7,6 +7,7 @@ const applicationController = require('./controllers/applications.js')
 const candidateController = require('./controllers/candidates.js')
 const providerController = require('./controllers/providers.js')
 const providerUserController = require('./controllers/providerUsers.js')
+const userController = require('./controllers/users.js')
 
 function checkIsAuthenticated(req, res, next) {
   // if (req.session.passport || req.session.data.user) {
@@ -51,6 +52,9 @@ router.get('/providers/:providerId/applications', checkIsAuthenticated, provider
 router.get('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_get)
 router.post('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_post)
 
+router.get('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_get)
+router.post('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_post)
+
 router.get('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_get)
 router.post('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_post)
 
@@ -69,6 +73,11 @@ router.get('/providers', checkIsAuthenticated, providerController.list)
 router.post('/providers', checkIsAuthenticated, providerController.list)
 
 
+/// --------------------------------------------------///
+/// USER ROUTES
+/// --------------------------------------------------///
+
+router.get('/users', checkIsAuthenticated, userController.list)
 
 
 // Add your routes here - above the module.exports line
