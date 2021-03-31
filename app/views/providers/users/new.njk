@@ -88,13 +88,13 @@
           name: "user[permissions][]",
           fieldset: {
             legend: {
-              text: "PERMISSIONS (optional)",
+              text: "Permissions (optional)",
               isPageHeading: true,
               classes: "govuk-fieldset__legend--s"
             }
           },
           hint: {
-            text: "SOMETHING SENSIBLE"
+            text: "The user will be able to view applications. You can also give them additional permissions."
           },
           items: [
             {
@@ -109,7 +109,7 @@
             },
             {
               value: "make_decisions",
-              text: "Make decisions",
+              text: "Make decisions and set up interviews",
               checked: true if data.user.permissions and "make_decisions" in data.user.permissions
             },
             {
@@ -136,8 +136,8 @@
       {{ govukButton({
         name: "button[submit]",
         value: "continue",
-        text: "Save and add another",
-        classes: "govuk-button--secondary govuk-!-margin-left-2"
+        text: "Save and add another user",
+        classes: "govuk-button--secondary"
       }) }}
     </form>
 

@@ -1,6 +1,8 @@
 const Providers = require('../models/providers')
 const Users = require('../models/users')
 
+const ValidationHelper = require('../helpers/validators')
+
 exports.list_get = (req, res) => {
   const provider = Providers.findById(req.params.providerId)
   const users = Users.findByProviderId(req.params.providerId)
@@ -53,8 +55,8 @@ exports.edit_post = (req, res) => {
     })
   } else {
     Users.findByIdAndUpdate(req.params.userId, req.session.data.user)
+    req.flash('success', `User ‘${req.session.data.user.first_name} ${req.session.data.user.last_name}’ updated`)
     delete req.session.data.user
-    req.flash('success', 'User updated')
     res.redirect(`/providers/${req.params.providerId}/users`)
   }
 }
@@ -95,6 +97,12 @@ exports.new_post = (req, res) => {
     error.href = '#email_address'
     error.text = 'Enter an email address'
     errors.push(error)
+  } else if (!ValidationHelper.isValidEmail(req.session.data.user.email_address)) {
+    const error = {}
+    error.fieldName = 'email_address'
+    error.href = '#email_address'
+    error.text = 'Enter an email address in the correct format, like name@example.com'
+    errors.push(error)
   }
 
   if (errors.length) {
@@ -104,8 +112,8 @@ exports.new_post = (req, res) => {
     })
   } else {
     Users.save(req.params.providerId, req.session.data.user)
+    req.flash('success', `New user ‘${req.session.data.user.first_name} ${req.session.data.user.last_name}’ added`)
     delete req.session.data.user
-    req.flash('success', 'New user added')
     if (req.session.data.button.submit == 'continue') {
       res.redirect(`/providers/${req.params.providerId}/users/new`)
     } else {
@@ -124,7 +132,8 @@ exports.delete_get = (req, res) => {
 }
 
 exports.delete_post = (req, res) => {
+  const user = Users.findById(req.params.providerId, req.params.userId)
+  req.flash('success', `User ‘${user.first_name} ${user.last_name}’ deleted`)
   Users.findByIdAndDelete(req.params.userId)
-  req.flash('success', 'User deleted')
   res.redirect(`/providers/${req.params.providerId}/users`)
 }
