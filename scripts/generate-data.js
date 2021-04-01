@@ -1,4 +1,4 @@
-const  fs = require('fs')
+const fs = require('fs')
 const path = require('path')
 
 const sourceData = path.join(__dirname, '../app/data/seed')
@@ -31,5 +31,37 @@ const copy = (source, destination) => {
     }
   })
 }
+
+const remove = (destination) => {
+  const list = fs.readdirSync(destination)
+
+  list.forEach((file) => {
+    destinationFile = destination + '/' + file
+
+    const stat = fs.statSync(destinationFile)
+    if (stat && stat.isDirectory()) {
+      if (!destinationFile.includes('/app/data/seed')) {
+        try {
+          console.log('Removing directory: ' + destinationFile)
+          fs.rmdirSync(destinationFile)
+        } catch(e) {
+          console.log('Directory doesn’t exist: ' + destinationFile)
+        }
+        remove(destinationFile)
+      }
+    } else {
+      if (!destinationFile.includes('session-data-defaults.js')) {
+        try {
+          console.log('Removing file: ' + destinationFile)
+          fs.unlinkSync(destinationFile)
+        } catch(e) {
+          console.log('Could’t remove file: ' + destinationFile)
+        }
+      }
+    }
+  })
+}
+
+remove(destinationData)
 
 copy(sourceData, destinationData)
