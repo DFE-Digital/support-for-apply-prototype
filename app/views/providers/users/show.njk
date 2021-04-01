@@ -3,7 +3,7 @@
 {% set primaryNavId = 'providers' %}
 {% set subNavId = 'details' %}
 
-{% set title = "" %}
+{% set title = "View details for " + user.first_name + " " + user.last_name %}
 
 {% block pageTitle %}
 {{ title }} – {{ serviceName }} – GOV.UK
@@ -68,6 +68,15 @@
           },
           value: {
             text: user.first_name
+          },
+          actions: {
+            items: [
+              {
+                href: "/providers/" + provider.code + "/users/" + user.id + "/edit",
+                text: "Change",
+                visuallyHiddenText: "first name"
+              }
+            ]
           }
         },
         {
@@ -76,6 +85,15 @@
           },
           value: {
             text: user.last_name
+          },
+          actions: {
+            items: [
+              {
+                href: "/providers/" + provider.code + "/users/" + user.id + "/edit",
+                text: "Change",
+                visuallyHiddenText: "last name"
+              }
+            ]
           }
         },
         {
@@ -84,6 +102,15 @@
           },
           value: {
             text: user.email_address
+          },
+          actions: {
+            items: [
+              {
+                href: "/providers/" + provider.code + "/users/" + user.id + "/edit",
+                text: "Change",
+                visuallyHiddenText: "email address"
+              }
+            ]
           }
         },
         {
@@ -100,6 +127,14 @@
           },
           value: {
             text: user.created_at | appDate('datetime')
+          }
+        },
+        {
+          key: {
+            text: "Account updated on"
+          },
+          value: {
+            text: user.last_updated_at | appDate('datetime')
           }
         },
         {

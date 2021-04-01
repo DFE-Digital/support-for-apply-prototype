@@ -28,7 +28,7 @@ exports.list = (req, res) => {
 }
 
 exports.show = (req, res) => {
-  const provider = Providers.findById(req.params.providerId)
+  const provider = Providers.findOne(req.params.providerId)
 
   res.render('../views/providers/show', {
     provider
@@ -36,7 +36,7 @@ exports.show = (req, res) => {
 }
 
 exports.applicationsList = (req, res) => {
-  const provider = Providers.findById(req.params.providerId)
+  const provider = Providers.findOne(req.params.providerId)
 
   let applications = Applications.find(req.params.providerId, req.session.data.filters)
 
@@ -54,7 +54,7 @@ exports.applicationsList = (req, res) => {
 }
 
 exports.applicationDetails = (req, res) => {
-  const provider = Providers.findById(req.params.providerId)
+  const provider = Providers.findOne(req.params.providerId)
 
   res.render('../views/providers/applications/show', {
     provider
@@ -62,7 +62,7 @@ exports.applicationDetails = (req, res) => {
 }
 
 exports.coursesList = (req, res) => {
-  const provider = Providers.findById(req.params.providerId)
+  const provider = Providers.findOne(req.params.providerId)
 
   let courses = Courses.find(req.params.providerId, req.session.data.filters)
 
@@ -91,8 +91,8 @@ exports.coursesList = (req, res) => {
 }
 
 exports.courseDetails = (req, res) => {
-  const provider = Providers.findById(req.params.providerId)
-  const course = Courses.findById(req.params.providerId, req.params.courseId)
+  const provider = Providers.findOne(req.params.providerId)
+  const course = Courses.findOne(req.params.providerId, req.params.courseId)
 
   if (course) {
     res.render('../views/providers/courses/show', {

@@ -58,6 +58,15 @@ router.post('/providers/:providerId/users/:userId/delete', checkIsAuthenticated,
 router.get('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_get)
 router.post('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_post)
 
+router.get('/providers/:providerId/users/upload', checkIsAuthenticated, providerUserController.new_upload_get)
+router.post('/providers/:providerId/users/upload', checkIsAuthenticated, providerUserController.new_upload_post)
+
+router.get('/providers/:providerId/users/upload/permissions', checkIsAuthenticated, providerUserController.new_upload_permissions_get)
+router.post('/providers/:providerId/users/upload/permissions', checkIsAuthenticated, providerUserController.new_upload_permissions_post)
+
+router.get('/providers/:providerId/users/upload/check', checkIsAuthenticated, providerUserController.new_upload_check_get)
+router.post('/providers/:providerId/users/upload/check', checkIsAuthenticated, providerUserController.new_upload_check_post)
+
 router.get('/providers/:providerId/users/:userId', checkIsAuthenticated, providerUserController.show_get)
 
 router.get('/providers/:providerId/users', checkIsAuthenticated, providerUserController.list_get)

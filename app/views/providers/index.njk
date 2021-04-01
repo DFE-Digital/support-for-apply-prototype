@@ -3,8 +3,10 @@
 {% set primaryNavId = 'providers' %}
 {% set subNavId = 'providers' %}
 
+{% set title = "Providers" %}
+
 {% block pageTitle %}
-  Providers for {{ serviceName }}
+{{ title }} – {{ serviceName }} – GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,7 +18,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Providers</h1>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
 
     {{ appSubNavigation({
       label: 'Sub navigation',

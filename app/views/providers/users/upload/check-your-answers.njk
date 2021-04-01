@@ -1,0 +1,91 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = "providers" %}
+{% set subNavId = "users" %}
+
+{% set title = "Check your answers" %}
+
+{% block pageTitle %}
+{{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/providers/" + provider.code + "/users/upload"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{{ provider.name }}</span>
+      {{ title }}
+    </h1>
+
+    <form action="/providers/{{ provider.code }}/users/upload/check" method="post" accept-charset="UTF-8" novalidate>
+
+      {{ govukTable({
+        caption: "Caption text",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "First name"
+          },
+          {
+            text: "Last name"
+          },
+          {
+            text: "Email address"
+          }
+        ],
+        rows: users | arrayToGovukTable
+      }) }}
+
+      {#% for row in users %}
+        <h2 class="govuk-heading-m">User {{ loop.index }}</h2>
+
+        {{ govukSummaryList({
+          rows: [
+            {
+              key: {
+                text: "First name"
+              },
+              value: {
+                text: row[0]
+              }
+            },
+            {
+              key: {
+                text: "Last name"
+              },
+              value: {
+                text: row[1]
+              }
+            },
+            {
+              key: {
+                text: "Email address"
+              },
+              value: {
+                text: row[2]
+              }
+            }
+          ]
+        }) }}
+
+      {% endfor %#}
+
+      {{ govukButton({
+        value: "save",
+        text: "Save and finish"
+      }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

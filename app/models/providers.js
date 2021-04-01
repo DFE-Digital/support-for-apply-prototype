@@ -40,16 +40,28 @@ exports.find = (data) => {
   return providers
 }
 
-exports.findById = (providerId) => {
+exports.findOne = (providerId) => {
   const providers = this.find()
   const provider = providers.filter(p => p.code === providerId.toUpperCase())
   return provider[0]
 }
 
-exports.findByIdAndUpdate = (id, data) => {
+exports.insertOne = (data) => {
 
 }
 
-exports.findByIdAndDelete = (id) => {
+exports.insertMany = (data) => {
+
+}
+
+exports.updateOne = (id, data) => {
+
+}
+
+exports.updateMany = (data) => {
+
+}
+
+exports.deleteOne = (id) => {
 
 }

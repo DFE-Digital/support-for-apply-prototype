@@ -3,7 +3,7 @@
 {% set primaryNavId = "providers" %}
 {% set subNavId = "users" %}
 
-{% set title = "" %}
+{% set title = "View users for " + provider.name %}
 
 {% block pageTitle %}
 {{ title }} – {{ serviceName }} – GOV.UK
@@ -42,6 +42,12 @@
       text: "Add new user"
     }) }}
 
+    {{ govukButton({
+      href: "/providers/" + provider.code + "/users/upload",
+      text: "Add new users in bulk",
+      classes: "govuk-button--secondary"
+    }) }}
+
     <h2 class="govuk-visually-hidden">Users</h2>
 
       {% if users.length %}
@@ -64,7 +70,7 @@
                 <span class="govuk-hint">{{ user.email_address }}</span>
               </td>
               <td class="govuk-table__cell">
-                <ul class="govuk-list">
+                <ul class="govuk-list govuk-list--spaced">
                   {% for provider in user.providers %}
                     <li>{{ provider.name }}</li>
                   {% endfor %}

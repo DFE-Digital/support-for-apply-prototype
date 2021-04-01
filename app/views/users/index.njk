@@ -48,8 +48,9 @@
       <table class="govuk-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-            <th scope="col" class="govuk-table__header">Name</th>
-            <th scope="col" class="govuk-table__header">Email address</th>
+            <th scope="col" class="govuk-table__header">Name and email address</th>
+            <th scope="col" class="govuk-table__header">Providers</th>
+            <th scope="col" class="govuk-table__header">Actions</th>
           </tr>
         </thead>
         <tbody class="govuk-table__body">
@@ -57,9 +58,19 @@
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
               <a class="govuk-link" href="/users/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a>
+              <span class="govuk-hint">{{ user.email_address }}</span>
             </td>
             <td class="govuk-table__cell">
-              {{ user.email_address }}
+              <ul class="govuk-list govuk-list--spaced">
+                {% for provider in user.providers%}
+                  <li>{{ provider.name }}</li>
+                {% endfor %}
+              </ul>
+            </td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="#">
+                Update permissions <span class="govuk-visually-hidden">for {{ user.first_name }} {{ user.last_name }}</a>
+              </a>
             </td>
           </tr>
           {% endfor %}

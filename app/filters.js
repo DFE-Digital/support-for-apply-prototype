@@ -226,6 +226,60 @@ module.exports = function (env) {
     return input
   }
 
+  /*
+  ====================================================================
+  arrayToGovukTable
+  --------------------------------------------------------------------
+  Convert an array to form needed for govukTable macro
+  ====================================================================
+
+  Expects array or nested array.
+
+  Usage:
+
+  {% set tableData = [
+    ["1 January", "Friday", "New Year’s Day"],
+    ["2 April", "Friday", "Good Friday"],
+    ["5 April", "Monday", "Easter Monday"]
+    ]
+  %}
+
+  {{ govukTable({
+    caption: "2021 Bank holidays",
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Date"
+      },
+      {
+        text: "Day of week"
+      },
+      {
+        text: "Holiday name"
+      }
+    ],
+    rows: tableData | arrayToGovukTable
+  }) }}
+
+  */
+
+  filters.arrayToGovukTable = (array) => {
+    // Coerce to nested array
+    array = (Array.isArray(array[0])) ? array : [array]
+    const tableData = []
+    array.forEach(row => {
+      const rowData = []
+      row.forEach(item => {
+        rowData.push({
+          html: item // html for flexibility
+        })
+      })
+      tableData.push(rowData)
+    })
+    // tableData = (tableData.length === 1) ? tableData[0] : tableData
+    return tableData
+  }
+
   /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */

@@ -27,16 +27,28 @@ exports.find = (providerId = null, data) => {
   return courses
 }
 
-exports.findById = (providerId, courseId) => {
+exports.findOne = (providerId, courseId) => {
   const courses = this.find(providerId)
   const course = courses.filter(c => c.code == courseId.toUpperCase())
   return course[0]
 }
 
-exports.findByIdAndUpdate = (id, data) => {
+exports.insertOne = (data) => {
 
 }
 
-exports.findByIdAndDelete = (id) => {
+exports.insertMany = (data) => {
+
+}
+
+exports.updateOne = (id, data) => {
+
+}
+
+exports.updateMany = (data) => {
+
+}
+
+exports.deleteOne = (id) => {
 
 }
