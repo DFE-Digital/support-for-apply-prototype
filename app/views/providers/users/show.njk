@@ -150,7 +150,7 @@
             text: "Email notifications"
           },
           value: {
-            text: "Yes" if user.send_notifications else "No"
+            text: "Yes" if user.send_notifications in [true,"yes"] else "No"
           },
           actions: {
             items: [

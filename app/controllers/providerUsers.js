@@ -90,7 +90,7 @@ exports.edit_post = (req, res) => {
     Users.updateOne(req.params.userId, req.session.data.user)
     req.flash('success', `User ${req.session.data.user.first_name} ${req.session.data.user.last_name} updated`)
     delete req.session.data.user
-    res.redirect(`/providers/${req.params.providerId}/users`)
+    res.redirect(`/providers/${req.params.providerId}/users/${req.params.userId}`)
   }
 }
 
@@ -143,7 +143,7 @@ exports.new_post = (req, res) => {
       errors
     })
   } else {
-    Users.insertOne(req.params.providerId, req.session.data.user)
+    const userId = Users.insertOne(req.params.providerId, req.session.data.user)
     req.flash('success', `New user ${req.session.data.user.first_name} ${req.session.data.user.last_name} added`)
     delete req.session.data.user
     if (req.session.data.button.submit == 'continue') {
@@ -156,7 +156,7 @@ exports.new_post = (req, res) => {
 
 exports.delete_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
-  const user = Users.findOne(req.params.providerId, req.params.userId)
+  const user = Users.findOne(req.params.userId)
   res.render('../views/providers/users/delete', {
     provider,
     user
@@ -164,7 +164,7 @@ exports.delete_get = (req, res) => {
 }
 
 exports.delete_post = (req, res) => {
-  const user = Users.findOne(req.params.providerId, req.params.userId)
+  const user = Users.findOne(req.params.userId)
   req.flash('success', `User ${user.first_name} ${user.last_name} deleted`)
   Users.deleteOne(req.params.userId)
   res.redirect(`/providers/${req.params.providerId}/users`)

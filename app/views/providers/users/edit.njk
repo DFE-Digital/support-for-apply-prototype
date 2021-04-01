@@ -72,13 +72,35 @@
           classes: "govuk-!-width-two-thirds"
         }) }}
 
+        {{ govukRadios({
+          idPrefix: "notifications",
+          name: "user[send_notifications]",
+          fieldset: {
+            legend: {
+              text: "Email notifications",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          items: [
+            {
+              value: "yes",
+              text: "Send notifications",
+              checked: true if user.send_notifications in [true,"yes"] else false
+            },
+            {
+              value: "no",
+              text: "Do not send notifications",
+              checked: true if user.send_notifications in [false,"no"] else false
+            }
+          ]
+        }) }}
+
         {#{ govukCheckboxes({
           idPrefix: "permissions",
           name: "user[permissions][]",
           fieldset: {
             legend: {
               text: "Permissions (optional)",
-              isPageHeading: true,
               classes: "govuk-fieldset__legend--s"
             }
           },

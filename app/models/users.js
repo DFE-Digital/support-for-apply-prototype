@@ -14,7 +14,7 @@ const permissions = [
 
 const directoryPath = path.join(__dirname, '../data/users')
 
-writeFileSync = (data) => {
+const writeFileSync = (data) => {
   const raw = JSON.stringify(data)
 
   const fileName = data.id + '.json'
@@ -78,6 +78,10 @@ exports.find = (data) => {
     users.push(user)
   })
 
+  users = users.sort((a, b) => {
+    return a.first_name.localeCompare(b.first_name) || a.last_name.localeCompare(b.last_name)
+  })
+
   if (data !== undefined) {
 
     if (data.email_address.length) {
@@ -124,6 +128,8 @@ exports.insertOne = (providerId, data) => {
   user.providers.push(provider)
 
   writeFileSync(user)
+
+  return user.id
 }
 
 exports.insertMany = (data) => {
@@ -139,9 +145,8 @@ exports.updateOne = (userId, data) => {
   //   user.dfe_uuid = data.dfe_uuid
   // }
 
+  user.send_notifications = data.send_notifications
   user.last_updated_at = new Date()
-
-  // user.send_notifications = data.send_notifications || true
 
   // user.providers = []
   //

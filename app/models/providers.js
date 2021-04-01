@@ -13,6 +13,8 @@ exports.find = (data) => {
   const rawData = fs.readFileSync(filePath)
   let providers = JSON.parse(rawData)
 
+  providers = providers.sort((a, b) => a.name.localeCompare(b.name))
+
   if (data !== undefined) {
 
     if (data.onboardingStage.includes('With synced courses')) {
