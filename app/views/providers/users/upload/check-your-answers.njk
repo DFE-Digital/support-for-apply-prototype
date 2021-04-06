@@ -12,7 +12,7 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: "/providers/" + provider.code + "/users/upload"
+  href: "/providers/" + provider.code + "/users/upload/permissions"
 }) }}
 {% endblock %}
 
@@ -46,7 +46,7 @@
       }) }#}
 
       {% for user in users %}
-        <h2 class="govuk-heading-m">User {{ loop.index }}</h2>
+        <!-- <h2 class="govuk-heading-m">User {{ loop.index }}</h2> -->
 
         {% set iconTrue %}
         <svg class="app-icon govuk-!-margin-right-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 200 200" focusable="false" fill="currentColor" aria-hidden="true">
@@ -70,41 +70,54 @@
         </ul>
         {% endset %}
 
-        {{ govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: "First name"
-              },
-              value: {
-                text: user.first_name
+        {{ appSummaryCard({
+          titleText: "User " + loop.index,
+          actions: {
+            items: [
+              {
+                href: "/providers/" + provider.code + "/users/upload/permissions?referrer=check-your-answers&email=" + user.email_address,
+                text: "Change",
+                visuallyHiddenText: "user " + loop.index
               }
-            },
-            {
-              key: {
-                text: "Last name"
+            ]
+          },
+          html: govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "First name"
+                },
+                value: {
+                  text: user.first_name
+                }
               },
-              value: {
-                text: user.last_name
-              }
-            },
-            {
-              key: {
-                text: "Email address"
+              {
+                key: {
+                  text: "Last name"
+                },
+                value: {
+                  text: user.last_name
+                }
               },
-              value: {
-                text: user.email_address
-              }
-            },
-            {
-              key: {
-                text: "Permissions"
+              {
+                key: {
+                  text: "Email address"
+                },
+                value: {
+                  text: user.email_address
+                }
               },
-              value: {
-                html: permissionsHtml
+              {
+                key: {
+                  text: "Permissions"
+                },
+                value: {
+                  html: permissionsHtml
+                }
               }
-            }
-          ]
+            ]
+          }),
+          classes: "govuk-!-margin-bottom-6"
         }) }}
 
       {% endfor %}

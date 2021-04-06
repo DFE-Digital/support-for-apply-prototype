@@ -231,7 +231,7 @@ exports.new_upload_post = (req, res) => {
     })
 
     // set a simple array of emails so we can work out the position of the user in the flow
-    req.session.data.upload.emailList = parseEmailsToList(req.session.data.upload.users)
+    // req.session.data.upload.emailList = parseEmailsToList(req.session.data.upload.users)
 
     // set a new array where we'll put the parsed users
     if (req.session.data.users === undefined) {
