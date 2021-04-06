@@ -38,13 +38,13 @@ exports.save = (providerId, data) => {
 exports.saveMany = (providerId, data) => {
   const p = Providers.findOne(providerId)
 
-  data.forEach((row, i) => {
+  data.forEach((item, i) => {
 
     const user = {}
     user.id = uuid()
-    user.first_name = row[0]
-    user.last_name = row[1]
-    user.email_address = row[2]
+    user.first_name = item.first_name
+    user.last_name = item.last_name
+    user.email_address = item.email_address
     user.created_at = new Date()
     user.send_notifications = true
     user.providers = []
@@ -55,7 +55,11 @@ exports.saveMany = (providerId, data) => {
     provider.permissions = {}
 
     permissions.forEach((permission, i) => {
-      provider.permissions[permission] = false
+      if (item.permissions.includes(permission)) {
+        provider.permissions[permission] = true
+      } else {
+        provider.permissions[permission] = false
+      }
     })
 
     user.providers.push(provider)

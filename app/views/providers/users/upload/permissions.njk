@@ -25,159 +25,86 @@
 
     <form action="/providers/{{ provider.code }}/users/upload/permissions" method="post" accept-charset="UTF-8" novalidate>
 
-        {% for row in users %}
-          <!-- <h2 class="govuk-heading-m">User {{ loop.index }}</h2> -->
+      {{ govukInput({
+        id: "first_name",
+        name: "user[first_name]",
+        label: {
+          text: "First name",
+          classes: "govuk-label--s"
+        },
+        errorMessage: errors | getErrorMessage("first_name"),
+        value: user.first_name or user[0],
+        classes: "govuk-!-width-two-thirds"
+      }) }}
 
-          {% call govukFieldset({
-            legend: {
-              text: "User " + loop.index,
-              classes: "govuk-fieldset__legend--m",
-              isPageHeading: false
-            }
-          }) %}
+      {{ govukInput({
+        id: "last_name",
+        name: "user[last_name]",
+        label: {
+          text: "Last name",
+          classes: "govuk-label--s"
+        },
+        errorMessage: errors | getErrorMessage("last_name"),
+        value: user.last_name or user[1],
+        classes: "govuk-!-width-two-thirds"
+      }) }}
 
-          {{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "First name"
-                },
-                value: {
-                  text: row[0]
-                }
-              },
-              {
-                key: {
-                  text: "Last name"
-                },
-                value: {
-                  text: row[1]
-                }
-              },
-              {
-                key: {
-                  text: "Email address"
-                },
-                value: {
-                  text: row[2]
-                }
-              }
-            ]
-          }) }}
+      {{ govukInput({
+        id: "email_address",
+        name: "user[email_address]",
+        type: "email",
+        inputmode: "email",
+        label: {
+          text: "Email address",
+          classes: "govuk-label--s"
+        },
+        errorMessage: errors | getErrorMessage("email_address"),
+        value: user.email_address or user[2],
+        spellcheck: false,
+        classes: "govuk-!-width-two-thirds"
+      }) }}
 
-            {#{ govukInput({
-              id: "first_name_" + loop.index,
-              name: "user[" + loop.index + "][first_name]",
-              label: {
-                text: "First name",
-                classes: "govuk-label--s"
-              },
-              errorMessage: errors | getErrorMessage("first_name"),
-              value: data.user[loop.index].first_name or row[0],
-              classes: "govuk-!-width-two-thirds"
-            }) }}
-
-            {{ govukInput({
-              id: "last_name_" + loop.index,
-              name: "user[" + loop.index + "][last_name]",
-              label: {
-                text: "Last name",
-                classes: "govuk-label--s"
-              },
-              errorMessage: errors | getErrorMessage("last_name"),
-              value: data.user[loop.index].last_name or row[1],
-              classes: "govuk-!-width-two-thirds"
-            }) }}
-
-            {{ govukInput({
-              id: "email_address_" + loop.index,
-              name: "user[" + loop.index + "][email_address]",
-              type: "email",
-              inputmode: "email",
-              label: {
-                text: "Email address",
-                classes: "govuk-label--s"
-              },
-              errorMessage: errors | getErrorMessage("email_address"),
-              value: data.user[loop.index].email_address or row[2],
-              spellcheck: false,
-              classes: "govuk-!-width-two-thirds"
-            }) }#}
-
-            {{ govukCheckboxes({
-              idPrefix: "permissions_" + loop.index,
-              name: "user[" + loop.index + "][permissions][]",
-              fieldset: {
-                legend: {
-                  text: "Permissions (optional)",
-                  isPageHeading: true,
-                  classes: "govuk-fieldset__legend--s"
-                }
-              },
-              hint: {
-                text: "The user will be able to view applications. You can also give them additional permissions."
-              },
-              items: [
-                {
-                  value: "manage_organisations",
-                  text: "Manage organisational permissions",
-                  checked: true if data.user[loop.index].permissions and "manage_organisations" in data.user[loop.index].permissions
-                },
-                {
-                  value: "manage_users",
-                  text: "Manage users",
-                  checked: true if data.user[loop.index].permissions and "manage_users" in data.user[loop.index].permissions
-                },
-                {
-                  value: "make_decisions",
-                  text: "Make decisions and set up interviews",
-                  checked: true if data.user[loop.index].permissions and "make_decisions" in data.user[loop.index].permissions
-                },
-                {
-                  value: "view_safeguarding_information",
-                  text: "Access safeguarding information",
-                  checked: true if data.user[loop.index].permissions and "view_safeguarding_information" in data.user[loop.index].permissions
-                },
-                {
-                  value: "view_diversity_information",
-                  text: "Access diversity information",
-                  checked: true if data.user[loop.index].permissions and "view_diversity_information" in data.user[loop.index].permissions
-                }
-              ]
-            }) }}
-
-          {% endcall %}
-
-          {#{ govukSummaryList({
-            rows: [
-              {
-                key: {
-                  text: "First name"
-                },
-                value: {
-                  text: row[0]
-                }
-              },
-              {
-                key: {
-                  text: "Last name"
-                },
-                value: {
-                  text: row[1]
-                }
-              },
-              {
-                key: {
-                  text: "Email address"
-                },
-                value: {
-                  text: row[2]
-                }
-              }
-            ]
-          }) }#}
-
-        {% endfor %}
+      {{ govukCheckboxes({
+        idPrefix: "permissions",
+        name: "user[permissions][]",
+        fieldset: {
+          legend: {
+            text: "Permissions (optional)",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "The user will be able to view applications. You can also give them additional permissions."
+        },
+        items: [
+          {
+            value: "manage_organisations",
+            text: "Manage organisational permissions",
+            checked: true if user.permissions and "manage_organisations" in user.permissions
+          },
+          {
+            value: "manage_users",
+            text: "Manage users",
+            checked: true if user.permissions and "manage_users" in user.permissions
+          },
+          {
+            value: "make_decisions",
+            text: "Make decisions and set up interviews",
+            checked: true if user.permissions and "make_decisions" in user.permissions
+          },
+          {
+            value: "view_safeguarding_information",
+            text: "Access safeguarding information",
+            checked: true if user.permissions and "view_safeguarding_information" in user.permissions
+          },
+          {
+            value: "view_diversity_information",
+            text: "Access diversity information",
+            checked: true if user.permissions and "view_diversity_information" in user.permissions
+          }
+        ]
+      }) }}
 
       {{ govukButton({
         value: "save",
