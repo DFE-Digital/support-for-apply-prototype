@@ -248,7 +248,9 @@ exports.new_upload_permissions_get = (req, res) => {
 
   res.render('../views/providers/users/upload/permissions', {
     provider,
-    user
+    user,
+    userCount: req.session.data.upload.users.length,
+    userNum: (req.session.data.upload.position + 1)
   })
 }
 
@@ -291,7 +293,9 @@ exports.new_upload_permissions_post = (req, res) => {
     res.render('../views/providers/users/upload/permissions', {
       provider,
       user,
-      errors
+      errors,
+      userCount: req.session.data.upload.users.length,
+      userNum: (req.session.data.upload.position + 1)
     })
   } else {
 

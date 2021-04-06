@@ -3,7 +3,7 @@
 {% set primaryNavId = "providers" %}
 {% set subNavId = "users" %}
 
-{% set title = "SET PERMISSIONS" %}
+{% set title = "Add new user " + userNum + " of " + userCount %}
 
 {% block pageTitle %}
 {{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
@@ -12,7 +12,7 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: "/providers/" + provider.code + "/users"
+  href: "/providers/" + provider.code + "/users/upload"
 }) }}
 {% endblock %}
 
@@ -23,7 +23,10 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">{{ title }}</h1>
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{{ provider.name }}</span>
+      {{ title }}
+    </h1>
 
     <form action="/providers/{{ provider.code }}/users/upload/permissions" method="post" accept-charset="UTF-8" novalidate>
 
