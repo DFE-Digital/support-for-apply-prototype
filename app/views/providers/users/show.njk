@@ -115,6 +115,23 @@
         },
         {
           key: {
+            text: "Email notifications"
+          },
+          value: {
+            text: "Yes" if user.send_notifications in [true,"yes"] else "No"
+          },
+          actions: {
+            items: [
+              {
+                href: "/providers/" + provider.code + "/users/" + user.id + "/edit",
+                text: "Change",
+                visuallyHiddenText: "email notification settings"
+              }
+            ]
+          }
+        },
+        {
+          key: {
             text: "DfE Sign-in UID"
           },
           value: {
@@ -145,23 +162,6 @@
             text: user.last_signed_in_at | appDate('datetime')
           }
         } if user.last_signed_in_at,
-        {
-          key: {
-            text: "Email notifications"
-          },
-          value: {
-            text: "Yes" if user.send_notifications in [true,"yes"] else "No"
-          },
-          actions: {
-            items: [
-              {
-                href: "/providers/" + provider.code + "/users/" + user.id + "/edit",
-                text: "Change",
-                visuallyHiddenText: "email notification settings"
-              }
-            ]
-          }
-        },
         {
           key: {
             text: "Permissions"

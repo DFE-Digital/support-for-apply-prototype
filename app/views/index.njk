@@ -3,8 +3,10 @@
 
 {% set pageId = 'applications' %}
 
+{% set title = "Prototype for " + serviceName %}
+
 {% block pageTitle %}
-  Prototype for {{serviceName}}
+  {{ title }}
 {% endblock %}
 
 {% block beforeContent %}
@@ -13,11 +15,17 @@
 
 {% block content %}
 
-  <h1 class="govuk-heading-xl">Prototype</h1>
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+      <h1 class="govuk-heading-xl">{{ title }}</h1>
+    </div>
+    <div class="govuk-grid-column-one-third">
 
-  {{govukButton({
-    text: 'Start prototype',
-    href: '/applications'
-  })}}
+    </div>
+  </div>
+
+
+
+
 
 {% endblock %}
