@@ -5,29 +5,16 @@ const ValidationHelper = require('../helpers/validators')
 
 const CSV = require('csv-string')
 
-// const parseUploadedUsers = (array) => {
-//   const users = []
-//
-//   array.forEach((item, i) => {
-//     const user = {}
-//     user.first_name = item[0]
-//     user.last_name = item[1]
-//     user.email_address = item[2]
-//     users.push(user)
-//   })
-//
-//   return users
-// }
+// used to easily work out the position of an item in the uploaded data
+const parseEmailsToList = (array) => {
+  const emails = []
 
-// const parseEmailsToList = (array) => {
-//   const emails = []
-//
-//   array.forEach((item, i) => {
-//     emails.push(item[2])
-//   })
-//
-//   return emails
-// }
+  array.forEach((item, i) => {
+    emails.push(item[2])
+  })
+
+  return emails
+}
 
 exports.list_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
@@ -196,6 +183,8 @@ exports.delete_post = (req, res) => {
 
 exports.new_upload_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
+  // clear any previously uploaded data
+  delete req.session.data.upload
   res.render('../views/providers/users/upload/new', {
     provider
   })
@@ -231,17 +220,14 @@ exports.new_upload_post = (req, res) => {
     })
 
     // set a simple array of emails so we can work out the position of the user in the flow
-    // req.session.data.upload.emailList = parseEmailsToList(req.session.data.upload.users)
+    req.session.data.upload.emailList = parseEmailsToList(req.session.data.upload.users)
 
     // set a new array where we'll put the parsed users
-    if (req.session.data.users === undefined) {
-      req.session.data.users = []
-    }
+    req.session.data.users = []
 
-    // set up the position counter
-    if (req.session.data.upload.position === undefined) {
-      req.session.data.upload.position = 0
-    }
+
+    // set the position counter so we can iterate through the users and keep track
+    req.session.data.upload.position = 0
 
     res.redirect(`/providers/${req.params.providerId}/users/upload/permissions`)
   }
@@ -249,8 +235,16 @@ exports.new_upload_post = (req, res) => {
 
 exports.new_upload_permissions_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
-  const uploadedUsers = req.session.data.upload.users
-  const user = uploadedUsers[req.session.data.upload.position]
+
+  // get the user from the array of uploaded users
+  let user = req.session.data.upload.users[req.session.data.upload.position]
+
+  if (req.query.referrer === 'check-your-answers') {
+    // get the position of the user we want to edit
+    req.session.data.upload.position = req.session.data.upload.emailList.indexOf(req.query.email)
+    // get the user from the parsed users
+    user = req.session.data.users[req.session.data.upload.position]
+  }
 
   res.render('../views/providers/users/upload/permissions', {
     provider,
@@ -300,14 +294,24 @@ exports.new_upload_permissions_post = (req, res) => {
       errors
     })
   } else {
-    // add the user details to the users array for later saving
-    req.session.data.users.push(req.session.data.user)
+
+    if (req.session.data.referrer === 'check-your-answers') {
+      // replace the data held in the session with the changed data
+      req.session.data.users.splice(req.session.data.upload.position, 1, req.session.data.user)
+      // replace the email with the changed data
+      req.session.data.upload.emailList.splice(req.session.data.upload.position, 1, req.session.data.user.email_address)
+    } else {
+      // add the user details to the users array for later saving
+      req.session.data.users.push(req.session.data.user)
+    }
 
     // delete the user object read for the next item in the flow
     delete req.session.data.user
 
     // if we've reached the last person, move to the next step, else next continue
-    if (req.session.data.upload.position == (req.session.data.upload.users.length - 1)) {
+    if (req.session.data.upload.position === (req.session.data.upload.users.length - 1)
+      || req.session.data.referrer === 'check-your-answers') {
+      delete req.session.data.referrer
       res.redirect(`/providers/${req.params.providerId}/users/upload/check`)
     } else {
       // increment the position to track where we are in the flow
