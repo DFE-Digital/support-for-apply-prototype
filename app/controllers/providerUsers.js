@@ -6,15 +6,15 @@ const ValidationHelper = require('../helpers/validators')
 const CSV = require('csv-string')
 
 // used to easily work out the position of an item in the uploaded data
-const parseEmailsToList = (array) => {
-  const emails = []
-
-  array.forEach((item, i) => {
-    emails.push(item[2])
-  })
-
-  return emails
-}
+// const parseEmailsToList = (array) => {
+//   const emails = []
+//
+//   array.forEach((item, i) => {
+//     emails.push(item[2])
+//   })
+//
+//   return emails
+// }
 
 exports.list_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
@@ -155,9 +155,9 @@ exports.new_post = (req, res) => {
     })
   } else {
     const userId = Users.insertOne(req.params.providerId, req.session.data.user)
-    req.flash('success', `New user ${req.session.data.user.first_name} ${req.session.data.user.last_name} added`)
+    req.flash('success', `User ${req.session.data.user.first_name} ${req.session.data.user.last_name} added`)
     delete req.session.data.user
-    if (req.session.data.button.submit == 'continue') {
+    if (req.session.data.button.submit === 'continue') {
       res.redirect(`/providers/${req.params.providerId}/users/new`)
     } else {
       res.redirect(`/providers/${req.params.providerId}/users`)
@@ -200,7 +200,7 @@ exports.new_upload_post = (req, res) => {
     const error = {}
     error.fieldName = 'raw'
     error.href = '#raw'
-    error.text = 'Enter the first names, last names and email addresses of the users you want to add'
+    error.text = 'Enter the users’ details'
     errors.push(error)
   }
 
@@ -220,11 +220,10 @@ exports.new_upload_post = (req, res) => {
     })
 
     // set a simple array of emails so we can work out the position of the user in the flow
-    req.session.data.upload.emailList = parseEmailsToList(req.session.data.upload.users)
+    // req.session.data.upload.emailList = parseEmailsToList(req.session.data.upload.users)
 
     // set a new array where we'll put the parsed users
     req.session.data.users = []
-
 
     // set the position counter so we can iterate through the users and keep track
     req.session.data.upload.position = 0
@@ -236,21 +235,31 @@ exports.new_upload_post = (req, res) => {
 exports.new_upload_permissions_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
 
+  // console.log('Query position', req.query.position)
+
   // get the user from the array of uploaded users
   let user = req.session.data.upload.users[req.session.data.upload.position]
 
-  if (req.query.referrer === 'check-your-answers') {
+  // console.log('Upload position before', req.session.data.upload.position);
+
+  if (req.query.referrer === 'check-your-answers' || req.query.referrer === 'back') {
     // get the position of the user we want to edit
-    req.session.data.upload.position = req.session.data.upload.emailList.indexOf(req.query.email)
+    req.session.data.upload.position = parseInt(req.query.position)
+
     // get the user from the parsed users
     user = req.session.data.users[req.session.data.upload.position]
   }
+
+  // console.log('Upload position after', req.session.data.upload.position);
+  // console.log(user);
+  // console.log('=====');
 
   res.render('../views/providers/users/upload/permissions', {
     provider,
     user,
     userCount: req.session.data.upload.users.length,
-    userNum: (req.session.data.upload.position + 1)
+    currentUserNum: (req.session.data.upload.position + 1),
+    previousUserNum: (req.session.data.upload.position - 1)
   })
 }
 
@@ -295,7 +304,8 @@ exports.new_upload_permissions_post = (req, res) => {
       user,
       errors,
       userCount: req.session.data.upload.users.length,
-      userNum: (req.session.data.upload.position + 1)
+      currentUserNum: (req.session.data.upload.position + 1),
+      previousUserNum: (req.session.data.upload.position - 1)
     })
   } else {
 
@@ -303,7 +313,7 @@ exports.new_upload_permissions_post = (req, res) => {
       // replace the data held in the session with the changed data
       req.session.data.users.splice(req.session.data.upload.position, 1, req.session.data.user)
       // replace the email with the changed data
-      req.session.data.upload.emailList.splice(req.session.data.upload.position, 1, req.session.data.user.email_address)
+      // req.session.data.upload.emailList.splice(req.session.data.upload.position, 1, req.session.data.user.email_address)
     } else {
       // add the user details to the users array for later saving
       req.session.data.users.push(req.session.data.user)
@@ -337,7 +347,11 @@ exports.new_upload_check_get = (req, res) => {
 
 exports.new_upload_check_post = (req, res) => {
   Users.saveMany(req.params.providerId, req.session.data.users)
-  req.flash('success', `${req.session.data.upload.users.length} users added`)
+  if (req.session.data.users.length === 1) {
+    req.flash('success', `User ${req.session.data.users[0].first_name} ${req.session.data.users[0].last_name} added`)
+  } else {
+    req.flash('success', `${req.session.data.users.length} users added`)
+  }
   delete req.session.data.upload
   delete req.session.data.users
   res.redirect(`/providers/${req.params.providerId}/users`)

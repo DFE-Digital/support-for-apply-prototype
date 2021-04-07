@@ -3,7 +3,7 @@
 {% set primaryNavId = "providers" %}
 {% set subNavId = "users" %}
 
-{% set title = "Add new users to " + provider.name %}
+{% set title = "Add users to " + provider.name %}
 
 {% block pageTitle %}
 {{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
@@ -31,7 +31,7 @@
         id: "users",
         name: "upload[raw]",
         label: {
-          text: "User details",
+          text: "Users’ details",
           classes: "govuk-label--s"
         },
         hint: {
@@ -42,8 +42,9 @@
       }) }}
 
       {{ govukButton({
-        text: "Next"
+        text: "Continue"
       }) }}
+
     </form>
 
   </div>

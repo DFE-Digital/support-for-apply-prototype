@@ -3,7 +3,9 @@
 {% set primaryNavId = "providers" %}
 {% set subNavId = "users" %}
 
-{% set title = "Check your answers" %}
+
+{% set title = "Check details and add user" + ("s" if users.length > 1) %}
+
 
 {% block pageTitle %}
 {{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
@@ -46,7 +48,6 @@
       }) }#}
 
       {% for user in users %}
-        <!-- <h2 class="govuk-heading-m">User {{ loop.index }}</h2> -->
 
         {% set iconTrue %}
         <svg class="app-icon govuk-!-margin-right-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 200 200" focusable="false" fill="currentColor" aria-hidden="true">
@@ -71,11 +72,11 @@
         {% endset %}
 
         {{ appSummaryCard({
-          titleText: "User " + loop.index,
+          titleText: "User " + loop.index if users.length > 1,
           actions: {
             items: [
               {
-                href: "/providers/" + provider.code + "/users/upload/permissions?referrer=check-your-answers&email=" + user.email_address,
+                href: "/providers/" + provider.code + "/users/upload/permissions?referrer=check-your-answers&position=" + loop.index0,
                 text: "Change",
                 visuallyHiddenText: "user " + loop.index
               }
@@ -123,8 +124,7 @@
       {% endfor %}
 
       {{ govukButton({
-        value: "save",
-        text: "Save and finish"
+        text: "Add user" + ("s" if users.length > 1)
       }) }}
     </form>
 

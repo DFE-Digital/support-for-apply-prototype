@@ -3,7 +3,7 @@
 {% set primaryNavId = "providers" %}
 {% set subNavId = "users" %}
 
-{% set title = "Add new user to " + provider.name %}
+{% set title = "Add user to " + provider.name %}
 
 {% block pageTitle %}
 {{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
@@ -130,15 +130,15 @@
       {{ govukButton({
         name: "button[submit]",
         value: "save",
-        text: "Save and finish"
+        text: "Add user"
       }) }}
 
-      {{ govukButton({
+      {#{ govukButton({
         name: "button[submit]",
         value: "continue",
-        text: "Save and add another user",
+        text: "Save user and add another",
         classes: "govuk-button--secondary"
-      }) }}
+      }) }#}
     </form>
 
   </div>
