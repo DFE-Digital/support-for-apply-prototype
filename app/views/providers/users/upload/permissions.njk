@@ -38,7 +38,7 @@
           classes: "govuk-label--s"
         },
         errorMessage: errors | getErrorMessage("first_name"),
-        value: user.first_name or user[0],
+        value: user.first_name,
         classes: "govuk-!-width-two-thirds"
       }) }}
 
@@ -50,7 +50,7 @@
           classes: "govuk-label--s"
         },
         errorMessage: errors | getErrorMessage("last_name"),
-        value: user.last_name or user[1],
+        value: user.last_name,
         classes: "govuk-!-width-two-thirds"
       }) }}
 
@@ -64,7 +64,7 @@
           classes: "govuk-label--s"
         },
         errorMessage: errors | getErrorMessage("email_address"),
-        value: user.email_address or user[2],
+        value: user.email_address,
         spellcheck: false,
         classes: "govuk-!-width-two-thirds"
       }) }}

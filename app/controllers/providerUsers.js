@@ -5,16 +5,19 @@ const ValidationHelper = require('../helpers/validators')
 
 const CSV = require('csv-string')
 
-// used to easily work out the position of an item in the uploaded data
-// const parseEmailsToList = (array) => {
-//   const emails = []
-//
-//   array.forEach((item, i) => {
-//     emails.push(item[2])
-//   })
-//
-//   return emails
-// }
+// convert an array of user arrays into an array of user objects
+const parseRawUserData = (array) => {
+  const users = []
+  array.forEach((row, i) => {
+    const user = {}
+    user.first_name = row[0]
+    user.last_name = row[1]
+    user.email_address = row[2]
+    user.permissions = []
+    users.push(user)
+  })
+  return users
+}
 
 exports.list_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
@@ -219,11 +222,8 @@ exports.new_upload_post = (req, res) => {
       req.session.data.upload.users = data
     })
 
-    // set a simple array of emails so we can work out the position of the user in the flow
-    // req.session.data.upload.emailList = parseEmailsToList(req.session.data.upload.users)
-
-    // set a new array where we'll put the parsed users
-    req.session.data.users = []
+    // set a new array and populate with parsed users
+    req.session.data.users = parseRawUserData(req.session.data.upload.users)
 
     // set the position counter so we can iterate through the users and keep track
     req.session.data.upload.position = 0
@@ -235,24 +235,13 @@ exports.new_upload_post = (req, res) => {
 exports.new_upload_permissions_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
 
-  // console.log('Query position', req.query.position)
-
-  // get the user from the array of uploaded users
-  let user = req.session.data.upload.users[req.session.data.upload.position]
-
-  // console.log('Upload position before', req.session.data.upload.position);
-
   if (req.query.referrer === 'check-your-answers' || req.query.referrer === 'back') {
     // get the position of the user we want to edit
     req.session.data.upload.position = parseInt(req.query.position)
-
-    // get the user from the parsed users
-    user = req.session.data.users[req.session.data.upload.position]
   }
 
-  // console.log('Upload position after', req.session.data.upload.position);
-  // console.log(user);
-  // console.log('=====');
+  // get the user from the parsed users
+  const user = req.session.data.users[req.session.data.upload.position]
 
   res.render('../views/providers/users/upload/permissions', {
     provider,
@@ -309,15 +298,8 @@ exports.new_upload_permissions_post = (req, res) => {
     })
   } else {
 
-    if (req.session.data.referrer === 'check-your-answers') {
-      // replace the data held in the session with the changed data
-      req.session.data.users.splice(req.session.data.upload.position, 1, req.session.data.user)
-      // replace the email with the changed data
-      // req.session.data.upload.emailList.splice(req.session.data.upload.position, 1, req.session.data.user.email_address)
-    } else {
-      // add the user details to the users array for later saving
-      req.session.data.users.push(req.session.data.user)
-    }
+    // replace the data held in the session with the changed data
+    req.session.data.users.splice(req.session.data.upload.position, 1, req.session.data.user)
 
     // delete the user object read for the next item in the flow
     delete req.session.data.user
