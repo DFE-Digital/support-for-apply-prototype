@@ -14,7 +14,7 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: "/providers/" + provider.code + "/users/upload/permissions"
+  href: "/providers/" + provider.code + "/users/upload/permissions?action=back&position=" + (users.length - 1)
 }) }}
 {% endblock %}
 
@@ -76,7 +76,7 @@
           actions: {
             items: [
               {
-                href: "/providers/" + provider.code + "/users/upload/permissions?referrer=check-your-answers&position=" + loop.index0,
+                href: "/providers/" + provider.code + "/users/upload/permissions?action=change&position=" + loop.index0,
                 text: "Change",
                 visuallyHiddenText: "user " + loop.index
               }

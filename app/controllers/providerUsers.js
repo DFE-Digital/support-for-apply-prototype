@@ -235,9 +235,28 @@ exports.new_upload_post = (req, res) => {
 exports.new_upload_permissions_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
 
-  if (req.query.referrer === 'check-your-answers' || req.query.referrer === 'back') {
+  if (req.query.action === 'change' || req.query.action === 'back') {
     // get the position of the user we want to edit
     req.session.data.upload.position = parseInt(req.query.position)
+  }
+
+  const userCount = req.session.data.upload.users.length
+  const currentUserNum = req.session.data.upload.position + 1
+
+  // set the save route for new or change flow
+  let save = `/providers/${provider.code}/users/upload/permissions`
+  // if (req.headers.referer.includes('check-your-answers')) {
+  if (req.query.action === 'change') {
+    save = save + '?action=change'
+  }
+
+  // set the back route for new or change flow
+  let back = `/providers/${provider.code}/users/upload`
+  if (req.query.action === 'change') {
+    back = `/providers/${provider.code}/users/upload/check`
+  } else if (req.session.data.upload.position) {
+    const previousPosition = req.session.data.upload.position - 1
+    back = `/providers/${provider.code}/users/upload/permissions?action=back&position=${previousPosition}`
   }
 
   // get the user from the parsed users
@@ -246,9 +265,10 @@ exports.new_upload_permissions_get = (req, res) => {
   res.render('../views/providers/users/upload/permissions', {
     provider,
     user,
-    userCount: req.session.data.upload.users.length,
-    currentUserNum: (req.session.data.upload.position + 1),
-    previousUserNum: (req.session.data.upload.position - 1)
+    userCount,
+    currentUserNum,
+    save,
+    back
   })
 }
 
@@ -288,13 +308,33 @@ exports.new_upload_permissions_post = (req, res) => {
   if (errors.length) {
     const provider = Providers.findOne(req.params.providerId)
     const user = req.session.data.user
+
+    const userCount = req.session.data.upload.users.length
+    const currentUserNum = req.session.data.upload.position + 1
+
+    // set the save route for new or change flow
+    let save = `/providers/${provider.code}/users/upload/permissions`
+    if (req.query.action === 'change') {
+      save = save + '?action=change'
+    }
+
+    // set the back route for new or change flow
+    let back = `/providers/${provider.code}/users/upload`
+    if (req.query.action === 'change') {
+      back = `/providers/${provider.code}/users/upload/check`
+    } else if (req.session.data.upload.position) {
+      const previousPosition = req.session.data.upload.position - 1
+      back = `/providers/${provider.code}/users/upload/permissions?action=back&position=${previousPosition}`
+    }
+
     res.render('../views/providers/users/upload/permissions', {
       provider,
       user,
       errors,
-      userCount: req.session.data.upload.users.length,
-      currentUserNum: (req.session.data.upload.position + 1),
-      previousUserNum: (req.session.data.upload.position - 1)
+      userCount,
+      currentUserNum,
+      save,
+      back
     })
   } else {
 
@@ -306,8 +346,8 @@ exports.new_upload_permissions_post = (req, res) => {
 
     // if we've reached the last person, move to the next step, else next continue
     if (req.session.data.upload.position === (req.session.data.upload.users.length - 1)
-      || req.session.data.referrer === 'check-your-answers') {
-      delete req.session.data.referrer
+      || req.session.data.action === 'change') {
+      delete req.session.data.action
       res.redirect(`/providers/${req.params.providerId}/users/upload/check`)
     } else {
       // increment the position to track where we are in the flow

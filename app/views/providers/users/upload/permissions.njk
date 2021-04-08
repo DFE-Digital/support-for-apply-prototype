@@ -12,7 +12,7 @@
 {% block beforeContent %}
 {{ govukBackLink({
   text: "Back",
-  href: ("/providers/" + provider.code + "/users/upload") if currentUserNum == 1 else ("/providers/" + provider.code + "/users/upload/permissions?referrer=back&position=" + previousUserNum)
+  href: back
 }) }}
 {% endblock %}
 
@@ -28,7 +28,7 @@
       {{ title }}
     </h1>
 
-    <form action="/providers/{{ provider.code }}/users/upload/permissions" method="post" accept-charset="UTF-8" novalidate>
+    <form action="{{ save }}" method="post" accept-charset="UTF-8" novalidate>
 
       {{ govukInput({
         id: "first_name",
