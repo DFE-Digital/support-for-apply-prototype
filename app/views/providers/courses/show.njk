@@ -1,0 +1,262 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'providers' %}
+{% set subNavId = 'details' %}
+
+{% block pageTitle %}
+  Prototype for {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/providers",
+    text: "Providers"
+  }, {
+    href: "/providers/" + provider.code,
+    text: provider.name
+  }, {
+    href: "/providers/" + provider.code + "/courses",
+    text: "Courses"
+  }, {
+    text: course.name
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">{{ course.name }} ({{ course.code }})</h1>
+
+    {% include "./_includes/sub-navigation.njk" %}
+
+    {% set findStatus %}
+      {% if course.exposed_in_find %}
+        {{ govukTag({
+          text: "Shown on find",
+          classes: "govuk-tag--green"
+        }) }}
+      {% else %}
+        {{ govukTag({
+          text: "Hidden on find",
+          classes: "govuk-tag--grey"
+        }) }}
+      {% endif %}
+    {% endset %}
+
+    {% set applyStatus %}
+      {% if course.open_on_apply %}
+        {{ govukTag({
+          text: "Open on Apply & UCAS",
+          classes: "govuk-tag--green"
+        }) }}
+      {% else %}
+        {{ govukTag({
+          text: "Open on UCAS only",
+          classes: "govuk-tag--blue"
+        }) }}
+      {% endif %}
+    {% endset %}
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Recruitment cycle year"
+          },
+          value: {
+            text: course.recruitment_cycle_year
+          }
+        },
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: course.name + " (" + course.code + ")"
+          }
+        },
+        {
+          key: {
+            text: "Provider"
+          },
+          value: {
+            html: '<a class="govuk-link" href="/providers/' + provider.code + '">' + provider.name + ' (' + provider.code + ')</a>'
+          }
+        },
+        {
+          key: {
+            text: "Accredited body"
+          },
+          value: {
+            text: course.accredited_body.name + " (" + course.accredited_body.code + ")"
+          }
+        } if course.accredited_body,
+        {
+          key: {
+            text: "Level"
+          },
+          value: {
+            text: course.level | getLevelName
+          }
+        },
+        {
+          key: {
+            text: "Program type"
+          },
+          value: {
+            text: course.program_type | getProgramTypeName
+          }
+        },
+        {
+          key: {
+            text: "Qualifications"
+          },
+          value: {
+            text: course.qualifications | getQualificationName
+          }
+        },
+        {
+          key: {
+            text: "Description"
+          },
+          value: {
+            text: course.description
+          }
+        },
+        {
+          key: {
+            text: "Start date"
+          },
+          value: {
+            text: course.start_date | date('MMMM YYYY')
+          }
+        },
+        {
+          key: {
+            text: "Last updated"
+          },
+          value: {
+            text: course.updated_at | appDate('datetime')
+          }
+        },
+        {
+          key: {
+            text: "Study modes"
+          },
+          value: {
+            text: course.study_mode | getStudyModeName
+          }
+        },
+        {
+          key: {
+            text: "Funding type"
+          },
+          value: {
+            text: course.funding_type | getFundingTypeName
+          }
+        },
+        {
+          key: {
+            text: "Financial support"
+          },
+          value: {
+            text: course.financial_support | getFinancialSupportName
+          }
+        },
+        {
+          key: {
+            text: "Course in previous cycle"
+          },
+          value: {
+            text: ""
+          }
+        },
+        {
+          key: {
+            text: "Course in next cycle"
+          },
+          value: {
+            text: "None"
+          }
+        },
+        {
+          key: {
+            text: "Find status"
+          },
+          value: {
+            html: findStatus
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Course page on Find"
+              }
+            ]
+          }
+        },
+        {
+          key: {
+            text: "Apply status"
+          },
+          value: {
+            html: applyStatus
+          },
+          actions: {
+            items: [
+              {
+                href: "#",
+                text: "Start page on Apply"
+              }
+            ]
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="#" method="post" accept-charset="UTF-8" novalidate>
+
+      {{ govukRadios({
+        idPrefix: "apply",
+        name: "apply",
+        fieldset: {
+          legend: {
+            text: "Where can candidates apply for this course?",
+            isPageHeading: false,
+            classes: "govuk-fieldset__legend--m"
+          }
+        },
+        items: [
+          {
+            value: "Apply and UCAS",
+            text: "Apply and UCAS",
+            checked: false
+          },
+          {
+            value: "UCAS only",
+            text: "UCAS only",
+            checked: false
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Update"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

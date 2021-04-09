@@ -1,0 +1,86 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'providers' %}
+{% set subNavId = 'details' %}
+
+{% set title = "View details for " + provider.name %}
+
+{% block pageTitle %}
+{{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/providers",
+    text: "Providers"
+  }, {
+    text: provider.name
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">{{ provider.name }} ({{ provider.code }})</h1>
+
+    {% include "./_sub-navigation.njk" %}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {{ govukSummaryList({
+      rows: [
+        {
+          key: {
+            text: "Name"
+          },
+          value: {
+            text: provider.name
+          }
+        },
+        {
+          key: {
+            text: "Code"
+          },
+          value: {
+            text: provider.code
+          }
+        },
+        {
+          key: {
+            text: "Last updated"
+          },
+          value: {
+            text: provider.updated_at | govDate
+          }
+        },
+        {
+          key: {
+            text: "Data sharing agreement"
+          },
+          value: {
+            text: "Accepted by jane.doe@example.com on " + provider.agreement.accepted_at | govDate
+          }
+        },
+        {
+          key: {
+            text: "Average distance to sites"
+          },
+          value: {
+            text: ""
+          }
+        }
+      ]
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}

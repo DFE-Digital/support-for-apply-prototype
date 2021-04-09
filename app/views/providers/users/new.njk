@@ -1,0 +1,159 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = "providers" %}
+{% set subNavId = "users" %}
+
+{% set title = "Add user to " + provider.name %}
+
+{% block pageTitle %}
+{{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/providers/" + provider.code + "/users"
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../_includes/error-summary.njk" %}
+
+{% if message.success %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+      {{ govukNotificationBanner({
+        type: "success",
+        text: message.success[0]
+      }) }}
+    </div>
+  </div>
+{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/providers/{{ provider.code }}/users/new" method="post" accept-charset="UTF-8" novalidate>
+
+      {% call govukFieldset({
+        legend: {
+          text: title,
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: false
+        }
+      }) %}
+
+        {{ govukInput({
+          id: "first_name",
+          name: "user[first_name]",
+          label: {
+            text: "First name",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("first_name"),
+          value: data.user.first_name,
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukInput({
+          id: "last_name",
+          name: "user[last_name]",
+          label: {
+            text: "Last name",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("last_name"),
+          value: data.user.last_name,
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukInput({
+          id: "dfe_uuid",
+          name: "user[dfe_uuid]",
+          label: {
+            text: "DfE Sign-in ID",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("dfe_uuid"),
+          value: data.user.dfe_uuid,
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukInput({
+          id: "email_address",
+          name: "user[email_address]",
+          type: "email",
+          inputmode: "email",
+          label: {
+            text: "Email address",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("email_address"),
+          value: data.user.email_address,
+          spellcheck: false,
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "permissions",
+          name: "user[permissions][]",
+          fieldset: {
+            legend: {
+              text: "Permissions (optional)",
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "The user will be able to view applications. You can also give them additional permissions."
+          },
+          items: [
+            {
+              value: "manage_organisations",
+              text: "Manage organisational permissions",
+              checked: true if data.user.permissions and "manage_organisations" in data.user.permissions
+            },
+            {
+              value: "manage_users",
+              text: "Manage users",
+              checked: true if data.user.permissions and "manage_users" in data.user.permissions
+            },
+            {
+              value: "make_decisions",
+              text: "Make decisions and set up interviews",
+              checked: true if data.user.permissions and "make_decisions" in data.user.permissions
+            },
+            {
+              value: "view_safeguarding_information",
+              text: "Access safeguarding information",
+              checked: true if data.user.permissions and "view_safeguarding_information" in data.user.permissions
+            },
+            {
+              value: "view_diversity_information",
+              text: "Access diversity information",
+              checked: true if data.user.permissions and "view_diversity_information" in data.user.permissions
+            }
+          ]
+        }) }}
+
+      {% endcall %}
+
+      {{ govukButton({
+        name: "button[submit]",
+        value: "save",
+        text: "Add user"
+      }) }}
+
+      {#{ govukButton({
+        name: "button[submit]",
+        value: "continue",
+        text: "Save user and add another",
+        classes: "govuk-button--secondary"
+      }) }#}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

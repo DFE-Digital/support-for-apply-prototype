@@ -1,0 +1,93 @@
+{% set filterOptionsHtml %}
+
+  {{ govukCheckboxes({
+    idPrefix: "cycle",
+    name: "filters[cycle][]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Year received",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        value: "2020 to 2021",
+        text: "2020 to 2021 (starts 2021)",
+        checked: true if data.filters.cycle == "2020 to 2021"
+      },
+      {
+        value: "2019 to 2020",
+        text: "2019 to 2020 (starts 2020)",
+        checked: true if data.filters.cycle == "2019 to 2020"
+      }
+    ]
+  }) }}
+
+  {{ govukCheckboxes({
+    idPrefix: "phase",
+    name: "filters[phase][]",
+    classes: "govuk-checkboxes--small",
+    fieldset: {
+      legend: {
+        text: "Phase",
+        isPageHeading: false,
+        classes: "govuk-fieldset__legend--s"
+      }
+    },
+    items: [
+      {
+        value: "Apply 1",
+        text: "Apply 1",
+        checked: true if data.filters.phase == "Apply 1"
+      },
+      {
+        value: "Apply 2",
+        text: "Apply 2",
+        checked: true if data.filters.phase == "Apply 2"
+      }
+    ]
+  }) }}
+
+{% endset %}
+
+<div class="app-filter">
+  <div class="app-filter__header">
+    <div class="app-filter__header-title">
+      <h2 class="govuk-heading-m">Filter</h2>
+    </div>
+    <div class="app-filter__header-action">
+
+    </div>
+  </div>
+  <div class="app-filter__content">
+    {% if selectedFilters %}
+      <div class="app-filter__selected">
+        <div class="app-filter__selected-heading">
+          <div class="app-filter__heading-title">
+            <h2 class="govuk-heading-m govuk-!-margin-bottom-1">Selected filters</h2>
+            <p class="govuk-body"><a class="govuk-link govuk-link--no-visited-state" href="/remove-all-filters">Clear filters</a></p>
+          </div>
+        </div>
+
+        {% for category in selectedFilters.categories %}
+          <h3 class="govuk-heading-s govuk-!-margin-bottom-0">{{ category.heading.text }}</h3>
+          <ul class="app-filter-tags">
+            {% for item in category.items %}
+              <li><a class="app-filter__tag" href="{{ item.href }}"><span class="govuk-visually-hidden">Remove this filter</span> {{item.text}}</a></li>
+            {% endfor %}
+          </ul>
+        {% endfor %}
+      </div>
+    {% endif %}
+    <div class="app-filter__options">
+      <form method="get" action="/providers/{{ provider.code }}/applications" accept-charset="UTF-8" novalidate>
+        <button class="govuk-button" data-module="govuk-button">
+          Apply filters
+        </button>
+        {{ filterOptionsHtml | safe }}
+      </form>
+    </div>
+  </div>
+</div>

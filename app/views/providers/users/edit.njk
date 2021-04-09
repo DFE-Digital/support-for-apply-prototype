@@ -1,0 +1,148 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = "providers" %}
+{% set subNavId = "users" %}
+
+{% set title = "Edit " + user.first_name + " " + user.last_name + "’s details" %}
+
+{% block pageTitle %}
+{{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/providers/" + provider.code + "/users/" + user.id
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../_includes/error-summary.njk" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/providers/{{ provider.code }}/users/{{ user.id }}/edit" method="post" accept-charset="UTF-8" novalidate>
+
+      {% call govukFieldset({
+        legend: {
+          text: title,
+          classes: "govuk-fieldset__legend--l",
+          isPageHeading: false
+        }
+      }) %}
+
+        {{ govukInput({
+          id: "first_name",
+          name: "user[first_name]",
+          label: {
+            text: "First name",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("first_name"),
+          value: user.first_name,
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukInput({
+          id: "last_name",
+          name: "user[last_name]",
+          label: {
+            text: "Last name",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("last_name"),
+          value: user.last_name,
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukInput({
+          id: "dfe_uuid",
+          name: "user[dfe_uuid]",
+          label: {
+            text: "DfE Sign-in ID",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("dfe_uuid"),
+          value: user.dfe_uuid,
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukInput({
+          id: "email_address",
+          name: "user[email_address]",
+          type: "email",
+          inputmode: "email",
+          label: {
+            text: "Email address",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("email_address"),
+          value: user.email_address,
+          spellcheck: false,
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {{ govukCheckboxes({
+          idPrefix: "notifications",
+          name: "user[notifications][]",
+          fieldset: {
+            legend: {
+              text: "Email notifications (optional)",
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "Choose which email notifications you want to receive."
+          },
+          items: [
+            {
+              value: "application_received",
+              text: "Application received",
+              checked: user.notifications.application_received or "application_received" in user.notifications
+            },
+            {
+              value: "application_received_from_another_organisation",
+              text: "Application received from another organisation",
+              checked: user.notifications.application_received_from_another_organisation or "application_received_from_another_organisation" in user.notifications
+            },
+            {
+              value: "application_rejected_by_default",
+              text: "Application automatically rejected",
+              checked: user.notifications.application_rejected_by_default or "application_rejected_by_default" in user.notifications
+            },
+            {
+              value: "application_withdrawn",
+              text: "Application withdrawn by candidate",
+              checked: user.notifications.application_withdrawn or "application_withdrawn" in user.notifications
+            },
+            {
+              value: "application_transferred_to_another_organisation",
+              text: "Application transferred to another organisation",
+              checked: user.notifications.application_transferred_to_another_organisation or "application_transferred_to_another_organisation" in user.notifications
+            },
+            {
+              value: "offer_accepted",
+              text: "Offer accepted",
+              checked: user.notifications.offer_accepted or "offer_accepted" in user.notifications
+            },
+            {
+              value: "offer_declined",
+              text: "Offer declined",
+              checked: user.notifications.offer_declined or "offer_declined" in user.notifications
+            }
+          ]
+        }) }}
+
+      {% endcall %}
+
+      {{ govukButton({
+        text: "Save user"
+      }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

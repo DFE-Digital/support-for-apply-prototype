@@ -1,0 +1,122 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = "providers" %}
+{% set subNavId = "users" %}
+
+{% set title = "Add user (" + currentUserNum + " of " + userCount + ")" %}
+
+{% block pageTitle %}
+{{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: back
+}) }}
+{% endblock %}
+
+{% block content %}
+
+{% include "../../../_includes/error-summary.njk" %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{{ provider.name }}</span>
+      {{ title }}
+    </h1>
+
+    <form action="{{ save }}" method="post" accept-charset="UTF-8" novalidate>
+
+      {{ govukInput({
+        id: "first_name",
+        name: "user[first_name]",
+        label: {
+          text: "First name",
+          classes: "govuk-label--s"
+        },
+        errorMessage: errors | getErrorMessage("first_name"),
+        value: user.first_name,
+        classes: "govuk-!-width-two-thirds"
+      }) }}
+
+      {{ govukInput({
+        id: "last_name",
+        name: "user[last_name]",
+        label: {
+          text: "Last name",
+          classes: "govuk-label--s"
+        },
+        errorMessage: errors | getErrorMessage("last_name"),
+        value: user.last_name,
+        classes: "govuk-!-width-two-thirds"
+      }) }}
+
+      {{ govukInput({
+        id: "email_address",
+        name: "user[email_address]",
+        type: "email",
+        inputmode: "email",
+        label: {
+          text: "Email address",
+          classes: "govuk-label--s"
+        },
+        errorMessage: errors | getErrorMessage("email_address"),
+        value: user.email_address,
+        spellcheck: false,
+        classes: "govuk-!-width-two-thirds"
+      }) }}
+
+      {{ govukCheckboxes({
+        idPrefix: "permissions",
+        name: "user[permissions][]",
+        fieldset: {
+          legend: {
+            text: "Permissions (optional)",
+            isPageHeading: true,
+            classes: "govuk-fieldset__legend--s"
+          }
+        },
+        hint: {
+          text: "The user will be able to view applications. You can also give them additional permissions."
+        },
+        items: [
+          {
+            value: "manage_organisations",
+            text: "Manage organisational permissions",
+            checked: true if user.permissions and "manage_organisations" in user.permissions
+          },
+          {
+            value: "manage_users",
+            text: "Manage users",
+            checked: true if user.permissions and "manage_users" in user.permissions
+          },
+          {
+            value: "make_decisions",
+            text: "Make decisions and set up interviews",
+            checked: true if user.permissions and "make_decisions" in user.permissions
+          },
+          {
+            value: "view_safeguarding_information",
+            text: "Access safeguarding information",
+            checked: true if user.permissions and "view_safeguarding_information" in user.permissions
+          },
+          {
+            value: "view_diversity_information",
+            text: "Access diversity information",
+            checked: true if user.permissions and "view_diversity_information" in user.permissions
+          }
+        ]
+      }) }}
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}

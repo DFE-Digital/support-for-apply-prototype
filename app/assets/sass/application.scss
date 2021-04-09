@@ -17,14 +17,17 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/task-list";
 
 // Import local component styles
-@import "app/views/components/all.scss";
+@import "app/views/_components/all.scss";
 
 // Styles that aren't in the GOV.UK Frontend or local components
 @import "core/card";
 @import "core/definition-list";
+@import "core/filter-layout";
 @import "core/tag";
 
 // Utilities
+@import "utilities/grid";
+@import "utilities/hidden";
 @import "utilities/overrides";
 @import "utilities/template";
 

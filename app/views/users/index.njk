@@ -1,0 +1,116 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'users' %}
+{% set subNavId = 'users' %}
+
+{% block pageTitle %}
+  Users for {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">Users</h1>
+
+    {#{ appSubNavigation({
+      label: 'Sub navigation',
+      items: [{
+        text: 'Users',
+        href: '/users',
+        active: true if subNavId == 'users'
+      }]
+    }) }#}
+
+  </div>
+</div>
+
+<div class="app-filter-layout">
+  <div class="app-filter-layout__filter">
+    {% include "_includes/users/filter-panel.njk" %}
+  </div>
+
+  <div class="app-filter-layout__content">
+
+    <div class="app-action-bar">
+      <div class="app-action-bar__filter"></div>
+    </div>
+
+    {#% include "_includes/users/search-panel.njk" %#}
+
+    <div>
+
+      <table class="govuk-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+            <th scope="col" class="govuk-table__header">Name and email address</th>
+            <th scope="col" class="govuk-table__header">Providers</th>
+            <th scope="col" class="govuk-table__header">Actions</th>
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          {% for user in users %}
+          <tr class="govuk-table__row">
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="/users/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a>
+              <span class="govuk-hint">{{ user.email_address }}</span>
+            </td>
+            <td class="govuk-table__cell">
+              <ul class="govuk-list govuk-list--spaced">
+                {% for provider in user.providers%}
+                  <li>{{ provider.name }}</li>
+                {% endfor %}
+              </ul>
+            </td>
+            <td class="govuk-table__cell">
+              <a class="govuk-link" href="#">
+                Update permissions <span class="govuk-visually-hidden">for {{ user.first_name }} {{ user.last_name }}</a>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+    </div>
+
+    {% if users.length and pagination %}
+      {% include "_includes/pagination.njk" %}
+    {% endif %}
+
+    {%- if not users.length %}
+      <p class="govuk-body">There are no results</p>
+    {%- endif -%}
+
+  </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script src="/public/javascripts/components/filter-toggle-button/filter-toggle-button.js"></script>
+<script>
+  new AppFrontend.FilterToggleButton({
+    bigModeMediaQuery: '(min-width: 48.063em)',
+    startHidden: false,
+    toggleButton: {
+      container: $('.app-action-bar__filter'),
+      showText: 'Show filter',
+      hideText: 'Hide filter',
+      classes: 'govuk-button--secondary govuk-!-margin-bottom-3'
+    },
+    closeButton: {
+      container: $('.app-filter__header-action'),
+      text: 'Close'
+    },
+    filter: {
+      container: $('.app-filter-layout__filter')
+    }
+  })
+</script>
+{% endblock %}

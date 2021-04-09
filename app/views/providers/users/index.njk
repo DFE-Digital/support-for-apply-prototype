@@ -1,0 +1,99 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = "providers" %}
+{% set subNavId = "users" %}
+
+{% set title = "View users for " + provider.name %}
+
+{% block pageTitle %}
+{{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/providers",
+    text: "Providers"
+  }, {
+    href: "/providers/" + provider.code,
+    text: provider.name
+  }, {
+    text: "Users"
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {{ govukNotificationBanner({
+      type: "success",
+      text: message.success[0]
+    }) if message.success }}
+
+    <h1 class="govuk-heading-l">{{ provider.name }} ({{ provider.code }})</h1>
+
+    {% include "../_sub-navigation.njk" %}
+
+    {{ govukButton({
+      href: "/providers/" + provider.code + "/users/new",
+      text: "Add user"
+    }) }}
+
+    {{ govukButton({
+      href: "/providers/" + provider.code + "/users/upload",
+      text: "Add multiple users",
+      classes: "govuk-button--secondary"
+    }) }}
+
+    <h2 class="govuk-visually-hidden">Users</h2>
+
+      {% if users.length %}
+
+        <table class="govuk-table">
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Name and email address</th>
+              <th scope="col" class="govuk-table__header">Providers</th>
+              <th scope="col" class="govuk-table__header">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            {% for user in users %}
+            <tr class="govuk-table__row">
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="/providers/{{ provider.code }}/users/{{ user.id }}">
+                  {{ user.first_name + " " + user.last_name }}
+                </a>
+                <span class="govuk-hint">{{ user.email_address }}</span>
+              </td>
+              <td class="govuk-table__cell">
+                <ul class="govuk-list govuk-list--spaced">
+                  {% for provider in user.providers %}
+                    <li>{{ provider.name }}</li>
+                  {% endfor %}
+                </ul>
+              </td>
+              <td class="govuk-table__cell">
+                <a class="govuk-link" href="/providers/{{ provider.code }}/users/{{ user.id }}/edit">
+                  Update permissions <span class="govuk-visually-hidden">for {{ user.first_name + " " + user.last_name }}</span>
+                </a>
+              </td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+      {% else %}
+
+        <p class="govuk-body">There aren’t any users for this provider.</p>
+
+      {% endif %}
+
+  </div>
+</div>
+
+
+{% endblock %}

@@ -6,6 +6,10 @@ const authenticationController = require('./controllers/authentication.js')
 const applicationController = require('./controllers/applications.js')
 const candidateController = require('./controllers/candidates.js')
 const providerController = require('./controllers/providers.js')
+const providerApplicationController = require('./controllers/providerApplications.js')
+const providerCourseController = require('./controllers/providerCourses.js')
+const providerUserController = require('./controllers/providerUsers.js')
+const userController = require('./controllers/users.js')
 
 function checkIsAuthenticated(req, res, next) {
   // if (req.session.passport || req.session.data.user) {
@@ -28,7 +32,7 @@ router.get('/sign-out', authenticationController.sign_out_get)
 /// APPLICATION ROUTES
 /// --------------------------------------------------///
 
-router.get('/applications', checkIsAuthenticated, applicationController.list)
+router.get('/applications', checkIsAuthenticated, applicationController.list_get)
 
 
 
@@ -36,7 +40,7 @@ router.get('/applications', checkIsAuthenticated, applicationController.list)
 /// CANDIDATE ROUTES
 /// --------------------------------------------------///
 
-router.get('/candidates', checkIsAuthenticated, candidateController.list)
+router.get('/candidates', checkIsAuthenticated, candidateController.list_get)
 
 
 
@@ -44,9 +48,47 @@ router.get('/candidates', checkIsAuthenticated, candidateController.list)
 /// PROVIDER ROUTES
 /// --------------------------------------------------///
 
-router.get('/providers', checkIsAuthenticated, providerController.list)
+router.get('/providers/:providerId/applications', checkIsAuthenticated, providerApplicationController.list_get)
+// router.post('/providers/:providerId/applications', checkIsAuthenticated, providerApplicationController.list_post)
+
+router.get('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_get)
+router.post('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_post)
+
+router.get('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_get)
+router.post('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_post)
+
+router.get('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_get)
+router.post('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_post)
+
+router.get('/providers/:providerId/users/upload', checkIsAuthenticated, providerUserController.new_upload_get)
+router.post('/providers/:providerId/users/upload', checkIsAuthenticated, providerUserController.new_upload_post)
+
+router.get('/providers/:providerId/users/upload/permissions', checkIsAuthenticated, providerUserController.new_upload_permissions_get)
+router.post('/providers/:providerId/users/upload/permissions', checkIsAuthenticated, providerUserController.new_upload_permissions_post)
+
+router.get('/providers/:providerId/users/upload/check', checkIsAuthenticated, providerUserController.new_upload_check_get)
+router.post('/providers/:providerId/users/upload/check', checkIsAuthenticated, providerUserController.new_upload_check_post)
+
+router.get('/providers/:providerId/users/:userId', checkIsAuthenticated, providerUserController.show_get)
+
+router.get('/providers/:providerId/users', checkIsAuthenticated, providerUserController.list_get)
+
+router.get('/providers/:providerId/courses/:courseId', checkIsAuthenticated, providerCourseController.show_get)
+
+router.get('/providers/:providerId/courses', checkIsAuthenticated, providerCourseController.list_get)
+// router.post('/providers/:providerId/courses', checkIsAuthenticated, providerController.list_post)
+
+router.get('/providers/:providerId', checkIsAuthenticated, providerController.show_get)
+
+router.get('/providers', checkIsAuthenticated, providerController.list_get)
+// router.post('/providers', checkIsAuthenticated, providerController.list_post)
 
 
+/// --------------------------------------------------///
+/// USER ROUTES
+/// --------------------------------------------------///
+
+router.get('/users', checkIsAuthenticated, userController.list)
 
 
 // Add your routes here - above the module.exports line

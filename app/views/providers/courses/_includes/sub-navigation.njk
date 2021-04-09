@@ -1,0 +1,16 @@
+{{ appSubNavigation({
+  label: "Sub navigation",
+  items: [{
+    text: "Details",
+    href: "/providers/" + provider.code + "/courses/" + course.code,
+    active: true if subNavId == "details"
+  }, {
+    text: "Applications",
+    href: "/providers/" + provider.code + "/courses/" + course.code + "/applications",
+    active: true if subNavId == "applications"
+  }, {
+    text: "Vacancies",
+    href: "/providers/" + provider.code + "/courses/" + course.code + "/Vacancies",
+    active: true if subNavId == "vacancies"
+  }]
+}) }}

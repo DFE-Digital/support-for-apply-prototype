@@ -17,6 +17,7 @@
 {% from "govuk/components/file-upload/macro.njk"      import govukFileUpload %}
 {% from "govuk/components/input/macro.njk"            import govukInput %}
 {% from "govuk/components/inset-text/macro.njk"       import govukInsetText %}
+{% from "govuk/components/notification-banner/macro.njk" import govukNotificationBanner %}
 {% from "govuk/components/panel/macro.njk"            import govukPanel %}
 {% from "govuk/components/phase-banner/macro.njk"     import govukPhaseBanner %}
 {% from "govuk/components/radios/macro.njk"           import govukRadios %}
@@ -29,17 +30,19 @@
 {% from "govuk/components/textarea/macro.njk"         import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"     import govukWarningText %}
 
-
-{% from "components/badge/macro.njk"                  import appBadge %}
-{% from "components/banner/macro.njk"                 import appBanner %}
-{% from "components/page-header-actions/macro.njk"    import appPageHeaderActions %}
-{% from "components/primary-navigation/macro.njk"     import appPrimaryNavigation %}
-{% from "components/sub-navigation/macro.njk"         import appSubNavigation %}
-{% from "components/summary-card/macro.njk"           import appSummaryCard %}
-{% from "components/timeline/macro.njk"               import appTimeline %}
+{% from "_components/badge/macro.njk"                  import appBadge %}
+{% from "_components/banner/macro.njk"                 import appBanner %}
+{% from "_components/filter/macro.njk"                 import appFilter %}
+{% from "_components/page-header-actions/macro.njk"    import appPageHeaderActions %}
+{% from "_components/pagination/macro.njk"             import appPagination %}
+{% from "_components/primary-navigation/macro.njk"     import appPrimaryNavigation %}
+{% from "_components/search/macro.njk"                 import appSearch %}
+{% from "_components/sub-navigation/macro.njk"         import appSubNavigation %}
+{% from "_components/summary-card/macro.njk"           import appSummaryCard %}
+{% from "_components/timeline/macro.njk"               import appTimeline %}
 
 {% block head %}
-  {% include "includes/head.njk" %}
+  {% include "_includes/head.njk" %}
 {% endblock %}
 
 {% block pageTitle %}
@@ -124,7 +127,7 @@
 
 {% block bodyEnd %}
   {% block scripts %}
-    {% include "includes/scripts.njk" %}
+    {% include "_includes/scripts.njk" %}
     {% block pageScripts %}{% endblock %}
   {% endblock %}
   <!-- GOV.UK Prototype Kit {{releaseVersion}} -->

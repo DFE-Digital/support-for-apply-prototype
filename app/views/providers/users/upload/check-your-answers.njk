@@ -1,0 +1,134 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = "providers" %}
+{% set subNavId = "users" %}
+
+
+{% set title = "Check details and add user" + ("s" if users.length > 1) %}
+
+
+{% block pageTitle %}
+{{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/providers/" + provider.code + "/users/upload/permissions?action=back&position=" + (users.length - 1)
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{{ provider.name }}</span>
+      {{ title }}
+    </h1>
+
+    <form action="/providers/{{ provider.code }}/users/upload/check" method="post" accept-charset="UTF-8" novalidate>
+
+      {#{ govukTable({
+        caption: "Caption text",
+        firstCellIsHeader: false,
+        head: [
+          {
+            text: "First name"
+          },
+          {
+            text: "Last name"
+          },
+          {
+            text: "Email address"
+          }
+        ],
+        rows: users | arrayToGovukTable
+      }) }#}
+
+      {% for user in users %}
+
+        {% set iconTrue %}
+        <svg class="app-icon govuk-!-margin-right-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 200 200" focusable="false" fill="currentColor" aria-hidden="true">
+          <path d="M100 200a100 100 0 1 1 0-200 100 100 0 0 1 0 200zm-60-85l40 40 80-80-20-20-60 60-20-20-20 20z"></path>
+        </svg>
+        {% endset %}
+
+        {% set iconFalse %}
+        <svg class="app-icon govuk-!-margin-right-1" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 200 200" focusable="false" fill="currentColor" aria-hidden="true">
+          <path d="M100 0a100 100 0 110 200 100 100 0 010-200zm30 50l-30 30-30-30-20 20 30 30-30 30 20 20 30-30 30 30 20-20-30-30 30-30-20-20z"></path>
+        </svg>
+        {% endset %}
+
+        {% set permissionsHtml %}
+        <ul class="govuk-list">
+          <li>{% if "manage_organisations" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} Manage organisational permissions</li>
+          <li>{% if "manage_users" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Manage users</li>
+          <li>{% if "make_decisions" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Make decisions and set up interviews</li>
+          <li>{% if "view_safeguarding_information" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access safeguarding information</li>
+          <li>{% if "view_diversity_information" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access diversity information</li>
+        </ul>
+        {% endset %}
+
+        {{ appSummaryCard({
+          titleText: "User " + loop.index if users.length > 1,
+          actions: {
+            items: [
+              {
+                href: "/providers/" + provider.code + "/users/upload/permissions?action=change&position=" + loop.index0,
+                text: "Change",
+                visuallyHiddenText: "user " + loop.index
+              }
+            ]
+          },
+          html: govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: "First name"
+                },
+                value: {
+                  text: user.first_name
+                }
+              },
+              {
+                key: {
+                  text: "Last name"
+                },
+                value: {
+                  text: user.last_name
+                }
+              },
+              {
+                key: {
+                  text: "Email address"
+                },
+                value: {
+                  text: user.email_address
+                }
+              },
+              {
+                key: {
+                  text: "Permissions"
+                },
+                value: {
+                  html: permissionsHtml
+                }
+              }
+            ]
+          }),
+          classes: "govuk-!-margin-bottom-6"
+        }) }}
+
+      {% endfor %}
+
+      {{ govukButton({
+        text: "Add user" + ("s" if users.length > 1)
+      }) }}
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
