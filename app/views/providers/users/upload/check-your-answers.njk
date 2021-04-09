@@ -65,7 +65,7 @@
         <ul class="govuk-list">
           <li>{% if "manage_organisations" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} Manage organisational permissions</li>
           <li>{% if "manage_users" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Manage users</li>
-          <li>{% if "make_decisions" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Make decisions</li>
+          <li>{% if "make_decisions" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Make decisions and set up interviews</li>
           <li>{% if "view_safeguarding_information" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access safeguarding information</li>
           <li>{% if "view_diversity_information" in user.permissions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access diversity information</li>
         </ul>

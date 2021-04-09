@@ -31,6 +31,11 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
+    {{ govukNotificationBanner({
+      type: "success",
+      text: message.success[0]
+    }) if message.success }}
+
     <h1 class="govuk-heading-l">{{ user.first_name }} {{ user.last_name }}</h1>
 
     {% include "./_includes/sub-navigation.njk" %}
@@ -47,17 +52,12 @@
     </svg>
     {% endset %}
 
-    {% set permissionsHtml %}
-      {% for provider in user.providers %}
-        <h2 class="govuk-heading-s">{{ provider.name }} ({{ provider.code }})</h2>
-        <ul class="govuk-list">
-          <li>{% if provider.permissions.manage_organisations %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} Manage organisational permissions</li>
-          <li>{% if provider.permissions.manage_users %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Manage users</li>
-          <li>{% if provider.permissions.make_decisions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Make decisions</li>
-          <li>{% if provider.permissions.view_safeguarding_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access safeguarding information</li>
-          <li>{% if provider.permissions.view_diversity_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access diversity information</li>
-        </ul>
-      {% endfor %}
+    {% set notificationsHtml %}
+      <ul class="govuk-list">
+        {% for notification in notifications %}
+        <li>{% if user.notifications[notification] %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} {{ notification | getNotificationName }}</li>
+        {% endfor %}
+      </ul>
     {% endset %}
 
     {{ govukSummaryList({
@@ -98,6 +98,23 @@
         },
         {
           key: {
+            text: "DfE Sign-in ID"
+          },
+          value: {
+            text: user.dfe_uuid
+          },
+          actions: {
+            items: [
+              {
+                href: "/providers/" + provider.code + "/users/" + user.id + "/edit",
+                text: "Change",
+                visuallyHiddenText: "DfE Sign-in ID"
+              }
+            ]
+          }
+        },
+        {
+          key: {
             text: "Email address"
           },
           value: {
@@ -118,7 +135,7 @@
             text: "Email notifications"
           },
           value: {
-            text: "Yes" if user.send_notifications in [true,"yes"] else "No"
+            html: notificationsHtml
           },
           actions: {
             items: [
@@ -128,14 +145,6 @@
                 visuallyHiddenText: "email notification settings"
               }
             ]
-          }
-        },
-        {
-          key: {
-            text: "DfE Sign-in UID"
-          },
-          value: {
-            text: user.dfe_uuid
           }
         },
         {
@@ -153,7 +162,7 @@
           value: {
             text: user.last_updated_at | appDate('datetime')
           }
-        },
+        } if user.last_updated_at,
         {
           key: {
             text: "Last signed in on"
@@ -161,26 +170,35 @@
           value: {
             text: user.last_signed_in_at | appDate('datetime')
           }
-        } if user.last_signed_in_at,
-        {
-          key: {
-            text: "Permissions"
-          },
-          value: {
-            html: permissionsHtml
-          },
-          actions: {
-            items: [
-              {
-                href: "/providers/" + provider.code + "/users/" + user.id + "/edit",
-                text: "Change",
-                visuallyHiddenText: "permissions"
-              }
-            ]
-          }
-        }
+        } if user.last_signed_in_at
       ]
     }) }}
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Permissions</h2>
+
+    <dl class="govuk-summary-list">
+      {% for provider in user.providers %}
+        <div class="govuk-summary-list__row">
+          <dt class="govuk-summary-list__key">
+            {{ provider.name }}
+          </dt>
+          <dd class="govuk-summary-list__value">
+            <ul class="govuk-list">
+              <li>{% if provider.permissions.manage_organisations %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} Manage organisational permissions</li>
+              <li>{% if provider.permissions.manage_users %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Manage users</li>
+              <li>{% if provider.permissions.make_decisions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Make decisions</li>
+              <li>{% if provider.permissions.view_safeguarding_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access safeguarding information</li>
+              <li>{% if provider.permissions.view_diversity_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access diversity information</li>
+            </ul>
+          </dd>
+          <dd class="govuk-summary-list__actions">
+            <a class="govuk-link" href="/providers/{{ provider.code }}/users/{{ user.id }}/edit">
+              Change<span class="govuk-visually-hidden"> {{ provider.name }} permissions</span>
+            </a>
+          </dd>
+        </div>
+      {% endfor %}
+    </dl>
 
     {{ govukButton({
       href: "/providers/" + provider.code + "/users/" + user.id + "/delete",

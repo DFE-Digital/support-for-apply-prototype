@@ -1,6 +1,7 @@
 const Providers = require('../models/providers')
 const Users = require('../models/users')
 
+const DataHelper = require('../helpers/data')
 const ValidationHelper = require('../helpers/validators')
 
 const CSV = require('csv-string')
@@ -34,11 +35,14 @@ exports.list_get = (req, res) => {
 exports.show_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
   const user = Users.findOne(req.params.userId)
-
+  const notifications = DataHelper.notifications
+  const message = req.flash()
   if (user) {
     res.render('../views/providers/users/show', {
       provider,
-      user
+      user,
+      notifications,
+      message
     })
   } else {
     res.redirect(`/providers/${req.params.providerId}/users`)
@@ -78,6 +82,14 @@ exports.edit_post = (req, res) => {
     errors.push(error)
   }
 
+  if (req.session.data.user.dfe_uuid.length && !ValidationHelper.isValidUuid(req.session.data.user.dfe_uuid)) {
+    const error = {}
+    error.fieldName = 'dfe_uuid'
+    error.href = '#dfe_uuid'
+    error.text = 'Enter a DfE Sign-in ID in the correct format, like b9a734d2-6006-4071-b009-30c87833493b'
+    errors.push(error)
+  }
+
   if (!req.session.data.user.email_address.length) {
     const error = {}
     error.fieldName = 'email_address'
@@ -95,6 +107,7 @@ exports.edit_post = (req, res) => {
   if (errors.length) {
     const provider = Providers.findOne(req.params.providerId)
     const user = req.session.data.user
+    user.id = req.params.userId
     res.render('../views/providers/users/edit', {
       provider,
       user,

@@ -3,14 +3,7 @@ const fs = require('fs')
 const { v4: uuid } = require('uuid')
 
 const Providers = require('./providers')
-
-const permissions = [
-  'manage_organisations',
-  'manage_users',
-  'make_decisions',
-  'view_safeguarding_information',
-  'view_diversity_information'
-]
+const DataHelper = require('../helpers/data')
 
 const directoryPath = path.join(__dirname, '../data/users')
 
@@ -54,7 +47,7 @@ exports.saveMany = (providerId, data) => {
     provider.name = p.name
     provider.permissions = {}
 
-    permissions.forEach((permission, i) => {
+    DataHelper.permissions.forEach((permission, i) => {
       if (item.permissions.includes(permission)) {
         provider.permissions[permission] = true
       } else {
@@ -99,8 +92,21 @@ exports.find = (data) => {
 
 exports.findOne = (userId) => {
   const users = this.find()
-  const user = users.filter(u => u.id == userId)
-  return user[0]
+  const user = users.filter(u => u.id == userId)[0]
+
+  // TODO: update seed data with new notification object
+  if (user.notifications === undefined) {
+    user.notifications = {}
+    DataHelper.notifications.forEach((notification, i) => {
+      if (user.send_notifications) {
+        user.notifications[notification] = true
+      } else {
+        user.notifications[notification] = false
+      }
+    })
+  }
+
+  return user
 }
 
 exports.insertOne = (providerId, data) => {
@@ -121,11 +127,11 @@ exports.insertOne = (providerId, data) => {
   provider.name = p.name
   provider.permissions = {}
 
-  permissions.forEach((item, i) => {
-    if (data.permissions.includes(item)) {
-      provider.permissions[item] = true
+  DataHelper.permissions.forEach((permission, i) => {
+    if (data.permissions.includes(permission)) {
+      provider.permissions[permission] = true
     } else {
-      provider.permissions[item] = false
+      provider.permissions[permission] = false
     }
   })
 
@@ -141,16 +147,26 @@ exports.insertMany = (data) => {
 }
 
 exports.updateOne = (userId, data) => {
-  // parse the submitted data into the structure we expect
   let user = this.findOne(userId)
-  user = {...user, ...data}
 
-  // if (data.dfe_uuid.length) {
-  //   user.dfe_uuid = data.dfe_uuid
-  // }
+  user.id = userId
+  user.first_name = data.first_name
+  user.last_name = data.last_name
+  user.email_address = data.email_address
 
-  user.send_notifications = data.send_notifications
-  user.last_updated_at = new Date()
+  user.dfe_uuid = data.dfe_uuid
+
+  // user.send_notifications = data.send_notifications
+
+  user.notifications = {}
+
+  DataHelper.notifications.forEach((notification, i) => {
+    if (data.notifications.includes(notification)) {
+      user.notifications[notification] = true
+    } else {
+      user.notifications[notification] = false
+    }
+  })
 
   // user.providers = []
   //
@@ -168,6 +184,8 @@ exports.updateOne = (userId, data) => {
   // })
   //
   // user.providers.push(provider)
+
+  user.last_updated_at = new Date()
 
   writeFileSync(user)
 }

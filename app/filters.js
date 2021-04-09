@@ -153,7 +153,7 @@ module.exports = function (env) {
     switch (code) {
       case 'Primary': return 'Primary'
       case 'Secondary': return 'Secondary'
-      default: code
+      default: return code
     }
   }
 
@@ -175,7 +175,7 @@ module.exports = function (env) {
       case '14 to 18': return '14 to 18'
       case '14 to 19': return '14 to 19'
       case '16 to 18': return '16 to 18'
-      default: code
+      default: return code
     }
   }
 
@@ -190,6 +190,19 @@ module.exports = function (env) {
 
   filters.getFinancialSupportName = (code) => {
     return 'None'
+  }
+
+  filters.getNotificationName = (code) => {
+    switch (code) {
+      case 'application_received': return 'Application received'
+      case 'application_received_from_another_organisation': return 'Application received from another organisation'
+      case 'application_rejected_by_default': return 'Application automatically rejected'
+      case 'application_withdrawn': return 'Application withdrawn by candidate'
+      case 'application_transferred_to_another_organisation': return 'Application transferred to another organisation'
+      case 'offer_accepted': return 'Offer accepted'
+      case 'offer_declined': return 'Offer rejected'
+      default: return code
+    }
   }
 
   /* ------------------------------------------------------------------
