@@ -160,9 +160,9 @@
             text: "Account updated on"
           },
           value: {
-            text: user.last_updated_at | appDate('datetime')
+            text: user.updated_at | appDate('datetime')
           }
-        } if user.last_updated_at,
+        } if user.updated_at,
         {
           key: {
             text: "Last signed in on"

@@ -165,7 +165,7 @@ exports.updateOne = (userId, data) => {
   user.email_address = data.email_address
   user.dfe_uuid = data.dfe_uuid
   user.notifications = data.notifications
-  user.last_updated_at = new Date()
+  user.updated_at = new Date()
 
   writeFileSync(user)
 }
@@ -203,7 +203,7 @@ exports.updatePermissions = (userId, data) => {
 
   }
 
-  user.last_updated_at = new Date()
+  user.updated_at = new Date()
 
   writeFileSync(user)
 }
