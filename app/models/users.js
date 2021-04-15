@@ -111,15 +111,25 @@ exports.findOne = (userId) => {
 
 exports.insertOne = (providerId, data) => {
   const p = Providers.findOne(providerId)
-  // parse the submitted data into the structure we expect
   const user = {}
+
   user.id = uuid()
   user.first_name = data.first_name
   user.last_name = data.last_name
   user.email_address = data.email_address
-  // user.dfe_uuid = data.dfe_uuid || uuid()
+
+  if (data.dfe_uuid) {
+    user.dfe_uuid = data.dfe_uuid
+  }
+
+  user.notifications = {}
+
+  DataHelper.notifications.forEach((notification, i) => {
+    user.notifications[notification] = true
+  })
+
   user.created_at = new Date()
-  user.send_notifications = data.send_notifications || true
+
   user.providers = []
 
   provider = {}
@@ -153,38 +163,8 @@ exports.updateOne = (userId, data) => {
   user.first_name = data.first_name
   user.last_name = data.last_name
   user.email_address = data.email_address
-
   user.dfe_uuid = data.dfe_uuid
-
-  // user.send_notifications = data.send_notifications
-
-  user.notifications = {}
-
-  DataHelper.notifications.forEach((notification, i) => {
-    if (data.notifications.includes(notification)) {
-      user.notifications[notification] = true
-    } else {
-      user.notifications[notification] = false
-    }
-  })
-
-  // user.providers = []
-  //
-  // provider = {}
-  // provider.code = p.code
-  // provider.name = p.name
-  // provider.permissions = {}
-  //
-  // permissions.forEach((item, i) => {
-  //   if (data.permissions.includes(item)) {
-  //     provider.permissions[item] = true
-  //   } else {
-  //     provider.permissions[item] = false
-  //   }
-  // })
-  //
-  // user.providers.push(provider)
-
+  user.notifications = data.notifications
   user.last_updated_at = new Date()
 
   writeFileSync(user)
@@ -197,6 +177,35 @@ exports.updateMany = (data) => {
 exports.deleteOne = (userId) => {
   const fileName = userId + '.json';
   fs.unlinkSync(directoryPath + '/' + fileName)
+}
+
+exports.updatePermissions = (userId, data) => {
+  const user = this.findOne(userId)
+  user.providers = []
+
+  for (const [key, value] of Object.entries(data.providers)) {
+    const p = Providers.findOne(key)
+
+    const provider = {}
+    provider.code = p.code
+    provider.name = p.name
+    provider.permissions = {}
+
+    DataHelper.permissions.forEach((permission, i) => {
+      if (value.permissions.includes(permission)) {
+        provider.permissions[permission] = true
+      } else {
+        provider.permissions[permission] = false
+      }
+    })
+
+    user.providers.push(provider)
+
+  }
+
+  user.last_updated_at = new Date()
+
+  writeFileSync(user)
 }
 
 // ----------------------------------------------------------------------------

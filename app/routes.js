@@ -54,6 +54,9 @@ router.get('/providers/:providerId/applications', checkIsAuthenticated, provider
 router.get('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_get)
 router.post('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_post)
 
+router.get('/providers/:providerId/users/:userId/permissions', checkIsAuthenticated, providerUserController.edit_permissions_get)
+router.post('/providers/:providerId/users/:userId/permissions', checkIsAuthenticated, providerUserController.edit_permissions_post)
+
 router.get('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_get)
 router.post('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_post)
 

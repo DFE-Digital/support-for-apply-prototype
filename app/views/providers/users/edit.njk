@@ -58,18 +58,6 @@
         }) }}
 
         {{ govukInput({
-          id: "dfe_uuid",
-          name: "user[dfe_uuid]",
-          label: {
-            text: "DfE Sign-in ID",
-            classes: "govuk-label--s"
-          },
-          errorMessage: errors | getErrorMessage("dfe_uuid"),
-          value: user.dfe_uuid,
-          classes: "govuk-!-width-two-thirds"
-        }) }}
-
-        {{ govukInput({
           id: "email_address",
           name: "user[email_address]",
           type: "email",
@@ -84,7 +72,54 @@
           classes: "govuk-!-width-two-thirds"
         }) }}
 
-        {{ govukCheckboxes({
+        {{ govukInput({
+          id: "dfe_uuid",
+          name: "user[dfe_uuid]",
+          label: {
+            text: "DfE Sign-in ID (optional)",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("dfe_uuid"),
+          value: user.dfe_uuid,
+          classes: "govuk-!-width-two-thirds"
+        }) }}
+
+        {% set notifications = ["application_received","application_received_from_another_organisation","application_rejected_by_default","application_withdrawn","application_transferred_to_another_organisation","offer_accepted","offer_declined"] %}
+
+        <h2 class="govuk-heading-m">Email notifications</h2>
+
+        <p class="govuk-hint">Choose which email notifications {{ user.first_name + " " + user.last_name }} wants to receive.</p>
+
+        {% for notification in notifications %}
+
+          {{ govukRadios({
+            idPrefix: "notifications-" + notification,
+            name: "user[notifications][" + notification + "]",
+            fieldset: {
+              legend: {
+                text: notification | getNotificationName,
+                isPageHeading: false,
+                classes: "govuk-fieldset__legend--s"
+              }
+            },
+            classes: "govuk-radios--inline",
+            items: [
+              {
+                value: "yes",
+                text: "Yes",
+                checked: true if user.notifications[notification] in ["yes",true]
+              },
+              {
+                value: "no",
+                text: "No",
+                checked: true if user.notifications[notification] in ["no",false]
+              }
+            ]
+          }) }}
+
+        {% endfor %}
+
+        {#{ govukCheckboxes({
           idPrefix: "notifications",
           name: "user[notifications][]",
           fieldset: {
@@ -100,40 +135,40 @@
             {
               value: "application_received",
               text: "Application received",
-              checked: user.notifications.application_received or "application_received" in user.notifications
+              checked: true if user.notifications.application_received or "application_received" in user.notifications
             },
             {
               value: "application_received_from_another_organisation",
               text: "Application received from another organisation",
-              checked: user.notifications.application_received_from_another_organisation or "application_received_from_another_organisation" in user.notifications
+              checked: true if "application_received_from_another_organisation" in user.notifications or user.notifications.application_received_from_another_organisation
             },
             {
               value: "application_rejected_by_default",
               text: "Application automatically rejected",
-              checked: user.notifications.application_rejected_by_default or "application_rejected_by_default" in user.notifications
+              checked: true if user.notifications.application_rejected_by_default or "application_rejected_by_default" in user.notifications
             },
             {
               value: "application_withdrawn",
               text: "Application withdrawn by candidate",
-              checked: user.notifications.application_withdrawn or "application_withdrawn" in user.notifications
+              checked: true if user.notifications.application_withdrawn or "application_withdrawn" in user.notifications
             },
             {
               value: "application_transferred_to_another_organisation",
               text: "Application transferred to another organisation",
-              checked: user.notifications.application_transferred_to_another_organisation or "application_transferred_to_another_organisation" in user.notifications
+              checked: true if "application_transferred_to_another_organisation" in user.notifications or user.notifications.application_transferred_to_another_organisation
             },
             {
               value: "offer_accepted",
               text: "Offer accepted",
-              checked: user.notifications.offer_accepted or "offer_accepted" in user.notifications
+              checked: true if user.notifications.offer_accepted or "offer_accepted" in user.notifications
             },
             {
               value: "offer_declined",
               text: "Offer declined",
-              checked: user.notifications.offer_declined or "offer_declined" in user.notifications
+              checked: true if user.notifications.offer_declined or "offer_declined" in user.notifications
             }
           ]
-        }) }}
+        }) }#}
 
       {% endcall %}
 

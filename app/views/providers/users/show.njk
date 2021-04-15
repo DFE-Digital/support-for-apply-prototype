@@ -55,7 +55,7 @@
     {% set notificationsHtml %}
       <ul class="govuk-list">
         {% for notification in notifications %}
-        <li>{% if user.notifications[notification] %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} {{ notification | getNotificationName }}</li>
+          <li>{% if user.notifications[notification] in ["yes",true] %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} {{ notification | getNotificationName }}</li>
         {% endfor %}
       </ul>
     {% endset %}
@@ -174,27 +174,42 @@
       ]
     }) }}
 
-    <h2 class="govuk-heading-m govuk-!-margin-top-9">Permissions</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Organisation permissions</h2>
 
     <dl class="govuk-summary-list">
-      {% for provider in user.providers %}
+      {% for p in user.providers %}
         <div class="govuk-summary-list__row">
           <dt class="govuk-summary-list__key">
-            {{ provider.name }}
+            {{ p.name }}
           </dt>
           <dd class="govuk-summary-list__value">
             <ul class="govuk-list">
-              <li>{% if provider.permissions.manage_organisations %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} Manage organisational permissions</li>
-              <li>{% if provider.permissions.manage_users %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Manage users</li>
-              <li>{% if provider.permissions.make_decisions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Make decisions</li>
-              <li>{% if provider.permissions.view_safeguarding_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access safeguarding information</li>
-              <li>{% if provider.permissions.view_diversity_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access diversity information</li>
+              <li>{% if p.permissions.manage_organisations %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} Manage organisational permissions</li>
+              <li>{% if p.permissions.manage_users %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Manage users</li>
+              <li>{% if p.permissions.make_decisions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Make decisions</li>
+              <li>{% if p.permissions.view_safeguarding_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access safeguarding information</li>
+              <li>{% if p.permissions.view_diversity_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access diversity information</li>
             </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
-            <a class="govuk-link" href="/providers/{{ provider.code }}/users/{{ user.id }}/edit">
-              Change<span class="govuk-visually-hidden"> {{ provider.name }} permissions</span>
-            </a>
+            {% if loop.length > 1 %}
+              <ul class="govuk-summary-list__actions-list">
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link" href="/providers/{{ provider.code }}/users/{{ user.id }}/permissions">
+                    Change<span class="govuk-visually-hidden"> {{ provider.name }} permissions</span>
+                  </a>
+                </li>
+                <li class="govuk-summary-list__actions-list-item">
+                  <a class="govuk-link app-link--destructive" href="/providers/{{ provider.code }}/users/{{ user.id }}/permissions">
+                    Delete<span class="govuk-visually-hidden"> {{ provider.name }} permissions</span>
+                  </a>
+                </li>
+              </ul>
+            {% else %}
+              <a class="govuk-link" href="/providers/{{ provider.code }}/users/{{ user.id }}/permissions">
+                Change<span class="govuk-visually-hidden"> {{ provider.name }} permissions</span>
+              </a>
+            {% endif %}
           </dd>
         </div>
       {% endfor %}
