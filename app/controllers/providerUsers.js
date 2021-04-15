@@ -174,13 +174,8 @@ exports.edit_post = (req, res) => {
 
   if (errors.length) {
     const provider = Providers.findOne(req.params.providerId)
-    // const user = req.session.data.user
     let user = Users.findOne(req.params.userId)
-    console.log('user',user);
-    console.log('data',req.session.data.user);
     user = {...user, ...req.session.data.user}
-    console.log('combined',user);
-    // user.id = req.params.userId
     res.render('../views/providers/users/edit', {
       provider,
       user,
