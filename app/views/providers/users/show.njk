@@ -55,7 +55,10 @@
     {% set notificationsHtml %}
       <ul class="govuk-list">
         {% for notification in notifications %}
-          <li>{% if user.notifications[notification] in ["yes",true] %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} {{ notification | getNotificationName }}</li>
+          <li>
+            {% if user.notifications[notification] in ["yes",true] %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} {{ notification | getNotificationName }}
+            {{ ' – ' + user.notifications[notification] | yesNo | capitalize }}
+          </li>
         {% endfor %}
       </ul>
     {% endset %}
@@ -184,11 +187,31 @@
           </dt>
           <dd class="govuk-summary-list__value">
             <ul class="govuk-list">
-              <li>{% if p.permissions.manage_organisations %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} Manage organisational permissions</li>
-              <li>{% if p.permissions.manage_users %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Manage users</li>
-              <li>{% if p.permissions.make_decisions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Make decisions</li>
-              <li>{% if p.permissions.view_safeguarding_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access safeguarding information</li>
-              <li>{% if p.permissions.view_diversity_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}Access diversity information</li>
+              <li>
+                {% if p.permissions.manage_organisations %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}
+                Manage organisational permissions
+                {{ ' – ' + p.permissions.manage_organisations | yesNo | capitalize }}
+              </li>
+              <li>
+                {% if p.permissions.manage_users %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}
+                Manage users
+                {{ ' – ' + p.permissions.manage_users | yesNo | capitalize }}
+              </li>
+              <li>
+                {% if p.permissions.make_decisions %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}
+                Make decisions
+                {{ ' – ' + p.permissions.make_decisions | yesNo | capitalize }}
+              </li>
+              <li>
+                {% if p.permissions.view_safeguarding_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}
+                Access safeguarding information
+                {{ ' – ' + p.permissions.view_safeguarding_information | yesNo | capitalize }}
+              </li>
+              <li>
+                {% if p.permissions.view_diversity_information %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %}
+                Access diversity information
+                {{ ' – ' + p.permissions.view_diversity_information | yesNo | capitalize }}
+              </li>
             </ul>
           </dd>
           <dd class="govuk-summary-list__actions">
