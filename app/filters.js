@@ -248,13 +248,13 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
-  utility function to return true or false
-  example: {{ 'yes' | falsify }}
-  outputs: true
+  utility function to return yes or no
+  example: {{ 'true' | yesNo }}
+  outputs: Yes
   ------------------------------------------------------------------ */
   filters.yesNo = (input) => {
-    const truthyValues = ['yes','true',true]
-    const falsyValues = ['no','false',false]
+    const truthyValues = ['yes','true',true,1]
+    const falsyValues = ['no','false',false,0]
 
     if (truthyValues.includes(input)) {
       return 'yes'
