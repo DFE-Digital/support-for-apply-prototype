@@ -54,15 +54,6 @@ router.get('/providers/:providerId/applications', checkIsAuthenticated, provider
 router.get('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_get)
 router.post('/providers/:providerId/users/:userId/edit', checkIsAuthenticated, providerUserController.edit_post)
 
-router.get('/providers/:providerId/users/:userId/permissions', checkIsAuthenticated, providerUserController.edit_permissions_get)
-router.post('/providers/:providerId/users/:userId/permissions', checkIsAuthenticated, providerUserController.edit_permissions_post)
-
-router.get('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_get)
-router.post('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_post)
-
-router.get('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_get)
-router.post('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_post)
-
 router.get('/providers/:providerId/users/upload', checkIsAuthenticated, providerUserController.new_upload_get)
 router.post('/providers/:providerId/users/upload', checkIsAuthenticated, providerUserController.new_upload_post)
 
@@ -71,6 +62,17 @@ router.post('/providers/:providerId/users/upload/permissions', checkIsAuthentica
 
 router.get('/providers/:providerId/users/upload/check', checkIsAuthenticated, providerUserController.new_upload_check_get)
 router.post('/providers/:providerId/users/upload/check', checkIsAuthenticated, providerUserController.new_upload_check_post)
+
+router.get('/providers/:providerId/users/:userId/history', checkIsAuthenticated, providerUserController.history_get)
+
+router.get('/providers/:providerId/users/:userId/permissions', checkIsAuthenticated, providerUserController.edit_permissions_get)
+router.post('/providers/:providerId/users/:userId/permissions', checkIsAuthenticated, providerUserController.edit_permissions_post)
+
+router.get('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_get)
+router.post('/providers/:providerId/users/:userId/delete', checkIsAuthenticated, providerUserController.delete_post)
+
+router.get('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_get)
+router.post('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_post)
 
 router.get('/providers/:providerId/users/:userId', checkIsAuthenticated, providerUserController.show_get)
 

@@ -49,6 +49,19 @@ exports.show_get = (req, res) => {
   }
 }
 
+exports.history_get = (req, res) => {
+  const provider = Providers.findOne(req.params.providerId)
+  const user = Users.findOne(req.params.userId)
+  if (user) {
+    res.render('../views/providers/users/history', {
+      provider,
+      user
+    })
+  } else {
+    res.redirect(`/providers/${req.params.providerId}/users`)
+  }
+}
+
 exports.new_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
   const message = req.flash()

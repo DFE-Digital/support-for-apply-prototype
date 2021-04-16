@@ -20,8 +20,12 @@ const writeFileSync = (data) => {
 exports.save = (providerId, data) => {
   let user = this.find(data)[0]
 
-  if (user.length) {
+  if (user) {
     this.updateOne(user.id, data)
+
+    // insert the new permissions
+
+
   } else {
     this.insertOne(providerId, data)
   }
@@ -31,6 +35,8 @@ exports.save = (providerId, data) => {
 exports.saveMany = (providerId, data) => {
   const p = Providers.findOne(providerId)
 
+  // TODO if the user exists update (add the new org permission) else insert new
+
   data.forEach((item, i) => {
 
     const user = {}
@@ -39,7 +45,13 @@ exports.saveMany = (providerId, data) => {
     user.last_name = item.last_name
     user.email_address = item.email_address
     user.created_at = new Date()
-    user.send_notifications = true
+
+    user.notifications = {}
+
+    DataHelper.notifications.forEach((notification, i) => {
+      user.notifications[notification] = true
+    })
+
     user.providers = []
 
     provider = {}
