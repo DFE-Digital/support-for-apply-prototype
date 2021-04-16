@@ -3,7 +3,7 @@
 {% set primaryNavId = "providers" %}
 {% set subNavId = "users" %}
 
-{% set title = "Edit " + user.first_name + " " + user.last_name + "’s organisation permissions" %}
+{% set title = "Change " + user.first_name + " " + user.last_name + "’s permissions" %}
 
 {% block pageTitle %}
 {{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
@@ -36,7 +36,7 @@
           name: "user[providers][" + p.code + "][permissions][]",
           fieldset: {
             legend: {
-              text: p.name + " permissions (optional)",
+              text: p.name,
               isPageHeading: true,
               classes: "govuk-fieldset__legend--s"
             }

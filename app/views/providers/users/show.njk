@@ -38,6 +38,11 @@
 
     <h1 class="govuk-heading-l">{{ user.first_name }} {{ user.last_name }}</h1>
 
+    {{ govukButton({
+      href: "#",
+      text: "Sign in as this user"
+    }) }}
+
     {% include "./_includes/sub-navigation.njk" %}
 
     {% set iconTrue %}
@@ -177,7 +182,7 @@
       ]
     }) }}
 
-    <h2 class="govuk-heading-m govuk-!-margin-top-9">Organisation permissions</h2>
+    <h2 class="govuk-heading-m govuk-!-margin-top-9">Permissions</h2>
 
     <dl class="govuk-summary-list">
       {% for p in user.providers %}
@@ -224,7 +229,7 @@
                 </li>
                 <li class="govuk-summary-list__actions-list-item">
                   <a class="govuk-link app-link--destructive" href="/providers/{{ provider.code }}/users/{{ user.id }}/permissions">
-                    Delete<span class="govuk-visually-hidden"> {{ provider.name }} permissions</span>
+                    Remove<span class="govuk-visually-hidden"> {{ provider.name }} permissions</span>
                   </a>
                 </li>
               </ul>

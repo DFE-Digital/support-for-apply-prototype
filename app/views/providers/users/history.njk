@@ -33,6 +33,11 @@
 
     <h1 class="govuk-heading-l">{{ user.first_name }} {{ user.last_name }}</h1>
 
+    {{ govukButton({
+      href: "#",
+      text: "Sign in as this user"
+    }) }}
+
     {% include "./_includes/sub-navigation.njk" %}
 
     {{ govukTable({
