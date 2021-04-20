@@ -231,7 +231,7 @@ exports.edit_permissions_post = (req, res) => {
   const user = Users.findOne(req.params.userId)
   Users.updatePermissions(req.params.userId, req.session.data.user)
   delete req.session.data.user
-  req.flash('success', `User ${user.first_name} ${user.last_name}’s organisation permissions updated`)
+  req.flash('success', `User ${user.first_name} ${user.last_name}’s permissions updated`)
   res.redirect(`/providers/${req.params.providerId}/users/${req.params.userId}`)
 }
 
