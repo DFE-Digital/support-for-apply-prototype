@@ -1,0 +1,64 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = "providers" %}
+{% set subNavId = "history" %}
+
+{% set title = "View history for " + user.first_name + " " + user.last_name %}
+
+{% block pageTitle %}
+{{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/providers",
+    text: "Providers"
+  }, {
+    href: "/providers/" + provider.code,
+    text: provider.name
+  }, {
+    href: "/providers/" + provider.code + "/users",
+    text: "Users"
+  }, {
+    text: user.first_name + " " + user.last_name
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">{{ user.first_name }} {{ user.last_name }}</h1>
+
+    {{ govukButton({
+      href: "#",
+      text: "Sign in as this user"
+    }) }}
+
+    {% include "./_includes/sub-navigation.njk" %}
+
+    {{ govukTable({
+      caption: user.first_name + " " + user.last_name + "’s activity",
+      captionClasses: "govuk-visually-hidden",
+      firstCellIsHeader: false,
+      head: [
+        {
+          text: "Time",
+          classes: "govuk-!-width-one-quarter"
+        },
+        {
+          text: "Event"
+        }
+      ]
+    }) }}
+
+
+  </div>
+</div>
+
+
+
+{% endblock %}

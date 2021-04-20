@@ -49,75 +49,16 @@ exports.show_get = (req, res) => {
   }
 }
 
-exports.edit_get = (req, res) => {
+exports.history_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
   const user = Users.findOne(req.params.userId)
-
   if (user) {
-    res.render('../views/providers/users/edit', {
+    res.render('../views/providers/users/history', {
       provider,
       user
     })
   } else {
     res.redirect(`/providers/${req.params.providerId}/users`)
-  }
-}
-
-exports.edit_post = (req, res) => {
-  const errors = []
-
-  if (!req.session.data.user.first_name.length) {
-    const error = {}
-    error.fieldName = 'first_name'
-    error.href = '#first_name'
-    error.text = 'Enter a first name'
-    errors.push(error)
-  }
-
-  if (!req.session.data.user.last_name.length) {
-    const error = {}
-    error.fieldName = 'last_name'
-    error.href = '#last_name'
-    error.text = 'Enter a last name'
-    errors.push(error)
-  }
-
-  if (req.session.data.user.dfe_uuid.length && !ValidationHelper.isValidUuid(req.session.data.user.dfe_uuid)) {
-    const error = {}
-    error.fieldName = 'dfe_uuid'
-    error.href = '#dfe_uuid'
-    error.text = 'Enter a DfE Sign-in ID in the correct format, like b9a734d2-6006-4071-b009-30c87833493b'
-    errors.push(error)
-  }
-
-  if (!req.session.data.user.email_address.length) {
-    const error = {}
-    error.fieldName = 'email_address'
-    error.href = '#email_address'
-    error.text = 'Enter an email address'
-    errors.push(error)
-  } else if (!ValidationHelper.isValidEmail(req.session.data.user.email_address)) {
-    const error = {}
-    error.fieldName = 'email_address'
-    error.href = '#email_address'
-    error.text = 'Enter an email address in the correct format, like name@example.com'
-    errors.push(error)
-  }
-
-  if (errors.length) {
-    const provider = Providers.findOne(req.params.providerId)
-    const user = req.session.data.user
-    user.id = req.params.userId
-    res.render('../views/providers/users/edit', {
-      provider,
-      user,
-      errors
-    })
-  } else {
-    Users.updateOne(req.params.userId, req.session.data.user)
-    req.flash('success', `User ${req.session.data.user.first_name} ${req.session.data.user.last_name} updated`)
-    delete req.session.data.user
-    res.redirect(`/providers/${req.params.providerId}/users/${req.params.userId}`)
   }
 }
 
@@ -163,6 +104,14 @@ exports.new_post = (req, res) => {
     errors.push(error)
   }
 
+  // if (req.session.data.user.dfe_uuid.length && !ValidationHelper.isValidUuid(req.session.data.user.dfe_uuid)) {
+  //   const error = {}
+  //   error.fieldName = 'dfe_uuid'
+  //   error.href = '#dfe_uuid'
+  //   error.text = 'Enter a DfE Sign-in ID in the correct format, like b9a734d2-6006-4071-b009-30c87833493b'
+  //   errors.push(error)
+  // }
+
   if (errors.length) {
     const provider = Providers.findOne(req.params.providerId)
     res.render('../views/providers/users/new', {
@@ -181,6 +130,78 @@ exports.new_post = (req, res) => {
   }
 }
 
+exports.edit_get = (req, res) => {
+  const provider = Providers.findOne(req.params.providerId)
+  const user = Users.findOne(req.params.userId)
+
+  if (user) {
+    res.render('../views/providers/users/edit', {
+      provider,
+      user
+    })
+  } else {
+    res.redirect(`/providers/${req.params.providerId}/users`)
+  }
+}
+
+exports.edit_post = (req, res) => {
+  const errors = []
+
+  if (!req.session.data.user.first_name.length) {
+    const error = {}
+    error.fieldName = 'first_name'
+    error.href = '#first_name'
+    error.text = 'Enter a first name'
+    errors.push(error)
+  }
+
+  if (!req.session.data.user.last_name.length) {
+    const error = {}
+    error.fieldName = 'last_name'
+    error.href = '#last_name'
+    error.text = 'Enter a last name'
+    errors.push(error)
+  }
+
+  if (!req.session.data.user.email_address.length) {
+    const error = {}
+    error.fieldName = 'email_address'
+    error.href = '#email_address'
+    error.text = 'Enter an email address'
+    errors.push(error)
+  } else if (!ValidationHelper.isValidEmail(req.session.data.user.email_address)) {
+    const error = {}
+    error.fieldName = 'email_address'
+    error.href = '#email_address'
+    error.text = 'Enter an email address in the correct format, like name@example.com'
+    errors.push(error)
+  }
+
+  if (req.session.data.user.dfe_uuid.length && !ValidationHelper.isValidUuid(req.session.data.user.dfe_uuid)) {
+    const error = {}
+    error.fieldName = 'dfe_uuid'
+    error.href = '#dfe_uuid'
+    error.text = 'Enter a DfE Sign-in ID in the correct format, like b9a734d2-6006-4071-b009-30c87833493b'
+    errors.push(error)
+  }
+
+  if (errors.length) {
+    const provider = Providers.findOne(req.params.providerId)
+    let user = Users.findOne(req.params.userId)
+    user = {...user, ...req.session.data.user}
+    res.render('../views/providers/users/edit', {
+      provider,
+      user,
+      errors
+    })
+  } else {
+    Users.updateOne(req.params.userId, req.session.data.user)
+    req.flash('success', `User ${req.session.data.user.first_name} ${req.session.data.user.last_name} updated`)
+    delete req.session.data.user
+    res.redirect(`/providers/${req.params.providerId}/users/${req.params.userId}`)
+  }
+}
+
 exports.delete_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
   const user = Users.findOne(req.params.userId)
@@ -195,6 +216,23 @@ exports.delete_post = (req, res) => {
   req.flash('success', `User ${user.first_name} ${user.last_name} deleted`)
   Users.deleteOne(req.params.userId)
   res.redirect(`/providers/${req.params.providerId}/users`)
+}
+
+exports.edit_permissions_get = (req, res) => {
+  const provider = Providers.findOne(req.params.providerId)
+  const user = Users.findOne(req.params.userId)
+  res.render('../views/providers/users/permissions', {
+    provider,
+    user
+  })
+}
+
+exports.edit_permissions_post = (req, res) => {
+  const user = Users.findOne(req.params.userId)
+  Users.updatePermissions(req.params.userId, req.session.data.user)
+  delete req.session.data.user
+  req.flash('success', `User ${user.first_name} ${user.last_name}’s permissions updated`)
+  res.redirect(`/providers/${req.params.providerId}/users/${req.params.userId}`)
 }
 
 exports.new_upload_get = (req, res) => {

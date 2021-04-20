@@ -228,14 +228,40 @@ module.exports = function (env) {
   outputs: true
   ------------------------------------------------------------------ */
   filters.falsify = (input) => {
-    if (_.isNumber(input)) return input
-    else if (input == false) return false
-    if (_.isString(input)){
-      const truthyValues = ['yes','true']
-      const falsyValues = ['no', 'false']
-      if (truthyValues.includes(input.toLowerCase())) return true
-      else if (falsyValues.includes(input.toLowerCase())) return false
+    if (_.isNumber(input)) {
+      return input
+    } else if (input == false) {
+      return false
     }
+
+    if (_.isString(input)) {
+      const truthyValues = ['yes','true']
+      const falsyValues = ['no','false']
+      if (truthyValues.includes(input.toLowerCase())) {
+        return true
+      } else if (falsyValues.includes(input.toLowerCase())) {
+        return false
+      }
+    }
+
+    return input
+  }
+
+  /* ------------------------------------------------------------------
+  utility function to return yes or no
+  example: {{ 'true' | yesNo }}
+  outputs: Yes
+  ------------------------------------------------------------------ */
+  filters.yesNo = (input) => {
+    const truthyValues = ['yes','true',true,1]
+    const falsyValues = ['no','false',false,0]
+
+    if (truthyValues.includes(input)) {
+      return 'yes'
+    } else if (falsyValues.includes(input)) {
+      return 'no'
+    }
+
     return input
   }
 

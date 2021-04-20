@@ -69,18 +69,6 @@
         }) }}
 
         {{ govukInput({
-          id: "dfe_uuid",
-          name: "user[dfe_uuid]",
-          label: {
-            text: "DfE Sign-in ID",
-            classes: "govuk-label--s"
-          },
-          errorMessage: errors | getErrorMessage("dfe_uuid"),
-          value: data.user.dfe_uuid,
-          classes: "govuk-!-width-two-thirds"
-        }) }}
-
-        {{ govukInput({
           id: "email_address",
           name: "user[email_address]",
           type: "email",
@@ -94,6 +82,18 @@
           spellcheck: false,
           classes: "govuk-!-width-two-thirds"
         }) }}
+
+        {#{ govukInput({
+          id: "dfe_uuid",
+          name: "user[dfe_uuid]",
+          label: {
+            text: "DfE Sign-in ID (optional)",
+            classes: "govuk-label--s"
+          },
+          errorMessage: errors | getErrorMessage("dfe_uuid"),
+          value: data.user.dfe_uuid,
+          classes: "govuk-!-width-two-thirds"
+        }) }#}
 
         {{ govukCheckboxes({
           idPrefix: "permissions",
@@ -145,12 +145,12 @@
         text: "Add user"
       }) }}
 
-      {#{ govukButton({
+      {{ govukButton({
         name: "button[submit]",
         value: "continue",
         text: "Save user and add another",
         classes: "govuk-button--secondary"
-      }) }#}
+      }) }}
     </form>
 
   </div>

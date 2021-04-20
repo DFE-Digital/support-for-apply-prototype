@@ -1,0 +1,87 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = "providers" %}
+{% set subNavId = "users" %}
+
+{% set title = "Change " + user.first_name + " " + user.last_name + "’s permissions" %}
+
+{% block pageTitle %}
+{{ 'Error: ' if errors.length}} {{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBackLink({
+  text: "Back",
+  href: "/providers/" + provider.code + "/users/" + user.id
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      {{ title }}
+    </h1>
+
+    <form action="/providers/{{ provider.code }}/users/{{ user.id }}/permissions" method="post" accept-charset="UTF-8" novalidate>
+
+      {% for p in user.providers %}
+
+        <!-- <h2 class="govuk-heading-m">{{ p.name }}</h2> -->
+
+        {{ govukCheckboxes({
+          idPrefix: "permissions-" + p.code,
+          name: "user[providers][" + p.code + "][permissions][]",
+          fieldset: {
+            legend: {
+              text: p.name,
+              isPageHeading: true,
+              classes: "govuk-fieldset__legend--s"
+            }
+          },
+          hint: {
+            text: "The user will be able to view applications. You can also give them additional permissions."
+          },
+          items: [
+            {
+              value: "manage_organisations",
+              text: "Manage organisational permissions",
+              checked: true if p.permissions.manage_organisations
+            },
+            {
+              value: "manage_users",
+              text: "Manage users",
+              checked: p.permissions.manage_users
+            },
+            {
+              value: "make_decisions",
+              text: "Make decisions and set up interviews",
+              checked: p.permissions.make_decisions
+            },
+            {
+              value: "view_safeguarding_information",
+              text: "Access safeguarding information",
+              checked: p.permissions.view_safeguarding_information
+            },
+            {
+              value: "view_diversity_information",
+              text: "Access diversity information",
+              checked: p.permissions.view_diversity_information
+            }
+          ]
+        }) }}
+
+      {% endfor %}
+
+      {{ govukButton({
+        text: "Save permissions"
+      }) }}
+
+    </form>
+
+  </div>
+</div>
+
+{% endblock %}
