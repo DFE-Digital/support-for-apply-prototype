@@ -29,12 +29,138 @@
 
     {% include "./_sub-navigation.njk" %}
 
-  </div>
+  <!-- </div>
 </div>
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
+  <div class="govuk-grid-column-two-thirds"> -->
 
+  <h2 class="govuk-heading-m">Candidates</h2>
+
+  {{ appMetric({
+    metric: {
+      text:"36,028"
+    },
+    label: {
+      text: "Unique candidates"
+    },
+    classes: "app-metric--blue govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+  }) }}
+
+  <h2 class="govuk-heading-m">Applications</h2>
+
+  {{ appMetric({
+    metric: {
+      text:"38,166"
+    },
+    label: {
+      text: "application forms"
+    },
+    classes: "app-metric--blue govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      {{ appMetric({
+        metric: {
+          text:"27,386"
+        },
+        label: {
+          text: "unsubmitted application forms"
+        },
+        classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-half">
+      {{ appMetric({
+        metric: {
+          text:"10,780"
+        },
+        label: {
+          text: "submitted application forms"
+        },
+        classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          {{ appMetric({
+            metric: {
+              text:"12,409",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "forms not started"
+            },
+            classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-half">
+          {{ appMetric({
+            metric: {
+              text:"14,977",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "forms in progress"
+            },
+            classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          {{ appMetric({
+            metric: {
+              text:"187",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "still being processed"
+            },
+            classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-third">
+          {{ appMetric({
+            metric: {
+              text:"6,902",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "ended without success"
+            },
+            classes: "app-metric--red govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-third">
+          {{ appMetric({
+            metric: {
+              text:"3,689",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "accepted and offer"
+            },
+            classes: "app-metric--green govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <h2 class="govuk-heading-m">Course choices</h2>
+
+
+  <h2 class="govuk-heading-m">Application form breakdown</h2>
 
 
   </div>
