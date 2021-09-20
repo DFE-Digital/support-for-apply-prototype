@@ -10,6 +10,7 @@ const providerApplicationController = require('./controllers/providerApplication
 const providerCourseController = require('./controllers/providerCourses.js')
 const providerUserController = require('./controllers/providerUsers.js')
 const userController = require('./controllers/users.js')
+const performanceController = require('./controllers/performance.js')
 
 function checkIsAuthenticated(req, res, next) {
   // if (req.session.passport || req.session.data.user) {
@@ -95,6 +96,16 @@ router.get('/providers', checkIsAuthenticated, providerController.list_get)
 
 router.get('/users', checkIsAuthenticated, userController.list)
 
+
+/// --------------------------------------------------///
+/// PERFORMANCE ROUTES
+/// --------------------------------------------------///
+
+router.get('/performance/service/:cycle', checkIsAuthenticated, performanceController.show_service_get)
+
+router.get('/performance/service', checkIsAuthenticated, performanceController.show_service_get)
+
+router.get('/performance', checkIsAuthenticated, performanceController.show_get)
 
 // Add your routes here - above the module.exports line
 
