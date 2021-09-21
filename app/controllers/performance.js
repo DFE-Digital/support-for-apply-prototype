@@ -13,3 +13,11 @@ exports.show_service_get = (req, res) => {
   })
 
 }
+
+exports.show_reasons_for_rejection_get = (req, res) => {
+
+  res.render('../views/performance/reasons-for-rejection/show', {
+    cycle: req.params.cycle
+  })
+
+}

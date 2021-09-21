@@ -15,7 +15,7 @@
     href: "/performance",
     text: "Performance"
   }, {
-    text: "Service performance"
+    text: title
   }]
 }) }}
 {% endblock %}
@@ -25,7 +25,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Service performance</h1>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
 
     {% include "./_sub-navigation.njk" %}
 
@@ -39,7 +39,7 @@
 
   {{ appMetric({
     metric: {
-      text:"36,028"
+      text:"36,158"
     },
     label: {
       text: "Unique candidates"
@@ -47,11 +47,11 @@
     classes: "app-metric--blue govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
   }) }}
 
-  <h2 class="govuk-heading-m">Applications</h2>
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">Applications</h2>
 
   {{ appMetric({
     metric: {
-      text:"38,166"
+      text:"38,326"
     },
     label: {
       text: "application forms"
@@ -63,7 +63,7 @@
     <div class="govuk-grid-column-one-half">
       {{ appMetric({
         metric: {
-          text:"27,386"
+          text:"27,545"
         },
         label: {
           text: "unsubmitted application forms"
@@ -74,7 +74,7 @@
     <div class="govuk-grid-column-one-half">
       {{ appMetric({
         metric: {
-          text:"10,780"
+          text:"10,781"
         },
         label: {
           text: "submitted application forms"
@@ -90,7 +90,7 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"12,409",
+              text:"12,451",
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -102,7 +102,7 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"14,977",
+              text:"15,094",
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -118,7 +118,7 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text:"187",
+              text:"177",
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -130,7 +130,7 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text:"6,902",
+              text:"6,922",
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -142,7 +142,7 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text:"3,689",
+              text:"3,680",
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -155,12 +155,96 @@
     </div>
   </div>
 
+  <h2 class="govuk-heading-m govuk-!-margin-top-5">Course choices</h2>
+
+  {{ appMetric({
+    metric: {
+      text:"15,845"
+    },
+    label: {
+      text: "courses applied to"
+    },
+    classes: "app-metric--blue govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      {{ appMetric({
+        metric: {
+          text:"7,547",
+          classes: "app-metric__secondary-figure"
+        },
+        label: {
+          text: "School Direct courses"
+        },
+        classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {{ appMetric({
+        metric: {
+          text:"5,958",
+          classes: "app-metric__secondary-figure"
+        },
+        label: {
+          text: "SCITT courses"
+        },
+        classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {{ appMetric({
+        metric: {
+          text:"2,340",
+          classes: "app-metric__secondary-figure"
+        },
+        label: {
+          text: "HEI courses"
+        },
+        classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          {{ appMetric({
+            metric: {
+              text:"5,757",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "ratified by SCITTs"
+            },
+            classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-half">
+          {{ appMetric({
+            metric: {
+              text:"1,318",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "ratified by HEIs"
+            },
+            classes: "govuk-!-padding-bottom-0 govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+  </div>
 
 
-  <h2 class="govuk-heading-m">Course choices</h2>
-
-
-  <h2 class="govuk-heading-m">Application form breakdown</h2>
+  <h2 class="govuk-heading-m govuk-!-margin-top-5">Application form breakdown</h2>
 
 
   </div>

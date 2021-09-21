@@ -1,0 +1,41 @@
+<h2 class="govuk-heading-m govuk-!-margin-top-7">
+  <a class="govuk-link" href="/performance/reasons-for-rejection/other-advice-or-feedback">
+    Other advice or feedback
+  </a>
+</h2>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    {{ appMetric({
+      metric: {
+        text:"11.68%"
+      },
+      label: {
+        text: "478 of 4,094 application choices"
+      },
+      classes: "app-metric--blue govuk-!-padding-bottom-0"
+    }) }}
+  </div>
+  <div class="govuk-grid-column-one-quarter">
+    {{ appMetric({
+      metric: {
+        text:"478"
+      },
+      label: {
+        text: "total"
+      },
+      classes: "govuk-!-padding-bottom-0"
+    }) }}
+  </div>
+  <div class="govuk-grid-column-one-quarter">
+    {{ appMetric({
+      metric: {
+        text:"42"
+      },
+      label: {
+        text: "this month"
+      },
+      classes: "govuk-!-padding-bottom-0"
+    }) }}
+  </div>
+</div>
