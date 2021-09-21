@@ -21,3 +21,11 @@ exports.show_reasons_for_rejection_get = (req, res) => {
   })
 
 }
+
+exports.show_reasons_for_rejection_reason_get = (req, res) => {
+
+  res.render('../views/performance/reasons-for-rejection/reason', {
+    reason: req.params.reason
+  })
+
+}

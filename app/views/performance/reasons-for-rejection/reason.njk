@@ -1,0 +1,125 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'performance' %}
+
+{% set sectionTitle = "Structured reasons for rejection" %}
+{% set title = reason | replace("-", " ") | capitalize %}
+
+{% block pageTitle %}
+{{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/performance",
+    text: "Performance"
+  }, {
+    href: "/performance/reasons-for-rejection",
+    text: sectionTitle
+  }, {
+    text: title
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{{ sectionTitle }}</span>
+      {{ title }}
+    </h1>
+
+    <p class="govuk-body">Showing application choices with the reject reason <strong>{{ title | lower }}</strong></p>
+
+    {{ appSummaryCard({
+      titleHtml: "Application choice" + ' <a href="#">#12345</a>',
+      html: govukSummaryList({
+        rows: [
+          {
+            key: {
+              html: govukTag({
+                text: title,
+                classes: "govuk-tag--yellow"
+              })
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "Additional advice"
+            },
+            value: {
+              text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+          }
+        ]
+      }),
+      classes: "govuk-!-margin-bottom-5"
+    }) }}
+
+    {{ appSummaryCard({
+      titleHtml: "Application choice" + ' <a href="#">#12345</a>',
+      html: govukSummaryList({
+        rows: [
+          {
+            key: {
+              html: govukTag({
+                text: title,
+                classes: "govuk-tag--yellow"
+              })
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "Additional advice"
+            },
+            value: {
+              text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+          }
+        ]
+      }),
+      classes: "govuk-!-margin-bottom-5"
+    }) }}
+
+    {{ appSummaryCard({
+      titleHtml: "Application choice" + ' <a href="#">#12345</a>',
+      html: govukSummaryList({
+        rows: [
+          {
+            key: {
+              html: govukTag({
+                text: title,
+                classes: "govuk-tag--yellow"
+              })
+            },
+            value: {
+              text: "Yes"
+            }
+          },
+          {
+            key: {
+              text: "Additional advice"
+            },
+            value: {
+              text: "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+            }
+          }
+        ]
+      }),
+      classes: "govuk-!-margin-bottom-5"
+    }) }}
+
+  </div>
+</div>
+
+{% endblock %}
