@@ -79,6 +79,9 @@
           {% if rejection.quality_of_application_what_to_improve.length %}
             <li>{{ rejection.quality_of_application_what_to_improve }}</li>
           {% endif %}
+          {% if rejection.quality_of_application_other_reason_details.length %}
+            <li>Other - {{ rejection.quality_of_application_other_reason_details }}</li>
+          {% endif %}
         </ul>
       {% endset %}
 
@@ -100,22 +103,38 @@
             <li>Degree does not meet course requirements</li>
           {% endif %}
           {% if rejection.qualifications_other_reason_details.length %}
-            <li>{{ rejection.qualifications_other_reason_details }}</li>
+            <li>Other - {{ rejection.qualifications_other_reason_details }}</li>
           {% endif %}
         </ul>
       {% endset %}
 
       {% set performanceAtInterviewHtml %}
-        <ul class="govuk-list">
-
-        </ul>
+        {{ rejection.performance_at_interview_what_to_improve }}
       {% endset %}
 
       {% set honestyAndProfessionalismHtml %}
         <ul class="govuk-list">
-          {% if rejection.information_given_on_application_form_false_or_inaccurate %}<li>Inaccurate or false information in the application</li>{% endif %}
-          {% if rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere %}<li>Evidence of plagiarism in the application</li>{% endif %}
-          {% if rejection.references_didn_t_support_application %}<li>References did not support the application</li>{% endif %}
+          {% if rejection.information_given_on_application_form_false_or_inaccurate %}
+            <li>Inaccurate or false information in the application</li>
+          {% endif %}
+          {% if rejection.information_given_on_application_form_false_or_inaccurate_details.length %}
+            <li>{{ rejection.information_given_on_application_form_false_or_inaccurate_details }}</li>
+          {% endif %}
+          {% if rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere %}
+            <li>Evidence of plagiarism in the application</li>
+          {% endif %}
+          {% if rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere_details.length %}
+            <li>{{ rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere_details }}</li>
+          {% endif %}
+          {% if rejection.references_didn_t_support_application %}
+            <li>References did not support the application</li>
+          {% endif %}
+          {% if rejection.references_didn_t_support_application_details.length %}
+            <li>{{ rejection.references_didn_t_support_application_details }}</li>
+          {% endif %}
+          {% if rejection.honesty_and_professionalism_other_reason_details.length %}
+            <li>Other - {{ rejection.honesty_and_professionalism_other_reason_details }}</li>
+          {% endif %}
         </ul>
       {% endset %}
 
@@ -146,8 +165,6 @@
       {% set courseFullHtml %}
         Yes
       {% endset %}
-
-
 
       {{ appSummaryCard({
         titleHtml: "Application choice" + ' <a href="#">#'+ rejection.application_choice_id +'</a>',
@@ -239,6 +256,8 @@
       }) }}
 
     {% endfor %}
+
+    {% include "_includes/pagination.njk" %}
 
   </div>
 </div>
