@@ -33,7 +33,7 @@ exports.show_reasons_for_rejection_reason_get = (req, res) => {
 
   // Get a slice of the data to display
   rejections = PaginationHelper.getDataByPage(rejections, pagination.pageNumber, 25)
-console.log(pagination);
+
   res.render('../views/performance/reasons-for-rejection/list', {
     reason: req.params.reason,
     rejections,
