@@ -1,6 +1,8 @@
+{% set sectionTitle = "qualifications" %}
+
 <h2 class="govuk-heading-m govuk-!-margin-top-7">
   <a class="govuk-link" href="/performance/reasons-for-rejection/qualifications">
-    Qualifications
+    {{ sectionTitle | capitalize }}
   </a>
 </h2>
 
@@ -11,9 +13,9 @@
         text:"17.95%"
       },
       label: {
-        text: "735 of 4,094 application choices"
+        html: '735 of 4,094 application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
       },
-      classes: "app-metric--blue govuk-!-padding-bottom-0"
+      classes: "app-metric--blue"
     }) }}
   </div>
   <div class="govuk-grid-column-one-quarter">
@@ -22,9 +24,8 @@
         text:"735"
       },
       label: {
-        text: "total"
-      },
-      classes: "govuk-!-padding-bottom-0"
+        html: 'rejected in total <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
+      }
     }) }}
   </div>
   <div class="govuk-grid-column-one-quarter">
@@ -33,9 +34,8 @@
         text:"14"
       },
       label: {
-        text: "this month"
-      },
-      classes: "govuk-!-padding-bottom-0"
+        html: 'rejected in September <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
+      }
     }) }}
   </div>
 </div>
