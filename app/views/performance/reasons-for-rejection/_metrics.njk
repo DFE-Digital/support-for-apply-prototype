@@ -23,7 +23,7 @@
   <div class="govuk-grid-column-one-quarter">
     {{ appMetric({
       metric: {
-        text: "8"
+        text: counts[category].month | numeral('0,0')
       },
       label: {
         html: 'rejected in September <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'

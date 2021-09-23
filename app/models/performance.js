@@ -1,5 +1,6 @@
 const path = require('path')
 const fs = require('fs')
+const moment = require('moment')
 
 const directoryPath = path.join(__dirname, '../data/reasons-for-rejection/')
 
@@ -140,9 +141,14 @@ exports.getRejectionCounts = (data) => {
 
   categories.forEach((category, i) => {
     const parent = {}
-    parent.total = rejections.filter(rejection => rejection[category.value] === true).length
+    let parentRejections = rejections.filter(rejection => rejection[category.value] === true)
+
+    parent.total = parentRejections.length
     parent.percent = (parent.total / counts.total) * 100
-    parent.month = 0
+    // rejected_at
+    parent.month = parentRejections
+                    .filter(rejection => rejection.rejected_at >= '2021-09-01'
+                    && rejection.rejected_at <= '2021-09-30').length
 
     if (category.items) {
       parent.items = {}
@@ -150,14 +156,19 @@ exports.getRejectionCounts = (data) => {
       category.items.forEach((item, i) => {
         const child = {}
 
+        let childRejections = []
+
         if (item.key === 'other') {
-          child.total = rejections.filter(rejection => rejection[item.value] && rejection[item.value].length).length
+          childRejections = rejections.filter(rejection => rejection[item.value] && rejection[item.value].length)
         } else {
-          child.total = rejections.filter(rejection => rejection[item.value] === true).length
+          childRejections = rejections.filter(rejection => rejection[item.value] === true)
         }
 
+        child.total = childRejections.length
         child.percent = (child.total / counts.total) * 100
-        child.month = 0
+        child.month = childRejections
+                        .filter(rejection => rejection.rejected_at >= '2021-09-01'
+                          && rejection.rejected_at <= '2021-09-30').length
 
         parent.items[item.key] = child
       })
