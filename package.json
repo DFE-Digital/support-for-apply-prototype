@@ -45,6 +45,7 @@
     "marked": "^3.0.0",
     "moment": "^2.24.0",
     "notifications-node-client": "^4.7.2",
+    "numeral": "^2.0.6",
     "nunjucks": "^3.2.2",
     "portscanner": "^2.1.1",
     "require-dir": "^1.0.0",

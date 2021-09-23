@@ -3,20 +3,164 @@ const fs = require('fs')
 
 const directoryPath = path.join(__dirname, '../data/reasons-for-rejection/')
 
-const writeFileSync = (data) => {
-  const raw = JSON.stringify(data)
-
-  const fileName = data.id + '.json'
-  const filePath = directoryPath + '/' + fileName
-
-  // write the JSON data
-  fs.writeFileSync(filePath, raw)
-}
+const categories = [
+  {
+    key: 'candidate-behaviour',
+    value: 'something_you_did',
+    items: [
+      {
+        key: 'did-not-reply-to-messages',
+        value: 'didn_t_reply_to_our_interview_offer'
+      },
+      {
+        key: 'did-not-attend-interview',
+        value: 'didn_t_attend_interview'
+      },
+      {
+        key: 'other',
+        value: 'something_you_did_other_reason_details'
+      }
+    ]
+  },
+  {
+    key: 'cannot-sponsor-visa',
+    value: 'visa_application_sponsorship'
+  },
+  {
+    key: 'course-full',
+    value: 'course_full'
+  },
+  {
+    key: 'honesty-and-professionalism',
+    value: 'honesty_and_professionalism',
+    items: [
+      {
+        key: 'innacurate-information',
+        value: 'information_given_on_application_form_false_or_inaccurate'
+      },
+      {
+        key: 'plagiarism',
+        value: 'evidence_of_plagiarism_in_personal_statement_or_elsewhere'
+      },
+      {
+        key: 'references',
+        value: 'references_didn_t_support_application'
+      },
+      {
+        key: 'other',
+        value: 'honesty_and_professionalism_other_reason_details'
+      }
+    ]
+  },
+  {
+    key: 'offered-place-on-another-course',
+    value: 'they_offered_you_a_place_on_another_course'
+  },
+  {
+    key: 'other-advice-or-feedback',
+    value: 'additional_advice'
+  },
+  {
+    key: 'performance-at-interview',
+    value: 'performance_at_interview'
+  },
+  {
+    key: 'qualifications',
+    value: 'qualifications',
+    items: [
+      {
+        key: 'no-english-gcse',
+        value: 'no_english_gcse_grade_4_c_or_above_or_valid_equivalent'
+      },
+      {
+        key: 'no-maths-gcse',
+        value: 'no_maths_gcse_grade_4_c_or_above_or_valid_equivalent'
+      },
+      {
+        key: 'no-science-gcse',
+        value: 'no_science_gcse_grade_4_c_or_above_or_valid_equivalent_for_primary_applicants'
+      },
+      {
+        key: 'no-degree',
+        value: 'no_degree'
+      },
+      {
+        key: 'degree-does-not-meet-course-requirements',
+        value: 'degree_doesn_t_meet_course_requirements'
+      },
+      {
+        key: 'other',
+        value: 'qualifications_other_reason_details'
+      }
+    ]
+  },
+  {
+    key: 'quality-of-application',
+    value: 'quality_of_application',
+    items: [
+      {
+        key: 'personal-statement',
+        value: 'personal_statement'
+      },
+      {
+        key: 'subject-knowledge',
+        value: 'subject_knowledge'
+      },
+      {
+        key: 'other',
+        value: 'quality_of_application_other_reason_details'
+      }
+    ]
+  },
+  {
+    key: 'safeguarding',
+    value: 'safeguarding_issues',
+    items: [
+      {
+        key: 'disclosed-information',
+        value: 'information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children'
+      },
+      {
+        key: 'vetting-process',
+        value: 'information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children'
+      },
+      {
+        key: 'other',
+        value: 'safeguarding_issues_other_reason_details'
+      }
+    ]
+  }
+]
 
 exports.getRejectionCounts = (data) => {
   const rejections = this.findRejections(data)
 
-  return rejections.length
+  const counts = {}
+  counts.total = rejections.length
+
+  categories.forEach((category, i) => {
+    const parent = {}
+    parent.total = rejections.filter(rejection => rejection[category.value] === true).length
+    parent.percent = (parent.total / counts.total) * 100
+    parent.month = 0
+
+    if (category.items) {
+      parent.items = {}
+
+      category.items.forEach((item, i) => {
+        const child = {}
+        child.total = rejections.filter(rejection => rejection[item.value] === true).length
+        child.percent = (child.total / counts.total) * 100
+        child.month = 0
+
+        parent.items[item.key] = child
+      })
+    }
+
+    counts[category.key] = parent
+  })
+
+  return counts
 }
 
 exports.findRejections = (data) => {

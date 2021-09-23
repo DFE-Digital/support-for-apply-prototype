@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const moment = require('moment')
+const numeral = require('numeral')
 moment.suppressDeprecationWarnings = true
 
 module.exports = function (env) {
@@ -329,7 +330,7 @@ module.exports = function (env) {
       case 'candidate-behaviour': return 'Candidate behaviour'
       case 'cannot-sponsor-visa': return 'Cannot sponsor applicants visa'
       case 'course-full': return 'Course full'
-      case 'honesty-and-professionalism': return ''
+      case 'honesty-and-professionalism': return 'Honesty and professionalism'
       case 'offered-place-on-another-course': return 'Offered place on another course'
       case 'other-advice-or-feedback': return 'Other advice or feedback'
       case 'performance-at-interview': return 'Performance at interview'
@@ -363,6 +364,15 @@ module.exports = function (env) {
       case 'vetting-process': return 'The vetting process found information which makes the candidate unsuitable to work with children'
       default: return code
     }
+  }
+
+  /* ------------------------------------------------------------------
+   numeral filter for use in Nunjucks
+   example: {{ params.number | numeral("0,00.0") }}
+   outputs: 1,000.00
+  ------------------------------------------------------------------ */
+  filters.numeral = (number, format) => {
+   return numeral(number).format(format)
   }
 
   /* ------------------------------------------------------------------

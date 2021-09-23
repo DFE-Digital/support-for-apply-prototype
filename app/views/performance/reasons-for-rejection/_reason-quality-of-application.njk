@@ -10,10 +10,10 @@
   <div class="govuk-grid-column-one-half">
     {{ appMetric({
       metric: {
-        text:"14.02%"
+        text: counts['quality-of-application'].percent | numeral('0.00') + "%"
       },
       label: {
-        html: '574 of 4,094 application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
+        html: counts['quality-of-application'].total | numeral('0,0') + ' of ' + counts.total | numeral('0,0') + ' application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
       },
       classes: "app-metric--blue"
     }) }}
@@ -21,7 +21,7 @@
   <div class="govuk-grid-column-one-quarter">
     {{ appMetric({
       metric: {
-        text:"574"
+        text: counts['quality-of-application'].total | numeral('0,0')
       },
       label: {
         html: 'rejected in total <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
@@ -31,7 +31,7 @@
   <div class="govuk-grid-column-one-quarter">
     {{ appMetric({
       metric: {
-        text:"13"
+        text: "13"
       },
       label: {
         html: 'rejected in September <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'

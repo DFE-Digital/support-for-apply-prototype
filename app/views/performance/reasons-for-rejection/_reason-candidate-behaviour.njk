@@ -10,10 +10,10 @@
   <div class="govuk-grid-column-one-half">
     {{ appMetric({
       metric: {
-        text:"2.81%"
+        text: counts['candidate-behaviour'].percent | numeral('0.00') + "%"
       },
       label: {
-        html: '115 of 4,094 application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
+        html: counts['candidate-behaviour'].total | numeral('0,0') + ' of ' + counts.total | numeral('0,0') + ' application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
       },
       classes: "app-metric--blue"
     }) }}
@@ -21,7 +21,7 @@
   <div class="govuk-grid-column-one-quarter">
     {{ appMetric({
       metric: {
-        text:"115"
+        text: counts['candidate-behaviour'].total | numeral('0,0')
       },
       label: {
         html: 'rejected in total <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
@@ -31,7 +31,7 @@
   <div class="govuk-grid-column-one-quarter">
     {{ appMetric({
       metric: {
-        text:"1"
+        text: "1"
       },
       label: {
         html: 'rejected in September <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
