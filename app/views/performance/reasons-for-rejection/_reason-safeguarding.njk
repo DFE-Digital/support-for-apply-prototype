@@ -1,97 +1,13 @@
-{% set sectionTitle = "safeguarding" | getRejectionCategoryLabel %}
+{% set category = "safeguarding" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
+{% set reasons = ['disclosed-information','vetting-process','other'] %}
 
 <h2 class="govuk-heading-m govuk-!-margin-top-7">
-  <a class="govuk-link" href="/performance/reasons-for-rejection/safeguarding">
+  <a class="govuk-link" href="/performance/reasons-for-rejection/{{ category }}">
     {{ sectionTitle | capitalize }}
   </a>
 </h2>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-half">
-    {{ appMetric({
-      metric: {
-        text: counts['safeguarding'].percent | numeral('0.00') + "%"
-      },
-      label: {
-        html: counts['safeguarding'].total | numeral('0,0') + ' of ' + counts.total | numeral('0,0') + ' application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      },
-      classes: "app-metric--blue"
-    }) }}
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    {{ appMetric({
-      metric: {
-        text: counts['safeguarding'].total | numeral('0,0')
-      },
-      label: {
-        html: 'rejected in total <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      }
-    }) }}
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    {{ appMetric({
-      metric: {
-        text: "0"
-      },
-      label: {
-        html: 'rejected in September <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      }
-    }) }}
-  </div>
-</div>
+{% include "./_metrics.njk" %}
 
-
-<table class="govuk-table govuk-!-margin-top-5">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header" width="40%">Reason</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="10%">Percentage of choices</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="25%">Total</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="25%">This month</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-        <a class="govuk-link" href="/performance/reasons-for-rejection/safeguarding/disclosed-information">The candidate disclosed information which makes them unsuitable to work with children</a>
-      </th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0.07%
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        3
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-        <a class="govuk-link" href="/performance/reasons-for-rejection/safeguarding/vetting-process">The vetting process found information which makes the candidate unsuitable to work with children</a>
-      </th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0%
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-        <a class="govuk-link" href="/performance/reasons-for-rejection/safeguarding/other">Other</a>
-      </th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0.29%
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        12
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0
-      </td>
-    </tr>
-  </tbody>
-</table>
+{% include "./_table.njk" %}

@@ -1,96 +1,13 @@
-{% set sectionTitle = "candidate-behaviour" | getRejectionCategoryLabel %}
+{% set category = "candidate-behaviour" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
+{% set reasons = ['did-not-reply-to-messages','did-not-attend-interview','other'] %}
 
 <h2 class="govuk-heading-m govuk-!-margin-top-7">
-  <a class="govuk-link" href="/performance/reasons-for-rejection/candidate-behaviour">
+  <a class="govuk-link" href="/performance/reasons-for-rejection/{{ category }}">
     {{ sectionTitle | capitalize }}
   </a>
 </h2>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-half">
-    {{ appMetric({
-      metric: {
-        text: counts['candidate-behaviour'].percent | numeral('0.00') + "%"
-      },
-      label: {
-        html: counts['candidate-behaviour'].total | numeral('0,0') + ' of ' + counts.total | numeral('0,0') + ' application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      },
-      classes: "app-metric--blue"
-    }) }}
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    {{ appMetric({
-      metric: {
-        text: counts['candidate-behaviour'].total | numeral('0,0')
-      },
-      label: {
-        html: 'rejected in total <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      }
-    }) }}
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    {{ appMetric({
-      metric: {
-        text: "1"
-      },
-      label: {
-        html: 'rejected in September <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      }
-    }) }}
-  </div>
-</div>
+{% include "./_metrics.njk" %}
 
-<table class="govuk-table govuk-!-margin-top-5">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header" width="40%">Reason</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="10%">Percentage of choices</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="25%">Total</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="25%">This month</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-        <a class="govuk-link" href="/performance/reasons-for-rejection/candidate-behaviour/did-not-reply-to-messages">Did not reply to messages</a>
-      </th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0.46%
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        19
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-        <a class="govuk-link" href="/performance/reasons-for-rejection/candidate-behaviour/did-not-attend-interview">Did not attend interview</a>
-      </th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        1.69%
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        69
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        1
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-        <a class="govuk-link" href="/performance/reasons-for-rejection/candidate-behaviour/other">Other</a>
-      </th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0.88%
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        36
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        0
-      </td>
-    </tr>
-  </tbody>
-</table>
+{% include "./_table.njk" %}

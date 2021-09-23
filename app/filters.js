@@ -362,6 +362,7 @@ module.exports = function (env) {
       case 'references': return 'References did not support the application'
       case 'disclosed-information': return 'The candidate disclosed information which makes them unsuitable to work with children'
       case 'vetting-process': return 'The vetting process found information which makes the candidate unsuitable to work with children'
+      case 'other': return 'Other'
       default: return code
     }
   }

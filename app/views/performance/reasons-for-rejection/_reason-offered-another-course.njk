@@ -1,41 +1,10 @@
-{% set sectionTitle = "offered-place-on-another-course" | getRejectionCategoryLabel %}
+{% set category = "offered-place-on-another-course" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
 
 <h2 class="govuk-heading-m govuk-!-margin-top-7">
-  <a class="govuk-link" href="/performance/reasons-for-rejection/offered-place-on-another-course">
+  <a class="govuk-link" href="/performance/reasons-for-rejection/{{ category }}">
     {{ sectionTitle | capitalize }}
   </a>
 </h2>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-half">
-    {{ appMetric({
-      metric: {
-        text: counts['offered-place-on-another-course'].percent | numeral('0.00') + "%"
-      },
-      label: {
-        html: counts['offered-place-on-another-course'].total | numeral('0,0') + ' of ' + counts.total | numeral('0,0') + ' application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      },
-      classes: "app-metric--blue"
-    }) }}
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    {{ appMetric({
-      metric: {
-        text: counts['offered-place-on-another-course'].total | numeral('0,0')
-      },
-      label: {
-        html: 'rejected in total <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      }
-    }) }}
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    {{ appMetric({
-      metric: {
-        text: "1"
-      },
-      label: {
-        html: 'rejected in September <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      }
-    }) }}
-  </div>
-</div>
+{% include "./_metrics.njk" %}

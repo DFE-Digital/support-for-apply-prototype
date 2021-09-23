@@ -149,7 +149,13 @@ exports.getRejectionCounts = (data) => {
 
       category.items.forEach((item, i) => {
         const child = {}
-        child.total = rejections.filter(rejection => rejection[item.value] === true).length
+
+        if (item.key === 'other') {
+          child.total = rejections.filter(rejection => rejection[item.value] && rejection[item.value].length).length
+        } else {
+          child.total = rejections.filter(rejection => rejection[item.value] === true).length
+        }
+
         child.percent = (child.total / counts.total) * 100
         child.month = 0
 
@@ -185,7 +191,6 @@ exports.findRejections = (data) => {
   if (data) {
 
     if (data.category) {
-      console.log(data.category);
       switch (data.category) {
         case 'candidate-behaviour':
           rejections = rejections.filter(rejection => rejection.something_you_did === true)
@@ -221,7 +226,6 @@ exports.findRejections = (data) => {
     }
 
     if (data.reason) {
-      console.log(data.reason);
       switch (data.reason) {
         case 'did-not-reply-to-messages':
           rejections = rejections.filter(rejection => rejection.didn_t_reply_to_our_interview_offer === true)
@@ -272,8 +276,8 @@ exports.findRejections = (data) => {
           case 'candidate-behaviour':
             rejections = rejections.filter(rejection => (rejection.something_you_did_other_reason_details !== undefined
               && rejection.something_you_did_other_reason_details.length)
-              || rejection.candidate_behaviour_what_to_improve !== undefined
-              && rejection.candidate_behaviour_what_to_improve)
+              || (rejection.candidate_behaviour_what_to_improve !== undefined
+              && rejection.candidate_behaviour_what_to_improve.length))
             break
           case 'honesty-and-professionalism':
             rejections = rejections.filter(rejection => rejection.honesty_and_professionalism_other_reason_details !== undefined
@@ -284,10 +288,10 @@ exports.findRejections = (data) => {
               && rejection.qualifications_other_reason_details.length)
             break
           case 'quality-of-application':
-            rejections = rejections.filter(rejection => (rejection.quality_of_application_what_to_improve !== undefined
-              && rejection.quality_of_application_what_to_improve.length)
-              || rejection.quality_of_application_other_reason_details !== undefined
+            rejections = rejections.filter(rejection => (rejection.quality_of_application_other_reason_details !== undefined
               && rejection.quality_of_application_other_reason_details)
+              || (rejection.quality_of_application_what_to_improve !== undefined
+              && rejection.quality_of_application_what_to_improve.length))
             break
           case 'safeguarding':
             rejections = rejections.filter(rejection => rejection.safeguarding_issues_other_reason_details !== undefined

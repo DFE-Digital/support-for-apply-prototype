@@ -1,97 +1,13 @@
-{% set sectionTitle = "quality-of-application" | getRejectionCategoryLabel %}
+{% set category = "quality-of-application" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
+{% set reasons = ['personal-statement','subject-knowledge','other'] %}
 
 <h2 class="govuk-heading-m govuk-!-margin-top-7">
-  <a class="govuk-link" href="/performance/reasons-for-rejection/quality-of-application">
+  <a class="govuk-link" href="/performance/reasons-for-rejection/{{ category }}">
     {{ sectionTitle | capitalize }}
   </a>
 </h2>
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-one-half">
-    {{ appMetric({
-      metric: {
-        text: counts['quality-of-application'].percent | numeral('0.00') + "%"
-      },
-      label: {
-        html: counts['quality-of-application'].total | numeral('0,0') + ' of ' + counts.total | numeral('0,0') + ' application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      },
-      classes: "app-metric--blue"
-    }) }}
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    {{ appMetric({
-      metric: {
-        text: counts['quality-of-application'].total | numeral('0,0')
-      },
-      label: {
-        html: 'rejected in total <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      }
-    }) }}
-  </div>
-  <div class="govuk-grid-column-one-quarter">
-    {{ appMetric({
-      metric: {
-        text: "13"
-      },
-      label: {
-        html: 'rejected in September <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
-      }
-    }) }}
-  </div>
-</div>
+{% include "./_metrics.njk" %}
 
-
-<table class="govuk-table govuk-!-margin-top-5">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header" width="40%">Reason</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="10%">Percentage of choices</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="25%">Total</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="25%">This month</th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-        <a class="govuk-link" href="/performance/reasons-for-rejection/quality-of-application/personal-statement">Personal statement</a>
-      </th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        8.72%
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        357
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        11
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-        <a class="govuk-link" href="/performance/reasons-for-rejection/quality-of-application/subject-knowledge">Subject knowledge</a>
-      </th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        3.79%
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        155
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        4
-      </td>
-    </tr>
-    <tr class="govuk-table__row">
-      <th scope="row" class="govuk-table__header">
-        <a class="govuk-link" href="/performance/reasons-for-rejection/quality-of-application/other">Other</a>
-      </th>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        3.83%
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        157
-      </td>
-      <td class="govuk-table__cell govuk-table__cell--numeric">
-        1
-      </td>
-    </tr>
-  </tbody>
-</table>
+{% include "./_table.njk" %}
