@@ -2,7 +2,7 @@
 
 {% set primaryNavId = 'performance' %}
 
-{% set sectionTitle = "Structured reasons for rejection" %}
+{% set sectionTitle = "Reasons for rejection" %}
 {% set title = category | getRejectionCategoryLabel %}
 
 {% if reason.length %}
@@ -27,6 +27,17 @@
 }) }}
 {% endblock %}
 
+{% macro _listItem(params) %}
+  <li>
+    {% if params.highlight %}
+      <mark>{{ params.text }}</mark>
+    {% else %}
+      {{ params.text }}
+    {% endif %}
+    {{ ' - ' + params.description if params.description }}
+  </li>
+{% endmacro %}
+
 {% block content %}
 
 <div class="govuk-grid-row">
@@ -47,24 +58,33 @@
 
       {% for rejection in rejections %}
 
-      <!-- govukTag({
-        text: title,
-        classes: "govuk-tag--yellow"
-      }) -->
-
         {% set candidateBehaviourHtml %}
           <ul class="govuk-list">
             {% if rejection.didn_t_reply_to_our_interview_offer %}
-              <li>Did not reply to messages</li>
+              {{ _listItem({
+                text: "Did not reply to messages",
+                highlight: true if reason == 'did-not-reply-to-messages' else false
+              }) }}
             {% endif %}
             {% if rejection.didn_t_attend_interview %}
-              <li>Did not attend interview</li>
+              {{ _listItem({
+                text: "Did not attend interview",
+                highlight: true if reason == 'did-not-attend-interview' else false
+              }) }}
             {% endif %}
             {% if rejection.something_you_did_other_reason_details.length %}
-              <li>{{ rejection.something_you_did_other_reason_details }}</li>
+              {{ _listItem({
+                text: "Other",
+                description: rejection.something_you_did_other_reason_details,
+                highlight: true if reason == 'other' else false
+              }) }}
             {% endif %}
             {% if rejection.candidate_behaviour_what_to_improve %}
-              <li>{{ rejection.candidate_behaviour_what_to_improve }}</li>
+              {{ _listItem({
+                text: "Other",
+                description: rejection.candidate_behaviour_what_to_improve,
+                highlight: true if reason == 'other' else false
+              }) }}
             {% endif %}
           </ul>
         {% endset %}
@@ -72,17 +92,25 @@
         {% set qualityOfApplicationHtml %}
           <ul class="govuk-list">
             {% if rejection.personal_statement %}
-              <li>Personal statement</li>
+              {{ _listItem({
+                text: "Personal statement",
+                description: rejection.personal_statement_what_to_improve,
+                highlight: true if reason == 'personal-statement' else false
+              }) }}
             {% endif %}
-            {% if rejection.personal_statement_what_to_improve.length %}
+            {#% if rejection.personal_statement_what_to_improve.length %}
               <li>{{ rejection.personal_statement_what_to_improve }}</li>
-            {% endif %}
+            {% endif %#}
             {% if rejection.subject_knowledge %}
-              <li>Subject knowledge</li>
+              {{ _listItem({
+                text: "Subject knowledge",
+                description: rejection.subject_knowledge_what_to_improve,
+                highlight: true if reason == 'subject-knowledge' else false
+              }) }}
             {% endif %}
-            {% if rejection.subject_knowledge_what_to_improve.length %}
+            {#% if rejection.subject_knowledge_what_to_improve.length %}
               <li>{{ rejection.subject_knowledge_what_to_improve }}</li>
-            {% endif %}
+            {% endif %#}
             {% if rejection.quality_of_application_other_reason_details.length %}
               <li>{{ rejection.quality_of_application_other_reason_details }}</li>
             {% endif %}
@@ -98,7 +126,9 @@
         {% set qualificationsHtml %}
           <ul class="govuk-list">
             {% if rejection.no_english_gcse_grade_4_c_or_above_or_valid_equivalent %}
-              <li>No English GCSE grade 4 (C) or above, or accepted equivalent</li>
+              <li>{% if reason == 'no-english-gcse' %}<mark>{% endif %}
+                No English GCSE grade 4 (C) or above, or accepted equivalent
+              {% if reason == 'no-english-gcse' %}</mark>{% endif %}</li>
             {% endif %}
             {% if rejection.no_maths_gcse_grade_4_c_or_above_or_valid_equivalent %}
               <li>No maths GCSE grade 4 (C) or above, or accepted equivalent</li>
@@ -182,7 +212,7 @@
             rows: [
               {
                 key: {
-                  text: 'Candidate behaviour'
+                  html: '<mark>Candidate behaviour</mark>' if category == 'candidate-behaviour' and not reason else 'Candidate behaviour'
                 },
                 value: {
                   html: candidateBehaviourHtml
@@ -190,7 +220,7 @@
               } if rejection.something_you_did,
               {
                 key: {
-                  text: 'Quality of application'
+                  html: '<mark>Quality of application</mark>' if category == 'quality-of-application' and not reason else 'Quality of application'
                 },
                 value: {
                   html: qualityOfApplicationHtml
@@ -198,7 +228,7 @@
               } if rejection.quality_of_application,
               {
                 key: {
-                  text: 'Qualifications'
+                  html: '<mark>Qualifications</mark>' if category == 'qualifications' and not reason else 'Qualifications'
                 },
                 value: {
                   html: qualificationsHtml
@@ -206,7 +236,7 @@
               } if rejection.qualifications,
               {
                 key: {
-                  text: 'Performance at interview'
+                  html: '<mark>Performance at interview</mark>' if category == 'performance-at-interview' and not reason else 'Performance at interview'
                 },
                 value: {
                   html: performanceAtInterviewHtml
@@ -214,7 +244,7 @@
               } if rejection.performance_at_interview,
               {
                 key: {
-                  text: 'Honesty and professionalism'
+                  html: '<mark>Honesty and professionalism</mark>' if category == 'honesty-and-professionalism' and not reason else 'Honesty and professionalism'
                 },
                 value: {
                   html: honestyAndProfessionalismHtml
@@ -222,7 +252,7 @@
               } if rejection.honesty_and_professionalism,
               {
                 key: {
-                  text: 'Safeguarding'
+                  html: '<mark>Safeguarding</mark>' if category == 'safeguarding' and not reason else 'Safeguarding'
                 },
                 value: {
                   html: safeguardingHtml
@@ -230,7 +260,7 @@
               } if rejection.safeguarding_issues,
               {
                 key: {
-                  text: 'Offered place on another course'
+                  html: '<mark>Offered place on another course</mark>' if category == 'offered-place-on-another-course' and not reason else 'Offered place on another course'
                 },
                 value: {
                   html: offeredAnotherPlaceHtml
@@ -238,7 +268,7 @@
               } if rejection.they_offered_you_a_place_on_another_course,
               {
                 key: {
-                  text: 'Course is full'
+                  html: '<mark>Course is full</mark>' if category == 'course-full' and not reason else 'Course is full'
                 },
                 value: {
                   html: courseFullHtml
@@ -246,7 +276,7 @@
               } if rejection.course_full,
               {
                 key: {
-                  text: 'Visa application sponsorship'
+                  html: '<mark>Visa application sponsorship</mark>' if category == 'cannot-sponsor-visa' and not reason else 'Visa application sponsorship'
                 },
                 value: {
                   text: rejection.cannot_sponsor_visa_details
@@ -254,7 +284,7 @@
               } if rejection.visa_application_sponsorship,
               {
                 key: {
-                  text: "Additional advice"
+                  html: '<mark>Additional advice</mark>' if category == 'other-advice-or-feedback' and not reason else 'Additional advice'
                 },
                 value: {
                   text: rejection.additional_advice

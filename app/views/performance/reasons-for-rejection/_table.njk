@@ -2,9 +2,10 @@
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
       <th scope="col" class="govuk-table__header" width="40%">Reason</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="10%">Percentage of choices</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="25%">Total</th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="25%">This month</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="15%">Percentage of all reasons</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="15%">Percentage of this category</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="15%">Total</th>
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="15%">Total this month (September)</th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -19,6 +20,9 @@
         </th>
         <td class="govuk-table__cell govuk-table__cell--numeric">
           {{ counts[category].items[reason].percent | numeral('0.00') }}%
+        </td>
+        <td class="govuk-table__cell govuk-table__cell--numeric">
+          {{ ((counts[category].items[reason].total / counts[category].total) * 100) | numeral('0.00') }}%
         </td>
         <td class="govuk-table__cell govuk-table__cell--numeric">
           {{ counts[category].items[reason].total | numeral('0,0') }}

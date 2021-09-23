@@ -21,7 +21,8 @@ exports.show_reasons_for_rejection_get = (req, res) => {
   const counts = Performance.getRejectionCounts()
 
   res.render('../views/performance/reasons-for-rejection/show', {
-    counts
+    counts,
+    cycle: req.params.cycle
   })
 
 }

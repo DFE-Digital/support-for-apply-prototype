@@ -3,7 +3,7 @@
 {% set primaryNavId = 'performance' %}
 {% set subNavId = cycle if cycle else 'all' %}
 
-{% set title = "Structured reasons for rejection" %}
+{% set title = "Reasons for rejection" %}
 
 {% block pageTitle %}
 {{ title }} – {{ serviceName }} – GOV.UK
@@ -27,7 +27,7 @@
 
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
-    {#% include "./_sub-navigation.njk" %#}
+    {% include "./_sub-navigation.njk" %}
 
     {% include "./_reason-candidate-behaviour.njk" %}
 

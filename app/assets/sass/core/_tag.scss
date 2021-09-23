@@ -33,4 +33,7 @@
   background: govuk-tint(govuk-colour("green"), 80);
 }
 
-
+.app-tag--yellow {
+  color: govuk-shade(govuk-colour("yellow"), 65);
+  background: govuk-tint(govuk-colour("yellow"), 75);
+}

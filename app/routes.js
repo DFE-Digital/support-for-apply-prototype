@@ -105,6 +105,8 @@ router.get('/performance/service/:cycle', checkIsAuthenticated, performanceContr
 
 router.get('/performance/service', checkIsAuthenticated, performanceController.show_service_get)
 
+router.get('/performance/reasons-for-rejection/cycle/:cycle', checkIsAuthenticated, performanceController.show_reasons_for_rejection_get)
+
 router.get('/performance/reasons-for-rejection/:category/:reason', checkIsAuthenticated, performanceController.show_reasons_for_rejection_reason_get)
 
 router.get('/performance/reasons-for-rejection/:category', checkIsAuthenticated, performanceController.show_reasons_for_rejection_reason_get)
