@@ -320,6 +320,52 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
+  utility function to return reason for rejection category label
+  example: {{ 'candidate-behaviour' | getRejectionCategoryLabel }}
+  outputs: Candidate behaviour
+  ------------------------------------------------------------------ */
+  filters.getRejectionCategoryLabel = (code) => {
+    switch (code) {
+      case 'candidate-behaviour': return 'Candidate behaviour'
+      case 'cannot-sponsor-visa': return 'Cannot sponsor applicants visa'
+      case 'course-full': return 'Course full'
+      case 'honesty-and-professionalism': return ''
+      case 'offered-place-on-another-course': return 'Offered place on another course'
+      case 'other-advice-or-feedback': return 'Other advice or feedback'
+      case 'performance-at-interview': return 'Performance at interview'
+      case 'qualifications': return 'Qualifications'
+      case 'quality-of-application': return 'Quality of application'
+      case 'safeguarding': return 'Safeguarding'
+      default: return code
+    }
+  }
+
+  /* ------------------------------------------------------------------
+  utility function to return reason for rejection resaon label
+  example: {{ 'no-english-gcse' | getRejectionReasonLabel }}
+  outputs: No English GCSE grade 4 (C) or above, or accepted equivalent
+  ------------------------------------------------------------------ */
+  filters.getRejectionReasonLabel = (code) => {
+    switch (code) {
+      case 'did-not-reply-to-messages': return 'Did not reply to messages'
+      case 'did-not-attend-interview': return 'Did not attend interview'
+      case 'personal-statement': return 'Personal statement'
+      case 'subject-knowledge': return 'Subject knowledge'
+      case 'no-english-gcse': return 'No English GCSE grade 4 (C) or above, or accepted equivalent'
+      case 'no-maths-gcse': return 'No maths GCSE grade 4 (C) or above, or accepted equivalent'
+      case 'no-science-gcse': return 'No science GCSE grade 4 (C) or above, or accepted equivalent (for primary applicants)'
+      case 'no-degree': return 'No degree'
+      case 'degree-does-not-meet-course-requirements': return 'Degree does not meet course requirements'
+      case 'innacurate-information': return 'Innacurate or false information in the application'
+      case 'plagiarism': return 'Evidence of plagiarism in the application'
+      case 'references': return 'References did not support the application'
+      case 'disclosed-information': return 'The candidate disclosed information which makes them unsuitable to work with children'
+      case 'vetting-process': return 'The vetting process found information which makes the candidate unsuitable to work with children'
+      default: return code
+    }
+  }
+
+  /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
   return filters

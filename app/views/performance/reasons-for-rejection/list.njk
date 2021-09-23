@@ -3,7 +3,11 @@
 {% set primaryNavId = 'performance' %}
 
 {% set sectionTitle = "Structured reasons for rejection" %}
-{% set title = reason | replace("-", " ") | capitalize %}
+{% set title = category | getRejectionCategoryLabel %}
+
+{% if reason.length %}
+  {% set title = title + " - " + reason | getRejectionReasonLabel | lower %}
+{% endif %}
 
 {% block pageTitle %}
 {{ title }} – {{ serviceName }} – GOV.UK
@@ -26,7 +30,7 @@
 {% block content %}
 
 <div class="govuk-grid-row">
-  <div class="govuk-grid-column-full">
+  <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
       <span class="govuk-caption-l">{{ sectionTitle }}</span>
@@ -34,230 +38,240 @@
     </h1>
 
     <!-- <p class="govuk-body">Showing application choices with the reject reason <strong>{{ title | lower }}</strong></p> -->
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
 
-    {% for rejection in rejections %}
+    {% if rejections.length %}
 
-    <!-- govukTag({
-      text: title,
-      classes: "govuk-tag--yellow"
-    }) -->
+      {% for rejection in rejections %}
 
-      {% set candidateBehaviourHtml %}
-        <ul class="govuk-list">
-          {% if rejection.didn_t_reply_to_our_interview_offer %}
-            <li>Did not reply to messages</li>
-          {% endif %}
-          {% if rejection.didn_t_attend_interview %}
-            <li>Did not attend interview</li>
-          {% endif %}
-          {% if rejection.something_you_did_other_reason_details.length %}
-            <li>{{ rejection.something_you_did_other_reason_details }}</li>
-          {% endif %}
-          {% if rejection.candidate_behaviour_what_to_improve %}
-            <li>{{ rejection.candidate_behaviour_what_to_improve }}</li>
-          {% endif %}
-        </ul>
-      {% endset %}
+      <!-- govukTag({
+        text: title,
+        classes: "govuk-tag--yellow"
+      }) -->
 
-      {% set qualityOfApplicationHtml %}
-        <ul class="govuk-list">
-          {% if rejection.personal_statement %}
-            <li>Personal statement</li>
-          {% endif %}
-          {% if rejection.personal_statement_what_to_improve.length %}
-            <li>{{ rejection.personal_statement_what_to_improve }}</li>
-          {% endif %}
-          {% if rejection.subject_knowledge %}
-            <li>Subject knowledge</li>
-          {% endif %}
-          {% if rejection.subject_knowledge_what_to_improve.length %}
-            <li>{{ rejection.subject_knowledge_what_to_improve }}</li>
-          {% endif %}
-          {% if rejection.quality_of_application_other_reason_details.length %}
-            <li>{{ rejection.quality_of_application_other_reason_details }}</li>
-          {% endif %}
-          {% if rejection.quality_of_application_what_to_improve.length %}
-            <li>{{ rejection.quality_of_application_what_to_improve }}</li>
-          {% endif %}
-          {% if rejection.quality_of_application_other_reason_details.length %}
-            <li>Other - {{ rejection.quality_of_application_other_reason_details }}</li>
-          {% endif %}
-        </ul>
-      {% endset %}
+        {% set candidateBehaviourHtml %}
+          <ul class="govuk-list">
+            {% if rejection.didn_t_reply_to_our_interview_offer %}
+              <li>Did not reply to messages</li>
+            {% endif %}
+            {% if rejection.didn_t_attend_interview %}
+              <li>Did not attend interview</li>
+            {% endif %}
+            {% if rejection.something_you_did_other_reason_details.length %}
+              <li>{{ rejection.something_you_did_other_reason_details }}</li>
+            {% endif %}
+            {% if rejection.candidate_behaviour_what_to_improve %}
+              <li>{{ rejection.candidate_behaviour_what_to_improve }}</li>
+            {% endif %}
+          </ul>
+        {% endset %}
 
-      {% set qualificationsHtml %}
-        <ul class="govuk-list">
-          {% if rejection.no_english_gcse_grade_4_c_or_above_or_valid_equivalent %}
-            <li>No English GCSE grade 4 (C) or above, or accepted equivalent</li>
-          {% endif %}
-          {% if rejection.no_maths_gcse_grade_4_c_or_above_or_valid_equivalent %}
-            <li>No maths GCSE grade 4 (C) or above, or accepted equivalent</li>
-          {% endif %}
-          {% if rejection.no_science_gcse_grade_4_c_or_above_or_valid_equivalent_for_primary_applicants %}
-            <li>No science GCSE grade 4 (C) or above, or accepted equivalent (for primary applicants)</li>
-          {% endif %}
-          {% if rejection.no_degree %}
-            <li>No degree</li>
-          {% endif %}
-          {% if rejection.degree_does_not_meet_course_requirements %}
-            <li>Degree does not meet course requirements</li>
-          {% endif %}
-          {% if rejection.qualifications_other_reason_details.length %}
-            <li>Other - {{ rejection.qualifications_other_reason_details }}</li>
-          {% endif %}
-        </ul>
-      {% endset %}
+        {% set qualityOfApplicationHtml %}
+          <ul class="govuk-list">
+            {% if rejection.personal_statement %}
+              <li>Personal statement</li>
+            {% endif %}
+            {% if rejection.personal_statement_what_to_improve.length %}
+              <li>{{ rejection.personal_statement_what_to_improve }}</li>
+            {% endif %}
+            {% if rejection.subject_knowledge %}
+              <li>Subject knowledge</li>
+            {% endif %}
+            {% if rejection.subject_knowledge_what_to_improve.length %}
+              <li>{{ rejection.subject_knowledge_what_to_improve }}</li>
+            {% endif %}
+            {% if rejection.quality_of_application_other_reason_details.length %}
+              <li>{{ rejection.quality_of_application_other_reason_details }}</li>
+            {% endif %}
+            {% if rejection.quality_of_application_what_to_improve.length %}
+              <li>{{ rejection.quality_of_application_what_to_improve }}</li>
+            {% endif %}
+            {% if rejection.quality_of_application_other_reason_details.length %}
+              <li>Other - {{ rejection.quality_of_application_other_reason_details }}</li>
+            {% endif %}
+          </ul>
+        {% endset %}
 
-      {% set performanceAtInterviewHtml %}
-        {{ rejection.performance_at_interview_what_to_improve }}
-      {% endset %}
+        {% set qualificationsHtml %}
+          <ul class="govuk-list">
+            {% if rejection.no_english_gcse_grade_4_c_or_above_or_valid_equivalent %}
+              <li>No English GCSE grade 4 (C) or above, or accepted equivalent</li>
+            {% endif %}
+            {% if rejection.no_maths_gcse_grade_4_c_or_above_or_valid_equivalent %}
+              <li>No maths GCSE grade 4 (C) or above, or accepted equivalent</li>
+            {% endif %}
+            {% if rejection.no_science_gcse_grade_4_c_or_above_or_valid_equivalent_for_primary_applicants %}
+              <li>No science GCSE grade 4 (C) or above, or accepted equivalent (for primary applicants)</li>
+            {% endif %}
+            {% if rejection.no_degree %}
+              <li>No degree</li>
+            {% endif %}
+            {% if rejection.degree_does_not_meet_course_requirements %}
+              <li>Degree does not meet course requirements</li>
+            {% endif %}
+            {% if rejection.qualifications_other_reason_details.length %}
+              <li>Other - {{ rejection.qualifications_other_reason_details }}</li>
+            {% endif %}
+          </ul>
+        {% endset %}
 
-      {% set honestyAndProfessionalismHtml %}
-        <ul class="govuk-list">
-          {% if rejection.information_given_on_application_form_false_or_inaccurate %}
-            <li>Inaccurate or false information in the application</li>
-          {% endif %}
-          {% if rejection.information_given_on_application_form_false_or_inaccurate_details.length %}
-            <li>{{ rejection.information_given_on_application_form_false_or_inaccurate_details }}</li>
-          {% endif %}
-          {% if rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere %}
-            <li>Evidence of plagiarism in the application</li>
-          {% endif %}
-          {% if rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere_details.length %}
-            <li>{{ rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere_details }}</li>
-          {% endif %}
-          {% if rejection.references_didn_t_support_application %}
-            <li>References did not support the application</li>
-          {% endif %}
-          {% if rejection.references_didn_t_support_application_details.length %}
-            <li>{{ rejection.references_didn_t_support_application_details }}</li>
-          {% endif %}
-          {% if rejection.honesty_and_professionalism_other_reason_details.length %}
-            <li>Other - {{ rejection.honesty_and_professionalism_other_reason_details }}</li>
-          {% endif %}
-        </ul>
-      {% endset %}
+        {% set performanceAtInterviewHtml %}
+          {{ rejection.performance_at_interview_what_to_improve }}
+        {% endset %}
 
-      {% set safeguardingHtml %}
-        <ul class="govuk-list">
-          {% if rejection.information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children %}
-            <li>The candidate disclosed information which makes them unsuitable to work with children</li>
-          {% endif %}
-          {% if rejection.information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children_details.length %}
-            <li>{{ rejection.information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children_details }}</li>
-          {% endif %}
-          {% if rejection.information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children %}
-            <li>The vetting process found information which makes the candidate unsuitable to work with children</li>
-          {% endif %}
-          {% if rejection.information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children_details.length %}
-            <li>{{ rejection.information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children_details }}</li>
-          {% endif %}
-          {% if rejection.safeguarding_issues_other_reason_details.length %}
-            <li>Other - {{ rejection.safeguarding_issues_other_reason_details }}</li>
-          {% endif %}
-        </ul>
-      {% endset %}
+        {% set honestyAndProfessionalismHtml %}
+          <ul class="govuk-list">
+            {% if rejection.information_given_on_application_form_false_or_inaccurate %}
+              <li>Inaccurate or false information in the application</li>
+            {% endif %}
+            {% if rejection.information_given_on_application_form_false_or_inaccurate_details.length %}
+              <li>{{ rejection.information_given_on_application_form_false_or_inaccurate_details }}</li>
+            {% endif %}
+            {% if rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere %}
+              <li>Evidence of plagiarism in the application</li>
+            {% endif %}
+            {% if rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere_details.length %}
+              <li>{{ rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere_details }}</li>
+            {% endif %}
+            {% if rejection.references_didn_t_support_application %}
+              <li>References did not support the application</li>
+            {% endif %}
+            {% if rejection.references_didn_t_support_application_details.length %}
+              <li>{{ rejection.references_didn_t_support_application_details }}</li>
+            {% endif %}
+            {% if rejection.honesty_and_professionalism_other_reason_details.length %}
+              <li>Other - {{ rejection.honesty_and_professionalism_other_reason_details }}</li>
+            {% endif %}
+          </ul>
+        {% endset %}
 
-      {% set offeredAnotherPlaceHtml %}
-        {{ rejection.offered_on_another_course_details }}
-      {% endset %}
+        {% set safeguardingHtml %}
+          <ul class="govuk-list">
+            {% if rejection.information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children %}
+              <li>The candidate disclosed information which makes them unsuitable to work with children</li>
+            {% endif %}
+            {% if rejection.information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children_details.length %}
+              <li>{{ rejection.information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children_details }}</li>
+            {% endif %}
+            {% if rejection.information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children %}
+              <li>The vetting process found information which makes the candidate unsuitable to work with children</li>
+            {% endif %}
+            {% if rejection.information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children_details.length %}
+              <li>{{ rejection.information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children_details }}</li>
+            {% endif %}
+            {% if rejection.safeguarding_issues_other_reason_details.length %}
+              <li>Other - {{ rejection.safeguarding_issues_other_reason_details }}</li>
+            {% endif %}
+          </ul>
+        {% endset %}
 
-      {% set courseFullHtml %}
-        Yes
-      {% endset %}
+        {% set offeredAnotherPlaceHtml %}
+          {{ rejection.offered_on_another_course_details }}
+        {% endset %}
 
-      {{ appSummaryCard({
-        titleHtml: "Application choice" + ' <a href="#">#'+ rejection.application_choice_id +'</a>',
-        html: govukSummaryList({
-          rows: [
-            {
-              key: {
-                text: 'Candidate behaviour'
-              },
-              value: {
-                html: candidateBehaviourHtml
-              }
-            } if rejection.something_you_did,
-            {
-              key: {
-                text: 'Quality of application'
-              },
-              value: {
-                html: qualityOfApplicationHtml
-              }
-            } if rejection.quality_of_application,
-            {
-              key: {
-                text: 'Qualifications'
-              },
-              value: {
-                html: qualificationsHtml
-              }
-            } if rejection.qualifications,
-            {
-              key: {
-                text: 'Performance at interview'
-              },
-              value: {
-                html: performanceAtInterviewHtml
-              }
-            } if rejection.performance_at_interview,
-            {
-              key: {
-                text: 'Honesty and professionalism'
-              },
-              value: {
-                html: honestyAndProfessionalismHtml
-              }
-            } if rejection.honesty_and_professionalism,
-            {
-              key: {
-                text: 'Safeguarding'
-              },
-              value: {
-                html: safeguardingHtml
-              }
-            } if rejection.safeguarding_issues,
-            {
-              key: {
-                text: 'Offered place on another course'
-              },
-              value: {
-                html: offeredAnotherPlaceHtml
-              }
-            } if rejection.they_offered_you_a_place_on_another_course,
-            {
-              key: {
-                text: 'Course is full'
-              },
-              value: {
-                html: courseFullHtml
-              }
-            } if rejection.course_full,
-            {
-              key: {
-                text: 'Visa application sponsorship'
-              },
-              value: {
-                text: rejection.cannot_sponsor_visa_details
-              }
-            } if rejection.visa_application_sponsorship,
-            {
-              key: {
-                text: "Additional advice"
-              },
-              value: {
-                text: rejection.additional_advice
-              }
-            } if rejection.additional_advice.length
-          ]
-        }),
-        classes: "govuk-!-margin-bottom-5"
-      }) }}
+        {% set courseFullHtml %}
+          Yes
+        {% endset %}
 
-    {% endfor %}
+        {{ appSummaryCard({
+          titleHtml: "Application choice" + ' <a href="#">#'+ rejection.application_choice_id +'</a>',
+          html: govukSummaryList({
+            rows: [
+              {
+                key: {
+                  text: 'Candidate behaviour'
+                },
+                value: {
+                  html: candidateBehaviourHtml
+                }
+              } if rejection.something_you_did,
+              {
+                key: {
+                  text: 'Quality of application'
+                },
+                value: {
+                  html: qualityOfApplicationHtml
+                }
+              } if rejection.quality_of_application,
+              {
+                key: {
+                  text: 'Qualifications'
+                },
+                value: {
+                  html: qualificationsHtml
+                }
+              } if rejection.qualifications,
+              {
+                key: {
+                  text: 'Performance at interview'
+                },
+                value: {
+                  html: performanceAtInterviewHtml
+                }
+              } if rejection.performance_at_interview,
+              {
+                key: {
+                  text: 'Honesty and professionalism'
+                },
+                value: {
+                  html: honestyAndProfessionalismHtml
+                }
+              } if rejection.honesty_and_professionalism,
+              {
+                key: {
+                  text: 'Safeguarding'
+                },
+                value: {
+                  html: safeguardingHtml
+                }
+              } if rejection.safeguarding_issues,
+              {
+                key: {
+                  text: 'Offered place on another course'
+                },
+                value: {
+                  html: offeredAnotherPlaceHtml
+                }
+              } if rejection.they_offered_you_a_place_on_another_course,
+              {
+                key: {
+                  text: 'Course is full'
+                },
+                value: {
+                  html: courseFullHtml
+                }
+              } if rejection.course_full,
+              {
+                key: {
+                  text: 'Visa application sponsorship'
+                },
+                value: {
+                  text: rejection.cannot_sponsor_visa_details
+                }
+              } if rejection.visa_application_sponsorship,
+              {
+                key: {
+                  text: "Additional advice"
+                },
+                value: {
+                  text: rejection.additional_advice
+                }
+              } if rejection.additional_advice.length
+            ]
+          }),
+          classes: "govuk-!-margin-bottom-5"
+        }) }}
 
-    {% include "_includes/pagination.njk" %}
+      {% endfor %}
+
+      {% include "_includes/pagination.njk" %}
+
+    {% else %}
+      <p class="govuk-body">There are no results for the selected reason for rejection.</p>
+    {% endif %}
 
   </div>
 </div>

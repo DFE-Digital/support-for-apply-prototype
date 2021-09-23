@@ -18,15 +18,19 @@ exports.show_service_get = (req, res) => {
 }
 
 exports.show_reasons_for_rejection_get = (req, res) => {
-
+  const counts = Performance.getRejectionCounts()
+console.log(counts);
   res.render('../views/performance/reasons-for-rejection/show', {
-    cycle: req.params.cycle
+    counts
   })
 
 }
 
 exports.show_reasons_for_rejection_reason_get = (req, res) => {
-  let rejections = Performance.findRejections({reason: req.params.reason})
+  let rejections = Performance.findRejections({
+    category: req.params.category,
+    reason: req.params.reason
+  })
 
   // Get the pagination data
   const pagination = PaginationHelper.getPagination(rejections, req.query.page, 25)
@@ -35,6 +39,7 @@ exports.show_reasons_for_rejection_reason_get = (req, res) => {
   rejections = PaginationHelper.getDataByPage(rejections, pagination.pageNumber, 25)
 
   res.render('../views/performance/reasons-for-rejection/list', {
+    category: req.params.category,
     reason: req.params.reason,
     rejections,
     pagination
