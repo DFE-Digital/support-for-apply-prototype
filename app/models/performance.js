@@ -58,6 +58,10 @@ const categories = [
     value: 'they_offered_you_a_place_on_another_course'
   },
   {
+    key: 'other',
+    value: 'why_are_you_rejecting_this_application_details'
+  },
+  {
     key: 'other-advice-or-feedback',
     value: 'additional_advice'
   },
@@ -141,7 +145,14 @@ exports.getRejectionCounts = (data) => {
 
   categories.forEach((category, i) => {
     const parent = {}
-    let parentRejections = rejections.filter(rejection => rejection[category.value] === true)
+
+    let parentRejections = []
+
+    if (category.key === 'other') {
+      parentRejections = rejections.filter(rejection => rejection[category.value] && rejection[category.value].length)
+    } else {
+      parentRejections = rejections.filter(rejection => rejection[category.value] === true)
+    }
 
     parent.total = parentRejections.length
     parent.percent = (parent.total / counts.total) * 100
@@ -217,6 +228,10 @@ exports.findRejections = (data) => {
           break
         case 'offered-place-on-another-course':
           rejections = rejections.filter(rejection => rejection.they_offered_you_a_place_on_another_course === true)
+          break
+        case 'other':
+          rejections = rejections.filter(rejection => rejection.why_are_you_rejecting_this_application_details
+            && rejection.why_are_you_rejecting_this_application_details.length)
           break
         case 'other-advice-or-feedback':
           rejections = rejections.filter(rejection => rejection.additional_advice === true)

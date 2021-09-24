@@ -318,7 +318,15 @@
                 value: {
                   text: rejection.additional_advice
                 }
-              } if rejection.additional_advice.length
+              } if rejection.additional_advice.length,
+              {
+                key: {
+                  html: '<mark>Other feedback</mark>' if category == 'other' and not reason else 'Other feedback'
+                },
+                value: {
+                  text: rejection.why_are_you_rejecting_this_application_details
+                }
+              } if rejection.why_are_you_rejecting_this_application_details.length
             ]
           }),
           classes: "govuk-!-margin-bottom-5"
