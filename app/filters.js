@@ -328,11 +328,11 @@ module.exports = function (env) {
   filters.getRejectionCategoryLabel = (code) => {
     switch (code) {
       case 'candidate-behaviour': return 'Candidate behaviour'
-      case 'cannot-sponsor-visa': return 'Cannot sponsor applicants visa'
+      case 'cannot-sponsor-visa': return 'Cannot sponsor visa'
       case 'course-full': return 'Course full'
       case 'honesty-and-professionalism': return 'Honesty and professionalism'
       case 'offered-place-on-another-course': return 'Offered place on another course'
-      case 'other': return 'Other feedback'
+      case 'other': return 'Other reasons'
       case 'other-advice-or-feedback': return 'Additional advice or feedback'
       case 'performance-at-interview': return 'Performance at interview'
       case 'qualifications': return 'Qualifications'

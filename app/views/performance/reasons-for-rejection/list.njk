@@ -305,7 +305,7 @@
               } if rejection.course_full,
               {
                 key: {
-                  html: '<mark>Visa application sponsorship</mark>' if category == 'cannot-sponsor-visa' and not reason else 'Visa application sponsorship'
+                  html: '<mark>Sponsor candidate’s visa</mark>' if category == 'cannot-sponsor-visa' and not reason else 'Sponsor candidate’s visa'
                 },
                 value: {
                   text: rejection.cannot_sponsor_visa_details
@@ -313,15 +313,15 @@
               } if rejection.visa_application_sponsorship,
               {
                 key: {
-                  html: '<mark>Additional advice</mark>' if category == 'other-advice-or-feedback' and not reason else 'Additional advice'
+                  html: '<mark>Additional advice or feedback</mark>' if category == 'other-advice-or-feedback' and not reason else 'Additional advice or feedback'
                 },
                 value: {
-                  text: rejection.additional_advice
+                  html: '<i>Unavailable in prototype</i>'
                 }
-              } if rejection.additional_advice.length,
+              } if rejection.additional_advice,
               {
                 key: {
-                  html: '<mark>Other feedback</mark>' if category == 'other' and not reason else 'Other feedback'
+                  html: '<mark>Other reasons</mark>' if category == 'other' and not reason else 'Other reasons'
                 },
                 value: {
                   text: rejection.why_are_you_rejecting_this_application_details

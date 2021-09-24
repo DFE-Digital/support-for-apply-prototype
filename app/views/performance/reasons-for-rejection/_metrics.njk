@@ -5,18 +5,18 @@
         text: counts[category].percent | numeral('0.00') + "%"
       },
       label: {
-        html: counts[category].total | numeral('0,0') + ' of ' + counts.total | numeral('0,0') + ' application choices <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
+        html: counts[category].total | numeral('0,0') + ' of ' + counts.total | numeral('0,0') + ' rejections included this category'
       },
       classes: "app-metric--blue"
     }) }}
   </div>
-  <div class="govuk-grid-column-one-quarter">
+  <!-- <div class="govuk-grid-column-one-quarter">
     {{ appMetric({
       metric: {
         text: counts[category].total | numeral('0,0')
       },
       label: {
-        html: 'rejected in total <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
+        html: 'rejections in total <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
       }
     }) }}
   </div>
@@ -26,8 +26,12 @@
         text: counts[category].month | numeral('0,0')
       },
       label: {
-        html: 'rejected in September <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span>'
+        html: 'rejection' + ('s' if counts[category].month > 1) + ' in September'
       }
     }) }}
-  </div>
+  </div> -->
 </div>
+
+<!-- html: 'application' + ('s' if counts[category].month > 1) + ' rejected in September 2021 used this category' -->
+
+<!-- <span class="govuk-visually-hidden"> for ' + sectionTitle | lower + '</span> -->
