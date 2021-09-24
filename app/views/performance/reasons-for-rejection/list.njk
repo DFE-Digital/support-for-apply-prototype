@@ -90,7 +90,7 @@
               {
                 text: "What to improve",
                 details: rejection.candidate_behaviour_what_to_improve,
-                highlight: true if reason == 'other' else false
+                highlight: true if category == 'candidate-behaviour' and reason == 'other' else false
               } if rejection.candidate_behaviour_what_to_improve.length
             ]
           }) }}
