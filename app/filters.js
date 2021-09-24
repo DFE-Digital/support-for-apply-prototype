@@ -377,6 +377,17 @@ module.exports = function (env) {
   }
 
   /* ------------------------------------------------------------------
+  utility function to remove empty elements from an array
+  example: {{ ['','','AB1','BC2'] | removeEmptyElements }}
+  returns: ['AB1','BC2']
+  ------------------------------------------------------------------ */
+  filters.removeEmptyElements = (array) => {
+    return filtered = array.filter((el) => {
+      return el !== ''
+    })
+  }
+
+  /* ------------------------------------------------------------------
     keep the following line to return your filters to the app
   ------------------------------------------------------------------ */
   return filters
