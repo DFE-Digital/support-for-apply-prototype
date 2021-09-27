@@ -333,7 +333,7 @@ module.exports = function (env) {
       case 'honesty-and-professionalism': return 'Honesty and professionalism'
       case 'offered-place-on-another-course': return 'Offered place on another course'
       case 'other': return 'Other reasons'
-      case 'other-advice-or-feedback': return 'Additional advice or feedback'
+      case 'additional-advice-or-feedback': return 'Additional advice or feedback'
       case 'performance-at-interview': return 'Performance at interview'
       case 'qualifications': return 'Qualifications'
       case 'quality-of-application': return 'Quality of application'

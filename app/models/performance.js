@@ -62,7 +62,7 @@ const categories = [
     value: 'why_are_you_rejecting_this_application_details'
   },
   {
-    key: 'other-advice-or-feedback',
+    key: 'additional-advice-or-feedback',
     value: 'additional_advice'
   },
   {
@@ -231,7 +231,7 @@ exports.findRejections = (data) => {
           rejections = rejections.filter(rejection => rejection.why_are_you_rejecting_this_application_details
             && rejection.why_are_you_rejecting_this_application_details.length)
           break
-        case 'other-advice-or-feedback':
+        case 'additional-advice-or-feedback':
           rejections = rejections.filter(rejection => rejection.additional_advice === true)
           break
         case 'performance-at-interview':
