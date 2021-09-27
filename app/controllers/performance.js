@@ -18,17 +18,24 @@ exports.show_service_get = (req, res) => {
 }
 
 exports.show_reasons_for_rejection_get = (req, res) => {
-  const counts = Performance.getRejectionCounts()
+  const cycle = req.params.cycle ? parseInt(req.params.cycle) : 2021
+
+  const counts = Performance.getRejectionCounts({
+    cycle
+  })
 
   res.render('../views/performance/reasons-for-rejection/show', {
     counts,
-    cycle: req.params.cycle
+    cycle
   })
 
 }
 
 exports.show_reasons_for_rejection_reason_get = (req, res) => {
+  const cycle = req.params.cycle ? parseInt(req.params.cycle) : 2021
+
   let rejections = Performance.findRejections({
+    cycle,
     category: req.params.category,
     reason: req.params.reason
   })
@@ -42,6 +49,7 @@ exports.show_reasons_for_rejection_reason_get = (req, res) => {
   rejections = PaginationHelper.getDataByPage(rejections, pagination.pageNumber, itemsPerPage)
 
   res.render('../views/performance/reasons-for-rejection/list', {
+    cycle,
     category: req.params.category,
     reason: req.params.reason,
     rejections,

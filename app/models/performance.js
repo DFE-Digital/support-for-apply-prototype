@@ -203,6 +203,10 @@ exports.findRejections = (data) => {
   const raw = fs.readFileSync(directoryPath + '/reasons-for-rejection.json')
   let rejections = JSON.parse(raw)
 
+  if (data.cycle) {
+    rejections = rejections.filter(rejection => rejection.recruitment_cycle_year === data.cycle)
+  }
+
   // Sort rejections by date
   rejections = rejections.sort((a, b) => {
     return b.rejected_at.localeCompare(a.rejected_at)

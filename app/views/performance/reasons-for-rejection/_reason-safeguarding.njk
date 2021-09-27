@@ -2,11 +2,7 @@
 {% set sectionTitle = category | getRejectionCategoryLabel %}
 {% set reasons = ['disclosed-information','vetting-process','other'] %}
 
-<h2 class="govuk-heading-m govuk-!-margin-top-7">
-  <a class="govuk-link" href="/performance/reasons-for-rejection/{{ category }}">
-    {{ sectionTitle | capitalize }}
-  </a>
-</h2>
+{% include "./_heading.njk" %}
 
 {% include "./_metrics.njk" %}
 
