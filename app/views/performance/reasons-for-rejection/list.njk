@@ -241,7 +241,7 @@
             rows: [
               {
                 key: {
-                  html: '<mark>Candidate behaviour</mark>' if category == 'candidate-behaviour' and not reason else 'Candidate behaviour'
+                  html: '<mark>' + 'candidate-behaviour' | getRejectionCategoryLabel + '</mark>' if category == 'candidate-behaviour' and not reason else 'candidate-behaviour' | getRejectionCategoryLabel
                 },
                 value: {
                   html: candidateBehaviourHtml
@@ -249,7 +249,7 @@
               } if rejection.something_you_did,
               {
                 key: {
-                  html: '<mark>Quality of application</mark>' if category == 'quality-of-application' and not reason else 'Quality of application'
+                  html: '<mark>' + 'quality-of-application' | getRejectionCategoryLabel + '</mark>' if category == 'quality-of-application' and not reason else 'quality-of-application' | getRejectionCategoryLabel
                 },
                 value: {
                   html: qualityOfApplicationHtml
@@ -257,7 +257,7 @@
               } if rejection.quality_of_application,
               {
                 key: {
-                  html: '<mark>Qualifications</mark>' if category == 'qualifications' and not reason else 'Qualifications'
+                  html: '<mark>' + 'qualifications' | getRejectionCategoryLabel + '</mark>' if category == 'qualifications' and not reason else 'qualifications' | getRejectionCategoryLabel
                 },
                 value: {
                   html: qualificationsHtml
@@ -265,7 +265,7 @@
               } if rejection.qualifications,
               {
                 key: {
-                  html: '<mark>Performance at interview</mark>' if category == 'performance-at-interview' and not reason else 'Performance at interview'
+                  html: '<mark>' + 'performance-at-interview' | getRejectionCategoryLabel + '</mark>' if category == 'performance-at-interview' and not reason else 'performance-at-interview' | getRejectionCategoryLabel
                 },
                 value: {
                   html: performanceAtInterviewHtml
@@ -273,7 +273,7 @@
               } if rejection.performance_at_interview,
               {
                 key: {
-                  html: '<mark>Honesty and professionalism</mark>' if category == 'honesty-and-professionalism' and not reason else 'Honesty and professionalism'
+                  html: '<mark>' + 'honesty-and-professionalism' | getRejectionCategoryLabel + '</mark>' if category == 'honesty-and-professionalism' and not reason else 'honesty-and-professionalism' | getRejectionCategoryLabel
                 },
                 value: {
                   html: honestyAndProfessionalismHtml
@@ -281,7 +281,7 @@
               } if rejection.honesty_and_professionalism,
               {
                 key: {
-                  html: '<mark>Safeguarding</mark>' if category == 'safeguarding' and not reason else 'Safeguarding'
+                  html: '<mark>' + 'safeguarding' | getRejectionCategoryLabel + '</mark>' if category == 'safeguarding' and not reason else 'safeguarding' | getRejectionCategoryLabel
                 },
                 value: {
                   html: safeguardingHtml
@@ -289,7 +289,7 @@
               } if rejection.safeguarding_issues,
               {
                 key: {
-                  html: '<mark>Offered place on another course</mark>' if category == 'offered-place-on-another-course' and not reason else 'Offered place on another course'
+                  html: '<mark>' + 'offered-place-on-another-course' | getRejectionCategoryLabel + '</mark>' if category == 'offered-place-on-another-course' and not reason else 'offered-place-on-another-course' | getRejectionCategoryLabel
                 },
                 value: {
                   html: offeredAnotherPlaceHtml
@@ -297,7 +297,7 @@
               } if rejection.they_offered_you_a_place_on_another_course,
               {
                 key: {
-                  html: '<mark>Course is full</mark>' if category == 'course-full' and not reason else 'Course is full'
+                  html: '<mark>' + 'course-full' | getRejectionCategoryLabel + '</mark>' if category == 'course-full' and not reason else 'course-full' | getRejectionCategoryLabel
                 },
                 value: {
                   html: courseFullHtml
@@ -305,7 +305,7 @@
               } if rejection.course_full,
               {
                 key: {
-                  html: '<mark>Sponsor candidate’s visa</mark>' if category == 'cannot-sponsor-visa' and not reason else 'Sponsor candidate’s visa'
+                  html: '<mark>' + 'cannot-sponsor-visa' | getRejectionCategoryLabel + '</mark>' if category == 'cannot-sponsor-visa' and not reason else 'cannot-sponsor-visa' | getRejectionCategoryLabel
                 },
                 value: {
                   text: rejection.cannot_sponsor_visa_details
@@ -313,7 +313,7 @@
               } if rejection.visa_application_sponsorship,
               {
                 key: {
-                  html: '<mark>Additional advice or feedback</mark>' if category == 'additional-advice-or-feedback' and not reason else 'Additional advice or feedback'
+                  html: '<mark>' + 'additional-advice-or-feedback' | getRejectionCategoryLabel + '</mark>' if category == 'additional-advice-or-feedback' and not reason else 'additional-advice-or-feedback' | getRejectionCategoryLabel
                 },
                 value: {
                   html: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
