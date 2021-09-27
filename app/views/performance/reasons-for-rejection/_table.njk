@@ -1,26 +1,21 @@
 <table class="govuk-table govuk-!-margin-top-5">
   <thead class="govuk-table__head">
     <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header" width="40%">
+      <th scope="col" class="govuk-table__header" width="30%">
         Reason for rejection
       </th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="30%">
-        <!-- Percentage of rejected applications used this reason -->
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
         Percentage of all rejections
       </th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="30%">
-        <!-- Percentage of rejected applications used this reason within this category -->
-      <!-- Percentage of rejections which included reason {#{ category | getRejectionCategoryLabel | lower }#} -->
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
       Percentage of all rejections<br>within this category
       </th>
-      {#<th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
-        <!-- Total number of times reason used to reject an application -->
-        Number of times reason used
+      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
+        Percentage of all rejections in September
       </th>
       <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
-        <!-- Total number of times reason used to reject an application this month (September) -->
-        Number of times reason used in September 2021
-      </th>#}
+      Percentage of all rejections in September<br>within this category
+      </th>
     </tr>
   </thead>
   <tbody class="govuk-table__body">
@@ -45,12 +40,18 @@
             {{ counts[category].items[reason].total | numeral('0,0') }} of {{ counts[category].total | numeral('0,0') }}
           </span>
         </td>
-        <!-- <td class="govuk-table__cell govuk-table__cell--numeric">
-          {{ counts[category].items[reason].total | numeral('0,0') }}
+        <td class="govuk-table__cell govuk-table__cell--numeric">
+          {{ ((counts[category].items[reason].monthTotal / counts.monthTotal) * 100) | numeral('0.00') }}%
+          <span class="govuk-hint govuk-!-margin-bottom-0">
+            {{ counts[category].items[reason].monthTotal | numeral('0,0') }} of {{ counts.monthTotal | numeral('0,0') }}
+          </span>
         </td>
         <td class="govuk-table__cell govuk-table__cell--numeric">
-          {{ counts[category].items[reason].month | numeral('0,0') }}
-        </td> -->
+          {{ ((counts[category].items[reason].monthTotal / counts[category].monthTotal) * 100) | numeral('0.00') }}%
+          <span class="govuk-hint govuk-!-margin-bottom-0">
+            {{ counts[category].items[reason].monthTotal | numeral('0,0') }} of {{ counts[category].monthTotal | numeral('0,0') }}
+          </span>
+        </td>
       </tr>
 
     {% endfor %}

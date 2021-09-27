@@ -1,0 +1,10 @@
+{% set category = "other-advice-or-feedback" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
+
+<h2 class="govuk-heading-m govuk-!-margin-top-7">
+  <a class="govuk-link" href="/performance/reasons-for-rejection/{{ category }}">
+    {{ sectionTitle | capitalize }}
+  </a>
+</h2>
+
+{% include "./_metrics.njk" %}

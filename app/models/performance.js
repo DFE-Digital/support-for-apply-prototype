@@ -2,7 +2,7 @@ const path = require('path')
 const fs = require('fs')
 const moment = require('moment')
 
-const directoryPath = path.join(__dirname, '../data/reasons-for-rejection/')
+const directoryPath = path.join(__dirname, '../data/')
 
 const categories = [
   {
@@ -143,6 +143,9 @@ exports.getRejectionCounts = (data) => {
   const counts = {}
   counts.total = rejections.length
 
+  counts.monthTotal = rejections.filter(rejection => rejection.rejected_at >= '2021-09-01'
+    && rejection.rejected_at <= '2021-09-30').length
+
   categories.forEach((category, i) => {
     const parent = {}
 
@@ -157,9 +160,11 @@ exports.getRejectionCounts = (data) => {
     parent.total = parentRejections.length
     parent.percent = (parent.total / counts.total) * 100
     // rejected_at
-    parent.month = parentRejections
+    parent.monthTotal = parentRejections
                     .filter(rejection => rejection.rejected_at >= '2021-09-01'
                     && rejection.rejected_at <= '2021-09-30').length
+
+    parent.monthPercent = (parent.monthTotal / counts.monthTotal) * 100
 
     if (category.items) {
       parent.items = {}
@@ -177,9 +182,12 @@ exports.getRejectionCounts = (data) => {
 
         child.total = childRejections.length
         child.percent = (child.total / counts.total) * 100
-        child.month = childRejections
+
+        child.monthTotal = childRejections
                         .filter(rejection => rejection.rejected_at >= '2021-09-01'
                           && rejection.rejected_at <= '2021-09-30').length
+
+        child.monthPercent = (child.monthTotal / parent.monthTotal) * 100
 
         parent.items[item.key] = child
       })
@@ -192,18 +200,21 @@ exports.getRejectionCounts = (data) => {
 }
 
 exports.findRejections = (data) => {
-  let documents = fs.readdirSync(directoryPath,'utf8')
+  // let documents = fs.readdirSync(directoryPath,'utf8')
+  //
+  // // Only get JSON documents
+  // documents = documents.filter(doc => doc.match(/.*\.(json)/ig))
+  //
+  // let rejections = []
+  //
+  // documents.forEach((filename, i) => {
+  //   const raw = fs.readFileSync(directoryPath + '/' + filename)
+  //   const rejection = JSON.parse(raw)
+  //   rejections.push(rejection)
+  // })
 
-  // Only get JSON documents
-  documents = documents.filter(doc => doc.match(/.*\.(json)/ig))
-
-  let rejections = []
-
-  documents.forEach((filename, i) => {
-    const raw = fs.readFileSync(directoryPath + '/' + filename)
-    const rejection = JSON.parse(raw)
-    rejections.push(rejection)
-  })
+  const raw = fs.readFileSync(directoryPath + '/reasons-for-rejection.json')
+  let rejections = JSON.parse(raw)
 
   // Sort rejections by date
   rejections = rejections.sort((a, b) => {

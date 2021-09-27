@@ -15,6 +15,7 @@ package-lock.json
 
 # Dynamically generated data
 app/data/applications.json
+app/data/applications/*
 app/data/courses.json
 app/data/providers.json
 app/data/reasons-for-rejection.json
