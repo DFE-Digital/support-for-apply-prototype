@@ -159,7 +159,7 @@ exports.getRejectionCounts = (data) => {
 
     parent.total = parentRejections.length
     parent.percent = (parent.total / counts.total) * 100
-    // rejected_at
+
     parent.monthTotal = parentRejections
                     .filter(rejection => rejection.rejected_at >= '2021-09-01'
                     && rejection.rejected_at <= '2021-09-30').length
@@ -200,19 +200,6 @@ exports.getRejectionCounts = (data) => {
 }
 
 exports.findRejections = (data) => {
-  // let documents = fs.readdirSync(directoryPath,'utf8')
-  //
-  // // Only get JSON documents
-  // documents = documents.filter(doc => doc.match(/.*\.(json)/ig))
-  //
-  // let rejections = []
-  //
-  // documents.forEach((filename, i) => {
-  //   const raw = fs.readFileSync(directoryPath + '/' + filename)
-  //   const rejection = JSON.parse(raw)
-  //   rejections.push(rejection)
-  // })
-
   const raw = fs.readFileSync(directoryPath + '/reasons-for-rejection.json')
   let rejections = JSON.parse(raw)
 
