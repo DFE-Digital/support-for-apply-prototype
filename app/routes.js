@@ -12,7 +12,7 @@ const providerUserController = require('./controllers/providerUsers.js')
 const userController = require('./controllers/users.js')
 const performanceController = require('./controllers/performance.js')
 
-function checkIsAuthenticated(req, res, next) {
+const checkIsAuthenticated = (req, res, next) => {
   // if (req.session.passport || req.session.data.user) {
   //   req.session.data.user = req.session.passport.user
     next()
