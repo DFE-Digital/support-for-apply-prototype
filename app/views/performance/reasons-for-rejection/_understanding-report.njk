@@ -1,0 +1,30 @@
+{% set understandingReportHtml %}
+  <p class="govuk-body">
+    This report does not include rejections made through the API, as these are free text rather than structured.
+  </p>
+
+  <p class="govuk-body">
+    Users must choose at least one reason when they reject an application. They are asked to do the same after an application is automatically rejected.
+  </p>
+
+  <p class="govuk-body">
+    The user starts by choosing a category of rejection, for example ‘candidate behaviour’. If the category contains more specific reasons, the user must select one.
+  </p>
+
+  <p class="govuk-body">
+    There is an ‘other’ category for rejections which do not fit into any category.
+  </p>
+
+  <p class="govuk-body">
+    Users can also give ‘additional advice or feedback’. This is not a reason for rejection, but it’s included in this report because providers give it at the same time.
+  </p>
+
+  <p class="govuk-body">
+    Since users can choose more than one reason, the percentages for each category will not add up to 100%.
+  </p>
+{% endset %}
+
+{{ govukDetails({
+  summaryText: "Understanding this report",
+  html: understandingReportHtml
+}) }}
