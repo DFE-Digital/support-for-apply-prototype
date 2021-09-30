@@ -1,0 +1,9 @@
+{% set category = "candidate-behaviour" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
+{% set reasons = ['did-not-reply-to-messages','did-not-attend-interview','other'] %}
+
+{% include "./_heading.njk" %}
+
+{% include "./_metrics.njk" %}
+
+{% include "./_table.njk" %}

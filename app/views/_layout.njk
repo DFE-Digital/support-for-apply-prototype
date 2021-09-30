@@ -33,6 +33,7 @@
 {% from "_components/badge/macro.njk"                  import appBadge %}
 {% from "_components/banner/macro.njk"                 import appBanner %}
 {% from "_components/filter/macro.njk"                 import appFilter %}
+{% from "_components/metric/macro.njk"                 import appMetric %}
 {% from "_components/page-header-actions/macro.njk"    import appPageHeaderActions %}
 {% from "_components/pagination/macro.njk"             import appPagination %}
 {% from "_components/primary-navigation/macro.njk"     import appPrimaryNavigation %}
@@ -84,7 +85,7 @@
       text: "Providers",
       active: primaryNavId == "providers"
     }, {
-      href: "#",
+      href: "/performance",
       text: "Performance",
       active: primaryNavId == "performance"
     }, {

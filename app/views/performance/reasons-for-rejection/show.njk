@@ -1,0 +1,65 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'performance' %}
+{% set subNavId = cycle if cycle else 'all' %}
+
+{% set title = "Structured reasons for rejection" %}
+
+{% block pageTitle %}
+{{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/performance",
+    text: "Performance"
+  }, {
+    text: title
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    {% include "./_understanding-report.njk" %}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {% include "./_sub-navigation.njk" %}
+
+    {% include "./_reason-candidate-behaviour.njk" %}
+
+    {% include "./_reason-quality-of-application.njk" %}
+
+    {% include "./_reason-qualifications.njk" %}
+
+    {% include "./_reason-performance-at-interview.njk" %}
+
+    {% include "./_reason-honesty-and-professionalism.njk" %}
+
+    {% include "./_reason-safeguarding.njk" %}
+
+    {% include "./_reason-offered-another-course.njk" %}
+
+    {% include "./_reason-cannot-sponsor-visa.njk" %}
+
+    {% include "./_reason-course-full.njk" %}
+
+    {% include "./_reason-other-reasons.njk" %}
+
+    {% include "./_reason-additional-advice-or-feedback.njk" %}
+
+  </div>
+</div>
+
+{% endblock %}

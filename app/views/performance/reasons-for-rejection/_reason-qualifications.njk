@@ -1,0 +1,9 @@
+{% set category = "qualifications" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
+{% set reasons = ['no-english-gcse','no-maths-gcse','no-science-gcse','no-degree','degree-does-not-meet-course-requirements','other'] %}
+
+{% include "./_heading.njk" %}
+
+{% include "./_metrics.njk" %}
+
+{% include "./_table.njk" %}

@@ -1,0 +1,14 @@
+{% set understandingReportHtml %}
+  <p class="govuk-body">
+    The report does not include rejections made through the API.
+  </p>
+
+  <p class="govuk-body">
+    Since users can choose more than one reason for rejection, the percentages for all the categories will not add up to 100%.
+  </p>
+{% endset %}
+
+{{ govukDetails({
+  summaryText: "Understanding this report",
+  html: understandingReportHtml
+}) }}

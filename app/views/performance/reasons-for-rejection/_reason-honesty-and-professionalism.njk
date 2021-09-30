@@ -1,0 +1,9 @@
+{% set category = "honesty-and-professionalism" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
+{% set reasons = ['innacurate-information','plagiarism','references','other'] %}
+
+{% include "./_heading.njk" %}
+
+{% include "./_metrics.njk" %}
+
+{% include "./_table.njk" %}

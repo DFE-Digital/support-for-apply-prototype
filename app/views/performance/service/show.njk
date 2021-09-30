@@ -1,0 +1,253 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'performance' %}
+{% set subNavId = cycle if cycle else 'all' %}
+
+{% set title = "Service performance" %}
+
+{% block pageTitle %}
+{{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/performance",
+    text: "Performance"
+  }, {
+    text: title
+  }]
+}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    {% include "./_sub-navigation.njk" %}
+
+  <!-- </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds"> -->
+
+  <h2 class="govuk-heading-m">Candidates</h2>
+
+  {{ appMetric({
+    metric: {
+      text:"36,158"
+    },
+    label: {
+      text: "Unique candidates"
+    },
+    classes: "app-metric--blue govuk-!-margin-bottom-4"
+  }) }}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">Applications</h2>
+
+  {{ appMetric({
+    metric: {
+      text:"38,326"
+    },
+    label: {
+      text: "application forms"
+    },
+    classes: "app-metric--blue govuk-!-margin-bottom-4"
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      {{ appMetric({
+        metric: {
+          text:"27,545"
+        },
+        label: {
+          text: "unsubmitted application forms"
+        },
+        classes: "govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-half">
+      {{ appMetric({
+        metric: {
+          text:"10,781"
+        },
+        label: {
+          text: "submitted application forms"
+        },
+        classes: "govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          {{ appMetric({
+            metric: {
+              text:"12,451",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "forms not started"
+            },
+            classes: "govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-half">
+          {{ appMetric({
+            metric: {
+              text:"15,094",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "forms in progress"
+            },
+            classes: "govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-half">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          {{ appMetric({
+            metric: {
+              text:"177",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "still being processed"
+            },
+            classes: "govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-third">
+          {{ appMetric({
+            metric: {
+              text:"6,922",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "ended without success"
+            },
+            classes: "app-metric--red govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-third">
+          {{ appMetric({
+            metric: {
+              text:"3,680",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "accepted and offer"
+            },
+            classes: "app-metric--green govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-5">Course choices</h2>
+
+  {{ appMetric({
+    metric: {
+      text:"15,845"
+    },
+    label: {
+      text: "courses applied to"
+    },
+    classes: "app-metric--blue govuk-!-margin-bottom-4"
+  }) }}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      {{ appMetric({
+        metric: {
+          text:"7,547",
+          classes: "app-metric__secondary-figure"
+        },
+        label: {
+          text: "School Direct courses"
+        },
+        classes: "govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {{ appMetric({
+        metric: {
+          text:"5,958",
+          classes: "app-metric__secondary-figure"
+        },
+        label: {
+          text: "SCITT courses"
+        },
+        classes: "govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-third">
+      {{ appMetric({
+        metric: {
+          text:"2,340",
+          classes: "app-metric__secondary-figure"
+        },
+        label: {
+          text: "HEI courses"
+        },
+        classes: "govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+  </div>
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-third">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-half">
+          {{ appMetric({
+            metric: {
+              text:"5,757",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "ratified by SCITTs"
+            },
+            classes: "govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+        <div class="govuk-grid-column-one-half">
+          {{ appMetric({
+            metric: {
+              text:"1,318",
+              classes: "app-metric__secondary-figure"
+            },
+            label: {
+              text: "ratified by HEIs"
+            },
+            classes: "govuk-!-margin-bottom-4"
+          }) }}
+        </div>
+      </div>
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+    <div class="govuk-grid-column-one-third">
+
+    </div>
+  </div>
+
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-5">Application form breakdown</h2>
+
+
+  </div>
+</div>
+
+{% endblock %}

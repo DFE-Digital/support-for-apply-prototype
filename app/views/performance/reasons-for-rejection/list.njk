@@ -1,0 +1,345 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'performance' %}
+
+{% set sectionTitle = "Structured reasons for rejection" %}
+{% set title = category | getRejectionCategoryLabel %}
+
+{% if reason.length %}
+  {% set title = title + " - " + reason | getRejectionReasonLabel | lower %}
+{% endif %}
+
+{% block pageTitle %}
+{{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+{{ govukBreadcrumbs({
+  items: [{
+    href: "/performance",
+    text: "Performance"
+  }, {
+    href: "/performance/reasons-for-rejection" + ('/cycles/' + cycle if cycle),
+    text: sectionTitle
+  }, {
+    text: title
+  }]
+}) }}
+{% endblock %}
+
+{% macro _listGroup(params) %}
+  {% set items = params.items | removeEmptyElements %}
+  {% if items.length > 1 %}
+    <ul class="govuk-list govuk-list--bullet">
+      {% for item in items %}
+        {% if item.text %}
+        <li>{{ _listItem(item) }}</li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  {% else %}
+    {{ _listItem(items[0]) }}
+  {% endif %}
+{% endmacro %}
+
+{% macro _listItem(params) %}
+  {% if params.highlight %}
+    <mark>{{ params.text }}</mark>
+  {% else %}
+    {{ params.text }}
+  {% endif %}
+  {{ ' - ' + params.details if params.details }}
+{% endmacro %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">{{ sectionTitle }}</span>
+      {{ title }}
+    </h1>
+
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    {% if rejections.length %}
+
+      {% for rejection in rejections %}
+
+        {% set candidateBehaviourHtml %}
+          {{ _listGroup({
+            items: [
+              {
+                text: "Did not reply to messages",
+                highlight: true if reason == 'did-not-reply-to-messages' else false
+              } if rejection.didn_t_reply_to_our_interview_offer,
+              {
+                text: "Did not attend interview",
+                highlight: true if reason == 'did-not-attend-interview' else false
+              } if rejection.didn_t_attend_interview,
+              {
+                text: "Other details",
+                details: rejection.something_you_did_other_reason_details,
+                highlight: true if category == 'candidate-behaviour' and reason == 'other' else false
+              } if rejection.something_you_did_other_reason_details.length,
+              {
+                text: "What to improve",
+                details: rejection.candidate_behaviour_what_to_improve,
+                highlight: true if category == 'candidate-behaviour' and reason == 'other' else false
+              } if rejection.candidate_behaviour_what_to_improve.length
+            ]
+          }) }}
+        {% endset %}
+
+        {% set qualityOfApplicationHtml %}
+          {{ _listGroup({
+            items: [
+              {
+                text: "Personal statement",
+                details: rejection.personal_statement_what_to_improve,
+                highlight: true if reason == 'personal-statement' else false
+              } if rejection.personal_statement,
+              {
+                text: "Subject knowledge",
+                details: rejection.subject_knowledge_what_to_improve,
+                highlight: true if reason == 'subject-knowledge' else false
+              } if rejection.subject_knowledge,
+              {
+                text: rejection.quality_of_application_other_reason_details
+              } if rejection.quality_of_application_other_reason_details.length,
+              {
+                text: rejection.quality_of_application_what_to_improve
+              } if rejection.quality_of_application_what_to_improve.length,
+              {
+                text: "Other",
+                details: rejection.quality_of_application_other_reason_details,
+                highlight: true if category == 'quality-of-application' and reason == 'other' else false
+              } if rejection.quality_of_application_other_reason_details.length
+            ]
+          }) }}
+        {% endset %}
+
+        {% set qualificationsHtml %}
+          {{ _listGroup({
+            items: [
+              {
+                text: "No English GCSE grade 4 (C) or above, or accepted equivalent",
+                highlight: true if reason == 'no-english-gcse' else false
+              } if rejection.no_english_gcse_grade_4_c_or_above_or_valid_equivalent,
+              {
+                text: "No maths GCSE grade 4 (C) or above, or accepted equivalent",
+                highlight: true if reason == 'no-maths-gcse' else false
+              } if rejection.no_maths_gcse_grade_4_c_or_above_or_valid_equivalent,
+              {
+                text: "No science GCSE grade 4 (C) or above, or accepted equivalent (for primary applicants)",
+                highlight: true if reason == 'no-science-gcse' else false
+              } if rejection.no_science_gcse_grade_4_c_or_above_or_valid_equivalent_for_primary_applicants,
+              {
+                text: "No degree",
+                highlight: true if reason == 'no-degree' else false
+              } if rejection.no_degree,
+              {
+                text: "Degree does not meet course requirements",
+                highlight: true if reason == 'no-maths-gcse' else false
+              } if rejection.degree_does_not_meet_course_requirements,
+              {
+                text: "Other",
+                details: rejection.qualifications_other_reason_details,
+                highlight: true if category == 'qualifications' and reason == 'other' else false
+              } if rejection.qualifications_other_reason_details.length
+            ]
+          }) }}
+        {% endset %}
+
+        {% set performanceAtInterviewHtml %}
+          {{ _listGroup({
+            items: [
+              {
+                text: rejection.performance_at_interview_what_to_improve
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        {% set honestyAndProfessionalismHtml %}
+          {{ _listGroup({
+            items: [
+              {
+                text: "Inaccurate or false information in the application",
+                details: rejection.information_given_on_application_form_false_or_inaccurate_details if rejection.information_given_on_application_form_false_or_inaccurate_details.length,
+                highlight: true if reason == 'innacurate-information' else false
+              } if rejection.information_given_on_application_form_false_or_inaccurate,
+              {
+                text: "Evidence of plagiarism in the application",
+                details: rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere_details if rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere_details.length,
+                highlight: true if reason == 'plagiarism' else false
+              } if rejection.evidence_of_plagiarism_in_personal_statement_or_elsewhere,
+              {
+                text: "References did not support the application",
+                details: rejection.references_didn_t_support_application_details if rejection.references_didn_t_support_application_details.length,
+                highlight: true if reason == 'references' else false
+              } if rejection.references_didn_t_support_application,
+              {
+                text: "Other",
+                details: rejection.honesty_and_professionalism_other_reason_details,
+                highlight: true if category == 'honesty-and-professionalism' and reason == 'other' else false
+              } if rejection.honesty_and_professionalism_other_reason_details.length
+            ]
+          }) }}
+        {% endset %}
+
+        {% set safeguardingHtml %}
+          {{ _listGroup({
+            items: [
+              {
+                text: "The candidate disclosed information which makes them unsuitable to work with children",
+                details: rejection.information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children_details if rejection.information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children_details.length,
+                highlight: true if reason == 'disclosed-information' else false
+              } if rejection.information_disclosed_by_candidate_makes_them_unsuitable_to_work_with_children,
+              {
+                text: "The vetting process found information which makes the candidate unsuitable to work with children",
+                details: rejection.information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children_details if rejection.information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children_details.length,
+                highlight: true if reason == 'vetting-process' else false
+              } if rejection.information_revealed_by_our_vetting_process_makes_the_candidate_unsuitable_to_work_with_children,
+              {
+                text: "Other",
+                details: rejection.safeguarding_issues_other_reason_details,
+                highlight: true if category == 'safeguarding' and reason == 'other' else false
+              } if rejection.safeguarding_issues_other_reason_details.length
+            ]
+          }) }}
+        {% endset %}
+
+        {% set offeredAnotherPlaceHtml %}
+          {{ _listGroup({
+            items: [
+              {
+                text: rejection.offered_on_another_course_details
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        {% set courseFullHtml %}
+          {{ _listGroup({
+            items: [
+              {
+                text: "Yes"
+              }
+            ]
+          }) }}
+        {% endset %}
+
+        {{ appSummaryCard({
+          titleHtml: "Application choice" + ' <a href="#">#'+ rejection.application_choice_id +'</a>',
+          html: govukSummaryList({
+            rows: [
+              {
+                key: {
+                  html: '<mark>' + 'candidate-behaviour' | getRejectionCategoryLabel + '</mark>' if category == 'candidate-behaviour' and not reason else 'candidate-behaviour' | getRejectionCategoryLabel
+                },
+                value: {
+                  html: candidateBehaviourHtml
+                }
+              } if rejection.something_you_did,
+              {
+                key: {
+                  html: '<mark>' + 'quality-of-application' | getRejectionCategoryLabel + '</mark>' if category == 'quality-of-application' and not reason else 'quality-of-application' | getRejectionCategoryLabel
+                },
+                value: {
+                  html: qualityOfApplicationHtml
+                }
+              } if rejection.quality_of_application,
+              {
+                key: {
+                  html: '<mark>' + 'qualifications' | getRejectionCategoryLabel + '</mark>' if category == 'qualifications' and not reason else 'qualifications' | getRejectionCategoryLabel
+                },
+                value: {
+                  html: qualificationsHtml
+                }
+              } if rejection.qualifications,
+              {
+                key: {
+                  html: '<mark>' + 'performance-at-interview' | getRejectionCategoryLabel + '</mark>' if category == 'performance-at-interview' and not reason else 'performance-at-interview' | getRejectionCategoryLabel
+                },
+                value: {
+                  html: performanceAtInterviewHtml
+                }
+              } if rejection.performance_at_interview,
+              {
+                key: {
+                  html: '<mark>' + 'honesty-and-professionalism' | getRejectionCategoryLabel + '</mark>' if category == 'honesty-and-professionalism' and not reason else 'honesty-and-professionalism' | getRejectionCategoryLabel
+                },
+                value: {
+                  html: honestyAndProfessionalismHtml
+                }
+              } if rejection.honesty_and_professionalism,
+              {
+                key: {
+                  html: '<mark>' + 'safeguarding' | getRejectionCategoryLabel + '</mark>' if category == 'safeguarding' and not reason else 'safeguarding' | getRejectionCategoryLabel
+                },
+                value: {
+                  html: safeguardingHtml
+                }
+              } if rejection.safeguarding_issues,
+              {
+                key: {
+                  html: '<mark>' + 'offered-place-on-another-course' | getRejectionCategoryLabel + '</mark>' if category == 'offered-place-on-another-course' and not reason else 'offered-place-on-another-course' | getRejectionCategoryLabel
+                },
+                value: {
+                  html: offeredAnotherPlaceHtml
+                }
+              } if rejection.they_offered_you_a_place_on_another_course,
+              {
+                key: {
+                  html: '<mark>' + 'course-full' | getRejectionCategoryLabel + '</mark>' if category == 'course-full' and not reason else 'course-full' | getRejectionCategoryLabel
+                },
+                value: {
+                  html: courseFullHtml
+                }
+              } if rejection.course_full,
+              {
+                key: {
+                  html: '<mark>' + 'cannot-sponsor-visa' | getRejectionCategoryLabel + '</mark>' if category == 'cannot-sponsor-visa' and not reason else 'cannot-sponsor-visa' | getRejectionCategoryLabel
+                },
+                value: {
+                  text: rejection.cannot_sponsor_visa_details
+                }
+              } if rejection.visa_application_sponsorship,
+              {
+                key: {
+                  html: '<mark>' + 'additional-advice-or-feedback' | getRejectionCategoryLabel + '</mark>' if category == 'additional-advice-or-feedback' and not reason else 'additional-advice-or-feedback' | getRejectionCategoryLabel
+                },
+                value: {
+                  html: 'Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.'
+                }
+              } if rejection.additional_advice,
+              {
+                key: {
+                  html: '<mark>Other reasons</mark>' if category == 'other' and not reason else 'Other reasons'
+                },
+                value: {
+                  text: rejection.why_are_you_rejecting_this_application_details
+                }
+              } if rejection.why_are_you_rejecting_this_application_details.length
+            ]
+          }),
+          classes: "govuk-!-margin-bottom-5"
+        }) }}
+
+      {% endfor %}
+
+      {% include "_includes/pagination.njk" %}
+
+    {% else %}
+      <p class="govuk-body">There are no results for the selected reason for rejection.</p>
+    {% endif %}
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,23 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-one-half">
+    {{ appMetric({
+      metric: {
+        text: counts[category].percent | numeral('0.00') + "%"
+      },
+      label: {
+        html: counts[category].total | numeral('0,0') + ' of ' + counts.total | numeral('0,0') + ' rejections included this category'
+      },
+      classes: "app-metric--blue"
+    }) }}
+  </div>
+  <div class="govuk-grid-column-one-half">
+    {{ appMetric({
+      metric: {
+        text: counts[category].monthPercent | numeral('0.00') + "%"
+      },
+      label: {
+        html: counts[category].monthTotal | numeral('0,0') + ' of ' + counts.monthTotal | numeral('0,0') + ' rejections in September included this category'
+      }
+    }) }}
+  </div>
+</div>

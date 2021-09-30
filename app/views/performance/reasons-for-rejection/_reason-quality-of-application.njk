@@ -1,0 +1,9 @@
+{% set category = "quality-of-application" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
+{% set reasons = ['personal-statement','subject-knowledge','other'] %}
+
+{% include "./_heading.njk" %}
+
+{% include "./_metrics.njk" %}
+
+{% include "./_table.njk" %}

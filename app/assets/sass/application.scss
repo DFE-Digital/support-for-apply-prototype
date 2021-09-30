@@ -41,3 +41,15 @@ $govuk-assets-path: '/govuk/assets/';
 .app-tag--prototype {
   background-color: govuk-colour('red');
 }
+
+mark {
+  margin-left: -5px;
+  padding: 2px 5px;
+  color: govuk-shade(govuk-colour("yellow"), 65);
+  background: govuk-tint(govuk-colour("yellow"), 75);
+}
+
+.app-highlight--yellow {
+  color: govuk-shade(govuk-colour("yellow"), 65);
+  background: govuk-tint(govuk-colour("yellow"), 75);
+}

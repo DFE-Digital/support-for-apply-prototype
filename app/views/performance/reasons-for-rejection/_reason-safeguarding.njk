@@ -1,0 +1,9 @@
+{% set category = "safeguarding" %}
+{% set sectionTitle = category | getRejectionCategoryLabel %}
+{% set reasons = ['disclosed-information','vetting-process','other'] %}
+
+{% include "./_heading.njk" %}
+
+{% include "./_metrics.njk" %}
+
+{% include "./_table.njk" %}

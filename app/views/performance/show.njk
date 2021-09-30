@@ -1,0 +1,44 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'performance' %}
+{% set subNavId = 'dashboards' %}
+
+{% set title = "Performance" %}
+
+{% block pageTitle %}
+{{ title }} – {{ serviceName }} – GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">Performance</h1>
+
+    {% include "./_sub-navigation.njk" %}
+
+  </div>
+</div>
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <ul class="govuk-list govuk-list--spaced">
+      <li><a class="govuk-link" href="/performance/service">Service performance</a></li>
+      <li><a class="govuk-link" href="#">Applications with unavailable choices</a></li>
+      <li><a class="govuk-link" href="#">Course options without vacancies</a></li>
+      <li><a class="govuk-link" href="#">Course statistics</a></li>
+      <li><a class="govuk-link" href="#">Feature metrics</a></li>
+      <li><a class="govuk-link" href="/performance/reasons-for-rejection">Structured reasons for rejection</a></li>
+      <li><a class="govuk-link" href="#">UCAS matches</a></li>
+    </ul>
+
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{{ appSubNavigation({
+  label: "Sub navigation",
+  items: [{
+    text: "Dashboards",
+    href: "/performance/",
+    active: true if subNavId == "dashboards"
+  }, {
+    text: "Data directory",
+    href: "/performance/",
+    active: true if subNavId == "data-directory"
+  }, {
+    text: "Validation errors",
+    href: "/performance/",
+    active: true if subNavId == "validation-errors"
+  }, {
+    text: "Email log",
+    href: "/performance/",
+    active: true if subNavId == "email-log"
+  }, {
+    text: "Vendor API requests",
+    href: "/performance/",
+    active: true if subNavId == "vendor-api-requests"
+  }, {
+    text: "Vendor API monitoring",
+    href: "/performance/",
+    active: true if subNavId == "vendor-api-monitoring"
+  }]
+}) }}

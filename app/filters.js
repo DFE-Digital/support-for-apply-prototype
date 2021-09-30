@@ -1,5 +1,6 @@
 const _ = require('lodash')
 const moment = require('moment')
+const numeral = require('numeral')
 moment.suppressDeprecationWarnings = true
 
 module.exports = function (env) {
@@ -317,6 +318,132 @@ module.exports = function (env) {
     })
     // tableData = (tableData.length === 1) ? tableData[0] : tableData
     return tableData
+  }
+
+  /* ------------------------------------------------------------------
+  utility function to return reason for rejection category label
+  example: {{ 'candidate-behaviour' | getRejectionCategoryLabel }}
+  outputs: Candidate behaviour
+  ------------------------------------------------------------------ */
+  filters.getRejectionCategoryLabel = (code) => {
+    let label = ''
+    switch (code) {
+      case 'candidate-behaviour':
+        label = 'Candidate behaviour'
+        break
+      case 'cannot-sponsor-visa':
+        label = 'Cannot sponsor visa'
+        break
+      case 'course-full':
+        label = 'Course full'
+        break
+      case 'honesty-and-professionalism':
+        label = 'Honesty and professionalism'
+        break
+      case 'offered-place-on-another-course':
+        label = 'Offered place on another course'
+        break
+      case 'other':
+        label = 'Other reasons'
+        break
+      case 'additional-advice-or-feedback':
+        label = 'Additional advice or feedback'
+        break
+      case 'performance-at-interview':
+        label = 'Performance at interview'
+        break
+      case 'qualifications':
+        label = 'Qualifications'
+        break
+      case 'quality-of-application':
+        label = 'Quality of application'
+        break
+      case 'safeguarding':
+        label = 'Safeguarding'
+        break
+      default:
+        label = code
+    }
+    return label
+  }
+
+  /* ------------------------------------------------------------------
+  utility function to return reason for rejection resaon label
+  example: {{ 'no-english-gcse' | getRejectionReasonLabel }}
+  outputs: No English GCSE grade 4 (C) or above, or accepted equivalent
+  ------------------------------------------------------------------ */
+  filters.getRejectionReasonLabel = (code) => {
+    let label = ''
+    switch (code) {
+      case 'did-not-reply-to-messages':
+        label = 'Did not reply to messages'
+        break
+      case 'did-not-attend-interview':
+        label = 'Did not attend interview'
+        break
+      case 'personal-statement':
+        label = 'Personal statement'
+        break
+      case 'subject-knowledge':
+        label = 'Subject knowledge'
+        break
+      case 'no-english-gcse':
+        label = 'No English GCSE grade 4 (C) or above, or accepted equivalent'
+        break
+      case 'no-maths-gcse':
+        label = 'No maths GCSE grade 4 (C) or above, or accepted equivalent'
+        break
+      case 'no-science-gcse':
+        label = 'No science GCSE grade 4 (C) or above, or accepted equivalent (for primary applicants)'
+        break
+      case 'no-degree':
+        label = 'No degree'
+        break
+      case 'degree-does-not-meet-course-requirements':
+        label = 'Degree does not meet course requirements'
+        break
+      case 'innacurate-information':
+        label = 'Innacurate or false information in the application'
+        break
+      case 'plagiarism':
+        label = 'Evidence of plagiarism in the application'
+        break
+      case 'references':
+        label = 'References did not support the application'
+        break
+      case 'disclosed-information':
+        label = 'The candidate disclosed information which makes them unsuitable to work with children'
+        break
+      case 'vetting-process':
+        label = 'The vetting process found information which makes the candidate unsuitable to work with children'
+        break
+      case 'other':
+        label = 'Other'
+        break
+      default:
+        label = code
+    }
+    return label
+  }
+
+  /* ------------------------------------------------------------------
+   numeral filter for use in Nunjucks
+   example: {{ params.number | numeral("0,00.0") }}
+   outputs: 1,000.00
+  ------------------------------------------------------------------ */
+  filters.numeral = (number, format) => {
+   return numeral(number).format(format)
+  }
+
+  /* ------------------------------------------------------------------
+  utility function to remove empty elements from an array
+  example: {{ ['','','AB1','BC2'] | removeEmptyElements }}
+  returns: ['AB1','BC2']
+  ------------------------------------------------------------------ */
+  filters.removeEmptyElements = (array) => {
+    return filtered = array.filter((el) => {
+      return el !== ''
+    })
   }
 
   /* ------------------------------------------------------------------
