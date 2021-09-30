@@ -70,117 +70,277 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     utility functions for parsing codes into their string names
   ------------------------------------------------------------------ */
-  filters.getFundingTypeName = (code) => {
-    switch (code) {
-      case 'fee': return 'Fee paying'
-      case 'salary': return 'Salary'
-      case 'apprencticeship': return 'Apprencticeship'
-      default: return code
+  filters.getFundingTypeLabel = (code) => {
+    let label = ''
+    switch (code.toUpperCase()) {
+      case 'FEE':
+        label = 'Fee paying'
+        break
+      case 'SALARY':
+        label = 'Salary'
+        break
+      case 'APPRENCTICESHIP':
+        label = 'Apprencticeship'
+        break
+      default:
+        label = code
     }
+    return label
   }
 
-  filters.getSubjectName = (code) => {
-    switch (code) {
-      case 'W1': return 'Art and design'
-      case 'C1': return 'Biology'
-      case '08': return 'Business studies'
-      case 'F1': return 'Chemistry'
-      case '09': return 'Citizenship'
-      case 'Q8': return 'Classics'
-      case 'P3': return 'Communications and media studies'
-      case '11': return 'Computer science'
-      case '12': return 'Dance'
-      case 'DT': return 'Design and technology'
-      case 'Q3': return 'Drama'
-      case 'L1': return 'Economics'
-      case '13': return 'English'
-      case '16': return 'English as a second or other language'
-      case '15': return 'French'
-      case 'F8': return 'Geography'
-      case '17': return 'German'
-      case 'L5': return 'Health and social care'
-      case 'V1': return 'History'
-      case '18': return 'Italian'
-      case '19': return 'Japanese'
-      case '20': return 'Mandarin'
-      case 'G1': return 'Mathematics'
-      case '24': return 'Modern languages (other)'
-      case 'W3': return 'Music'
-      case 'C6': return 'Physical education'
-      case 'F3': return 'Physics'
-      case '00': return 'Primary'
-      case '01': return 'Primary with English'
-      case '02': return 'Primary with geography and history'
-      case '03': return 'Primary with mathematics'
-      case '04': return 'Primary with modern languages'
-      case '06': return 'Primary with physical education'
-      case '07': return 'Primary with science'
-      case 'C8': return 'Psychology'
-      case 'V6': return 'Religious education'
-      case '21': return 'Russian'
-      case 'F0': return 'Science'
-      case '14': return 'Social sciences'
-      case '22': return 'Spanish'
-      default: code
+  filters.getSubjectLabel = (code) => {
+    let label = ''
+    switch (code.toUpperCase()) {
+      case 'W1':
+        label = 'Art and design'
+        break
+      case 'C1':
+        label = 'Biology'
+        break
+      case '08':
+        label = 'Business studies'
+        break
+      case 'F1':
+        label = 'Chemistry'
+        break
+      case '09':
+        label = 'Citizenship'
+        break
+      case 'Q8':
+        label = 'Classics'
+        break
+      case 'P3':
+        label = 'Communications and media studies'
+        break
+      case '11':
+        label = 'Computer science'
+        break
+      case '12':
+        label = 'Dance'
+        break
+      case 'DT':
+        label = 'Design and technology'
+        break
+      case 'Q3':
+        label = 'Drama'
+        break
+      case 'L1':
+        label = 'Economics'
+        break
+      case '13':
+        label = 'English'
+        break
+      case '16':
+        label = 'English as a second or other language'
+        break
+      case '15':
+        label = 'French'
+        break
+      case 'F8':
+        label = 'Geography'
+        break
+      case '17':
+        label = 'German'
+        break
+      case 'L5':
+        label = 'Health and social care'
+        break
+      case 'V1':
+        label = 'History'
+        break
+      case '18':
+        label = 'Italian'
+        break
+      case '19':
+        label = 'Japanese'
+        break
+      case '20':
+        label = 'Mandarin'
+        break
+      case 'G1':
+        label = 'Mathematics'
+        break
+      case '24':
+        label = 'Modern languages (other)'
+        break
+      case 'W3':
+        label = 'Music'
+        break
+      case 'C6':
+        label = 'Physical education'
+        break
+      case 'F3':
+        label = 'Physics'
+        break
+      case '00':
+        label = 'Primary'
+        break
+      case '01':
+        label = 'Primary with English'
+        break
+      case '02':
+        label = 'Primary with geography and history'
+        break
+      case '03':
+        label = 'Primary with mathematics'
+        break
+      case '04':
+        label = 'Primary with modern languages'
+        break
+      case '06':
+        label = 'Primary with physical education'
+        break
+      case '07':
+        label = 'Primary with science'
+        break
+      case 'C8':
+        label = 'Psychology'
+        break
+      case 'V6':
+        label = 'Religious education'
+        break
+      case '21':
+        label = 'Russian'
+        break
+      case 'F0':
+        label = 'Science'
+        break
+      case '14':
+        label = 'Social sciences'
+        break
+      case '22':
+        label = 'Spanish'
+        break
+      default:
+        label = code
     }
+    return label
   }
 
-  filters.getProgramTypeName = (code) => {
-    switch (code) {
-      case 'HE': return 'Higher education institution'
-      case 'SC': return 'SCITT'
-      case 'SD': return 'School direct (unsalaried)'
-      case 'SS': return 'School direct (salaried)'
-      case 'TA': return 'Postgraduate teaching apprenticeship'
-      default: return code
-
+  filters.getProgramTypeLabel = (code) => {
+    let label = ''
+    switch (code.toUpperCase()) {
+      case 'HE':
+        label = 'Higher education institution'
+        break
+      case 'SC':
+        label = 'SCITT'
+        break
+      case 'SD':
+        label = 'School direct (unsalaried)'
+        break
+      case 'SS':
+        label = 'School direct (salaried)'
+        break
+      case 'TA':
+        label = 'Postgraduate teaching apprenticeship'
+        break
+      default:
+        label = code
     }
+    return label
   }
 
-  filters.getCourseLengthName = (code) => {
+  filters.getCourseLengthLabel = (code) => {
+    let label = ''
 
+    return label
   }
 
-  filters.getStudyModeName = (code) => {
-    switch (code) {
-      case 'F': return 'Full time'
-      case 'P': return 'Part time'
-      case 'B': return 'Full time and part time'
-      default: return code
+  filters.getStudyModeLabel = (code) => {
+    let label = ''
+    switch (code.toUpperCase()) {
+      case 'F':
+        label = 'Full time'
+        break
+      case 'P':
+        label = 'Part time'
+        break
+      case 'B':
+        label = 'Full time and part time'
+        break
+      default:
+        label = code
     }
+    return label
   }
 
-  filters.getLevelName = (code) => {
-    switch (code) {
-      case 'Primary': return 'Primary'
-      case 'Secondary': return 'Secondary'
-      default: return code
+  filters.getLevelLabel = (code) => {
+    let label = ''
+    switch (code.toUpperCase()) {
+      case 'PRIMARY':
+        label = 'Primary'
+        break
+      case 'SECONDARY':
+        label = 'Secondary'
+        break
+      case 'FURTHER_EDUCATION':
+        label = 'Further education'
+        break
+      default:
+        label = code
     }
+    return label
   }
 
-  filters.getAgeRangeName = (code) => {
+  filters.getAgeRangeLabel = (code) => {
+    let label = ''
     switch (code) {
-      case '2 to 11': return '2 to 11'
-      case '2 to 7': return '2 to 7'
-      case '3 to 11': return '3 to 11'
-      case '3 to 7': return '3 to 7'
-      case '3 to 9': return '3 to 9'
-      case '4 to 11': return '4 to 11'
-      case '5 to 11': return '5 to 11'
-      case '7 to 11': return '7 to 11'
-      case '7 to 14': return '7 to 14'
-      case '7 to 18': return '7 to 18'
-      case '11 to 16': return '11 to 16'
-      case '11 to 18': return '11 to 18'
-      case '11 to 19': return '11 to 19'
-      case '14 to 18': return '14 to 18'
-      case '14 to 19': return '14 to 19'
-      case '16 to 18': return '16 to 18'
-      default: return code
+      case '2 to 11':
+        label = '2 to 11'
+        break
+      case '2 to 7':
+        label = '2 to 7'
+        break
+      case '3 to 11':
+        label = '3 to 11'
+        break
+      case '3 to 7':
+        label = '3 to 7'
+        break
+      case '3 to 9':
+        label = '3 to 9'
+        break
+      case '4 to 11':
+        label = '4 to 11'
+        break
+      case '5 to 11':
+        label = '5 to 11'
+        break
+      case '7 to 11':
+        label = '7 to 11'
+        break
+      case '7 to 14':
+        label = '7 to 14'
+        break
+      case '7 to 18':
+        label = '7 to 18'
+        break
+      case '11 to 16':
+        label = '11 to 16'
+        break
+      case '11 to 18':
+        label = '11 to 18'
+        break
+      case '11 to 19':
+        label = '11 to 19'
+        break
+      case '14 to 18':
+        label = '14 to 18'
+        break
+      case '14 to 19':
+        label = '14 to 19'
+        break
+      case '16 to 18':
+        label = '16 to 18'
+        break
+      default:
+        label = code
     }
+    return label
   }
 
-  filters.getQualificationName = (codes) => {
+  filters.getQualificationLabel = (codes) => {
     const array = codes.slice(0)
     const last = array.pop()
     if (codes.length > 1) {
@@ -189,21 +349,38 @@ module.exports = function (env) {
     return last
   }
 
-  filters.getFinancialSupportName = (code) => {
+  filters.getFinancialSupportLabel = (code) => {
     return 'None'
   }
 
-  filters.getNotificationName = (code) => {
-    switch (code) {
-      case 'application_received': return 'Application received'
-      case 'application_received_from_another_organisation': return 'Application received from another organisation'
-      case 'application_rejected_by_default': return 'Application automatically rejected'
-      case 'application_withdrawn': return 'Application withdrawn by candidate'
-      case 'application_transferred_to_another_organisation': return 'Application transferred to another organisation'
-      case 'offer_accepted': return 'Offer accepted'
-      case 'offer_declined': return 'Offer rejected'
-      default: return code
+  filters.getNotificationLabel = (code) => {
+    let label = ''
+    switch (code.toUpperCase()) {
+      case 'APPLICATION_RECEIVED':
+        label = 'Application received'
+        break
+      case 'APPLICATION_RECEIVED_FROM_ANOTHER_ORGANISATION':
+        label = 'Application received from another organisation'
+        break
+      case 'APPLICATION_REJECTED_BY_DEFAULT':
+        label = 'Application automatically rejected'
+        break
+      case 'APPLICATION_WITHDRAWN':
+        label = 'Application withdrawn by candidate'
+        break
+      case 'APPLICATION_TRANSFERRED_TO_ANOTHER_ORGANISATION':
+        label = 'Application transferred to another organisation'
+        break
+      case 'OFFER_ACCEPTED':
+        label = 'Offer accepted'
+        break
+      case 'OFFER_DECLINED':
+        label = 'Offer rejected'
+        break
+      default:
+        label = code
     }
+    return label
   }
 
   /* ------------------------------------------------------------------
