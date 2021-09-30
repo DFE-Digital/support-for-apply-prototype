@@ -61,7 +61,7 @@
       <ul class="govuk-list">
         {% for notification in notifications %}
           <li>
-            {% if user.notifications[notification] in ["yes",true] %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} {{ notification | getNotificationName }}
+            {% if user.notifications[notification] in ["yes",true] %}{{ iconTrue | safe }}{% else %}{{ iconFalse | safe }}{% endif %} {{ notification | getNotificationLabel }}
             {{ ' – ' + user.notifications[notification] | yesNo | capitalize }}
           </li>
         {% endfor %}
