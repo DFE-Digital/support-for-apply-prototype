@@ -326,20 +326,45 @@ module.exports = function (env) {
   outputs: Candidate behaviour
   ------------------------------------------------------------------ */
   filters.getRejectionCategoryLabel = (code) => {
+    let label = ''
     switch (code) {
-      case 'candidate-behaviour': return 'Candidate behaviour'
-      case 'cannot-sponsor-visa': return 'Cannot sponsor visa'
-      case 'course-full': return 'Course full'
-      case 'honesty-and-professionalism': return 'Honesty and professionalism'
-      case 'offered-place-on-another-course': return 'Offered place on another course'
-      case 'other': return 'Other reasons'
-      case 'additional-advice-or-feedback': return 'Additional advice or feedback'
-      case 'performance-at-interview': return 'Performance at interview'
-      case 'qualifications': return 'Qualifications'
-      case 'quality-of-application': return 'Quality of application'
-      case 'safeguarding': return 'Safeguarding'
-      default: return code
+      case 'candidate-behaviour':
+        label = 'Candidate behaviour'
+        break
+      case 'cannot-sponsor-visa':
+        label = 'Cannot sponsor visa'
+        break
+      case 'course-full':
+        label = 'Course full'
+        break
+      case 'honesty-and-professionalism':
+        label = 'Honesty and professionalism'
+        break
+      case 'offered-place-on-another-course':
+        label = 'Offered place on another course'
+        break
+      case 'other':
+        label = 'Other reasons'
+        break
+      case 'additional-advice-or-feedback':
+        label = 'Additional advice or feedback'
+        break
+      case 'performance-at-interview':
+        label = 'Performance at interview'
+        break
+      case 'qualifications':
+        label = 'Qualifications'
+        break
+      case 'quality-of-application':
+        label = 'Quality of application'
+        break
+      case 'safeguarding':
+        label = 'Safeguarding'
+        break
+      default:
+        label = code
     }
+    return label
   }
 
   /* ------------------------------------------------------------------
@@ -348,24 +373,57 @@ module.exports = function (env) {
   outputs: No English GCSE grade 4 (C) or above, or accepted equivalent
   ------------------------------------------------------------------ */
   filters.getRejectionReasonLabel = (code) => {
+    let label = ''
     switch (code) {
-      case 'did-not-reply-to-messages': return 'Did not reply to messages'
-      case 'did-not-attend-interview': return 'Did not attend interview'
-      case 'personal-statement': return 'Personal statement'
-      case 'subject-knowledge': return 'Subject knowledge'
-      case 'no-english-gcse': return 'No English GCSE grade 4 (C) or above, or accepted equivalent'
-      case 'no-maths-gcse': return 'No maths GCSE grade 4 (C) or above, or accepted equivalent'
-      case 'no-science-gcse': return 'No science GCSE grade 4 (C) or above, or accepted equivalent (for primary applicants)'
-      case 'no-degree': return 'No degree'
-      case 'degree-does-not-meet-course-requirements': return 'Degree does not meet course requirements'
-      case 'innacurate-information': return 'Innacurate or false information in the application'
-      case 'plagiarism': return 'Evidence of plagiarism in the application'
-      case 'references': return 'References did not support the application'
-      case 'disclosed-information': return 'The candidate disclosed information which makes them unsuitable to work with children'
-      case 'vetting-process': return 'The vetting process found information which makes the candidate unsuitable to work with children'
-      case 'other': return 'Other'
-      default: return code
+      case 'did-not-reply-to-messages':
+        label = 'Did not reply to messages'
+        break
+      case 'did-not-attend-interview':
+        label = 'Did not attend interview'
+        break
+      case 'personal-statement':
+        label = 'Personal statement'
+        break
+      case 'subject-knowledge':
+        label = 'Subject knowledge'
+        break
+      case 'no-english-gcse':
+        label = 'No English GCSE grade 4 (C) or above, or accepted equivalent'
+        break
+      case 'no-maths-gcse':
+        label = 'No maths GCSE grade 4 (C) or above, or accepted equivalent'
+        break
+      case 'no-science-gcse':
+        label = 'No science GCSE grade 4 (C) or above, or accepted equivalent (for primary applicants)'
+        break
+      case 'no-degree':
+        label = 'No degree'
+        break
+      case 'degree-does-not-meet-course-requirements':
+        label = 'Degree does not meet course requirements'
+        break
+      case 'innacurate-information':
+        label = 'Innacurate or false information in the application'
+        break
+      case 'plagiarism':
+        label = 'Evidence of plagiarism in the application'
+        break
+      case 'references':
+        label = 'References did not support the application'
+        break
+      case 'disclosed-information':
+        label = 'The candidate disclosed information which makes them unsuitable to work with children'
+        break
+      case 'vetting-process':
+        label = 'The vetting process found information which makes the candidate unsuitable to work with children'
+        break
+      case 'other':
+        label = 'Other'
+        break
+      default:
+        label = code
     }
+    return label
   }
 
   /* ------------------------------------------------------------------
