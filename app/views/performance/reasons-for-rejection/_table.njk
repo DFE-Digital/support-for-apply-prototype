@@ -1,60 +1,68 @@
-<table class="govuk-table govuk-!-margin-top-5">
-  <thead class="govuk-table__head">
-    <tr class="govuk-table__row">
-      <th scope="col" class="govuk-table__header" width="30%">
-        Reason for rejection
-      </th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
-        Percentage of all rejections
-      </th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
-      Percentage of all rejections<br>within this category
-      </th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
-        Percentage of all rejections in September
-      </th>
-      <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
-      Percentage of all rejections in September<br>within this category
-      </th>
-    </tr>
-  </thead>
-  <tbody class="govuk-table__body">
+<div class="govuk-grid-row">
+  <div class="{{'govuk-grid-column-full' if currentCycle == cycle else 'govuk-grid-column-two-thirds'}}">
+    <table class="govuk-table govuk-!-margin-top-5">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header" width="30%">
+            Reason for rejection
+          </th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
+            Percentage of all rejections
+          </th>
+          <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
+          Percentage of all rejections<br>within this category
+          </th>
+          {% if currentCycle == cycle %}
+            <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
+              Percentage of all rejections in September
+            </th>
+            <th scope="col" class="govuk-table__header govuk-table__header--numeric" width="17.5%">
+            Percentage of all rejections in September<br>within this category
+            </th>
+          {% endif %}
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
 
-    {% for reason in reasons %}
+        {% for reason in reasons %}
 
-      <tr class="govuk-table__row">
-        <th scope="row" class="govuk-table__header">
-          <a class="govuk-link" href="/performance/reasons-for-rejection/categories/{{ category }}/reasons/{{ reason }}/cycles/{{cycle}}">
-            {{ reason | getRejectionReasonLabel }}
-          </a>
-        </th>
-        <td class="govuk-table__cell govuk-table__cell--numeric">
-          {{ counts[category].items[reason].percent | numeral('0.00') }}%
-          <span class="govuk-hint govuk-!-margin-bottom-0">
-            {{ counts[category].items[reason].total | numeral('0,0') }} of {{ counts.total | numeral('0,0') }}
-          </span>
-        </td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">
-          {{ ((counts[category].items[reason].total / counts[category].total) * 100) | numeral('0.00') }}%
-          <span class="govuk-hint govuk-!-margin-bottom-0">
-            {{ counts[category].items[reason].total | numeral('0,0') }} of {{ counts[category].total | numeral('0,0') }}
-          </span>
-        </td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">
-          {{ ((counts[category].items[reason].monthTotal / counts.monthTotal) * 100) | numeral('0.00') }}%
-          <span class="govuk-hint govuk-!-margin-bottom-0">
-            {{ counts[category].items[reason].monthTotal | numeral('0,0') }} of {{ counts.monthTotal | numeral('0,0') }}
-          </span>
-        </td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">
-          {{ ((counts[category].items[reason].monthTotal / counts[category].monthTotal) * 100) | numeral('0.00') }}%
-          <span class="govuk-hint govuk-!-margin-bottom-0">
-            {{ counts[category].items[reason].monthTotal | numeral('0,0') }} of {{ counts[category].monthTotal | numeral('0,0') }}
-          </span>
-        </td>
-      </tr>
+          <tr class="govuk-table__row">
+            <th scope="row" class="govuk-table__header">
+              <a class="govuk-link" href="/performance/reasons-for-rejection/categories/{{ category }}/reasons/{{ reason }}/cycles/{{cycle}}">
+                {{ reason | getRejectionReasonLabel }}
+              </a>
+            </th>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ counts[category].items[reason].percent | numeral('0.00') }}%
+              <span class="govuk-hint govuk-!-margin-bottom-0">
+                {{ counts[category].items[reason].total | numeral('0,0') }} of {{ counts.total | numeral('0,0') }}
+              </span>
+            </td>
+            <td class="govuk-table__cell govuk-table__cell--numeric">
+              {{ ((counts[category].items[reason].total / counts[category].total) * 100) | numeral('0.00') }}%
+              <span class="govuk-hint govuk-!-margin-bottom-0">
+                {{ counts[category].items[reason].total | numeral('0,0') }} of {{ counts[category].total | numeral('0,0') }}
+              </span>
+            </td>
+            {% if currentCycle == cycle %}
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                {{ ((counts[category].items[reason].monthTotal / counts.monthTotal) * 100) | numeral('0.00') }}%
+                <span class="govuk-hint govuk-!-margin-bottom-0">
+                  {{ counts[category].items[reason].monthTotal | numeral('0,0') }} of {{ counts.monthTotal | numeral('0,0') }}
+                </span>
+              </td>
+              <td class="govuk-table__cell govuk-table__cell--numeric">
+                {{ ((counts[category].items[reason].monthTotal / counts[category].monthTotal) * 100) | numeral('0.00') }}%
+                <span class="govuk-hint govuk-!-margin-bottom-0">
+                  {{ counts[category].items[reason].monthTotal | numeral('0,0') }} of {{ counts[category].monthTotal | numeral('0,0') }}
+                </span>
+              </td>
+            {% endif %}
+          </tr>
 
-    {% endfor %}
+        {% endfor %}
 
-  </tbody>
-</table>
+      </tbody>
+    </table>
+  </div>
+</div>

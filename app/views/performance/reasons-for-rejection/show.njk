@@ -1,8 +1,9 @@
 {% extends "_layout.njk" %}
 
 {% set primaryNavId = 'performance' %}
-{% set subNavId = cycle if cycle else 'all' %}
+{% set subNavId = cycle if cycle else '' %}
 
+{% set captionTitle = cycle | getCycleLabel + (' - current' if currentCycle == cycle) %}
 {% set title = "Structured reasons for rejection" %}
 
 {% block pageTitle %}
@@ -25,7 +26,12 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">{{ title }}</h1>
+    <h1 class="govuk-heading-l">
+      <span class="govuk-caption-l">
+        {{ captionTitle }}
+      </span>
+      {{ title }}
+    </h1>
 
     {% include "./_understanding-report.njk" %}
 
@@ -35,7 +41,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    {% include "./_sub-navigation.njk" %}
+    {#% include "./_sub-navigation.njk" %#}
 
     {% include "./_reason-candidate-behaviour.njk" %}
 

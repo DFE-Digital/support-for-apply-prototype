@@ -3,10 +3,11 @@
 {% set primaryNavId = 'performance' %}
 
 {% set sectionTitle = "Structured reasons for rejection" %}
+{% set captionTitle = cycle | getCycleLabel + (' - current' if currentCycle == cycle) %}
 {% set title = category | getRejectionCategoryLabel %}
 
 {% if reason.length %}
-  {% set title = title + " - " + reason | getRejectionReasonLabel | lower %}
+  {% set title = title + " - " + reason | getRejectionReasonLabel %}
 {% endif %}
 
 {% block pageTitle %}
@@ -57,7 +58,9 @@
   <div class="govuk-grid-column-two-thirds">
 
     <h1 class="govuk-heading-l">
-      <span class="govuk-caption-l">{{ sectionTitle }}</span>
+      <span class="govuk-caption-l">
+        {{ captionTitle }}
+      </span>
       {{ title }}
     </h1>
 
