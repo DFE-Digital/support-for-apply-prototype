@@ -1,7 +1,9 @@
+const { CURRENT_CYCLE } = require('../helpers/constants')
+
 const Performance = require('../models/performance')
 const PaginationHelper = require('../helpers/pagination')
 
-const currentCycle = 2021
+const currentCycle = CURRENT_CYCLE
 
 exports.show_get = (req, res) => {
 
@@ -21,7 +23,7 @@ exports.show_service_get = (req, res) => {
 }
 
 exports.show_reasons_for_rejection_get = (req, res) => {
-  const cycle = req.params.cycle ? parseInt(req.params.cycle) : 2021
+  const cycle = req.params.cycle ? parseInt(req.params.cycle) : CURRENT_CYCLE
 
   const counts = Performance.getRejectionCounts({
     cycle
@@ -36,7 +38,7 @@ exports.show_reasons_for_rejection_get = (req, res) => {
 }
 
 exports.show_reasons_for_rejection_reason_get = (req, res) => {
-  const cycle = req.params.cycle ? parseInt(req.params.cycle) : 2021
+  const cycle = req.params.cycle ? parseInt(req.params.cycle) : CURRENT_CYCLE
 
   let rejections = Performance.findRejections({
     cycle,
