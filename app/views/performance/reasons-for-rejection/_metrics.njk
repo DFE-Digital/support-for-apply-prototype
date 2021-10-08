@@ -10,14 +10,16 @@
       classes: "app-metric--blue"
     }) }}
   </div>
-  <div class="govuk-grid-column-one-half">
-    {{ appMetric({
-      metric: {
-        text: counts[category].monthPercent | numeral('0.00') + "%"
-      },
-      label: {
-        html: counts[category].monthTotal | numeral('0,0') + ' of ' + counts.monthTotal | numeral('0,0') + ' rejections in September included this category'
-      }
-    }) }}
-  </div>
+  {% if currentCycle == cycle %}
+    <div class="govuk-grid-column-one-half">
+      {{ appMetric({
+        metric: {
+          text: counts[category].monthPercent | numeral('0.00') + "%"
+        },
+        label: {
+          html: counts[category].monthTotal | numeral('0,0') + ' of ' + counts.monthTotal | numeral('0,0') + ' rejections in September included this category'
+        }
+      }) }}
+    </div>
+  {% endif %}
 </div>

@@ -1,7 +1,7 @@
 {% extends "_layout.njk" %}
 
-{% set primaryNavId = 'performance' %}
-{% set subNavId = 'dashboards' %}
+{% set primaryNavId = "performance" %}
+{% set subNavId = "dashboards" %}
 
 {% set title = "Performance" %}
 
@@ -18,7 +18,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Performance</h1>
+    <h1 class="govuk-heading-l">{{ title }}</h1>
 
     {% include "./_sub-navigation.njk" %}
 
@@ -34,8 +34,24 @@
       <li><a class="govuk-link" href="#">Course options without vacancies</a></li>
       <li><a class="govuk-link" href="#">Course statistics</a></li>
       <li><a class="govuk-link" href="#">Feature metrics</a></li>
-      <li><a class="govuk-link" href="/performance/reasons-for-rejection">Structured reasons for rejection</a></li>
       <li><a class="govuk-link" href="#">UCAS matches</a></li>
+    </ul>
+
+    <h2 class="govuk-heading-s">Structured reasons for rejection</h2>
+
+    <ul class="govuk-list govuk-list--spaced">
+      <li>
+        <a class="govuk-link" href="/performance/reasons-for-rejection/cycles/2021">
+          <span class="govuk-visually-hidden">Structured reasons for rejection for </span>
+          {{ 2021 | getCycleLabel }}{{ ' - current' if currentCycle == 2021 }}
+        </a>
+      </li>
+      <li>
+        <a class="govuk-link" href="/performance/reasons-for-rejection/cycles/2020">
+          <span class="govuk-visually-hidden">Structured reasons for rejection for </span>
+          {{ 2020 | getCycleLabel }}{{ ' - current' if currentCycle == 2020 }}
+        </a>
+      </li>
     </ul>
 
   </div>

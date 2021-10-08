@@ -70,6 +70,24 @@ module.exports = function (env) {
   /* ------------------------------------------------------------------
     utility functions for parsing codes into their string names
   ------------------------------------------------------------------ */
+  filters.getCycleLabel = (code) => {
+    let label = ''
+    switch (code.toString()) {
+      case '2022':
+        label = '2021 to 2022 (starts 2022)'
+        break
+      case '2021':
+        label = '2020 to 2021 (starts 2021)'
+        break
+      case '2020':
+        label = '2019 to 2020 (starts 2020)'
+        break
+      default:
+        label = code
+    }
+    return label
+  }
+
   filters.getFundingTypeLabel = (code) => {
     let label = ''
     switch (code.toUpperCase()) {
