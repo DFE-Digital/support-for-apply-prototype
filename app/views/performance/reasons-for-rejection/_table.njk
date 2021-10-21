@@ -33,26 +33,26 @@
               </a>
             </th>
             <td class="govuk-table__cell govuk-table__cell--numeric">
-              {{ counts[category].items[reason].percent | numeral('0.00') }}%
+              {{ counts[category].items[reason].percent | numeral('0.[00]') }}%
               <span class="govuk-hint govuk-!-margin-bottom-0">
                 {{ counts[category].items[reason].total | numeral('0,0') }} of {{ counts.total | numeral('0,0') }}
               </span>
             </td>
             <td class="govuk-table__cell govuk-table__cell--numeric">
-              {{ ((counts[category].items[reason].total / counts[category].total) * 100) | numeral('0.00') }}%
+              {{ ((counts[category].items[reason].total / counts[category].total) * 100) | numeral('0.[00]') }}%
               <span class="govuk-hint govuk-!-margin-bottom-0">
                 {{ counts[category].items[reason].total | numeral('0,0') }} of {{ counts[category].total | numeral('0,0') }}
               </span>
             </td>
             {% if currentCycle == cycle %}
               <td class="govuk-table__cell govuk-table__cell--numeric">
-                {{ ((counts[category].items[reason].monthTotal / counts.monthTotal) * 100) | numeral('0.00') }}%
+                {{ ((counts[category].items[reason].monthTotal / counts.monthTotal) * 100) | numeral('0.[00]') }}%
                 <span class="govuk-hint govuk-!-margin-bottom-0">
                   {{ counts[category].items[reason].monthTotal | numeral('0,0') }} of {{ counts.monthTotal | numeral('0,0') }}
                 </span>
               </td>
               <td class="govuk-table__cell govuk-table__cell--numeric">
-                {{ ((counts[category].items[reason].monthTotal / counts[category].monthTotal) * 100) | numeral('0.00') }}%
+                {{ ((counts[category].items[reason].monthTotal / counts[category].monthTotal) * 100) | numeral('0.[00]') }}%
                 <span class="govuk-hint govuk-!-margin-bottom-0">
                   {{ counts[category].items[reason].monthTotal | numeral('0,0') }} of {{ counts[category].monthTotal | numeral('0,0') }}
                 </span>
