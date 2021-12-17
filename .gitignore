@@ -11,7 +11,6 @@ usage-data-config.json
 .port.tmp
 node_modules/*
 .tmuxp.*
-package-lock.json
 
 # Dynamically generated data
 app/data/applications.json
