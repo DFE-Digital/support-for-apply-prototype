@@ -4,7 +4,7 @@
   "version": "9.3.0",
   "private": true,
   "engines": {
-    "node": ">=10.0.0 <15.0.0"
+    "node": ">=10.0.0 <17.0.0"
   },
   "scripts": {
     "start": "node start.js",
@@ -37,13 +37,14 @@
     "govuk-frontend": "^3.11.0",
     "gulp": "^4.0.2",
     "gulp-nodemon": "^2.5.0",
-    "gulp-sass": "^4.0.1",
+    "gulp-sass": "^5.0.0",
     "gulp-sourcemaps": "^3.0.0",
     "inquirer": "^7.1.0",
     "keypather": "^3.1.0",
     "lodash": "^4.17.21",
     "marked": "^3.0.0",
     "moment": "^2.24.0",
+    "node-sass": "^6.0.1",
     "notifications-node-client": "^4.7.2",
     "numeral": "^2.0.6",
     "nunjucks": "^3.2.2",
@@ -61,7 +62,6 @@
   "devDependencies": {
     "glob": "^7.1.4",
     "jest": "^27.0.4",
-    "node-sass": "^4.14.1",
     "standard": "^16.0.0",
     "supertest": "^6.1.1"
   }
