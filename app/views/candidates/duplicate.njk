@@ -1,0 +1,109 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'candidates' %}
+
+{% block pageTitle %}
+  Prototype for {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Applications</h1>
+
+    {{ appSubNavigation({
+      label: 'Sub navigation',
+      items: [{
+        text: 'Applications',
+        href: '/applications',
+        active: false
+      }, {
+        text: 'Candidate account',
+        href: '#',
+        active: false
+      }, {
+        text: 'Duplicate candidate matches',
+        href: '#',
+        active: true
+      }]
+    }) }}
+
+    {{ govukBackLink({
+      text: "Back",
+      href: "/candidates/duplicates"
+    }) }}
+
+    <h2 class="govuk-heading-m govuk-!-margin-top-3">3 candidates with postcode F1 1SD and DOB 01/04/1981</h2>
+
+    {{ govukButton({
+      text: "Mark as resolved",
+      href: "#"
+    }) }}
+
+  </div>
+</div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Account</th>
+          <th scope="col" class="govuk-table__header"><a href="/candidates/123">bob.jones@gmail.com</a></th>
+          <th scope="col" class="govuk-table__header"><a href="/candidates/124">bob.jones@hotmail.com</a></th>
+          <th scope="col" class="govuk-table__header"><a href="/candidates/125">bob.jones@outlook.com</a></th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Created at</th>
+          <td class="govuk-table__cell">12 Dec 2021 8:34pm</th>
+          <td class="govuk-table__cell">12 Dec 2021 3:12pm</th>
+          <td class="govuk-table__cell">11 Dec 2021 9:01pm</th>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Name</th>
+          <td class="govuk-table__cell">Bob Jones</th>
+          <td class="govuk-table__cell">Bob Jones</th>
+          <td class="govuk-table__cell">Bob Jones</th>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">DOB</th>
+          <td class="govuk-table__cell">01/04/1981</th>
+          <td class="govuk-table__cell">01/04/1981</th>
+          <td class="govuk-table__cell">01/04/1981</th>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Address</th>
+          <td class="govuk-table__cell">1 High Street<br>New Town<br>Farnborough<br>F1 1SD</th>
+          <td class="govuk-table__cell">1 High Street<br>New Town<br>Old Country<br>Farnborough<br>F1 1SD</th>
+          <td class="govuk-table__cell">1 High Street<br>New Town<br>Old Country<br>Farnborough<br>F1 1SD</th>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Application status</th>
+          <td class="govuk-table__cell">Draft</th>
+          <td class="govuk-table__cell">Draft</th>
+          <td class="govuk-table__cell"><strong class="govuk-tag">Submitted</strong><br> 12 Dec 2021 7:12am</th>
+        </tr>
+        <tr class="govuk-table__row">
+          <th scope="row" class="govuk-table__header govuk-!-font-weight-regular">Account status</th>
+          <td class="govuk-table__cell">Application submission blocked</th>
+          <td class="govuk-table__cell">Account blocked</th>
+          <td class="govuk-table__cell">Not blocked</th>
+        </tr>
+      </tbody>
+    </table>
+
+
+
+  </div>
+</div>
+
+{% endblock %}

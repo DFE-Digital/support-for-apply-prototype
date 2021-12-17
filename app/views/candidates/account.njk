@@ -1,0 +1,50 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'candidates' %}
+
+{% block pageTitle %}
+  Prototype for {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+  {{ govukBreadcrumbs({
+    items: [
+      {
+        text: "Candidate",
+        href: "/candidates"
+      },
+      {
+        text: "Candidate accounts",
+        href: "/candidates/accounts"
+      }
+    ]
+    }) }}
+
+    <h1 class="govuk-heading-l">bob.jones@gmail.com</h2>
+
+    <p>TODO:</p>
+
+    {{ govukButton({
+      text: "Block from application submission"
+    }) }}
+    <br>
+    {{ govukButton({
+      text: "Block from signing in"
+    }) }}
+
+    <h2 class="govuk-heading-m">Applications</h2>
+
+    <p>(List and links to applications)</p>
+
+  </div>
+</div>
+
+{% endblock %}

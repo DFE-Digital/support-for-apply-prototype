@@ -43,7 +43,20 @@ router.get('/applications', checkIsAuthenticated, applicationController.list_get
 
 router.get('/candidates', checkIsAuthenticated, candidateController.list_get)
 
+router.get('/candidates/duplicates', (req, res) => {
+  res.render(`candidates/duplicates`, {
+  })
+})
 
+router.get('/candidates/duplicates/:id', (req, res) => {
+  res.render(`candidates/duplicate`, {
+  })
+})
+
+router.get('/candidates/:id', (req, res) => {
+  res.render(`candidates/account`, {
+  })
+})
 
 /// --------------------------------------------------///
 /// PROVIDER ROUTES

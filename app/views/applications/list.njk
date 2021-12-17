@@ -17,6 +17,22 @@
 
     <h1 class="govuk-heading-l">Applications</h1>
 
+    {{ appSubNavigation({
+      label: 'Sub navigation',
+      items: [{
+        text: 'Applications',
+        href: '#',
+        active: true
+      }, {
+        text: 'Candidate account',
+        href: '#',
+        active: false
+      }, {
+        text: 'Duplicate candidate matches',
+        href: '/candidates/duplicates',
+        active: false
+      }]
+    }) }}
 
   </div>
 </div>

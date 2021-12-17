@@ -1,0 +1,88 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'candidates' %}
+
+{% block pageTitle %}
+  Prototype for {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <h1 class="govuk-heading-l">Applications</h1>
+
+    {{ appSubNavigation({
+      label: 'Sub navigation',
+      items: [{
+        text: 'Applications',
+        href: '/applications',
+        active: false
+      }, {
+        text: 'Candidate account',
+        href: '#',
+        active: false
+      }, {
+        text: 'Duplicate candidate matches',
+        href: '#',
+        active: true
+      }]
+    }) }}
+
+    <nav class="govuk-body">
+      <span class="govuk-!-margin-right-4 govuk-!-font-weight-bold">Under review <span class="app-count">12</span></span>
+      <a class="govuk-link govuk-link--no-visited-state"  href="/candidates/duplicates/resolved">Resolved</a>
+    </nav>
+
+    <table class="govuk-table">
+      <thead class="govuk-table__head">
+        <tr class="govuk-table__row">
+          <th scope="col" class="govuk-table__header">Match</th>
+          <th scope="col" class="govuk-table__header">Date</th>
+        </tr>
+      </thead>
+      <tbody class="govuk-table__body">
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="/candidates/duplicates/123" class="govuk-link">3 candidates with postcode N1 1DA and DOB 01/04/1981</td>
+          <td class="govuk-table__cell">16 Dec 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="/candidates/duplicates/123" class="govuk-link">2 candidates with postcode W1 3JD and DOB 01/04/1981</td>
+          <td class="govuk-table__cell">16 Dec 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="/candidates/duplicates/123" class="govuk-link">2 candidates with postcode QA1 6SP and DOB 01/04/1981</td>
+          <td class="govuk-table__cell">13 Dec 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="/candidates/duplicates/123" class="govuk-link">3 candidates with postcode M8 8PP and DOB 01/04/1981</td>
+          <td class="govuk-table__cell">12 Dec 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="/candidates/duplicates/123" class="govuk-link">2 candidates with postcode E1 9AA and DOB 01/04/1981</td>
+          <td class="govuk-table__cell">11 Dec 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="/candidates/duplicates/123" class="govuk-link">4 candidates with postcode G6 7SQ and DOB 01/04/1981</td>
+          <td class="govuk-table__cell">8 Dec 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="/candidates/duplicates/123" class="govuk-link">2 candidates with postcode N1 1DA and DOB 01/04/1981</td>
+          <td class="govuk-table__cell">6 Dec 2021</td>
+        </tr>
+        <tr class="govuk-table__row">
+          <td class="govuk-table__cell"><a href="/candidates/duplicates/123" class="govuk-link">2 candidates with postcode N1 1DA and DOB 01/04/1981</td>
+          <td class="govuk-table__cell">6 Dec 2021</td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+</div>
+
+{% endblock %}
