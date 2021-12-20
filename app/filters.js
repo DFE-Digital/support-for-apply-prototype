@@ -74,13 +74,13 @@ module.exports = function (env) {
     let label = ''
     switch (code.toString()) {
       case '2022':
-        label = '2021 to 2022 (starts 2022)'
+        label = '2021 to 2022'
         break
       case '2021':
-        label = '2020 to 2021 (starts 2021)'
+        label = '2020 to 2021'
         break
       case '2020':
-        label = '2019 to 2020 (starts 2020)'
+        label = '2019 to 2020'
         break
       default:
         label = code
