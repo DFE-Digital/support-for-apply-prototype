@@ -1,7 +1,7 @@
 {% extends "_layout.njk" %}
 
 {% set primaryNavId = "performance" %}
-{% set subNavId = cycle if cycle else 'all' %}
+{% set subNavId = cycle if cycle else "all" %}
 
 {% set title = "Service performance" %}
 
@@ -21,11 +21,14 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    <p class="govuk-body">
+      <a class="govuk-link" href="#">View in large screen mode</a>
+    </p>
 
     {% include "./_sub-navigation.njk" %}
 
@@ -37,33 +40,63 @@
 
   <h2 class="govuk-heading-m">Candidates</h2>
 
-  {{ appMetric({
-    metric: {
-      text:"36,158"
-    },
-    label: {
-      text: "Unique candidates"
-    },
-    classes: "app-metric--blue govuk-!-margin-bottom-4"
-  }) }}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half">
+      {{ appMetric({
+        metric: {
+          text: performanceData.candidates.total | numeral("0,0")
+        },
+        label: {
+          text: "Unique candidates"
+        },
+        classes: "app-metric--blue govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+    <div class="govuk-grid-column-one-half">
+      {{ appMetric({
+        metric: {
+          text:"XXX"
+        },
+        label: {
+          text: "XXX candidates"
+        },
+        classes: "govuk-!-margin-bottom-4"
+      }) if cycle }}
+    </div>
+  </div>
 
   <h2 class="govuk-heading-m govuk-!-margin-top-7">Applications</h2>
 
-  {{ appMetric({
-    metric: {
-      text:"38,326"
-    },
-    label: {
-      text: "application forms"
-    },
-    classes: "app-metric--blue govuk-!-margin-bottom-4"
-  }) }}
+  <!-- <div class="govuk-grid-row">
+    <div class="govuk-grid-column-one-half"> -->
+      {{ appMetric({
+        metric: {
+          text: performanceData.applications.total | numeral("0,0")
+        },
+        label: {
+          text: "application forms"
+        },
+        classes: "app-metric--blue govuk-!-margin-bottom-4"
+      }) }}
+    <!-- </div>
+    <div class="govuk-grid-column-one-half">
+      {{ appMetric({
+        metric: {
+          text:"38,326"
+        },
+        label: {
+          text: "application forms"
+        },
+        classes: "govuk-!-margin-bottom-4"
+      }) }}
+    </div>
+  </div> -->
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
       {{ appMetric({
         metric: {
-          text:"27,545"
+          text: performanceData.applications.unsubmitted | numeral("0,0")
         },
         label: {
           text: "unsubmitted application forms"
@@ -74,7 +107,7 @@
     <div class="govuk-grid-column-one-half">
       {{ appMetric({
         metric: {
-          text:"10,781"
+          text: performanceData.applications.submitted | numeral("0,0")
         },
         label: {
           text: "submitted application forms"
@@ -90,7 +123,7 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"12,451",
+              text: performanceData.applications.not_started | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -102,7 +135,7 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"15,094",
+              text: performanceData.applications.in_progress | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -118,7 +151,7 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text:"177",
+              text: performanceData.applications.still_being_processed | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -130,7 +163,7 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text:"6,922",
+              text: performanceData.applications.ended_without_success | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -142,11 +175,11 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text:"3,680",
+              text: performanceData.applications.accepted_an_offer | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "accepted and offer"
+              text: "accepted an offer"
             },
             classes: "app-metric--green govuk-!-margin-bottom-4"
           }) }}
@@ -159,7 +192,7 @@
 
   {{ appMetric({
     metric: {
-      text:"15,845"
+      text: performanceData.courses.total | numeral("0,0")
     },
     label: {
       text: "courses applied to"
@@ -171,7 +204,7 @@
     <div class="govuk-grid-column-one-third">
       {{ appMetric({
         metric: {
-          text:"7,547",
+          text: performanceData.courses.school_direct | numeral("0,0"),
           classes: "app-metric__secondary-figure"
         },
         label: {
@@ -183,7 +216,7 @@
     <div class="govuk-grid-column-one-third">
       {{ appMetric({
         metric: {
-          text:"5,958",
+          text: performanceData.courses.scitt | numeral("0,0"),
           classes: "app-metric__secondary-figure"
         },
         label: {
@@ -195,7 +228,7 @@
     <div class="govuk-grid-column-one-third">
       {{ appMetric({
         metric: {
-          text:"2,340",
+          text: performanceData.courses.hei | numeral("0,0"),
           classes: "app-metric__secondary-figure"
         },
         label: {
@@ -212,7 +245,7 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"5,757",
+              text: performanceData.courses.school_direct_ratified_scitt | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -224,7 +257,7 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"1,318",
+              text: performanceData.courses.school_direct_ratified_hei | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -244,8 +277,9 @@
   </div>
 
 
-  <h2 class="govuk-heading-m govuk-!-margin-top-5">Application form breakdown</h2>
+  <h2 class="govuk-heading-m govuk-!-margin-top-8">Application form breakdown</h2>
 
+  <p class="govuk-body">Section not built in prototype</p>
 
   </div>
 </div>

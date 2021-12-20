@@ -6,18 +6,16 @@ const PaginationHelper = require('../helpers/pagination')
 const currentCycle = CURRENT_CYCLE
 
 exports.show_get = (req, res) => {
-
   res.render('../views/performance/show', {
     currentCycle
   })
-
 }
 
 exports.show_service_get = (req, res) => {
-
   res.render('../views/performance/service/show', {
     cycle: req.params.cycle,
-    currentCycle
+    currentCycle,
+    performanceData: Performance.getPerformanceData(req.params.cycle)
   })
 
 }
