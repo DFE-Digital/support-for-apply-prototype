@@ -1,92 +1,74 @@
-{
-  "unique_candidates": {
-    "2020": 3655,
-    "2021": 32683,
-    "2022": 29615,
-    "total": 65953
+[
+  {
+    "year": 2020,
+    "candidates": {
+      "total": 3655
+    },
+    "applications": {
+      "total": 3609,
+      "unsubmitted": 2870,
+      "submitted": 739,
+      "not_started": 1133,
+      "in_progress": 1737,
+      "being_processed": 0,
+      "ended_without_success": 513,
+      "accepted_an_offer": 226
+    },
+    "courses": {
+      "total": 972,
+      "school_direct": 505,
+      "scitt": 467,
+      "hei": 0,
+      "school_direct_ratified_scitt": 332,
+      "school_direct_ratified_hei": 173
+    }
   },
-  "application_forms": {
-    "2020": 3609,
-    "2021": 31484,
-    "2022": 37562,
-    "total": 72655
+  {
+    "year": 2021,
+    "candidates": {
+      "total": 32683
+    },
+    "applications": {
+      "total": 31484,
+      "unsubmitted": 22884,
+      "submitted": 8600,
+      "not_started": 10186,
+      "in_progress": 12698,
+      "being_processed": 0,
+      "ended_without_success": 5245,
+      "accepted_an_offer": 3355
+    },
+    "courses": {
+      "total": 14880,
+      "school_direct": 7050,
+      "scitt": 5489,
+      "hei": 2341,
+      "school_direct_ratified_scitt": 5407,
+      "school_direct_ratified_hei": 1146
+    }
   },
-  "unsubmitted_application_forms": {
-    "2020": 2870,
-    "2021": 22884,
-    "2022": 24366,
-    "total": 50120
-  },
-  "submitted_application_forms": {
-    "2020": 739,
-    "2021": 8600,
-    "2022": 13196,
-    "total": 22535
-  },
-  "forms_not_started": {
-    "2020": 1133,
-    "2021": 10186,
-    "2022": 4360,
-    "total": 15679
-  },
-  "forms_in_progress": {
-    "2020": 1737,
-    "2021": 12698,
-    "2022": 20006,
-    "total": 34441
-  },
-  "still_being_processed": {
-    "2020": 0,
-    "2021": 0,
-    "2022": 4650,
-    "total": 4650
-  },
-  "ended_without_success": {
-    "2020": 513,
-    "2021": 5245,
-    "2022": 2274,
-    "total": 8032
-  },
-  "accepted_an_offer": {
-    "2020": 226,
-    "2021": 3355,
-    "2022": 5896,
-    "total": 9477
-  },
-  "courses_applied_to": {
-    "2020": 972,
-    "2021": 14880,
-    "2022": 32044,
-    "total": 47896
-  },
-  "school_direct_courses": {
-    "2020": 505,
-    "2021": 7050,
-    "2022": 12437,
-    "total": 19992
-  },
-  "scitt_courses": {
-    "2020": 467,
-    "2021": 5489,
-    "2022": 5147,
-    "total": 11103
-  },
-  "hei_courses": {
-    "2020": 0,
-    "2021": 2341,
-    "2022": 14460,
-    "total": 16801
-  },
-  "school_direct_courses_ratified_by_scitts": {
-    "2020": 332,
-    "2021": 5407,
-    "2022": 4869,
-    "total": 10608
-  },
-  "school_direct_courses_ratified_by_heis": {
-    "2020": 173,
-    "2021": 1146,
-    "2022": 7312,
-    "total": 8631
+  {
+    "year": 2022,
+    "candidates": {
+      "total": 29664
+    },
+    "applications": {
+      "total": 37620,
+      "unsubmitted": 24394,
+      "submitted": 13226,
+      "not_started": 4365,
+      "in_progress": 20029,
+      "being_processed": 4663,
+      "ended_without_success": 2276,
+      "accepted_an_offer": 5908
+    },
+    "courses": {
+      "total": 32104,
+      "school_direct": 12453,
+      "scitt": 5153,
+      "hei": 14498,
+      "school_direct_ratified_scitt": 4876,
+      "school_direct_ratified_hei": 7318
+    }
   }
-}
+]

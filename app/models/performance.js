@@ -1,6 +1,5 @@
 const path = require('path')
 const fs = require('fs')
-const moment = require('moment')
 
 const directoryPath = path.join(__dirname, '../data/')
 
@@ -334,4 +333,17 @@ exports.findRejections = (data) => {
 
   return rejections
 
+}
+
+exports.getPerformanceData = (cycle) => {
+  const raw = fs.readFileSync(directoryPath + '/performance.json')
+  let counts = JSON.parse(raw)
+
+  if (cycle) {
+    counts = counts.find(count => count.year == cycle)
+  } else {
+    counts = counts.find(count => count.year === 'all')
+  }
+
+  return counts
 }
