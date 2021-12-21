@@ -40,57 +40,47 @@
 
   <h2 class="govuk-heading-m">Candidates</h2>
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half">
-      {{ appMetric({
-        metric: {
-          text: performanceData.candidates.total | numeral("0,0")
-        },
-        label: {
-          text: "Unique candidates"
-        },
-        classes: "app-metric--blue govuk-!-margin-bottom-4"
-      }) }}
-    </div>
-    <div class="govuk-grid-column-one-half">
-      {{ appMetric({
-        metric: {
-          text:"XXX"
-        },
-        label: {
-          text: "XXX candidates"
-        },
-        classes: "govuk-!-margin-bottom-4"
-      }) if cycle }}
-    </div>
-  </div>
+  {{ appMetric({
+    metric: {
+      text: (performanceData.candidates.total - (performanceData.candidates.total * 0.1)) | numeral("0,0")
+    },
+    label: {
+      text: "total candidates who signed up this cycle"
+    },
+    classes: "govuk-!-margin-bottom-4"
+  }) if cycle }}
+
+  {{ appMetric({
+    metric: {
+      text: performanceData.candidates.total | numeral("0,0")
+    },
+    label: {
+      text: "total candidates"
+    },
+    classes: "app-metric--blue govuk-!-margin-bottom-4"
+  }) }}
 
   <h2 class="govuk-heading-m govuk-!-margin-top-7">Applications</h2>
 
-  <!-- <div class="govuk-grid-row">
-    <div class="govuk-grid-column-one-half"> -->
-      {{ appMetric({
-        metric: {
-          text: performanceData.applications.total | numeral("0,0")
-        },
-        label: {
-          text: "application forms"
-        },
-        classes: "app-metric--blue govuk-!-margin-bottom-4"
-      }) }}
-    <!-- </div>
-    <div class="govuk-grid-column-one-half">
-      {{ appMetric({
-        metric: {
-          text:"38,326"
-        },
-        label: {
-          text: "application forms"
-        },
-        classes: "govuk-!-margin-bottom-4"
-      }) }}
-    </div>
-  </div> -->
+  {{ appMetric({
+    metric: {
+      text: (performanceData.applications.total - (performanceData.applications.total * 0.1)) | numeral("0,0")
+    },
+    label: {
+      text: "total application forms this cycle"
+    },
+    classes: "govuk-!-margin-bottom-4"
+  }) if cycle }}
+
+  {{ appMetric({
+    metric: {
+      text: performanceData.applications.total | numeral("0,0")
+    },
+    label: {
+      text: "total application forms"
+    },
+    classes: "app-metric--blue govuk-!-margin-bottom-4"
+  }) }}
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-one-half">
