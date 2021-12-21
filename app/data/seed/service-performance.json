@@ -1,5 +1,29 @@
 [
   {
+    "year": "all",
+    "candidates": {
+      "total": 66002
+    },
+    "applications": {
+      "total": 72713,
+      "unsubmitted": 50148,
+      "submitted": 22565,
+      "not_started": 15684,
+      "in_progress": 34464,
+      "being_processed": 4663,
+      "ended_without_success": 8034,
+      "accepted_an_offer": 9489
+    },
+    "courses": {
+      "total": 47956,
+      "school_direct": 20008,
+      "scitt": 11109,
+      "hei": 16839,
+      "school_direct_ratified_scitt": 10615,
+      "school_direct_ratified_hei": 8637
+    }
+  },
+  {
     "year": 2020,
     "candidates": {
       "total": 3655
