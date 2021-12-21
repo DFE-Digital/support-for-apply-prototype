@@ -40,15 +40,32 @@
 
   <h2 class="govuk-heading-m">Candidates</h2>
 
-  {{ appMetric({
-    metric: {
-      text: (performanceData.candidates.total - (performanceData.candidates.total * 0.1)) | numeral("0,0")
-    },
-    label: {
-      text: "candidates started an application in this recruitment cycle"
-    },
-    classes: "govuk-!-margin-bottom-4"
-  }) if cycle }}
+  {% if cycle %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        {{ appMetric({
+          metric: {
+            text: (performanceData.candidates.total - (performanceData.candidates.total * 0.1)) | numeral("0,0")
+          },
+          label: {
+            text: "candidates started an application in this recruitment cycle"
+          },
+          classes: "govuk-!-margin-bottom-4"
+        }) if cycle }}
+      </div>
+      <div class="govuk-grid-column-one-half">
+        {{ appMetric({
+          metric: {
+            text: (performanceData.candidates.total - (performanceData.candidates.total * 0.9)) | numeral("0,0")
+          },
+          label: {
+            text: "candidates started an application in a previous recruitment cycle"
+          },
+          classes: "govuk-!-margin-bottom-4"
+        }) if cycle }}
+      </div>
+    </div>
+  {% endif %}
 
   {{ appMetric({
     metric: {
@@ -62,15 +79,32 @@
 
   <h2 class="govuk-heading-m govuk-!-margin-top-7">Application forms</h2>
 
-  {{ appMetric({
-    metric: {
-      text: (performanceData.applications.total - (performanceData.applications.total * 0.1)) | numeral("0,0")
-    },
-    label: {
-      text: "application forms started in this recruitment cycle cycle"
-    },
-    classes: "govuk-!-margin-bottom-4"
-  }) if cycle }}
+  {% if cycle %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        {{ appMetric({
+          metric: {
+            text: (performanceData.applications.total - (performanceData.applications.total * 0.1)) | numeral("0,0")
+          },
+          label: {
+            text: "application forms started in this recruitment cycle"
+          },
+          classes: "govuk-!-margin-bottom-4"
+        }) if cycle }}
+      </div>
+      <div class="govuk-grid-column-one-half">
+        {{ appMetric({
+          metric: {
+            text: (performanceData.applications.total - (performanceData.applications.total * 0.9)) | numeral("0,0")
+          },
+          label: {
+            text: "application forms started in a previous recruitment cycle"
+          },
+          classes: "govuk-!-margin-bottom-4"
+        }) if cycle }}
+      </div>
+    </div>
+  {% endif %}
 
   {{ appMetric({
     metric: {
@@ -265,7 +299,6 @@
 
     </div>
   </div>
-
 
   <h2 class="govuk-heading-m govuk-!-margin-top-8">Application form breakdown</h2>
 
