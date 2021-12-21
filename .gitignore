@@ -17,7 +17,7 @@ app/data/applications.json
 app/data/applications/*
 app/data/courses.json
 app/data/courses/*
-app/data/performance.json
+app/data/service-performance.json
 app/data/providers.json
 app/data/providers/*
 app/data/reasons-for-rejection.json
