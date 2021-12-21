@@ -336,7 +336,7 @@ exports.findRejections = (data) => {
 }
 
 exports.getPerformanceData = (cycle) => {
-  const raw = fs.readFileSync(directoryPath + '/performance.json')
+  const raw = fs.readFileSync(directoryPath + '/service-performance.json')
   let counts = JSON.parse(raw)
 
   if (cycle) {
