@@ -45,7 +45,7 @@
       text: (performanceData.candidates.total - (performanceData.candidates.total * 0.1)) | numeral("0,0")
     },
     label: {
-      text: "total candidates who signed up this cycle"
+      text: "candidates started an application in this recruitment cycle"
     },
     classes: "govuk-!-margin-bottom-4"
   }) if cycle }}
@@ -55,7 +55,7 @@
       text: performanceData.candidates.total | numeral("0,0")
     },
     label: {
-      text: "total candidates"
+      text: "total candidates including those carried over from the previous recruitment cycle" if cycle else "candidates"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
@@ -67,7 +67,7 @@
       text: (performanceData.applications.total - (performanceData.applications.total * 0.1)) | numeral("0,0")
     },
     label: {
-      text: "total application forms this cycle"
+      text: "application forms started in this recruitment cycle cycle"
     },
     classes: "govuk-!-margin-bottom-4"
   }) if cycle }}
@@ -77,7 +77,7 @@
       text: performanceData.applications.total | numeral("0,0")
     },
     label: {
-      text: "total application forms"
+      text: "total application forms including those carried over from the previous recruitment cycle" if cycle else "application forms"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
@@ -117,7 +117,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "forms not started"
+              text: "unsubmitted forms not started"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -129,7 +129,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "forms in progress"
+              text: "unsubmitted forms in progress"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -145,7 +145,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "still being processed"
+              text: "applications being processed"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -157,7 +157,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "ended without success"
+              text: "applications ended without success"
             },
             classes: "app-metric--red govuk-!-margin-bottom-4"
           }) }}
@@ -169,7 +169,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "accepted an offer"
+              text: "applications ended successfully"
             },
             classes: "app-metric--green govuk-!-margin-bottom-4"
           }) }}
@@ -185,7 +185,7 @@
       text: performanceData.courses.total | numeral("0,0")
     },
     label: {
-      text: "courses applied to"
+      text: "courses applied for"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
@@ -198,7 +198,7 @@
           classes: "app-metric__secondary-figure"
         },
         label: {
-          text: "School Direct courses"
+          text: "School Direct (SD) courses"
         },
         classes: "govuk-!-margin-bottom-4"
       }) }}
@@ -210,7 +210,7 @@
           classes: "app-metric__secondary-figure"
         },
         label: {
-          text: "SCITT courses"
+          text: "School Centred Initial Teacher Training (SCITT) courses"
         },
         classes: "govuk-!-margin-bottom-4"
       }) }}
@@ -222,7 +222,7 @@
           classes: "app-metric__secondary-figure"
         },
         label: {
-          text: "HEI courses"
+          text: "Higher Education Institute (HEI) courses"
         },
         classes: "govuk-!-margin-bottom-4"
       }) }}
@@ -239,7 +239,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "ratified by SCITTs"
+              text: "SD courses ratified by SCITTs"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -251,7 +251,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "ratified by HEIs"
+              text: "SD courses ratified by HEIs"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
