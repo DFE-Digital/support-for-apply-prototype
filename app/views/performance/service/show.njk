@@ -302,7 +302,301 @@
 
   <h2 class="govuk-heading-m govuk-!-margin-top-8">Application form breakdown</h2>
 
-  <p class="govuk-body">Section not built in prototype</p>
+  <h3 class="govuk-heading-s">Unsubmitted applications</h3>
+
+  <p class="govuk-body govuk-!-width-two-thirds">Application forms that have not been sent to providers yet.</p>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Have not started form"
+        },
+        {
+          text: performanceData.applications.not_started | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "	The candidate has signed in but has not edited the form yet."
+        }
+      ],
+      [
+        {
+          text: "Form started but unsubmitted"
+        },
+        {
+          text: performanceData.applications.unsubmitted | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has started editing but has not submitted the form yet."
+        }
+      ]
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-8">Applications being processed</h3>
+
+  <p class="govuk-body govuk-!-width-two-thirds">Application forms that have been sent to providers and require action from either the candidate or provider to progress.</p>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Awaiting decisions from providers"
+        },
+        {
+          text: performanceData.applications.awaiting_provider_decision | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "We’ve sent the applications to the providers, but we have not heard back from all of them."
+        }
+      ],
+      [
+        {
+          text: "Awaiting decisions from candidates"
+        },
+        {
+          text: performanceData.applications.awaiting_candidate_decision | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "All providers have responded and it’s now up to the candidate to make a decision."
+        }
+      ]
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-8">Successful applications</h3>
+
+  <p class="govuk-body govuk-!-width-two-thirds">Applications that have received an offer and the candidate has accepted.</p>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Offer deferred"
+        },
+        {
+          text: performanceData.applications.offer_deferred | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The provider deferred an offer to the next recruitment cycle. The offer will have to be reinstated by the provider at the start of the next cycle."
+        }
+      ],
+      [
+        {
+          text: "Accepted offer, pending conditions"
+        },
+        {
+          text: performanceData.applications.accepted_pending_conditions | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has accepted an offer. The provider now has to confirm to us that the candidate has met the conditions in the offer."
+        }
+      ],
+      [
+        {
+          text: "Recruited"
+        },
+        {
+          text: performanceData.applications.recruited | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has been recruited."
+        }
+      ]
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-8">Unsuccessful applications</h3>
+
+  <p class="govuk-body govuk-!-width-two-thirds">Applications that have ended without success. The rejected by default count is included in the ended without success count.</p>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Ended without success"
+        },
+        {
+          text: performanceData.applications.ended_without_success | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "All of the candidate’s applications have been withdrawn, rejected or declined."
+        }
+      ],
+      [
+        {
+          text: "Automatically rejected"
+        },
+        {
+          text: performanceData.applications.rejected_by_default | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate had one or more application choices automatically because the provider took too long to respond."
+        }
+      ],
+      [
+        {
+          text: "Withdrawn at candidate’s request"
+        },
+        {
+          text: performanceData.applications.withdrawn_by_request | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate requested their application be withdrawn from the provider."
+        }
+      ],
+      [
+        {
+          text: "Withdrawn by the candidate"
+        },
+        {
+          text: performanceData.applications.withdrawn_by_candidate | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate withdrew their own application."
+        }
+      ]
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-8">Apply again</h3>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Submitted"
+        },
+        {
+          text: performanceData.applications.apply_again_submitted | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has applied again and submitted an application."
+        }
+      ],
+      [
+        {
+          text: "Accepted offer, pending conditions"
+        },
+        {
+          text: performanceData.applications.apply_again_accepted_pending_conditions | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has applied again and accepted an offer."
+        }
+      ]
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-8">Providers</h2>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    rows: [
+      [
+        {
+          text: "Providers with open courses on Apply",
+          classes: "govuk-!-width-one-quarter"
+        },
+        {
+          text: performanceData.providers.percentage_courses_open | numeral("0,0") + "%",
+          format: "numeric"
+        },
+        {
+          text: "The percentage of providers that have one or more courses available on Apply.",
+          classes: "govuk-!-width-two-thirds"
+        }
+      ]
+    ]
+  }) }}
 
   </div>
 </div>
