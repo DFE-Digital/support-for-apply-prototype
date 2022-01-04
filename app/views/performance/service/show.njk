@@ -175,7 +175,7 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text: performanceData.applications.still_being_processed | numeral("0,0"),
+              text: performanceData.applications.being_processed | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
@@ -340,7 +340,7 @@
           text: "Form started but unsubmitted"
         },
         {
-          text: performanceData.applications.unsubmitted | numeral("0,0"),
+          text: performanceData.applications.in_progress | numeral("0,0"),
           format: "numeric"
         },
         {
