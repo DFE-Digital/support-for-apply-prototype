@@ -7,7 +7,10 @@
 {% endblock %}
 
 {% block beforeContent %}
-
+  {{ govukBackLink({
+    text: "Back",
+    href: "/candidates/duplicates"
+  }) }}
 {% endblock %}
 
 {% block content %}
@@ -15,31 +18,7 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
 
-    <h1 class="govuk-heading-l">Applications</h1>
-
-    {{ appSubNavigation({
-      label: 'Sub navigation',
-      items: [{
-        text: 'Applications',
-        href: '/applications',
-        active: false
-      }, {
-        text: 'Candidate account',
-        href: '#',
-        active: false
-      }, {
-        text: 'Duplicate candidate matches',
-        href: '#',
-        active: true
-      }]
-    }) }}
-
-    {{ govukBackLink({
-      text: "Back",
-      href: "/candidates/duplicates"
-    }) }}
-
-    <h2 class="govuk-heading-m govuk-!-margin-top-3">3 candidates with postcode F1 1SD and DOB 01/04/1981</h2>
+  <h1 class="govuk-heading-l govuk-!-margin-top-3">3 candidates with postcode F1 1SD and DOB 01/04/1981</h1>
 
     {{ govukButton({
       text: "Mark as resolved",
