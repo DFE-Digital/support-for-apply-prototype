@@ -58,6 +58,14 @@ router.get('/candidates/:id', (req, res) => {
   })
 })
 
+
+router.get('/candidates/:id/access', (req, res) => {
+  const candidateId = req.params.id
+  res.render(`candidates/access`, {
+    candidateId
+  })
+})
+
 /// --------------------------------------------------///
 /// PROVIDER ROUTES
 /// --------------------------------------------------///

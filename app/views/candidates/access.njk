@@ -1,0 +1,53 @@
+{% extends "_layout.njk" %}
+
+{% set primaryNavId = 'candidates' %}
+
+{% block pageTitle %}
+  Prototype for {{ serviceName }}
+{% endblock %}
+
+{% block beforeContent %}
+  {{ govukBackLink({href: "/candidates/" + candidateId}) }}
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    {% from "govuk/components/radios/macro.njk" import govukRadios %}
+
+    {{ govukRadios({
+      name: "candidate-access",
+      fieldset: {
+        legend: {
+          text: "Account status for bob.jones@gmail.com",
+          isPageHeading: true,
+          classes: "govuk-fieldset__legend--l"
+        }
+      },
+      items: [
+        {
+          value: "1",
+          text: "Application submission blocked"
+        },
+        {
+          value: "2",
+          text: "Account access blocked (user cannot sign in)"
+        },
+        {
+          divider: "or"
+        },
+        {
+          value: "2",
+          text: "Unblocked"
+        }
+      ]
+    }) }}
+
+    {{ govukButton({text: "Continue"}) }}
+
+  </div>
+</div>
+
+{% endblock %}
