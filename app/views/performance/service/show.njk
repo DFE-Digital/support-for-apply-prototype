@@ -32,6 +32,10 @@
 
     {% include "./_sub-navigation.njk" %}
 
+    <p class="govuk-body">
+      This data is for {{ fromCycle.apply2Deadline | date('d MMMM yyyy') }} to {{ toCycle.apply2Deadline | date('d MMMM yyyy') }}
+    </p>
+
   <!-- </div>
 </div>
 
@@ -48,7 +52,7 @@
             text: (performanceData.candidates.total - (performanceData.candidates.total * 0.1)) | numeral("0,0")
           },
           label: {
-            text: "candidates started an application in this recruitment cycle"
+            text: "candidates started an application form this year"
           },
           classes: "govuk-!-margin-bottom-4"
         }) if cycle }}
@@ -59,7 +63,7 @@
             text: (performanceData.candidates.total - (performanceData.candidates.total * 0.9)) | numeral("0,0")
           },
           label: {
-            text: "candidates started an application in a previous recruitment cycle"
+            text: "candidates carried an application form over from the previous year"
           },
           classes: "govuk-!-margin-bottom-4"
         }) if cycle }}
@@ -72,7 +76,7 @@
       text: performanceData.candidates.total | numeral("0,0")
     },
     label: {
-      text: "total candidates including those carried over from the previous recruitment cycle" if cycle else "candidates"
+      text: "total candidates with an application form this year" if cycle else "candidates have started application forms"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
@@ -87,7 +91,7 @@
             text: (performanceData.applications.total - (performanceData.applications.total * 0.1)) | numeral("0,0")
           },
           label: {
-            text: "application forms started in this recruitment cycle"
+            text: "application forms started this year"
           },
           classes: "govuk-!-margin-bottom-4"
         }) if cycle }}
@@ -98,7 +102,7 @@
             text: (performanceData.applications.total - (performanceData.applications.total * 0.9)) | numeral("0,0")
           },
           label: {
-            text: "application forms started in a previous recruitment cycle"
+            text: "application forms carried over from the previous year"
           },
           classes: "govuk-!-margin-bottom-4"
         }) if cycle }}
@@ -111,7 +115,7 @@
       text: performanceData.applications.total | numeral("0,0")
     },
     label: {
-      text: "total application forms including those carried over from the previous recruitment cycle" if cycle else "application forms"
+      text: "total application forms this year" if cycle else "application forms have been started"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
