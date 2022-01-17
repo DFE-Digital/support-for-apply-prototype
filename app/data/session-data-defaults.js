@@ -1,4 +1,4 @@
-const cycleHelper = require('../data/helpers/cycles')
+const cycleHelper = require('../helpers/cycles')
 
 let defaults = {}
 
