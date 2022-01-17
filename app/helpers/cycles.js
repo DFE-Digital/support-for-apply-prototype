@@ -202,7 +202,5 @@ exports.getCycleLabel = (code) => {
     }
   }
 
-
-
   return label
 }
