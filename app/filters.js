@@ -1,4 +1,5 @@
 const _ = require('lodash')
+const { DateTime } = require('luxon')
 const moment = require('moment')
 const numeral = require('numeral')
 moment.suppressDeprecationWarnings = true
@@ -17,9 +18,17 @@ module.exports = function (env) {
      example: {{ params.date | date("DD/MM/YYYY") }}
      outputs: 01/01/1970
    ------------------------------------------------------------------ */
-   filters.date = (timestamp, format) => {
-     return moment(timestamp).format(format)
-   }
+   // filters.date = (timestamp, format) => {
+   //   return moment(timestamp).format(format)
+   // }
+
+   filters.date = (timestamp, format = 'yyyy-LL-dd') => {
+    const datetime = DateTime.fromJSDate(timestamp, {
+      locale: 'en-GB'
+    }).toFormat(format)
+
+    return datetime
+  }
 
    /* ------------------------------------------------------------------
      dateAdd filter for use in Nunjucks
