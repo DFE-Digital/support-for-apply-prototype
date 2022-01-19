@@ -52,7 +52,7 @@
             text: (performanceData.candidates.total - (performanceData.candidates.total * 0.1)) | numeral("0,0")
           },
           label: {
-            text: "candidates started an application form this year"
+            text: "candidates created an account this year"
           },
           classes: "govuk-!-margin-bottom-4"
         }) if cycle }}
@@ -63,7 +63,7 @@
             text: (performanceData.candidates.total - (performanceData.candidates.total * 0.9)) | numeral("0,0")
           },
           label: {
-            text: "candidates carried an application form over from the previous year"
+            text: "candidates carried over from the previous year"
           },
           classes: "govuk-!-margin-bottom-4"
         }) if cycle }}
@@ -76,7 +76,7 @@
       text: performanceData.candidates.total | numeral("0,0")
     },
     label: {
-      text: "total candidates with an application form this year" if cycle else "candidates have started application forms"
+      text: "candidates created an account this year or were carried over from the previous year" if cycle else "candidates have created accounts"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
@@ -115,7 +115,7 @@
       text: performanceData.applications.total | numeral("0,0")
     },
     label: {
-      text: "total application forms this year" if cycle else "application forms have been started"
+      text: "application forms created this year or carried over from the previous year" if cycle else "application forms have been created"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
@@ -167,7 +167,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "unsubmitted forms in progress"
+              text: "unsubmitted forms started"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -183,7 +183,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "applications being processed"
+              text: "active applications"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -195,7 +195,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "applications ended without success"
+              text: "unsuccessful applications"
             },
             classes: "app-metric--red govuk-!-margin-bottom-4"
           }) }}
@@ -207,7 +207,7 @@
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "applications ended successfully"
+              text: "successful applications"
             },
             classes: "app-metric--green govuk-!-margin-bottom-4"
           }) }}
@@ -329,7 +329,7 @@
     rows: [
       [
         {
-          text: "Have not started form"
+          text: "Unsubmitted forms not started"
         },
         {
           text: performanceData.applications.not_started | numeral("0,0"),
@@ -341,7 +341,7 @@
       ],
       [
         {
-          text: "Form started but unsubmitted"
+          text: "Unsubmitted forms started"
         },
         {
           text: performanceData.applications.in_progress | numeral("0,0"),
@@ -354,7 +354,7 @@
     ]
   }) }}
 
-  <h3 class="govuk-heading-s govuk-!-margin-top-8">Applications being processed</h3>
+  <h3 class="govuk-heading-s govuk-!-margin-top-8">Active applications</h3>
 
   <p class="govuk-body govuk-!-width-two-thirds">Application forms that have been sent to providers and require action from either the candidate or provider to progress.</p>
 
@@ -425,7 +425,7 @@
     rows: [
       [
         {
-          text: "Offer deferred"
+          text: "Deferred"
         },
         {
           text: performanceData.applications.offer_deferred | numeral("0,0"),
@@ -437,7 +437,7 @@
       ],
       [
         {
-          text: "Accepted offer, pending conditions"
+          text: "Conditions pending"
         },
         {
           text: performanceData.applications.accepted_pending_conditions | numeral("0,0"),
@@ -464,7 +464,7 @@
 
   <h3 class="govuk-heading-s govuk-!-margin-top-8">Unsuccessful applications</h3>
 
-  <p class="govuk-body govuk-!-width-two-thirds">Applications that have ended without success. The rejected by default count is included in the ended without success count.</p>
+  <p class="govuk-body govuk-!-width-two-thirds">Applications that have ended without success. The automatically rejected count is included in the ended without success count.</p>
 
   {{ govukTable({
     firstCellIsHeader: true,
@@ -494,7 +494,7 @@
         {
           text: "All of the candidate’s applications have been withdrawn, rejected or declined."
         }
-      ],
+      ] if 1 == 0,
       [
         {
           text: "Automatically rejected"
@@ -521,7 +521,7 @@
       ],
       [
         {
-          text: "Withdrawn by the candidate"
+          text: "Withdrawn by candidate"
         },
         {
           text: performanceData.applications.withdrawn_by_candidate | numeral("0,0"),
@@ -567,7 +567,7 @@
       ],
       [
         {
-          text: "Accepted offer, pending conditions"
+          text: "Conditions pending"
         },
         {
           text: performanceData.applications.apply_again_accepted_pending_conditions | numeral("0,0"),
