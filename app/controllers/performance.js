@@ -1,23 +1,33 @@
-const { CURRENT_CYCLE } = require('../helpers/constants')
-
+const CycleHelper = require('../helpers/cycles')
 const Performance = require('../models/performance')
 const PaginationHelper = require('../helpers/pagination')
 
-const currentCycle = CURRENT_CYCLE
+// TODO: make this dynamic along with report data
+const currentCycle = 2021
 
 exports.show_get = (req, res) => {
-
   res.render('../views/performance/show', {
     currentCycle
   })
-
 }
 
 exports.show_service_get = (req, res) => {
+  let currentYear
+  let fromYear
+
+  if (req.params.cycle) {
+    currentYear = req.params.cycle
+    fromYear = req.params.cycle - 1
+  } else {
+    currentYear = req.session.data.currentCycle.code
+    fromYear = currentYear - 3
+  }
 
   res.render('../views/performance/service/show', {
     cycle: req.params.cycle,
-    currentCycle
+    toCycle: CycleHelper.getCycle(currentYear),
+    fromCycle: CycleHelper.getCycle(fromYear),
+    performanceData: Performance.getPerformanceData(req.params.cycle)
   })
 
 }

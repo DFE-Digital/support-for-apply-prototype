@@ -1,1 +1,1 @@
-exports.CURRENT_CYCLE = 2021
+exports.CURRENT_CYCLE = 2022

@@ -1,7 +1,7 @@
 {% extends "_layout.njk" %}
 
 {% set primaryNavId = "performance" %}
-{% set subNavId = cycle if cycle else 'all' %}
+{% set subNavId = cycle if cycle else "all" %}
 
 {% set title = "Service performance" %}
 
@@ -21,13 +21,20 @@
 {% endblock %}
 
 {% block content %}
-
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
     <h1 class="govuk-heading-l">{{ title }}</h1>
 
+    <p class="govuk-body">
+      <a class="govuk-link" href="#">View in large screen mode</a>
+    </p>
+
     {% include "./_sub-navigation.njk" %}
+
+    <p class="govuk-body">
+      This data covers the period from {{ fromCycle.apply2Deadline | govTime }} on {{ fromCycle.apply2Deadline | govDate }} to {{ toCycle.apply2Deadline | govTime }} on {{ toCycle.apply2Deadline | govDate }}.
+    </p>
 
   <!-- </div>
 </div>
@@ -37,24 +44,78 @@
 
   <h2 class="govuk-heading-m">Candidates</h2>
 
+  {% if cycle %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        {{ appMetric({
+          metric: {
+            text: (performanceData.candidates.total - (performanceData.candidates.total * 0.1)) | numeral("0,0")
+          },
+          label: {
+            text: "candidates created an account this year"
+          },
+          classes: "govuk-!-margin-bottom-4"
+        }) if cycle }}
+      </div>
+      <div class="govuk-grid-column-one-half">
+        {{ appMetric({
+          metric: {
+            text: (performanceData.candidates.total - (performanceData.candidates.total * 0.9)) | numeral("0,0")
+          },
+          label: {
+            text: "candidates carried over from the previous year"
+          },
+          classes: "govuk-!-margin-bottom-4"
+        }) if cycle }}
+      </div>
+    </div>
+  {% endif %}
+
   {{ appMetric({
     metric: {
-      text:"36,158"
+      text: performanceData.candidates.total | numeral("0,0")
     },
     label: {
-      text: "Unique candidates"
+      text: "candidates created an account this year or were carried over from the previous year" if cycle else "candidates have created accounts"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
 
-  <h2 class="govuk-heading-m govuk-!-margin-top-7">Applications</h2>
+  <h2 class="govuk-heading-m govuk-!-margin-top-7">Application forms</h2>
+
+  {% if cycle %}
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-one-half">
+        {{ appMetric({
+          metric: {
+            text: (performanceData.applications.total - (performanceData.applications.total * 0.1)) | numeral("0,0")
+          },
+          label: {
+            text: "application forms started this year"
+          },
+          classes: "govuk-!-margin-bottom-4"
+        }) if cycle }}
+      </div>
+      <div class="govuk-grid-column-one-half">
+        {{ appMetric({
+          metric: {
+            text: (performanceData.applications.total - (performanceData.applications.total * 0.9)) | numeral("0,0")
+          },
+          label: {
+            text: "application forms carried over from the previous year"
+          },
+          classes: "govuk-!-margin-bottom-4"
+        }) if cycle }}
+      </div>
+    </div>
+  {% endif %}
 
   {{ appMetric({
     metric: {
-      text:"38,326"
+      text: performanceData.applications.total | numeral("0,0")
     },
     label: {
-      text: "application forms"
+      text: "application forms created this year or carried over from the previous year" if cycle else "application forms have been created"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
@@ -63,7 +124,7 @@
     <div class="govuk-grid-column-one-half">
       {{ appMetric({
         metric: {
-          text:"27,545"
+          text: performanceData.applications.unsubmitted | numeral("0,0")
         },
         label: {
           text: "unsubmitted application forms"
@@ -74,7 +135,7 @@
     <div class="govuk-grid-column-one-half">
       {{ appMetric({
         metric: {
-          text:"10,781"
+          text: performanceData.applications.submitted | numeral("0,0")
         },
         label: {
           text: "submitted application forms"
@@ -90,11 +151,11 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"12,451",
+              text: performanceData.applications.not_started | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "forms not started"
+              text: "unsubmitted forms not started"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -102,11 +163,11 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"15,094",
+              text: performanceData.applications.in_progress | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "forms in progress"
+              text: "unsubmitted forms started"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -118,11 +179,11 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text:"177",
+              text: performanceData.applications.being_processed | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "still being processed"
+              text: "active applications"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -130,11 +191,11 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text:"6,922",
+              text: performanceData.applications.ended_without_success | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "ended without success"
+              text: "unsuccessful applications"
             },
             classes: "app-metric--red govuk-!-margin-bottom-4"
           }) }}
@@ -142,11 +203,11 @@
         <div class="govuk-grid-column-one-third">
           {{ appMetric({
             metric: {
-              text:"3,680",
+              text: performanceData.applications.accepted_an_offer | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "accepted and offer"
+              text: "successful applications"
             },
             classes: "app-metric--green govuk-!-margin-bottom-4"
           }) }}
@@ -159,10 +220,10 @@
 
   {{ appMetric({
     metric: {
-      text:"15,845"
+      text: performanceData.courses.total | numeral("0,0")
     },
     label: {
-      text: "courses applied to"
+      text: "courses applied for"
     },
     classes: "app-metric--blue govuk-!-margin-bottom-4"
   }) }}
@@ -171,11 +232,11 @@
     <div class="govuk-grid-column-one-third">
       {{ appMetric({
         metric: {
-          text:"7,547",
+          text: performanceData.courses.school_direct | numeral("0,0"),
           classes: "app-metric__secondary-figure"
         },
         label: {
-          text: "School Direct courses"
+          text: "School Direct (SD) courses"
         },
         classes: "govuk-!-margin-bottom-4"
       }) }}
@@ -183,11 +244,11 @@
     <div class="govuk-grid-column-one-third">
       {{ appMetric({
         metric: {
-          text:"5,958",
+          text: performanceData.courses.scitt | numeral("0,0"),
           classes: "app-metric__secondary-figure"
         },
         label: {
-          text: "SCITT courses"
+          text: "School Centred Initial Teacher Training (SCITT) courses"
         },
         classes: "govuk-!-margin-bottom-4"
       }) }}
@@ -195,11 +256,11 @@
     <div class="govuk-grid-column-one-third">
       {{ appMetric({
         metric: {
-          text:"2,340",
+          text: performanceData.courses.hei | numeral("0,0"),
           classes: "app-metric__secondary-figure"
         },
         label: {
-          text: "HEI courses"
+          text: "Higher Education Institution (HEI) courses"
         },
         classes: "govuk-!-margin-bottom-4"
       }) }}
@@ -212,11 +273,11 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"5,757",
+              text: performanceData.courses.school_direct_ratified_scitt | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "ratified by SCITTs"
+              text: "SD courses ratified by SCITTs"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -224,11 +285,11 @@
         <div class="govuk-grid-column-one-half">
           {{ appMetric({
             metric: {
-              text:"1,318",
+              text: performanceData.courses.school_direct_ratified_hei | numeral("0,0"),
               classes: "app-metric__secondary-figure"
             },
             label: {
-              text: "ratified by HEIs"
+              text: "SD courses ratified by HEIs"
             },
             classes: "govuk-!-margin-bottom-4"
           }) }}
@@ -243,9 +304,303 @@
     </div>
   </div>
 
+  <h2 class="govuk-heading-m govuk-!-margin-top-8">Application form breakdown</h2>
 
-  <h2 class="govuk-heading-m govuk-!-margin-top-5">Application form breakdown</h2>
+  <h3 class="govuk-heading-s">Unsubmitted applications</h3>
 
+  <p class="govuk-body govuk-!-width-two-thirds">Application forms that have not been sent to providers yet.</p>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Unsubmitted forms not started"
+        },
+        {
+          text: performanceData.applications.not_started | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "	The candidate has signed in but has not edited the form yet."
+        }
+      ],
+      [
+        {
+          text: "Unsubmitted forms started"
+        },
+        {
+          text: performanceData.applications.in_progress | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has started editing but has not submitted the form yet."
+        }
+      ]
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-8">Active applications</h3>
+
+  <p class="govuk-body govuk-!-width-two-thirds">Application forms that have been sent to providers and require action from either the candidate or provider to progress.</p>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Awaiting decisions from providers"
+        },
+        {
+          text: performanceData.applications.awaiting_provider_decision | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "We’ve sent the applications to the providers, but we have not heard back from all of them."
+        }
+      ],
+      [
+        {
+          text: "Awaiting decisions from candidates"
+        },
+        {
+          text: performanceData.applications.awaiting_candidate_decision | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "All providers have responded and it’s now up to the candidate to make a decision."
+        }
+      ]
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-8">Successful applications</h3>
+
+  <p class="govuk-body govuk-!-width-two-thirds">Applications that have received an offer and the candidate has accepted.</p>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Deferred"
+        },
+        {
+          text: performanceData.applications.offer_deferred | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The provider deferred an offer to the next recruitment cycle. The offer will have to be reinstated by the provider at the start of the next cycle."
+        }
+      ],
+      [
+        {
+          text: "Conditions pending"
+        },
+        {
+          text: performanceData.applications.accepted_pending_conditions | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has accepted an offer. The provider now has to confirm to us that the candidate has met the conditions in the offer."
+        }
+      ],
+      [
+        {
+          text: "Recruited"
+        },
+        {
+          text: performanceData.applications.recruited | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has been recruited."
+        }
+      ]
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-8">Unsuccessful applications</h3>
+
+  <p class="govuk-body govuk-!-width-two-thirds">Applications that have ended without success. The automatically rejected count is included in the ended without success count.</p>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Ended without success"
+        },
+        {
+          text: performanceData.applications.ended_without_success | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "All of the candidate’s applications have been withdrawn, rejected or declined."
+        }
+      ] if 1 == 0,
+      [
+        {
+          text: "Automatically rejected"
+        },
+        {
+          text: performanceData.applications.rejected_by_default | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate had one or more application choices automatically because the provider took too long to respond."
+        }
+      ],
+      [
+        {
+          text: "Withdrawn at candidate’s request"
+        },
+        {
+          text: performanceData.applications.withdrawn_by_request | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate requested their application be withdrawn from the provider."
+        }
+      ],
+      [
+        {
+          text: "Withdrawn by candidate"
+        },
+        {
+          text: performanceData.applications.withdrawn_by_candidate | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate withdrew their own application."
+        }
+      ]
+    ]
+  }) }}
+
+  <h3 class="govuk-heading-s govuk-!-margin-top-8">Apply again</h3>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    head: [
+      {
+        text: "Status",
+        classes: "govuk-!-width-one-quarter"
+      },
+      {
+        text: "Count",
+        format: "numeric"
+      },
+      {
+        text: "Description",
+        classes: "govuk-!-width-two-thirds"
+      }
+    ],
+    rows: [
+      [
+        {
+          text: "Submitted"
+        },
+        {
+          text: performanceData.applications.apply_again_submitted | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has applied again and submitted an application."
+        }
+      ],
+      [
+        {
+          text: "Conditions pending"
+        },
+        {
+          text: performanceData.applications.apply_again_accepted_pending_conditions | numeral("0,0"),
+          format: "numeric"
+        },
+        {
+          text: "The candidate has applied again and accepted an offer."
+        }
+      ]
+    ]
+  }) }}
+
+  <h2 class="govuk-heading-m govuk-!-margin-top-8">Providers</h2>
+
+  {{ govukTable({
+    firstCellIsHeader: true,
+    rows: [
+      [
+        {
+          text: "Providers with open courses on Apply",
+          classes: "govuk-!-width-one-quarter"
+        },
+        {
+          text: performanceData.providers.percentage_courses_open | numeral("0,0") + "%",
+          format: "numeric"
+        },
+        {
+          text: "The percentage of providers that have one or more courses available on Apply.",
+          classes: "govuk-!-width-two-thirds"
+        }
+      ]
+    ]
+  }) }}
 
   </div>
 </div>

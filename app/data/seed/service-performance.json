@@ -1,0 +1,140 @@
+[
+  {
+    "year": "all",
+    "candidates": {
+      "total": 68695
+    },
+    "applications": {
+      "total": 75593,
+      "unsubmitted": 51982,
+      "submitted": 23611,
+      "not_started": 16026,
+      "in_progress": 35956,
+      "being_processed": 5115,
+      "awaiting_provider_decision": 4703,
+      "awaiting_candidate_decision": 412,
+      "ended_without_success": 8147,
+      "rejected_by_default": 2036,
+      "withdrawn_by_request": 635,
+      "withdrawn_by_candidate": 8361,
+      "accepted_an_offer": 9935,
+      "offer_deferred": 143,
+      "accepted_pending_conditions": 6382,
+      "recruited": 3410,
+      "apply_again_submitted": 2534,
+      "apply_again_accepted_pending_conditions": 409
+    },
+    "courses": {
+      "total": 50453,
+      "school_direct": 20830,
+      "scitt": 11446,
+      "hei": 18177,
+      "school_direct_ratified_scitt": 10930,
+      "school_direct_ratified_hei": 9116
+    },
+    "providers": {
+      "percentage_courses_open": 53
+    }
+  },
+  {
+    "year": 2020,
+    "candidates": {
+      "total": 3655
+    },
+    "applications": {
+      "total": 3609,
+      "unsubmitted": 2870,
+      "submitted": 739,
+      "not_started": 1133,
+      "in_progress": 1737,
+      "being_processed": 0,
+      "ended_without_success": 513,
+      "rejected_by_default": 99,
+      "withdrawn_by_request": 3,
+      "withdrawn_by_candidate": 85,
+      "accepted_an_offer": 226,
+      "offer_deferred": 2,
+      "accepted_pending_conditions": 24,
+      "recruited": 200,
+      "apply_again_submitted": 36,
+      "apply_again_accepted_pending_conditions": 3
+    },
+    "courses": {
+      "total": 972,
+      "school_direct": 505,
+      "scitt": 467,
+      "hei": 0,
+      "school_direct_ratified_scitt": 332,
+      "school_direct_ratified_hei": 173
+    }
+  },
+  {
+    "year": 2021,
+    "candidates": {
+      "total": 32683
+    },
+    "applications": {
+      "total": 31484,
+      "unsubmitted": 22884,
+      "submitted": 8600,
+      "not_started": 10186,
+      "in_progress": 12698,
+      "being_processed": 0,
+      "ended_without_success": 5245,
+      "rejected_by_default": 1475,
+      "withdrawn_by_request": 241,
+      "withdrawn_by_candidate": 2557,
+      "accepted_an_offer": 3355,
+      "offer_deferred": 129,
+      "accepted_pending_conditions": 270,
+      "recruited": 2956,
+      "apply_again_submitted": 1489,
+      "apply_again_accepted_pending_conditions": 263
+    },
+    "courses": {
+      "total": 14880,
+      "school_direct": 7050,
+      "scitt": 5489,
+      "hei": 2341,
+      "school_direct_ratified_scitt": 5407,
+      "school_direct_ratified_hei": 1146
+    }
+  },
+  {
+    "year": 2022,
+    "candidates": {
+      "total": 32357
+    },
+    "applications": {
+      "total": 40500,
+      "unsubmitted": 26228,
+      "submitted": 14272,
+      "not_started": 4707,
+      "in_progress": 21521,
+      "being_processed": 5115,
+      "awaiting_provider_decision": 4703,
+      "awaiting_candidate_decision": 412,
+      "ended_without_success": 2389,
+      "rejected_by_default": 462,
+      "withdrawn_by_request": 391,
+      "withdrawn_by_candidate": 5719,
+      "accepted_an_offer": 6354,
+      "offer_deferred": 12,
+      "accepted_pending_conditions": 6088,
+      "recruited": 254,
+      "apply_again_submitted": 1009,
+      "apply_again_accepted_pending_conditions": 143
+    },
+    "courses": {
+      "total": 34601,
+      "school_direct": 13275,
+      "scitt": 5490,
+      "hei": 15836,
+      "school_direct_ratified_scitt": 5191,
+      "school_direct_ratified_hei": 7797
+    },
+    "providers": {
+      "percentage_courses_open": 53
+    }
+  }
+]

@@ -1,7 +1,6 @@
 const _ = require('lodash')
-const moment = require('moment')
+const { DateTime } = require('luxon')
 const numeral = require('numeral')
-moment.suppressDeprecationWarnings = true
 
 module.exports = function (env) {
   /**
@@ -17,8 +16,18 @@ module.exports = function (env) {
      example: {{ params.date | date("DD/MM/YYYY") }}
      outputs: 01/01/1970
    ------------------------------------------------------------------ */
-   filters.date = (timestamp, format) => {
-     return moment(timestamp).format(format)
+   filters.date = (timestamp, format = 'yyyy-LL-dd') => {
+     let datetime = DateTime.fromJSDate(timestamp, {
+       locale: 'en-GB'
+     }).toFormat(format)
+
+     if (datetime === 'Invalid DateTime') {
+       datetime = DateTime.fromISO(timestamp, {
+         locale: 'en-GB'
+       }).toFormat(format)
+     }
+
+     return datetime
    }
 
    /* ------------------------------------------------------------------
@@ -26,27 +35,41 @@ module.exports = function (env) {
      example: {{ '1970-01-01' | dateAdd(1, 'weeks') | date("DD/MM/YYYY") }}
      outputs: 08/01/1970
    ------------------------------------------------------------------ */
-   filters.dateAdd = (date, num, unit='days') => {
-     return moment(date).add(num, unit).toDate()
-   }
+   filters.dateAdd = (timestamp, num, unit='days') => {
+      let date
+      switch (unit) {
+        case 'minutes':
+          date = DateTime.fromJSDate(timestamp).plus({ minutes: num })
+          break
+        case 'hours':
+          date = DateTime.fromJSDate(timestamp).plus({ hours: num })
+          break
+        case 'days':
+          date = DateTime.fromJSDate(timestamp).plus({ days: num })
+          break
+        default:
+        date = timestamp
+      }
+      return date.toJSDate()
+    }
 
   /* ------------------------------------------------------------------
     utility functions for use in appDate function/filter
   ------------------------------------------------------------------ */
   filters.govDate = (timestamp) => {
-    return moment(timestamp).format('D MMMM YYYY')
+    return filters.date(timestamp, 'd MMMM yyyy')
   }
 
   filters.govShortDate = (timestamp) => {
-    return moment(timestamp).format('D MMM YYYY')
+    return filters.date(timestamp, 'd MMM yyyy')
   }
 
   filters.govTime = (timestamp) => {
-    let t = moment(timestamp)
-    if(t.minutes() > 0) {
-      return t.format('h:mma')
+    const time = DateTime.fromJSDate(timestamp)
+    if(time.minute > 0) {
+      return filters.date(timestamp, 'h:mma')
     } else {
-      return t.format('ha')
+      return filters.date(timestamp, 'ha')
     }
   }
 
@@ -74,13 +97,13 @@ module.exports = function (env) {
     let label = ''
     switch (code.toString()) {
       case '2022':
-        label = '2021 to 2022 (starts 2022)'
+        label = '2021 to 2022'
         break
       case '2021':
-        label = '2020 to 2021 (starts 2021)'
+        label = '2020 to 2021'
         break
       case '2020':
-        label = '2019 to 2020 (starts 2020)'
+        label = '2019 to 2020'
         break
       default:
         label = code
