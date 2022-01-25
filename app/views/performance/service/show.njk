@@ -33,7 +33,7 @@
     {% include "./_sub-navigation.njk" %}
 
     <p class="govuk-body">
-      This data is for {{ fromCycle.apply2Deadline | date('d MMMM yyyy') }} to {{ toCycle.apply2Deadline | date('d MMMM yyyy') }}
+      This data covers the period from {{ fromCycle.apply2Deadline | govTime }} on {{ fromCycle.apply2Deadline | govDate }} to {{ toCycle.apply2Deadline | govTime }} on {{ toCycle.apply2Deadline | govDate }}.
     </p>
 
   <!-- </div>
