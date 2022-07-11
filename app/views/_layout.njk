@@ -51,6 +51,19 @@
 {% endblock %}
 
 {% block header %}
+
+{% if data.impersonating_id %}
+  <div class="app-impersonating">
+    <div class="govuk-width-container">
+      You are impersonating provider user <a href="/providers/users/{{ data.impersonating_id }}" class="govuk-link">Aaron Allen</a>.
+
+        <a href="/providers/users/{{ data.impersonating_id }}?impersonating_id=" class="govuk-button govuk-button--warning app-impersonating__button" >
+        Stop impersonating
+      </a>
+    </div>
+  </div>
+{% endif %}
+
   {{ govukHeader({
     classes: "app-header--full-border",
     homepageUrl: "/",

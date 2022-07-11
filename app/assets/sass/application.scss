@@ -30,6 +30,7 @@ $govuk-assets-path: '/govuk/assets/';
 @import "core/links";
 @import "core/table";
 @import "core/tag";
+@import "core/impersonating";
 
 // Utilities
 @import "utilities/grid";
