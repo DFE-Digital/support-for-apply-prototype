@@ -1,5 +1,6 @@
 // global styles for <a> and <p> tags
 $govuk-global-styles: true;
+$govuk-new-link-styles: true;
 
 $govuk-page-width: 1100px;
 
@@ -7,9 +8,12 @@ $govuk-page-width: 1100px;
 $govuk-assets-path: '/govuk/assets/';
 
 // Import GOV.UK Frontend and any extension styles if extensions have been configured
-@import "lib/extensions/extensions";
+@import ".tmp/sass/extensions";
 
 // Patterns that aren't in Frontend
+@import "patterns/contents-list";
+@import "patterns/mainstream-guide";
+@import "patterns/pagination";
 @import "patterns/related-items";
 @import "patterns/step-by-step-header";
 @import "patterns/step-by-step-nav";

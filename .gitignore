@@ -1,16 +1,25 @@
-# Private
-.env
-
 # Ignore tracking usage data config - we want a different one for each user
 usage-data-config.json
-
-# Development
+# ignore extension SCSS because it's dynamically generated
+lib/extensions/_extensions.scss
+# ignore any release archives
+/govuk-prototype-kit*.zip
+.env
 .sass-cache
 .DS_Store
 .start.pid
 .port.tmp
-node_modules/*
+public
+node_modules/
 .tmuxp.*
+.idea
+/cypress-test
+/cypress/videos
+/cypress/screenshots
+/cypress/downloads
+/cypress/support
+/cypress/temp
+tmp/
 
 # Dynamically generated data
 app/data/applications.json
@@ -25,4 +34,3 @@ app/data/reasons-for-rejection/*
 app/data/users.json
 app/data/users/*
 lib/extensions/_extensions.scss
-public
