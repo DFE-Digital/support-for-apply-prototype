@@ -10,7 +10,7 @@ exports.list = (req, res) => {
   // Get a slice of the data to display
   users = PaginationHelper.getDataByPage(users, pagination.pageNumber)
 
-  res.render('../views/users/index', {
+  res.render('../views/provider-users/index', {
     users,
     pagination
   })

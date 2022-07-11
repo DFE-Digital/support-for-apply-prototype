@@ -15,11 +15,8 @@
     href: "/providers",
     text: "Providers"
   }, {
-    href: "/providers/" + provider.code,
-    text: provider.name
-  }, {
-    href: "/providers/" + provider.code + "/users",
-    text: "Users"
+    href: "/providers/users",
+    text: "Provider users"
   }, {
     text: user.first_name + " " + user.last_name
   }]
@@ -38,10 +35,23 @@
 
     <h1 class="govuk-heading-l">{{ user.first_name }} {{ user.last_name }}</h1>
 
-    {{ govukButton({
-      href: "#",
-      text: "Sign in as this user"
-    }) }}
+    {% if data.impersonating_id and data.impersonating_id == user.id %}
+      <p class="govuk-body">You are now impersonating this user. <a href="#" class="govuk-link">Visit Manage</a> to see what they see. Any changes made will be linked to you.</p>
+
+      {{ govukButton({
+        href: "/providers/users/" + user.id + "?impersonating_id=",
+        text: "Stop impersonating this user",
+        classes: 'govuk-button--secondary'
+      }) }}
+
+    {% else %}
+
+      {{ govukButton({
+        href: "/providers/users/" + user.id + "?impersonating_id=" + user.id,
+        text: "Sign in as this user"
+      }) }}
+
+    {% endif %}
 
     {% include "./_includes/sub-navigation.njk" %}
 

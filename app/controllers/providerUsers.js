@@ -33,19 +33,15 @@ exports.list_get = (req, res) => {
 }
 
 exports.show_get = (req, res) => {
-  const provider = Providers.findOne(req.params.providerId)
   const user = Users.findOne(req.params.userId)
   const notifications = DataHelper.notifications
   const message = req.flash()
   if (user) {
     res.render('../views/providers/users/show', {
-      provider,
       user,
       notifications,
       message
     })
-  } else {
-    res.redirect(`/providers/${req.params.providerId}/users`)
   }
 }
 
