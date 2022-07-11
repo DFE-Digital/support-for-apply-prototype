@@ -10,7 +10,8 @@
     "start": "node start",
     "build": "node lib/build/generate-assets",
     "serve": "node listen-on-port",
-    "generate-data": "node ./scripts/generate-data.js"
+    "generate-data": "node ./scripts/generate-data.js",
+    "postinstall": "npm run generate-data"
   },
   "dependencies": {
     "acorn": "^8.5.0",
