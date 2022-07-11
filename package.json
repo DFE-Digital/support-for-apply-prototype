@@ -20,7 +20,6 @@
     "browser-sync": "^2.27.10",
     "chokidar": "^3.5.3",
     "client-sessions": "^0.8.0",
-    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "cross-spawn": "^7.0.3",
     "csv-string": "^4.0.1",
