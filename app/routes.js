@@ -26,7 +26,6 @@ const checkIsAuthenticated = (req, res, next) => {
 /// --------------------------------------------------///
 
 router.get('/sign-in', authenticationController.sign_in_get)
-// router.post('/sign-in', passport.authenticate('local', { successRedirect: '/', failureRedirect: '/sign-in', failureFlash: 'Missing credentials' }))
 router.get('/sign-out', authenticationController.sign_out_get)
 
 /// --------------------------------------------------///
