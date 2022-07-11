@@ -49,6 +49,9 @@ router.get('/candidates', checkIsAuthenticated, candidateController.list_get)
 /// PROVIDER ROUTES
 /// --------------------------------------------------///
 
+router.get('/providers/users', checkIsAuthenticated, userController.list)
+
+
 router.get('/providers/:providerId/applications', checkIsAuthenticated, providerApplicationController.list_get)
 // router.post('/providers/:providerId/applications', checkIsAuthenticated, providerApplicationController.list_post)
 
@@ -75,7 +78,7 @@ router.post('/providers/:providerId/users/:userId/delete', checkIsAuthenticated,
 router.get('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_get)
 router.post('/providers/:providerId/users/new', checkIsAuthenticated, providerUserController.new_post)
 
-router.get('/providers/:providerId/users/:userId', checkIsAuthenticated, providerUserController.show_get)
+router.get('/providers/users/:userId', checkIsAuthenticated, providerUserController.show_get)
 
 router.get('/providers/:providerId/users', checkIsAuthenticated, providerUserController.list_get)
 
@@ -89,12 +92,6 @@ router.get('/providers/:providerId', checkIsAuthenticated, providerController.sh
 router.get('/providers', checkIsAuthenticated, providerController.list_get)
 // router.post('/providers', checkIsAuthenticated, providerController.list_post)
 
-
-/// --------------------------------------------------///
-/// USER ROUTES
-/// --------------------------------------------------///
-
-router.get('/users', checkIsAuthenticated, userController.list)
 
 
 /// --------------------------------------------------///

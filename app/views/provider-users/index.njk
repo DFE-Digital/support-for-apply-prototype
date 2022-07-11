@@ -4,7 +4,7 @@
 {% set subNavId = 'users' %}
 
 {% block pageTitle %}
-  Users for {{ serviceName }}
+  Provider users
 {% endblock %}
 
 {% block beforeContent %}
@@ -16,16 +16,32 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-    <h1 class="govuk-heading-l">Users</h1>
+    <h1 class="govuk-heading-l">Provider users</h1>
 
-    {#{ appSubNavigation({
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+    <h1 class="govuk-heading-l">{{ title }}</h1>
+
+    {{ appSubNavigation({
       label: 'Sub navigation',
       items: [{
-        text: 'Users',
-        href: '/users',
+        text: 'Providers',
+        href: '/providers',
+        active: true if subNavId == 'providers'
+      }, {
+        text: 'API tokens',
+        href: '/tokens',
+        active: true if subNavId == 'tokens'
+      }, {
+        text: 'Provider users',
+        href: '/providers/users',
         active: true if subNavId == 'users'
       }]
-    }) }#}
+    }) }}
+
+  </div>
+</div>
 
   </div>
 </div>
@@ -57,7 +73,7 @@
           {% for user in users %}
           <tr class="govuk-table__row">
             <td class="govuk-table__cell">
-              <a class="govuk-link" href="/users/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a>
+              <a class="govuk-link" href="/providers/users/{{ user.id }}">{{ user.first_name }} {{ user.last_name }}</a>
               <span class="govuk-hint">{{ user.email_address }}</span>
             </td>
             <td class="govuk-table__cell">
