@@ -1,0 +1,30 @@
+.app-impersonating {
+  @include govuk-font($size: 19, $weight: bold);
+
+  background-color:  govuk-colour("yellow");
+  background: repeating-linear-gradient(
+    -45deg,
+    govuk-colour("yellow"),
+    govuk-colour("yellow") 10px,
+    govuk-colour("black") 10px,
+    govuk-colour("black") 20px
+  );
+}
+
+.app-impersonating .govuk-width-container {
+  background-color: govuk-colour("yellow");
+  padding: 15px;
+}
+
+.app-impersonating .govuk-link {
+  color: inherit;
+}
+
+.app-impersonating__button {
+  padding-top: 2px;
+  padding-bottom: 0px;
+  margin-left: 10px;
+  margin-bottom: 0;
+
+  @include govuk-font($size: 16, $weight: bold);
+}
