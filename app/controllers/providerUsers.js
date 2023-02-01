@@ -23,6 +23,7 @@ const parseRawUserData = (array) => {
 exports.list_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
   const users = Users.findByProviderId(req.params.providerId)
+  const message = req.flash()
   delete req.session.data.upload
   res.render('../views/providers/users/index', {
     provider,
@@ -34,10 +35,12 @@ exports.list_get = (req, res) => {
 exports.show_get = (req, res) => {
   const user = Users.findOne(req.params.userId)
   const notifications = DataHelper.notifications
+  const message = req.flash()
   if (user) {
     res.render('../views/providers/users/show', {
       user,
-      notifications
+      notifications,
+      message
     })
   }
 }
@@ -57,6 +60,7 @@ exports.history_get = (req, res) => {
 
 exports.new_get = (req, res) => {
   const provider = Providers.findOne(req.params.providerId)
+  const message = req.flash()
   res.render('../views/providers/users/new', {
     provider,
     message
@@ -112,6 +116,7 @@ exports.new_post = (req, res) => {
     })
   } else {
     const userId = Users.insertOne(req.params.providerId, req.session.data.user)
+    req.flash('success', `User ${req.session.data.user.first_name} ${req.session.data.user.last_name} added`)
     delete req.session.data.user
     if (req.session.data.button.submit === 'continue') {
       res.redirect(`/providers/${req.params.providerId}/users/new`)
@@ -187,6 +192,7 @@ exports.edit_post = (req, res) => {
     })
   } else {
     Users.updateOne(req.params.userId, req.session.data.user)
+    req.flash('success', `User ${req.session.data.user.first_name} ${req.session.data.user.last_name} updated`)
     delete req.session.data.user
     res.redirect(`/providers/${req.params.providerId}/users/${req.params.userId}`)
   }
@@ -203,6 +209,7 @@ exports.delete_get = (req, res) => {
 
 exports.delete_post = (req, res) => {
   const user = Users.findOne(req.params.userId)
+  req.flash('success', `User ${user.first_name} ${user.last_name} deleted`)
   Users.deleteOne(req.params.userId)
   res.redirect(`/providers/${req.params.providerId}/users`)
 }
@@ -220,6 +227,7 @@ exports.edit_permissions_post = (req, res) => {
   const user = Users.findOne(req.params.userId)
   Users.updatePermissions(req.params.userId, req.session.data.user)
   delete req.session.data.user
+  req.flash('success', `User ${user.first_name} ${user.last_name}’s permissions updated`)
   res.redirect(`/providers/${req.params.providerId}/users/${req.params.userId}`)
 }
 
@@ -408,6 +416,11 @@ exports.new_upload_check_get = (req, res) => {
 
 exports.new_upload_check_post = (req, res) => {
   Users.saveMany(req.params.providerId, req.session.data.users)
+  if (req.session.data.users.length === 1) {
+    req.flash('success', `User ${req.session.data.users[0].first_name} ${req.session.data.users[0].last_name} added`)
+  } else {
+    req.flash('success', `${req.session.data.users.length} users added`)
+  }
   delete req.session.data.upload
   delete req.session.data.users
   res.redirect(`/providers/${req.params.providerId}/users`)

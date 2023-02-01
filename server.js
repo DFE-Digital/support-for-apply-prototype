@@ -8,6 +8,7 @@ const bodyParser = require('body-parser')
 const cookieParser = require('cookie-parser')
 const dotenv = require('dotenv')
 const express = require('express')
+const flash = require('connect-flash')
 const nunjucks = require('nunjucks')
 const sessionInCookie = require('client-sessions')
 const sessionInMemory = require('express-session')
@@ -112,6 +113,8 @@ if (useCookieSessionStore === 'true') {
     saveUninitialized: false
   })))
 }
+
+app.use(flash())
 
 // Authentication middleware must be loaded before other middleware such as
 // static assets to prevent unauthorised access
