@@ -1,10 +1,12 @@
+const flash = require('connect-flash')
 const Authentication = require('../models/authentication')
 
 exports.sign_in_get = function(req, res) {
   if (req.session.passport || req.session.data.user) {
     res.redirect('/')
   } else {
-    res.render('../views/auth/sign-in')
+    let errorMessage = req.flash()
+    res.render('../views/auth/sign-in', errorMessage)
   }
 };
 
