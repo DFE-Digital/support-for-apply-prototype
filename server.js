@@ -167,7 +167,7 @@ if (useDocumentation) {
   utils.addNunjucksFilters(nunjucksDocumentationEnv)
 
   // Set views engine
-  documentationApp.set('view engine', 'html')
+  documentationApp.set('view engine', 'njk')
 }
 
 // Support for parsing data in POSTs
