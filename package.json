@@ -37,7 +37,7 @@
     "gray-matter": "^4.0.3",
     "inquirer": "^8.2.0",
     "lodash": "^4.17.21",
-    "luxon": "^2.3.0",
+    "luxon": "^3.2.1",
     "marked": "^4.0.10",
     "nodemon": "^2.0.15",
     "notifications-node-client": "^5.1.0",
