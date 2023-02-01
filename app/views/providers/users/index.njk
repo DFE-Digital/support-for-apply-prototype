@@ -64,9 +64,11 @@
             {% for user in users %}
             <tr class="govuk-table__row">
               <td class="govuk-table__cell">
-                <a class="govuk-link" href="/providers/{{ provider.code }}/users/{{ user.id }}">
-                  {{ user.first_name + " " + user.last_name }}
-                </a>
+                <p class="govuk-body govuk-!-margin-bottom-1">
+                  <a class="govuk-link" href="/providers/{{ provider.code }}/users/{{ user.id }}">
+                    {{ user.first_name + " " + user.last_name }}
+                  </a>
+                </p>
                 <span class="govuk-hint">{{ user.email_address }}</span>
               </td>
               <td class="govuk-table__cell">

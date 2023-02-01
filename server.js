@@ -144,7 +144,7 @@ var nunjucksAppEnv = nunjucks.configure(appViews, nunjucksConfig)
 utils.addNunjucksFilters(nunjucksAppEnv)
 
 // Set views engine
-app.set('view engine', 'html')
+app.set('view engine', 'njk')
 
 // Middleware to serve static assets
 app.use('/public', express.static(path.join(projectDir, '/public')))
@@ -167,7 +167,7 @@ if (useDocumentation) {
   utils.addNunjucksFilters(nunjucksDocumentationEnv)
 
   // Set views engine
-  documentationApp.set('view engine', 'html')
+  documentationApp.set('view engine', 'njk')
 }
 
 // Support for parsing data in POSTs
