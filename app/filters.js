@@ -57,19 +57,19 @@ module.exports = function (env) {
     utility functions for use in appDate function/filter
   ------------------------------------------------------------------ */
   filters.govDate = (timestamp) => {
-    return filters.date(timestamp, 'd MMMM yyyy')
+    return filters.date(new Date(timestamp), 'd MMMM yyyy')
   }
 
   filters.govShortDate = (timestamp) => {
-    return filters.date(timestamp, 'd MMM yyyy')
+    return filters.date(new Date(timestamp), 'd MMM yyyy')
   }
 
   filters.govTime = (timestamp) => {
-    const time = DateTime.fromJSDate(timestamp)
+    const time = DateTime.fromJSDate(new Date(timestamp))
     if(time.minute > 0) {
-      return filters.date(timestamp, 'h:mma')
+      return filters.date(new Date(timestamp), 'h:mma')
     } else {
-      return filters.date(timestamp, 'ha')
+      return filters.date(new Date(timestamp), 'ha')
     }
   }
 
@@ -86,7 +86,7 @@ module.exports = function (env) {
       case 'time':
         return filters.govTime(timestamp)
       default:
-        return timestamp
+        return new Date(timestamp)
     }
   }
 
